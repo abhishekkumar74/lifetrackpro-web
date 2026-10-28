@@ -1,0 +1,944 @@
+<title>LifeTrack Pro — Your Life OS</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="LifeTrack Pro combines focus timer, spaced repetition flashcards, habit tracking, and live study rooms — one app for everything that matters.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --black: #000000;
+  --near-black: #080810;
+  --surface: #0D0D1A;
+  --surface2: #13131F;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+
+  --v: #6C5CE7;
+  --v2: #8B7FF5;
+  --v-glow: rgba(108,92,231,0.4);
+  --v-soft: rgba(108,92,231,0.12);
+
+  --mint: #00CBA9;
+  --amber: #F59E0B;
+  --coral: #F87171;
+
+  --t1: rgba(255,255,255,0.95);
+  --t2: rgba(255,255,255,0.60);
+  --t3: rgba(255,255,255,0.35);
+  --t4: rgba(255,255,255,0.18);
+
+  --ff: 'Inter', system-ui, sans-serif;
+  --mono: 'DM Mono', monospace;
+
+  --max: 1120px;
+  --r: 16px;
+  --r-lg: 24px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff);
+  background: var(--black);
+  color: var(--t1);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ─────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px max(24px, env(safe-area-inset-left,0px));
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 16px; font-weight: 700; color: var(--t1);
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 30px; height: 30px;
+  background: var(--v);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  box-shadow: 0 0 16px var(--v-glow);
+}
+.nav-links {
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-link {
+  font-size: 14px; font-weight: 500; color: var(--t3);
+  padding: 7px 14px; border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+  cursor: pointer; border: none; background: none;
+}
+.nav-link:hover { color: var(--t1); background: rgba(255,255,255,0.05); }
+.nav-cta {
+  font-size: 14px; font-weight: 600; color: white;
+  background: var(--v); padding: 8px 18px;
+  border-radius: 8px; border: none; cursor: pointer;
+  box-shadow: 0 4px 16px var(--v-glow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 24px var(--v-glow); }
+
+/* ── HERO ─────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 140px max(24px, env(safe-area-inset-left,0px)) 80px;
+  position: relative; overflow: hidden; text-align: center;
+}
+
+/* bg grid */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 20%, transparent 80%);
+}
+/* radial glow */
+.hero::after {
+  content: '';
+  position: absolute; top: -20%; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 600px;
+  background: radial-gradient(ellipse, rgba(108,92,231,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner { position: relative; z-index: 1; max-width: 780px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(108,92,231,0.12);
+  border: 1px solid rgba(108,92,231,0.25);
+  border-radius: 100px; padding: 6px 14px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+  color: var(--v2); margin-bottom: 28px;
+}
+.badge-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--v2); box-shadow: 0 0 8px var(--v2);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+.hero-h1 {
+  font-size: clamp(42px, 7vw, 88px);
+  font-weight: 800; line-height: 1.02;
+  letter-spacing: -3px;
+  margin-bottom: 22px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.55) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-h1 span { color: var(--v2); -webkit-text-fill-color: var(--v2); }
+
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px); font-weight: 400;
+  color: var(--t2); line-height: 1.65;
+  max-width: 540px; margin: 0 auto 40px;
+}
+
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--v); color: white;
+  font-size: 15px; font-weight: 700;
+  padding: 14px 28px; border-radius: 12px; border: none;
+  cursor: pointer; box-shadow: 0 8px 30px var(--v-glow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px var(--v-glow); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border2);
+  color: var(--t1); font-size: 15px; font-weight: 600;
+  padding: 14px 28px; border-radius: 12px;
+  cursor: pointer; transition: background 0.2s, border-color 0.2s;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.2); }
+
+.hero-stats {
+  display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+  padding-top: 40px; border-top: 1px solid var(--border);
+}
+.hero-stat { text-align: center; }
+.hs-num {
+  font-size: 28px; font-weight: 800; color: var(--t1);
+  font-variant-numeric: tabular-nums; letter-spacing: -1px;
+}
+.hs-lbl { font-size: 12px; color: var(--t3); margin-top: 2px; }
+
+/* ── PHONE MOCKUP ─────────────────────────────────────── */
+.mockup-section {
+  padding: 0 max(24px, env(safe-area-inset-left,0px)) 120px;
+  display: flex; justify-content: center; position: relative;
+}
+.mockup-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(108,92,231,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.phone-frame {
+  width: 300px; height: 620px;
+  background: #0F0F1C;
+  border-radius: 44px;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 80px 160px rgba(0,0,0,0.8), 0 0 60px rgba(108,92,231,0.15);
+  position: relative; overflow: hidden;
+}
+.phone-frame::before {
+  content: '';
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  width: 90px; height: 26px;
+  background: #000; border-radius: 14px; z-index: 10;
+}
+.phone-screen {
+  position: absolute; inset: 0;
+  padding: 50px 16px 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.ps-hdr {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 4px 6px;
+}
+.ps-name { font-size: 18px; font-weight: 700; color: white; }
+.ps-streak {
+  display: flex; align-items: center; gap: 4px;
+  background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 20px; padding: 4px 10px;
+  font-size: 12px; font-weight: 700; color: #F59E0B;
+}
+.ps-banner {
+  background: rgba(108,92,231,0.15); border: 1px solid rgba(108,92,231,0.2);
+  border-radius: 12px; padding: 10px 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.ps-banner-text { flex: 1; }
+.ps-banner-title { font-size: 11px; font-weight: 700; color: white; margin-bottom: 1px; }
+.ps-banner-sub { font-size: 10px; color: rgba(255,255,255,0.4); }
+.ps-banner-btn {
+  background: var(--v); border-radius: 8px; padding: 5px 10px;
+  font-size: 10px; font-weight: 700; color: white;
+}
+.ps-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px; padding: 12px;
+}
+.ps-card-lbl { font-size: 9px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 4px; }
+.ps-card-title { font-size: 13px; font-weight: 700; color: white; margin-bottom: 2px; }
+.ps-card-sub { font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.ps-card-btn {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: var(--v); border-radius: 8px; padding: 8px;
+  font-size: 11px; font-weight: 700; color: white;
+  box-shadow: 0 4px 12px rgba(108,92,231,0.4);
+}
+.ps-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 6px; }
+.ps-stat {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px; padding: 8px;
+}
+.ps-stat-num { font-size: 16px; font-weight: 700; color: white; font-variant-numeric: tabular-nums; }
+.ps-stat-lbl { font-size: 9px; color: rgba(255,255,255,0.3); margin-top: 1px; }
+.ps-stat-bar { height: 2px; border-radius: 1px; margin-top: 4px; }
+
+/* ── SECTION BASE ─────────────────────────────────────── */
+section { padding: 120px max(24px, env(safe-area-inset-left,0px)); }
+.container { max-width: var(--max); margin-inline: auto; }
+
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--v2);
+  margin-bottom: 18px;
+}
+.section-h2 {
+  font-size: clamp(32px, 4.5vw, 54px);
+  font-weight: 800; line-height: 1.06; letter-spacing: -2px;
+  color: var(--t1); margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 17px; color: var(--t2); line-height: 1.7;
+  max-width: 480px;
+}
+
+/* ── PROBLEM ─────────────────────────────────────────── */
+.problem-section { background: var(--near-black); }
+.problem-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.problem-apps {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.papp {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r); padding: 18px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s;
+}
+.papp::after {
+  content: '✕';
+  position: absolute; top: 10px; right: 10px;
+  font-size: 10px; font-weight: 700;
+  color: var(--coral); opacity: 0.6;
+}
+.papp-icon { font-size: 28px; margin-bottom: 8px; }
+.papp-name { font-size: 13px; font-weight: 700; color: var(--t1); margin-bottom: 3px; }
+.papp-pain { font-size: 11px; color: var(--t3); line-height: 1.5; }
+.problem-arrow {
+  font-size: 48px; text-align: center; color: var(--v);
+  filter: drop-shadow(0 0 20px var(--v-glow));
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+
+/* ── FEATURES ─────────────────────────────────────────── */
+.features-section { background: var(--black); }
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px; margin-top: 64px;
+  border: 2px solid var(--border);
+  border-radius: 24px; overflow: hidden;
+}
+.feat-card {
+  background: var(--surface);
+  padding: 32px 28px; position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.feat-card:hover { background: var(--surface2); }
+.feat-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--fc, var(--v)), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.feat-card:hover::before { opacity: 1; }
+.feat-icon {
+  font-size: 28px; margin-bottom: 18px;
+  display: flex; align-items: center; justify-content: center;
+  width: 52px; height: 52px;
+  background: var(--fi-bg, var(--v-soft));
+  border-radius: 14px;
+}
+.feat-h { font-size: 17px; font-weight: 700; color: var(--t1); margin-bottom: 8px; }
+.feat-p { font-size: 14px; color: var(--t3); line-height: 1.65; }
+.feat-tag {
+  display: inline-block; margin-top: 16px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--fc, var(--v2));
+  background: var(--fi-bg, var(--v-soft));
+  border-radius: 100px; padding: 3px 10px;
+}
+
+/* ── HOW IT WORKS ─────────────────────────────────────── */
+.how-section { background: var(--near-black); }
+.steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 64px; }
+.step {
+  padding: 40px 32px; text-align: center; position: relative;
+  background: var(--surface);
+}
+.step:not(:last-child)::after {
+  content: '→';
+  position: absolute; right: -14px; top: 50%; transform: translateY(-50%);
+  font-size: 20px; color: var(--t4); z-index: 1;
+}
+.step-num {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--v-soft); border: 1px solid rgba(108,92,231,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; color: var(--v2);
+  margin: 0 auto 20px;
+}
+.step-h { font-size: 18px; font-weight: 700; color: var(--t1); margin-bottom: 8px; }
+.step-p { font-size: 14px; color: var(--t3); line-height: 1.65; }
+
+/* ── SOCIAL PROOF ─────────────────────────────────────── */
+.proof-section { background: var(--black); }
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 56px; }
+.review-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 24px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.review-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.review-stars { color: #F59E0B; font-size: 14px; margin-bottom: 12px; }
+.review-text { font-size: 14px; color: var(--t2); line-height: 1.7; margin-bottom: 16px; }
+.review-author { display: flex; align-items: center; gap: 10px; }
+.review-avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: white;
+}
+.review-name { font-size: 13px; font-weight: 700; color: var(--t1); }
+.review-tag { font-size: 11px; color: var(--t3); }
+
+/* ── PRICING ─────────────────────────────────────────── */
+.pricing-section { background: var(--near-black); }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 700px; margin: 56px auto 0; }
+.price-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg); padding: 32px;
+  position: relative;
+}
+.price-card.featured {
+  border-color: rgba(108,92,231,0.4);
+  background: linear-gradient(145deg, rgba(108,92,231,0.12) 0%, var(--surface) 100%);
+  box-shadow: 0 0 0 1px rgba(108,92,231,0.2), 0 20px 60px rgba(108,92,231,0.1);
+}
+.price-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--v); color: white;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 4px 14px; border-radius: 100px;
+}
+.price-name { font-size: 14px; font-weight: 700; color: var(--t2); margin-bottom: 8px; }
+.price-amount { font-size: 44px; font-weight: 800; color: var(--t1); letter-spacing: -2px; line-height: 1; margin-bottom: 4px; }
+.price-period { font-size: 13px; color: var(--t3); margin-bottom: 24px; }
+.price-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.price-features li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--t2); }
+.price-features li::before { content: '✓'; color: var(--mint); font-weight: 700; flex-shrink: 0; }
+.price-features li.off { color: var(--t4); }
+.price-features li.off::before { content: '—'; color: var(--t4); }
+.price-btn {
+  width: 100%; padding: 13px; border-radius: 10px;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  border: none; transition: all 0.15s;
+}
+.price-btn.free { background: rgba(255,255,255,0.07); color: var(--t1); border: 1px solid var(--border2); }
+.price-btn.free:hover { background: rgba(255,255,255,0.12); }
+.price-btn.pro { background: var(--v); color: white; box-shadow: 0 8px 24px var(--v-glow); }
+.price-btn.pro:hover { transform: translateY(-1px); box-shadow: 0 12px 32px var(--v-glow); }
+
+/* ── FAQ ─────────────────────────────────────────────── */
+.faq-section { background: var(--black); }
+.faq-list { max-width: 680px; margin: 56px auto 0; display: flex; flex-direction: column; gap: 2px; }
+.faq-item {
+  background: var(--surface); border-radius: var(--r);
+  overflow: hidden;
+}
+.faq-q {
+  width: 100%; text-align: left;
+  padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;
+  font-size: 15px; font-weight: 600; color: var(--t1);
+  background: none; border: none; cursor: pointer;
+  transition: background 0.15s;
+}
+.faq-q:hover { background: rgba(255,255,255,0.03); }
+.faq-chevron { font-size: 12px; color: var(--t3); transition: transform 0.25s; }
+.faq-item.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease;
+  font-size: 14px; color: var(--t2); line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 200px; }
+.faq-a-inner { padding: 0 24px 20px; }
+
+/* ── CTA ─────────────────────────────────────────────── */
+.cta-section {
+  background: var(--near-black);
+  text-align: center; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse, rgba(108,92,231,0.15) 0%, transparent 70%);
+}
+.cta-h { font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -2.5px; margin-bottom: 18px; position: relative; z-index: 1; }
+.cta-sub { font-size: 17px; color: var(--t2); margin-bottom: 36px; position: relative; z-index: 1; }
+.cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+.store-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: 12px; padding: 12px 22px;
+  color: var(--t1); cursor: pointer; transition: all 0.2s;
+}
+.store-btn:hover { background: rgba(255,255,255,0.08); transform: translateY(-1px); }
+.store-icon { font-size: 22px; }
+.store-text { text-align: left; }
+.store-available { font-size: 10px; color: var(--t3); }
+.store-name { font-size: 15px; font-weight: 700; }
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer {
+  background: var(--black);
+  border-top: 1px solid var(--border);
+  padding: 48px max(24px, env(safe-area-inset-left,0px));
+}
+.footer-inner {
+  max-width: var(--max); margin-inline: auto;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: var(--t1); }
+.footer-logo-icon { width: 26px; height: 26px; background: var(--v); border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-link { font-size: 13px; color: var(--t3); cursor: pointer; transition: color 0.2s; text-decoration: none; }
+.footer-link:hover { color: var(--t1); }
+.footer-copy { font-size: 12px; color: var(--t4); }
+
+/* ── SCROLL ANIMATIONS ───────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 768px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .problem-arrow { transform: rotate(90deg); }
+  .features-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .step:not(:last-child)::after { content: '↓'; right: auto; left: 50%; transform: translateX(-50%); bottom: -14px; top: auto; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  nav .nav-links { display: none; }
+}
+</style>
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">⚡</div>
+    LifeTrack Pro
+  </a>
+  <div class="nav-links">
+    <button class="nav-link" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">Features</button>
+    <button class="nav-link" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">Pricing</button>
+    <button class="nav-link" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">FAQ</button>
+    <button class="nav-cta">Download Free →</button>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="badge-dot"></div>Now on Android · iOS coming soon</div>
+    <h1 class="hero-h1">Your Life,<br><span>Fully Tracked.</span></h1>
+    <p class="hero-sub">One app for focus sessions, spaced repetition, habits, and live study rooms. Stop juggling 5 apps. Start making progress.</p>
+    <div class="hero-actions">
+      <button class="btn-primary">▶ Download for Android</button>
+      <button class="btn-secondary">Watch Demo →</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hs-num" data-count="12000">0</div>
+        <div class="hs-lbl">Students onboarded</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num" data-count="4.8" data-decimal>0</div>
+        <div class="hs-lbl">App Store rating</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hs-num" data-count="2400000">0</div>
+        <div class="hs-lbl">Minutes focused</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHONE MOCKUP ─────────────────────────────────────── -->
+<div class="mockup-section">
+  <div class="mockup-glow"></div>
+  <div class="phone-frame">
+    <div class="phone-screen">
+      <div class="ps-hdr">
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.35)">Good morning ☀️</div>
+          <div class="ps-name">Abhi</div>
+        </div>
+        <div class="ps-streak">🔥 24</div>
+      </div>
+      <div class="ps-banner">
+        <div style="font-size:18px">🃏</div>
+        <div class="ps-banner-text">
+          <div class="ps-banner-title">14 flashcards due today</div>
+          <div class="ps-banner-sub">Last reviewed 23h ago · 5 min</div>
+        </div>
+        <div class="ps-banner-btn">Review →</div>
+      </div>
+      <div class="ps-card">
+        <div class="ps-card-lbl">• Today's Priority</div>
+        <div class="ps-card-title">Thermodynamics — Laws 1 & 2</div>
+        <div class="ps-card-sub">Physics · Chapter 12 · 8 problems pending</div>
+        <div class="ps-card-btn">▶ Start Focus Session</div>
+      </div>
+      <div class="ps-stats">
+        <div class="ps-stat">
+          <div class="ps-stat-num">3.2h</div>
+          <div class="ps-stat-lbl">Focus time</div>
+          <div class="ps-stat-bar" style="background:#6C5CE7"></div>
+        </div>
+        <div class="ps-stat">
+          <div class="ps-stat-num">5/8</div>
+          <div class="ps-stat-lbl">Tasks done</div>
+          <div class="ps-stat-bar" style="background:#00CBA9"></div>
+        </div>
+        <div class="ps-stat">
+          <div class="ps-stat-num">24d</div>
+          <div class="ps-stat-lbl">Streak</div>
+          <div class="ps-stat-bar" style="background:#F59E0B"></div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:12px">
+        <div style="font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px">• Habits & Goal</div>
+        <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px">
+          <div style="width:15px;height:15px;border-radius:4px;background:#00CBA9;display:flex;align-items:center;justify-content:center;font-size:8px;color:white">✓</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.6);flex:1">Wake 6AM</div>
+          <div style="font-size:10px;color:#F59E0B;font-weight:700">🔥5</div>
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <div style="width:15px;height:15px;border-radius:4px;border:1.5px solid rgba(255,255,255,0.1)"></div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.35);flex:1">Read 30 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROBLEM ─────────────────────────────────────────── -->
+<section class="problem-section" id="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <div class="section-eyebrow reveal">The Problem</div>
+        <h2 class="section-h2 reveal reveal-delay-1">5 apps.<br>Zero progress.</h2>
+        <p class="section-sub reveal reveal-delay-2">You open Forest for focus, Anki for flashcards, Habitica for habits, Notion for notes, and Google Calendar for schedule. By the time you're set up — the motivation is gone.</p>
+        <div class="problem-arrow reveal reveal-delay-3" style="text-align:left;margin-top:36px">
+          LifeTrack fixes this ↓
+        </div>
+      </div>
+      <div class="problem-apps reveal reveal-delay-1">
+        <div class="papp">
+          <div class="papp-icon">🌲</div>
+          <div class="papp-name">Forest</div>
+          <div class="papp-pain">Only a timer. No study tracking, no flashcards.</div>
+        </div>
+        <div class="papp">
+          <div class="papp-icon">🃏</div>
+          <div class="papp-name">Anki</div>
+          <div class="papp-pain">Great algorithm, terrible UX. No habit tracking.</div>
+        </div>
+        <div class="papp">
+          <div class="papp-icon">📓</div>
+          <div class="papp-name">Notion</div>
+          <div class="papp-pain">Too flexible. You design instead of study.</div>
+        </div>
+        <div class="papp">
+          <div class="papp-icon">🎮</div>
+          <div class="papp-name">Habitica</div>
+          <div class="papp-pain">Gamified but no focus sessions or flashcards.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ─────────────────────────────────────────── -->
+<section class="features-section" id="features">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-eyebrow">Everything you need</div>
+      <h2 class="section-h2">One app.<br>Six superpowers.</h2>
+    </div>
+    <div class="features-grid reveal reveal-delay-1">
+      <div class="feat-card" style="--fc:#6C5CE7;--fi-bg:rgba(108,92,231,0.12)">
+        <div class="feat-icon">⏱️</div>
+        <div class="feat-h">Focus Timer</div>
+        <div class="feat-p">Pomodoro sessions with ambient sounds — rain, café, lo-fi. Keeps running when your screen locks.</div>
+        <div class="feat-tag">Pomodoro</div>
+      </div>
+      <div class="feat-card" style="--fc:#00CBA9;--fi-bg:rgba(0,203,169,0.12)">
+        <div class="feat-icon">🃏</div>
+        <div class="feat-h">Flashcard Review</div>
+        <div class="feat-p">SM-2 spaced repetition — the same algorithm as Anki. Auto-schedules daily review so you never forget.</div>
+        <div class="feat-tag">SM-2 Algorithm</div>
+      </div>
+      <div class="feat-card" style="--fc:#F59E0B;--fi-bg:rgba(245,158,11,0.12)">
+        <div class="feat-icon">🔥</div>
+        <div class="feat-h">Habit Streaks</div>
+        <div class="feat-p">Daily habits with streak counters. A 24-day streak is the only reason you'll say no to Netflix tonight.</div>
+        <div class="feat-tag">Daily Habits</div>
+      </div>
+      <div class="feat-card" style="--fc:#A855F7;--fi-bg:rgba(168,85,247,0.12)">
+        <div class="feat-icon">🎯</div>
+        <div class="feat-h">Goal Tracker</div>
+        <div class="feat-p">Set your exam or goal. An animated progress ring fills as you complete tasks. "487 days left" is real urgency.</div>
+        <div class="feat-tag">Progress Ring</div>
+      </div>
+      <div class="feat-card" style="--fc:#F87171;--fi-bg:rgba(248,113,113,0.12)">
+        <div class="feat-icon">🚀</div>
+        <div class="feat-h">Live Study Rooms</div>
+        <div class="feat-p">Study in real-time with friends. See each other's focus time. Social accountability that actually works.</div>
+        <div class="feat-tag">Real-time</div>
+      </div>
+      <div class="feat-card" style="--fc:#4FC3F7;--fi-bg:rgba(79,195,247,0.12)">
+        <div class="feat-icon">📊</div>
+        <div class="feat-h">Analytics</div>
+        <div class="feat-p">Weekly charts of focus hours, tasks completed, habits done. See your progress compound over time.</div>
+        <div class="feat-tag">Insights</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ─────────────────────────────────────── -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-eyebrow">Simple by design</div>
+      <h2 class="section-h2">Up in 3 minutes.</h2>
+    </div>
+    <div class="steps reveal reveal-delay-1">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-h">Set your goal</div>
+        <div class="step-p">NEET, JEE, MCAT, job — define it. The app builds your daily plan around it automatically.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-h">Add today's tasks</div>
+        <div class="step-p">What do you need to study? Add it in seconds. The app schedules Pomodoro sessions for you.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-h">Track everything</div>
+        <div class="step-p">Focus, review flashcards, check habits. Watch your progress ring fill over weeks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL PROOF ─────────────────────────────────────── -->
+<section class="proof-section" id="reviews">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-eyebrow">Real students, real results</div>
+      <h2 class="section-h2">They stopped juggling apps.</h2>
+    </div>
+    <div class="reviews-grid reveal reveal-delay-1">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Finally deleted Anki, Forest, and Notion. LifeTrack does everything in one place. My 30-day streak is the longest I've ever maintained."</div>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#6C5CE7,#a29bfe)">A</div>
+          <div>
+            <div class="review-name">Aryan S.</div>
+            <div class="review-tag">JEE Advanced 2025</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"The flashcard review reminder every morning changed how I study. I haven't missed a review day in 3 weeks. My retention is insane now."</div>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#00CBA9,#00b894)">P</div>
+          <div>
+            <div class="review-name">Priya M.</div>
+            <div class="review-tag">NEET 2026 aspirant</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Study rooms are a game changer. I study with my friends every evening. We keep each other accountable without being in the same city."</div>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#F59E0B,#e17055)">R</div>
+          <div>
+            <div class="review-name">Rohan K.</div>
+            <div class="review-tag">CS undergrad, IIT Delhi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ─────────────────────────────────────────── -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-eyebrow">Pricing</div>
+      <h2 class="section-h2">Free forever.<br>Premium for power users.</h2>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-name">Free</div>
+        <div class="price-amount">₹0</div>
+        <div class="price-period">forever</div>
+        <ul class="price-features">
+          <li>Focus timer (Pomodoro)</li>
+          <li>Up to 50 flashcards</li>
+          <li>3 daily habits</li>
+          <li>1 goal tracker</li>
+          <li class="off">Live study rooms</li>
+          <li class="off">Ambient sounds</li>
+          <li class="off">Advanced analytics</li>
+        </ul>
+        <button class="price-btn free">Download Free</button>
+      </div>
+      <div class="price-card featured reveal reveal-delay-1">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-name">Premium</div>
+        <div class="price-amount">₹199</div>
+        <div class="price-period">per month · cancel anytime</div>
+        <ul class="price-features">
+          <li>Everything in Free</li>
+          <li>Unlimited flashcards</li>
+          <li>Unlimited habits</li>
+          <li>Unlimited goals</li>
+          <li>Live study rooms</li>
+          <li>10+ ambient sounds</li>
+          <li>Advanced analytics</li>
+        </ul>
+        <button class="price-btn pro">Start Free Trial →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────── -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <div class="section-eyebrow">FAQ</div>
+      <h2 class="section-h2">Questions answered.</h2>
+    </div>
+    <div class="faq-list reveal reveal-delay-1">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is it really free? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — the core features (focus timer, flashcards up to 50, 3 habits, 1 goal) are completely free with no time limit. Premium unlocks unlimited everything plus study rooms and ambient audio.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How is this different from Anki? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Anki is flashcards only. LifeTrack combines Anki-style spaced repetition with a focus timer, habit tracker, goal progress, and live study rooms — all in one app with a modern UI that doesn't feel like it was built in 2006.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is it available on iOS? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Android is live right now. iOS is in development and coming soon. Drop your email below and we'll notify you the moment it's live on the App Store.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I use it for non-exam goals? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely. Many users track fitness goals, reading habits, language learning, and work projects. The app works for any goal that benefits from daily tracking and focus sessions.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Is my data private and secure? <span class="faq-chevron">▼</span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. All data is encrypted and stored securely using Supabase with row-level security. We never sell or share your data. You can delete your account and all data at any time.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ─────────────────────────────────────────────── -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-h reveal">Start your streak.<br>Today.</h2>
+    <p class="cta-sub reveal reveal-delay-1">Join students who replaced 5 apps with one.</p>
+    <div class="cta-actions reveal reveal-delay-2">
+      <div class="store-btn">
+        <div class="store-icon">🤖</div>
+        <div class="store-text">
+          <div class="store-available">Available on</div>
+          <div class="store-name">Google Play</div>
+        </div>
+      </div>
+      <div class="store-btn" style="opacity:0.5">
+        <div class="store-icon">🍎</div>
+        <div class="store-text">
+          <div class="store-available">Coming soon</div>
+          <div class="store-name">App Store</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-logo-icon">⚡</div>
+      LifeTrack Pro
+    </div>
+    <div class="footer-links">
+      <a class="footer-link" href="#">Privacy Policy</a>
+      <a class="footer-link" href="#">Terms of Service</a>
+      <a class="footer-link" href="#">Contact</a>
+      <a class="footer-link" href="#">Twitter</a>
+    </div>
+    <div class="footer-copy">© 2026 LifeTrack Pro. Made with ☕ in India.</div>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ─────────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── COUNT UP ─────────────────────────────────────────
+function countUp(el) {
+  const target = parseFloat(el.dataset.count);
+  const isDecimal = 'decimal' in el.dataset;
+  const duration = 1600;
+  const start = performance.now();
+  function step(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - t, 3);
+    const val = target * ease;
+    if (isDecimal) el.textContent = val.toFixed(1) + '★';
+    else if (target >= 1000000) el.textContent = (val/1000000).toFixed(1) + 'M+';
+    else if (target >= 1000) el.textContent = Math.round(val/1000) + 'K+';
+    else el.textContent = Math.round(val);
+    if (t < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const countObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); countObs.unobserve(e.target); } });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
+
+// ── FAQ ──────────────────────────────────────────────
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── NAV SCROLL EFFECT ────────────────────────────────
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.borderBottomColor = window.scrollY > 20 ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.07)';
+}, { passive: true });
+</script>
