@@ -43,23 +43,23 @@ export default function HabitTrackerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="container" style={{ padding: '60px 20px' }}>
-        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+      <article className="container subpage-container">
+        <div>
           <div className="section-eyebrow">🔥 Consistency Science</div>
-          <h1 className="section-h2">Habit Streaks: Consistency Is The Ultimate Competitive Advantage</h1>
+          <h1 className="subpage-h1">Habit Streaks: Consistency Is The Ultimate Competitive Advantage</h1>
           
-          <p style={{ fontSize: '16px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '32px' }}>
+          <p className="subpage-lead">
             Exam rankers aren’t smarter than you—they are simply more consistent. LifeTrack Pro gamifies daily discipline so giving up at 11 PM feels impossible.
           </p>
 
-          <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '28px', marginBottom: '32px', boxShadow: 'var(--shadow-sm)' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '14px' }}>
+          <div className="content-card reveal">
+            <h2 className="content-card-h2">
               Built For Non-Negotiable Daily Routines
             </h2>
-            <p style={{ fontSize: '14px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '18px' }}>
+            <p className="content-card-p">
               A sudden fever or travel day shouldn't wipe away a 45-day study streak. LifeTrack Pro gives you earned freeze tokens to protect your momentum during genuine life emergencies.
             </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)' }}>
+            <ul className="content-card-list">
               <li>✓ <strong>Visual Flame Counter:</strong> A burning fire icon that compounds visually every day you hit your non-negotiables.</li>
               <li>✓ <strong>Streak Freeze Tokens:</strong> Earn protection tokens by maintaining 14-day streaks; automatically activates if an emergency strikes.</li>
               <li>✓ <strong>Micro-Habits to Major Milestones:</strong> Track daily wake-up times, 50 MCQ quotas, revision blocks, and exercise.</li>
@@ -67,16 +67,16 @@ export default function HabitTrackerPage() {
             </ul>
           </div>
 
-          <div className="reveal reveal-delay-1" style={{ background: 'var(--bg-cream)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '24px', marginBottom: '32px' }}>
-            <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '10px' }}>
+          <div className="content-card-faq reveal reveal-delay-1">
+            <h3 className="content-card-faq-h3">
               Why do habit streaks work so well for student psychology?
             </h3>
-            <p style={{ fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.6' }}>
+            <p className="content-card-p" style={{ marginBottom: 0 }}>
               Behavioral economists call this 'loss aversion'. When you have an unbroken 30-day streak burning in your LifeTrack Pro widget, the emotional friction of skipping today’s study session far outweighs short-term laziness.
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <Link href="/" className="btn-main">
               <span>🔥</span> Try Habit Streaks on Home
             </Link>

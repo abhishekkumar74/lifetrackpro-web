@@ -43,20 +43,20 @@ export default function JeeExamPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="container" style={{ padding: '60px 20px' }}>
-        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+      <article className="container subpage-container">
+        <div>
           <div className="section-eyebrow">🚀 Engineering Aspirants</div>
-          <h1 className="section-h2">The Precision Study OS For JEE Main &amp; Advanced 2025/2026</h1>
+          <h1 className="subpage-h1">The Precision Study OS For JEE Main &amp; Advanced 2025/2026</h1>
           
-          <p style={{ fontSize: '16px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '32px' }}>
+          <p className="subpage-lead">
             JEE Advanced rewards deep analytical stamina and lightning-fast formula recall. LifeTrack Pro structures your day into focused problem-solving blocks while insulating your streak from burnout.
           </p>
 
-          <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '28px', marginBottom: '28px', boxShadow: 'var(--shadow-sm)' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '14px' }}>
+          <div className="content-card reveal">
+            <h2 className="content-card-h2">
               Built For Serious IIT JEE Aspirants
             </h2>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)' }}>
+            <ul className="content-card-list">
               <li>✓ <strong>Calculus &amp; Mechanics Formula Recall:</strong> Daily spaced repetition reviews ensure complex derivations remain fresh under pressure.</li>
               <li>✓ <strong>90-Minute Exam Simulation Blocks:</strong> Calibrate your biological clock to JEE exam timing (9 AM to 12 PM and 2:30 PM to 5:30 PM).</li>
               <li>✓ <strong>Daily Non-Negotiable Streaks:</strong> Track 'Solve 30 Tough Physics Problems' and 'Review Mock Test Mistakes'.</li>
@@ -64,7 +64,7 @@ export default function JeeExamPage() {
             </ul>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <Link href="/" className="btn-main">
               <span>📱</span> Try Free on Android
             </Link>

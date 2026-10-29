@@ -43,20 +43,20 @@ export default function NeetExamPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="container" style={{ padding: '60px 20px' }}>
-        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+      <article className="container subpage-container">
+        <div>
           <div className="section-eyebrow">🧬 Medical Aspirants</div>
-          <h1 className="section-h2">The All-in-One Study OS For NEET UG &amp; PG Aspirants</h1>
+          <h1 className="subpage-h1">The All-in-One Study OS For NEET UG &amp; PG Aspirants</h1>
           
-          <p style={{ fontSize: '16px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '32px' }}>
+          <p className="subpage-lead">
             Cracking NEET requires committing thousands of NCERT facts, morphology tables, and chemical reactions to long-term memory. LifeTrack Pro unites daily Pomodoro focus blocks with active recall algorithms.
           </p>
 
-          <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '28px', marginBottom: '28px', boxShadow: 'var(--shadow-sm)' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '14px' }}>
+          <div className="content-card reveal">
+            <h2 className="content-card-h2">
               How NEET Toppers Use LifeTrack Pro Daily
             </h2>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)' }}>
+            <ul className="content-card-list">
               <li>✓ <strong>Morning Active Recall Queue:</strong> Review 50-80 high-yield Biology cards (Morphology, Genetics, Plant Physiology) right after waking up.</li>
               <li>✓ <strong>Physics MCQ Sprint Blocks:</strong> 50-minute Pomodoro timer blocks with ambient 432Hz focus soundscapes.</li>
               <li>✓ <strong>Organic Chemistry Reactions Deck:</strong> SM-2 spaced repetition auto-schedules mechanism reviews so you never forget name reactions.</li>
@@ -64,7 +64,7 @@ export default function NeetExamPage() {
             </ul>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <Link href="/" className="btn-main">
               <span>📱</span> Download Android App Free
             </Link>

@@ -43,23 +43,23 @@ export default function StudyRoomsPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="container" style={{ padding: '60px 20px' }}>
-        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+      <article className="container subpage-container">
+        <div>
           <div className="section-eyebrow">🎧 Multiplayer Focus</div>
-          <h1 className="section-h2">Live Study Rooms: Social Accountability That Actually Works</h1>
+          <h1 className="subpage-h1">Live Study Rooms: Social Accountability That Actually Works</h1>
           
-          <p style={{ fontSize: '16px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '32px' }}>
+          <p className="subpage-lead">
             Studying in isolation leads to endless phone scrolling. LifeTrack Pro’s live study rooms bring the disciplined energy of an IIT library directly to your desk.
           </p>
 
-          <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '28px', marginBottom: '32px', boxShadow: 'var(--shadow-sm)' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '14px' }}>
+          <div className="content-card reveal">
+            <h2 className="content-card-h2">
               Quiet, Respectful, Zero-Distraction Virtual Rooms
             </h2>
-            <p style={{ fontSize: '14px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '18px' }}>
+            <p className="content-card-p">
               Unlike chaotic Discord servers or WhatsApp groups that invite casual chatting, LifeTrack Pro study rooms are built solely for silent, synchronized focus blocks.
             </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)' }}>
+            <ul className="content-card-list">
               <li>✓ <strong>Synchronized Pomodoro Clocks:</strong> Everyone starts and finishes 50-minute blocks together, followed by synchronized 10-minute stretch breaks.</li>
               <li>✓ <strong>Subject &amp; Exam Rooms:</strong> Join specialized rooms for JEE Physics, NEET Biology, UPSC Answer Writing, or Late-Night Lo-Fi Grind.</li>
               <li>✓ <strong>Multiplayer Presence:</strong> See peer focus times and streak rings in real-time without intrusive video feeds.</li>
@@ -67,16 +67,16 @@ export default function StudyRoomsPage() {
             </ul>
           </div>
 
-          <div className="reveal reveal-delay-1" style={{ background: 'var(--bg-cream)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '24px', marginBottom: '32px' }}>
-            <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '10px' }}>
+          <div className="content-card-faq reveal reveal-delay-1">
+            <h3 className="content-card-faq-h3">
               How do study rooms stop procrastination?
             </h3>
-            <p style={{ fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.6' }}>
+            <p className="content-card-p" style={{ marginBottom: 0 }}>
               Psychologists refer to this as the 'Hawthorne Effect'—people exert higher effort when they know they are studying in a shared space. Seeing 40 other students deeply focused on physics problems keeps you accountable.
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <Link href="/" className="btn-main">
               <span>🎧</span> View Live Rooms on Home
             </Link>

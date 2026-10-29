@@ -42,7 +42,7 @@ export default function RoiCalculator() {
           />
         </div>
 
-        <p style={{ fontSize: '13px', color: 'var(--text-3)', lineHeight: '1.6' }}>
+        <p style={{ fontSize: '11.5px', color: 'var(--text-3)', lineHeight: '1.5' }}>
           ⚡ Students lose an estimated 18% of productive study capacity switching across 5 separate apps. LifeTrack Pro eliminates all context-switching penalties.
         </p>
       </div>

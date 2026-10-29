@@ -100,7 +100,7 @@ export default function HomePage() {
       {/* ── THE PROBLEM: 5 APPS VS 1 APP ── */}
       <section style={{ background: 'var(--bg-cream)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div className="reveal" style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto 36px' }}>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto 24px' }}>
             <div className="section-eyebrow">The Real Problem</div>
             <h2 className="section-h2">5 Separate Apps.<br />Zero Actual Retention.</h2>
             <p className="section-desc" style={{ margin: '0 auto' }}>
@@ -108,12 +108,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
-            <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '24px', boxShadow: 'var(--shadow-sm)' }}>
-              <h3 style={{ color: 'var(--rose)', fontSize: '16px', fontWeight: 700, marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px' }}>
+            <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '18px 20px', boxShadow: 'var(--shadow-sm)' }}>
+              <h3 style={{ color: 'var(--rose)', fontSize: '13.5px', fontWeight: 700, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span>✕</span> The Fragmented App Mess
               </h3>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.5' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px', color: 'var(--text-2)', lineHeight: '1.48' }}>
                 <li>• <strong>Cognitive Exhaustion:</strong> Tabbing across 5 different tools destroys study flow.</li>
                 <li>• <strong>Disconnected Data:</strong> Your focus timer doesn't link to your exam countdown or daily goals.</li>
                 <li>• <strong>Ugly 2006 Interfaces:</strong> Dated UI makes active recall feel like a painful chore.</li>
@@ -121,11 +121,11 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div className="reveal reveal-delay-1" style={{ background: '#FFFFFF', border: '1.5px solid var(--primary)', borderRadius: 'var(--radius-md)', padding: '24px', boxShadow: 'var(--shadow-md)' }}>
-              <h3 style={{ color: 'var(--primary)', fontSize: '16px', fontWeight: 700, marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="reveal reveal-delay-1" style={{ background: '#FFFFFF', border: '1.5px solid var(--primary)', borderRadius: 'var(--radius-md)', padding: '18px 20px', boxShadow: 'var(--shadow-sm)' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '13.5px', fontWeight: 700, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <span>✓</span> The LifeTrack Pro Solution
               </h3>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.5' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '12px', color: 'var(--text-2)', lineHeight: '1.48' }}>
                 <li>• <strong>Unified Life OS:</strong> Timer, spaced repetition, habit tracking, and study rooms together.</li>
                 <li>• <strong>Scientific Retention:</strong> SM-2 active recall auto-calculates revision schedules.</li>
                 <li>• <strong>Modern Clean Aesthetics:</strong> Designed for modern mobile and web workflows.</li>
@@ -139,7 +139,7 @@ export default function HomePage() {
       {/* ── 6 SUPERPOWERS GRID (WITH SEPARATE SEO PAGES LINKS) ── */}
       <section>
         <div className="container">
-          <div className="reveal" style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto' }}>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto' }}>
             <div className="section-eyebrow">Engineered For Mastery</div>
             <h2 className="section-h2">One App. Six Superpowers.</h2>
             <p className="section-desc" style={{ margin: '0 auto' }}>
@@ -208,7 +208,7 @@ export default function HomePage() {
       {/* ── INTERACTIVE FOCUS ROI CALCULATOR PREVIEW ── */}
       <section style={{ background: 'var(--bg-cream)' }}>
         <div className="container">
-          <div className="reveal" style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto' }}>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto' }}>
             <div className="section-eyebrow">Interactive Calculator</div>
             <h2 className="section-h2">Calculate Reclaimed Focus Time.</h2>
             <p className="section-desc" style={{ margin: '0 auto' }}>
@@ -226,14 +226,14 @@ export default function HomePage() {
       <section>
         <div className="container">
           <div className="cta-box reveal">
-            <h2 className="section-h2" style={{ fontSize: 'clamp(26px, 3.6vw, 42px)' }}>
+            <h2 className="section-h2" style={{ fontSize: 'clamp(19px, 2.3vw, 25px)', marginBottom: '8px' }}>
               Start Your Streak.<br />
               <span className="gradient-accent">Master Your Exams.</span>
             </h2>
-            <p className="section-desc" style={{ margin: '0 auto 24px' }}>
+            <p className="section-desc" style={{ margin: '0 auto 16px' }}>
               Join thousands of dedicated aspirants who replaced 5 scattered apps with LifeTrack Pro.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', flexWrap: 'wrap' }}>
               <Link href="/calculator" className="btn-main">
                 <span>🧮</span> Calculate Your Study Hours
               </Link>

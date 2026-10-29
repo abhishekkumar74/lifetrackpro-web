@@ -42,8 +42,8 @@ export default function FeaturesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="container" style={{ padding: '60px 20px' }}>
-        <div className="reveal" style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 40px' }}>
+      <div className="container" style={{ padding: '40px 20px' }}>
+        <div className="reveal" style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto 28px' }}>
           <div className="section-eyebrow">Product Ecosystem</div>
           <h1 className="section-h2">Everything You Need To Build Unstoppable Momentum</h1>
           <p className="section-desc" style={{ margin: '0 auto' }}>

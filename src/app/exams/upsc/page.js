@@ -43,20 +43,20 @@ export default function UpscExamPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="container" style={{ padding: '60px 20px' }}>
-        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+      <article className="container subpage-container">
+        <div>
           <div className="section-eyebrow">🏛️ Civil Services Aspirants</div>
-          <h1 className="section-h2">The Daily Discipline OS For UPSC CSE Prelims &amp; Mains</h1>
+          <h1 className="subpage-h1">The Daily Discipline OS For UPSC CSE Prelims &amp; Mains</h1>
           
-          <p style={{ fontSize: '16px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '32px' }}>
+          <p className="subpage-lead">
             The UPSC syllabus is a marathon that breaks undisciplined schedules. LifeTrack Pro organizes your 10 to 12-hour daily study routine across Static GS, Current Affairs, and timed answer writing.
           </p>
 
-          <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '28px', marginBottom: '28px', boxShadow: 'var(--shadow-sm)' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '14px' }}>
+          <div className="content-card reveal">
+            <h2 className="content-card-h2">
               How Serious UPSC Aspirants Study with LifeTrack Pro
             </h2>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)' }}>
+            <ul className="content-card-list">
               <li>✓ <strong>Daily Mains Answer Writing Timer:</strong> Time strict 7-minute (10-marker) and 11-minute (15-marker) answer drafts with zero distractions.</li>
               <li>✓ <strong>Polity, History &amp; Environment Spaced Repetition:</strong> Master Constitutional Articles, Supreme Court cases, and National Parks with SM-2 flashcards.</li>
               <li>✓ <strong>Target Goal Countdown:</strong> Watch your 500-day countdown ring advance toward the Prelims exam date.</li>
@@ -64,7 +64,7 @@ export default function UpscExamPage() {
             </ul>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <Link href="/" className="btn-main">
               <span>📱</span> Get Started Free
             </Link>

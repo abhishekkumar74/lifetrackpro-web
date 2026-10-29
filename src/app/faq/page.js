@@ -62,8 +62,8 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="container" style={{ padding: '60px 20px' }}>
-        <div className="reveal" style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 36px' }}>
+      <div className="container" style={{ padding: '40px 20px' }}>
+        <div className="reveal" style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto 24px' }}>
           <div className="section-eyebrow">Frequently Asked Questions</div>
           <h1 className="section-h2">Questions Answered. Clear &amp; Simple.</h1>
           <p className="section-desc" style={{ margin: '0 auto' }}>
@@ -75,8 +75,8 @@ export default function FaqPage() {
           <FaqAccordion />
         </div>
 
-        <div className="reveal reveal-delay-2" style={{ textAlign: 'center', marginTop: '48px' }}>
-          <p style={{ color: 'var(--text-3)', fontSize: '13.5px', marginBottom: '14px' }}>
+        <div className="reveal reveal-delay-2" style={{ textAlign: 'center', marginTop: '32px' }}>
+          <p style={{ color: 'var(--text-3)', fontSize: '12px', marginBottom: '10px' }}>
             Still have a question? Want to suggest a feature?
           </p>
           <Link href="/" className="btn-main">

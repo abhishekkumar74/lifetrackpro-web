@@ -43,23 +43,23 @@ export default function PomodoroTimerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="container" style={{ padding: '60px 20px' }}>
-        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+      <article className="container subpage-container">
+        <div>
           <div className="section-eyebrow">⏱️ Feature Deep Dive</div>
-          <h1 className="section-h2">Smart Focus Timer: Enter The Deep Work State On Command</h1>
+          <h1 className="subpage-h1">Smart Focus Timer: Enter The Deep Work State On Command</h1>
           
-          <p style={{ fontSize: '16px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '32px' }}>
+          <p className="subpage-lead">
             Random intervals and phone notifications destroy study momentum. LifeTrack Pro’s Pomodoro engine is engineered to induce flow state rapidly through sound science and interval precision.
           </p>
 
-          <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '28px', marginBottom: '32px', boxShadow: 'var(--shadow-sm)' }}>
-            <h2 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '14px' }}>
+          <div className="content-card reveal">
+            <h2 className="content-card-h2">
               Why Standard Timers Fail Serious Students
             </h2>
-            <p style={{ fontSize: '14px', color: 'var(--text-2)', lineHeight: '1.65', marginBottom: '18px' }}>
+            <p className="content-card-p">
               Most smartphone timers stop the moment your phone goes to sleep, or lack ambient acoustic masking. When studying in noisy hostels, libraries, or shared flats, background chatter breaks focus every 8 minutes.
             </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)' }}>
+            <ul className="content-card-list">
               <li>✓ <strong>Background Audio Persistence:</strong> Ambient rain, café chatter, and lo-fi soundscapes keep playing even when your phone locks.</li>
               <li>✓ <strong>Scientifically Calibrated 432Hz &amp; Alpha Waves:</strong> Reduce cognitive fatigue during heavy problem-solving blocks.</li>
               <li>✓ <strong>Custom Focus Cadences:</strong> Choose standard 25/5, the deep-work 50/10 block, or the marathon 90-minute ultradian rhythm.</li>
@@ -68,16 +68,16 @@ export default function PomodoroTimerPage() {
           </div>
 
           {/* Quick FAQ block for Google SERP */}
-          <div className="reveal reveal-delay-1" style={{ background: 'var(--bg-cream)', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '24px', marginBottom: '32px' }}>
-            <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text-1)', marginBottom: '10px' }}>
+          <div className="content-card-faq reveal reveal-delay-1">
+            <h3 className="content-card-faq-h3">
               How does the Pomodoro technique boost exam scores?
             </h3>
-            <p style={{ fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.6' }}>
+            <p className="content-card-p" style={{ marginBottom: 0 }}>
               The human prefrontal cortex depletes glucose after 45-50 minutes of intense analytical thinking. By mandating 5 to 10-minute active recovery breaks, LifeTrack Pro prevents study burnout and maintains peak mental acuity for 8+ hours.
             </p>
           </div>
 
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
             <Link href="/" className="btn-main">
               <span>📱</span> Try Interactive Demo on Home
             </Link>
