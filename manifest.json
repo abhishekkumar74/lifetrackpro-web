@@ -1,0 +1,24 @@
+{
+  "name": "LifeTrack Pro - Your Life OS",
+  "short_name": "LifeTrack",
+  "description": "Combine Pomodoro focus timer, spaced repetition flashcards, habit tracking, and live study rooms into one seamless productivity app.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#07070D",
+  "theme_color": "#6C5CE7",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/images/app-icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/images/favicon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["productivity", "education", "lifestyle"]
+}

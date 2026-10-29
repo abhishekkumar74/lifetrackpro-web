@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://abhishekkumar74.github.io/lifetrackpro-web/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://abhishekkumar74.github.io/lifetrackpro-web/assets/images/og-preview.jpg</image:loc>
+      <image:title>LifeTrack Pro - All-in-One Focus, Flashcards &amp; Habit Tracker App</image:title>
+      <image:caption>LifeTrack Pro app mockup showing Pomodoro timer, SM-2 flashcard spaced repetition, and habit streaks</image:caption>
+    </image:image>
+  </url>
+</urlset>
