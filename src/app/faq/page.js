@@ -2,9 +2,17 @@ import FaqAccordion from '@/components/FaqAccordion';
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Frequently Asked Questions (FAQ) & Knowledge Base',
+  title: 'Frequently Asked Questions (FAQ) & Knowledge Base | LifeTrack Pro',
   description: 'Everything you need to know about LifeTrack Pro Pomodoro timer, SM-2 flashcard spaced repetition algorithm, habit streaks, data privacy, and Android installation.',
-  keywords: ['lifetrack pro faq', 'how to use lifetrack pro', 'spaced repetition guide', 'pomodoro app questions']
+  keywords: ['lifetrack pro faq', 'how to use lifetrack pro', 'spaced repetition guide', 'pomodoro app questions'],
+  alternates: {
+    canonical: 'https://abhishekkumar74.github.io/lifetrackpro-web/faq',
+  },
+  openGraph: {
+    title: 'Frequently Asked Questions (FAQ) & Knowledge Base',
+    description: 'Find answers about focus timers, spaced repetition algorithms, and study rooms.',
+    url: 'https://abhishekkumar74.github.io/lifetrackpro-web/faq',
+  }
 };
 
 export default function FaqPage() {
@@ -54,8 +62,8 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="container" style={{ padding: '80px 24px' }}>
-        <div style={{ textAlign: 'center', maxWidth: '720px', margin: '0 auto 40px' }}>
+      <div className="container" style={{ padding: '60px 20px' }}>
+        <div className="reveal" style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 36px' }}>
           <div className="section-eyebrow">Frequently Asked Questions</div>
           <h1 className="section-h2">Questions Answered. Clear &amp; Simple.</h1>
           <p className="section-desc" style={{ margin: '0 auto' }}>
@@ -63,10 +71,12 @@ export default function FaqPage() {
           </p>
         </div>
 
-        <FaqAccordion />
+        <div className="reveal reveal-delay-1">
+          <FaqAccordion />
+        </div>
 
-        <div style={{ textAlign: 'center', marginTop: '60px' }}>
-          <p style={{ color: 'var(--text-3)', fontSize: '14px', marginBottom: '16px' }}>
+        <div className="reveal reveal-delay-2" style={{ textAlign: 'center', marginTop: '48px' }}>
+          <p style={{ color: 'var(--text-3)', fontSize: '13.5px', marginBottom: '14px' }}>
             Still have a question? Want to suggest a feature?
           </p>
           <Link href="/" className="btn-main">

@@ -40,6 +40,24 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: `${baseUrl}/exams/neet`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/exams/jee`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/exams/upsc`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
       url: `${baseUrl}/calculator`,
       lastModified,
       changeFrequency: 'weekly',

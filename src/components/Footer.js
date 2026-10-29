@@ -42,9 +42,9 @@ export default function Footer() {
             <div className="footer-col">
               <h4>Target Aspirants</h4>
               <ul>
-                <li><Link href="/features">NEET UG &amp; PG Routine</Link></li>
-                <li><Link href="/features">JEE Main &amp; Advanced</Link></li>
-                <li><Link href="/features">UPSC Civil Services</Link></li>
+                <li><Link href="/exams/neet">NEET UG &amp; PG Routine</Link></li>
+                <li><Link href="/exams/jee">JEE Main &amp; Advanced</Link></li>
+                <li><Link href="/exams/upsc">UPSC Civil Services</Link></li>
                 <li><Link href="/features">Tech &amp; Coding Placements</Link></li>
                 <li><Link href="/faq">Common Questions</Link></li>
               </ul>

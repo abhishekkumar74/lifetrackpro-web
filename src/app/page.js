@@ -40,24 +40,22 @@ export default function HomePage() {
 
       {/* ── HERO SECTION ── */}
       <section className="hero">
-        <div className="hero-glow" />
-
         <div className="hero-content">
-          <div className="hero-status-pill">
+          <div className="hero-status-pill reveal">
             <span className="status-dot-pulse"></span>
             <span>🟢 3,420+ students studying right now</span>
           </div>
 
-          <h1 className="hero-h1">
+          <h1 className="hero-h1 reveal reveal-delay-1">
             Your Complete Study &amp; Life OS.<br />
             <span className="gradient-accent">Fully Focused. Zero Chaos.</span>
           </h1>
 
-          <p className="hero-subtitle">
+          <p className="hero-subtitle reveal reveal-delay-2">
             One unified app combining <strong>Pomodoro focus sessions</strong>, <strong>SM-2 spaced repetition flashcards</strong>, <strong>daily habit streaks</strong>, and <strong>live multiplayer study rooms</strong>. Stop juggling 5 fragmented apps.
           </p>
 
-          <div className="hero-cta-group">
+          <div className="hero-cta-group reveal reveal-delay-3">
             <a href="#simulator" className="btn-main">
               <span>📱</span> Try Interactive Simulator
             </a>
@@ -67,7 +65,7 @@ export default function HomePage() {
           </div>
 
           {/* User's Authentic Play Store Feature Graphic */}
-          <div className="feature-graphic-wrapper">
+          <div className="feature-graphic-wrapper reveal reveal-delay-3">
             <Image 
               src="/play_store_feature_graphic.png" 
               alt="LifeTrack Pro App Interface Showcase - Play Store"
@@ -95,14 +93,14 @@ export default function HomePage() {
       </div>
 
       {/* ── INTERACTIVE 3D PHONE SIMULATOR ── */}
-      <section className="mockup-wrapper" id="simulator">
+      <section className="mockup-wrapper reveal" id="simulator">
         <PhoneSimulator />
       </section>
 
       {/* ── THE PROBLEM: 5 APPS VS 1 APP ── */}
-      <section style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
+      <section style={{ background: 'var(--bg-cream)', borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 40px' }}>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto 36px' }}>
             <div className="section-eyebrow">The Real Problem</div>
             <h2 className="section-h2">5 Separate Apps.<br />Zero Actual Retention.</h2>
             <p className="section-desc" style={{ margin: '0 auto' }}>
@@ -110,12 +108,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-            <div style={{ background: 'rgba(255,83,118,0.03)', border: '1px solid rgba(255,83,118,0.15)', borderRadius: 'var(--radius-lg)', padding: '30px' }}>
-              <h3 style={{ color: 'var(--coral)', fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>
-                ❌ The Fragmented App Mess
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+            <div className="reveal" style={{ background: '#FFFFFF', border: '1px solid var(--border-subtle)', borderRadius: 'var(--radius-md)', padding: '24px', boxShadow: 'var(--shadow-sm)' }}>
+              <h3 style={{ color: 'var(--rose)', fontSize: '16px', fontWeight: 700, marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span>✕</span> The Fragmented App Mess
               </h3>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '14px', color: 'var(--text-2)' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.5' }}>
                 <li>• <strong>Cognitive Exhaustion:</strong> Tabbing across 5 different tools destroys study flow.</li>
                 <li>• <strong>Disconnected Data:</strong> Your focus timer doesn't link to your exam countdown or daily goals.</li>
                 <li>• <strong>Ugly 2006 Interfaces:</strong> Dated UI makes active recall feel like a painful chore.</li>
@@ -123,14 +121,14 @@ export default function HomePage() {
               </ul>
             </div>
 
-            <div style={{ background: 'rgba(108,92,231,0.08)', border: '1px solid var(--primary-light)', borderRadius: 'var(--radius-lg)', padding: '30px', boxShadow: '0 0 40px rgba(108,92,231,0.12)' }}>
-              <h3 style={{ color: 'var(--cyan)', fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>
-                ⚡ The LifeTrack Pro Solution
+            <div className="reveal reveal-delay-1" style={{ background: '#FFFFFF', border: '1.5px solid var(--primary)', borderRadius: 'var(--radius-md)', padding: '24px', boxShadow: 'var(--shadow-md)' }}>
+              <h3 style={{ color: 'var(--primary)', fontSize: '16px', fontWeight: 700, marginBottom: '14px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span>✓</span> The LifeTrack Pro Solution
               </h3>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px', fontSize: '14px', color: 'var(--text-2)' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '13.5px', color: 'var(--text-2)', lineHeight: '1.5' }}>
                 <li>• <strong>Unified Life OS:</strong> Timer, spaced repetition, habit tracking, and study rooms together.</li>
                 <li>• <strong>Scientific Retention:</strong> SM-2 active recall auto-calculates revision schedules.</li>
-                <li>• <strong>Modern Obsidian Aesthetics:</strong> Designed for modern mobile and web workflows.</li>
+                <li>• <strong>Modern Clean Aesthetics:</strong> Designed for modern mobile and web workflows.</li>
                 <li>• <strong>Real-Time Community:</strong> Study alongside thousands of serious aspirants nationwide.</li>
               </ul>
             </div>
@@ -141,7 +139,7 @@ export default function HomePage() {
       {/* ── 6 SUPERPOWERS GRID (WITH SEPARATE SEO PAGES LINKS) ── */}
       <section>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto' }}>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto' }}>
             <div className="section-eyebrow">Engineered For Mastery</div>
             <h2 className="section-h2">One App. Six Superpowers.</h2>
             <p className="section-desc" style={{ margin: '0 auto' }}>
@@ -150,7 +148,7 @@ export default function HomePage() {
           </div>
 
           <div className="features-grid">
-            <div className="feat-card" style={{ '--feat-color': '#6C5CE7', '--feat-bg': 'rgba(108,92,231,0.12)' }}>
+            <div className="feat-card reveal" style={{ '--feat-bg': 'rgba(91,78,228,0.08)' }}>
               <div className="feat-icon-box">⏱️</div>
               <h3 className="feat-title">Smart Focus Timer</h3>
               <p className="feat-desc">Customizable Pomodoro blocks with ambient soundscapes (rain, café, 432Hz). Keeps ticking even on locked screen.</p>
@@ -159,7 +157,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="feat-card" style={{ '--feat-color': '#00F5D4', '--feat-bg': 'rgba(0,245,212,0.12)' }}>
+            <div className="feat-card reveal reveal-delay-1" style={{ '--feat-bg': 'rgba(5,150,105,0.08)' }}>
               <div className="feat-icon-box">🃏</div>
               <h3 className="feat-title">SM-2 Spaced Repetition</h3>
               <p className="feat-desc">The scientific active recall algorithm. Automatically schedules reviews right before you forget.</p>
@@ -168,7 +166,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="feat-card" style={{ '--feat-color': '#FFB703', '--feat-bg': 'rgba(255,183,3,0.12)' }}>
+            <div className="feat-card reveal reveal-delay-2" style={{ '--feat-bg': 'rgba(217,119,6,0.08)' }}>
               <div className="feat-icon-box">🔥</div>
               <h3 className="feat-title">Habit Streak Shields</h3>
               <p className="feat-desc">Build non-negotiable daily habits with flame streak rings and emergency freeze shields.</p>
@@ -177,7 +175,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="feat-card" style={{ '--feat-color': '#FF5376', '--feat-bg': 'rgba(255,83,118,0.12)' }}>
+            <div className="feat-card reveal" style={{ '--feat-bg': 'rgba(225,29,72,0.08)' }}>
               <div className="feat-icon-box">🎧</div>
               <h3 className="feat-title">Live 24/7 Study Rooms</h3>
               <p className="feat-desc">Hop into synchronized study rooms with friends and study groups across India.</p>
@@ -186,7 +184,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="feat-card" style={{ '--feat-color': '#A855F7', '--feat-bg': 'rgba(168,85,247,0.12)' }}>
+            <div className="feat-card reveal reveal-delay-1" style={{ '--feat-bg': 'rgba(147,51,234,0.08)' }}>
               <div className="feat-icon-box">🎯</div>
               <h3 className="feat-title">Target Goal Countdowns</h3>
               <p className="feat-desc">Set your exam target (JEE, NEET, UPSC, Coding Interview) and watch animated progress rings fill up.</p>
@@ -195,7 +193,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="feat-card" style={{ '--feat-color': '#4D96FF', '--feat-bg': 'rgba(77,150,255,0.12)' }}>
+            <div className="feat-card reveal reveal-delay-2" style={{ '--feat-bg': 'rgba(2,132,199,0.08)' }}>
               <div className="feat-icon-box">📊</div>
               <h3 className="feat-title">Productivity Heatmaps</h3>
               <p className="feat-desc">GitHub-style study heatmaps, subject distribution pie charts, and weekly momentum reports.</p>
@@ -208,9 +206,9 @@ export default function HomePage() {
       </section>
 
       {/* ── INTERACTIVE FOCUS ROI CALCULATOR PREVIEW ── */}
-      <section style={{ background: 'var(--bg-surface)' }}>
+      <section style={{ background: 'var(--bg-cream)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto' }}>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '620px', margin: '0 auto' }}>
             <div className="section-eyebrow">Interactive Calculator</div>
             <h2 className="section-h2">Calculate Reclaimed Focus Time.</h2>
             <p className="section-desc" style={{ margin: '0 auto' }}>
@@ -218,22 +216,24 @@ export default function HomePage() {
             </p>
           </div>
 
-          <RoiCalculator />
+          <div className="reveal reveal-delay-1">
+            <RoiCalculator />
+          </div>
         </div>
       </section>
 
       {/* ── CALL TO ACTION BANNER (NO PRICING SECTION) ── */}
       <section>
         <div className="container">
-          <div className="cta-box">
-            <h2 className="section-h2" style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}>
+          <div className="cta-box reveal">
+            <h2 className="section-h2" style={{ fontSize: 'clamp(26px, 3.6vw, 42px)' }}>
               Start Your Streak.<br />
               <span className="gradient-accent">Master Your Exams.</span>
             </h2>
-            <p className="section-desc" style={{ margin: '0 auto 30px' }}>
+            <p className="section-desc" style={{ margin: '0 auto 24px' }}>
               Join thousands of dedicated aspirants who replaced 5 scattered apps with LifeTrack Pro.
             </p>
-            <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
               <Link href="/calculator" className="btn-main">
                 <span>🧮</span> Calculate Your Study Hours
               </Link>

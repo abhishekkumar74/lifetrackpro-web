@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
 import BroadcastBanner from '@/components/BroadcastBanner';
+import ScrollReveal from '@/components/ScrollReveal';
 
 export const metadata = {
   metadataBase: new URL('https://abhishekkumar74.github.io/lifetrackpro-web'),
@@ -84,6 +85,7 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ScrollProgress />
+        <ScrollReveal />
         <BroadcastBanner />
         <Navbar />
         <main style={{ flex: 1 }}>
