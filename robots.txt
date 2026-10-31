@@ -1,7 +1,11 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
-Disallow: /admin.html
+Disallow: /admin
+Disallow: /basecamp
+Disallow: /secret-admin-portal
+Disallow: /api/
 
 # Sitemap location
-Sitemap: https://abhishekkumar74.github.io/lifetrackpro-web/sitemap.xml
+Sitemap: https://lifetrackpro.in/sitemap.xml
+

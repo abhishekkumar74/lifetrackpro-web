@@ -1,12 +1,12 @@
 export default function robots() {
-  const baseUrl = 'https://abhishekkumar74.github.io/lifetrackpro-web';
+  const baseUrl = 'https://lifetrackpro.in';
 
   return {
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin', '/api/'],
+        disallow: ['/basecamp', '/admin', '/secret-admin-portal', '/api/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

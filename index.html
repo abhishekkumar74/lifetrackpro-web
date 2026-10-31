@@ -207,17 +207,9 @@
       color: #fff;
     }
 
-    /* ── SCROLL PROGRESS BAR ── */
+    /* ── SCROLL PROGRESS BAR (REMOVED) ── */
     #scrollProgress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 0%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary), var(--cyan), var(--amber));
-      z-index: 1000;
-      transition: width 0.08s ease-out;
-      box-shadow: 0 0 10px var(--primary-glow);
+      display: none !important;
     }
 
     /* ── DYNAMIC CANVAS BACKGROUND ── */
@@ -1631,17 +1623,10 @@
   <!-- Scroll Progress Indicator -->
   <div id="scrollProgress"></div>
 
-  <!-- Dynamic Live Announcement Banner (Controllable via Admin Panel) -->
-  <div id="liveBroadcastBanner">
-    <span class="banner-badge">📣 Notice</span>
-    <span id="bannerTextContent">Welcome to LifeTrack Pro v2.4 — All systems operating smoothly.</span>
-    <button class="banner-close" onclick="closeBanner()">✕</button>
-  </div>
-
   <!-- Header & Navigation -->
   <header>
     <nav id="mainNav">
-      <a href="#" class="brand-wrap" aria-label="LifeTrack Pro Home">
+      <a href="#" class="brand-wrap" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" aria-label="LifeTrack Pro Home">
         <div class="brand-logo">⚡</div>
         <div class="brand-title">LifeTrack <span style="color:var(--primary-light)">Pro</span></div>
         <span class="brand-badge">Life OS</span>
@@ -1656,13 +1641,16 @@
       </div>
 
       <div class="nav-right">
-        <!-- Direct Link to Admin Panel -->
-        <a href="admin.html" class="admin-link-btn" title="Open Admin Control Panel">
-          <span>🛡️</span> Admin Panel
+        <a href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" target="_blank" rel="noopener noreferrer" class="cta-download" title="Download LifeTrack Pro on Google Play Store">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0;">
+            <path d="M3.609 1.814A1.5 1.5 0 0 0 3 3.064v17.872c0 .502.247.973.664 1.258l9.645-9.646L3.609 1.814z" fill="#00D2FF"/>
+            <path d="M16.924 9.176l-3.615 3.372 3.615 3.372 4.18-2.375c1.19-.676 1.19-2.668 0-3.344l-4.18-2.025z" fill="#FFD600"/>
+            <path d="M3.664 22.194a1.503 1.503 0 0 0 1.64.083l11.62-6.589-3.615-3.372-9.645 9.878z" fill="#FF334B"/>
+            <path d="M13.309 12.316l3.615-3.372L5.304 2.355a1.503 1.503 0 0 0-1.695.127l9.7 9.834z" fill="#00E676"/>
+          </svg>
+          <span class="cta-download-full">Download from Play Store</span>
+          <span class="cta-download-short">Play Store</span>
         </a>
-        <button class="cta-download" onclick="openDownloadModal()">
-          <span>▶</span> Download Free
-        </button>
       </div>
     </nav>
   </header>
@@ -1690,9 +1678,9 @@
         </p>
 
         <div class="hero-cta-group reveal delay-3">
-          <button class="btn-main" onclick="openDownloadModal()">
+          <a href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" target="_blank" rel="noopener noreferrer" class="btn-main">
             <span>🤖</span> Download for Android (Google Play)
-          </button>
+          </a>
           <a href="#demo" class="btn-glass">
             <span>✨</span> Try Interactive Demo ↓
           </a>
@@ -2185,11 +2173,11 @@
             Join over 14,800+ students who replaced 5 scattered apps with LifeTrack Pro.
           </p>
           <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
-            <button class="btn-main" onclick="openDownloadModal()">
+            <a href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" target="_blank" rel="noopener noreferrer" class="btn-main">
               <span>🤖</span> Download Android App
-            </button>
-            <a href="admin.html" class="btn-glass">
-              <span>🛡️</span> Open Admin Dashboard
+            </a>
+            <a href="#calculator" class="btn-glass">
+              <span>🧮</span> Calculate Focus ROI
             </a>
           </div>
         </div>
@@ -2202,16 +2190,13 @@
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand-col">
-          <div class="brand-wrap" style="margin-bottom:14px;">
+          <a href="#" class="brand-wrap footer-brand-link" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" aria-label="LifeTrack Pro Home" style="margin-bottom:14px;cursor:pointer;display:inline-flex;text-decoration:none;">
             <div class="brand-logo">⚡</div>
-            <div class="brand-title">LifeTrack <span style="color:var(--primary-light)">Pro</span></div>
-          </div>
-          <p style="font-size:13px;color:var(--text-3);line-height:1.6;margin-bottom:20px;">
+            <div class="brand-title" style="color:#FFFFFF;">LifeTrack <span style="color:var(--primary-light)">Pro</span></div>
+          </a>
+          <p style="font-size:13px;color:var(--text-3);line-height:1.6;margin-bottom:0;">
             The all-in-one productivity Life OS combining Pomodoro focus sessions, spaced repetition flashcards, habit tracking, and live study rooms.
           </p>
-          <div style="font-size:12px;color:var(--cyan)">
-            🟢 Supabase Realtime Connected
-          </div>
         </div>
 
         <div class="footer-links-group">
@@ -2238,13 +2223,22 @@
           </div>
 
           <div class="footer-col">
-            <h4>Control &amp; Legal</h4>
+            <h4>Resources &amp; Legal</h4>
             <ul>
-              <li><a href="admin.html" style="color:var(--primary-light);font-weight:700;">🛡️ Admin Portal</a></li>
               <li><a href="sitemap.xml">XML Sitemap</a></li>
               <li><a href="robots.txt">Robots.txt</a></li>
               <li><a href="#">Privacy Policy</a></li>
               <li><a href="#">Terms of Service</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Community</h4>
+            <ul>
+              <li><a href="https://chat.whatsapp.com/B8uwXjT9R665ahqcXVsZdk" target="_blank" rel="noopener noreferrer">💬 WhatsApp Group</a></li>
+              <li><a href="https://t.me/lifetrackpro" target="_blank" rel="noopener noreferrer">✈️ Telegram Channel</a></li>
+              <li><a href="https://www.instagram.com/lifetrackpro/" target="_blank" rel="noopener noreferrer">📸 Instagram</a></li>
+              <li><a href="https://www.linkedin.com/company/lifetrackpro" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a></li>
             </ul>
           </div>
         </div>
@@ -2252,9 +2246,6 @@
 
       <div class="footer-bottom">
         <div>© 2026 LifeTrack Pro. All rights reserved. Crafted with ☕ for students across India.</div>
-        <div>
-          <a href="admin.html" style="color:var(--text-3);text-decoration:none;margin-left:14px;">Admin Access</a>
-        </div>
       </div>
     </div>
   </footer>
@@ -2306,9 +2297,15 @@
         </svg>
       </div>
 
-      <button class="btn-main" style="width:100%;justify-content:center;margin-bottom:12px;" onclick="simulateDownload()">
-        <span>🤖</span> Download APK Directly
-      </button>
+      <a href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" target="_blank" rel="noopener noreferrer" class="btn-main" style="width:100%;justify-content:center;margin-bottom:12px;gap:8px;text-decoration:none;" onclick="closeDownloadModal()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;flex-shrink:0;">
+          <path d="M3.609 1.814A1.5 1.5 0 0 0 3 3.064v17.872c0 .502.247.973.664 1.258l9.645-9.646L3.609 1.814z" fill="#00D2FF"/>
+          <path d="M16.924 9.176l-3.615 3.372 3.615 3.372 4.18-2.375c1.19-.676 1.19-2.668 0-3.344l-4.18-2.025z" fill="#FFD600"/>
+          <path d="M3.664 22.194a1.503 1.503 0 0 0 1.64.083l11.62-6.589-3.615-3.372-9.645 9.878z" fill="#FF334B"/>
+          <path d="M13.309 12.316l3.615-3.372L5.304 2.355a1.503 1.503 0 0 0-1.695.127l9.7 9.834z" fill="#00E676"/>
+        </svg>
+        <span>Download from Play Store</span>
+      </a>
 
       <div style="font-size:11px;color:var(--text-3)">
         Version 2.4.1 (Stable) · Requires Android 8.0+ · Size: 24MB
@@ -2593,7 +2590,7 @@
       if (e.target.id === 'downloadModal') closeDownloadModal();
     }
     function simulateDownload() {
-      alert("Downloading LifeTrack Pro Android APK (v2.4.1)... Check your browser downloads!");
+      window.open("https://play.google.com/store/apps/details?id=com.lifetrackpro.app", "_blank");
       closeDownloadModal();
     }
 

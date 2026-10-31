@@ -1,12 +1,8 @@
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import ScrollProgress from '@/components/ScrollProgress';
-import BroadcastBanner from '@/components/BroadcastBanner';
-import ScrollReveal from '@/components/ScrollReveal';
+import PublicShell from '@/components/PublicShell';
 
 export const metadata = {
-  metadataBase: new URL('https://abhishekkumar74.github.io/lifetrackpro-web'),
+  metadataBase: new URL('https://lifetrackpro.in'),
   title: {
     default: 'LifeTrack Pro — All-in-One Focus, Flashcards & Habit Tracker App',
     template: '%s | LifeTrack Pro'
@@ -27,6 +23,9 @@ export const metadata = {
   authors: [{ name: 'LifeTrack Pro' }],
   creator: 'Abhishek Kumar',
   publisher: 'LifeTrack Pro',
+  alternates: {
+    canonical: './',
+  },
   robots: {
     index: true,
     follow: true,
@@ -50,7 +49,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://abhishekkumar74.github.io/lifetrackpro-web',
+    url: 'https://lifetrackpro.in/',
     title: 'LifeTrack Pro — All-in-One Focus, Flashcards & Habit Tracker App',
     description: 'Stop juggling 5 apps. Pomodoro timer, SM-2 flashcard spaced repetition, habit streaks & real-time study rooms in one beautiful interface.',
     siteName: 'LifeTrack Pro',
@@ -72,6 +71,13 @@ export const metadata = {
   },
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#2563EB',
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -84,14 +90,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-        <ScrollProgress />
-        <ScrollReveal />
-        <BroadcastBanner />
-        <Navbar />
-        <main style={{ flex: 1 }}>
+        <PublicShell>
           {children}
-        </main>
-        <Footer />
+        </PublicShell>
       </body>
     </html>
   );

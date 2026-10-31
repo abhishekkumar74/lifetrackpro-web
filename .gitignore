@@ -17,14 +17,26 @@
 # misc
 .DS_Store
 *.pem
+*.key
+*.cert
+*.crt
+*.pfx
+*serviceAccountKey*.json
+credentials.json
 
-# debug
+# debug & logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
 
 # local env files
-.env*.local
+.env
+.env.*
+!.env.example
+
+# scratch scripts & local tests
+scratch/
 
 # vercel
 .vercel

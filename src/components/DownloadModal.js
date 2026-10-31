@@ -1,8 +1,10 @@
 'use client';
 
+import PlayStoreIcon from './PlayStoreIcon';
+
 export default function DownloadModal({ onClose }) {
   const handleDownload = () => {
-    alert("LifeTrack Pro APK download started! Check your notification / downloads.");
+    window.open("https://play.google.com/store/apps/details?id=com.lifetrackpro.app", "_blank", "noopener,noreferrer");
     onClose();
   };
 
@@ -10,32 +12,42 @@ export default function DownloadModal({ onClose }) {
     <div className="modal-overlay" onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="modal-card">
         <button className="modal-close-btn" onClick={onClose} aria-label="Close modal">✕</button>
-        <div style={{ fontSize: '32px', marginBottom: '8px' }}>📱</div>
-        <h3 style={{ fontSize: '22px', fontWeight: 800, fontFamily: 'var(--font-heading)', marginBottom: '8px' }}>
-          Get LifeTrack Pro Free
+        <div style={{ marginBottom: '10px', display: 'flex', justifyContent: 'center' }}>
+          <PlayStoreIcon size={38} />
+        </div>
+        <h3 style={{ fontSize: '20px', fontWeight: 800, fontFamily: 'var(--font-heading)', marginBottom: '6px' }}>
+          Download from Play Store
         </h3>
-        <p style={{ fontSize: '13px', color: 'var(--text-2)', marginBottom: '16px' }}>
-          Scan the QR code with your phone or click below to install directly on Android.
+        <p style={{ fontSize: '12.5px', color: 'var(--text-2)', marginBottom: '14px' }}>
+          Scan the QR code with your phone or tap below to get LifeTrack Pro directly from Google Play Store.
         </p>
 
-        <div style={{
-          width: '180px', height: '180px', background: '#fff',
-          borderRadius: '16px', margin: '16px auto', padding: '12px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center'
-        }}>
-          <svg viewBox="0 0 100 100" width="150" height="150">
+        <a 
+          href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          title="Open LifeTrack Pro on Google Play Store"
+          style={{
+            display: 'block',
+            width: '160px', height: '160px', background: '#fff',
+            borderRadius: '14px', margin: '14px auto', padding: '10px',
+            boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border-subtle)',
+            cursor: 'pointer'
+          }}
+        >
+          <svg viewBox="0 0 100 100" width="140" height="140">
             <rect width="100" height="100" fill="#ffffff" />
             <rect x="10" y="10" width="24" height="24" fill="#07070D" />
             <rect x="14" y="14" width="16" height="16" fill="#ffffff" />
-            <rect x="18" y="18" width="8" height="8" fill="#6C5CE7" />
+            <rect x="18" y="18" width="8" height="8" fill="#2563EB" />
 
             <rect x="66" y="10" width="24" height="24" fill="#07070D" />
             <rect x="70" y="14" width="16" height="16" fill="#ffffff" />
-            <rect x="74" y="18" width="8" height="8" fill="#6C5CE7" />
+            <rect x="74" y="18" width="8" height="8" fill="#2563EB" />
 
             <rect x="10" y="66" width="24" height="24" fill="#07070D" />
             <rect x="14" y="70" width="16" height="16" fill="#ffffff" />
-            <rect x="18" y="74" width="8" height="8" fill="#6C5CE7" />
+            <rect x="18" y="74" width="8" height="8" fill="#2563EB" />
 
             <rect x="42" y="14" width="5" height="5" fill="#07070D" />
             <rect x="52" y="14" width="5" height="5" fill="#07070D" />
@@ -44,7 +56,7 @@ export default function DownloadModal({ onClose }) {
             <rect x="20" y="44" width="5" height="5" fill="#07070D" />
             <rect x="30" y="44" width="5" height="5" fill="#07070D" />
             <rect x="40" y="44" width="5" height="5" fill="#07070D" />
-            <rect x="50" y="44" width="5" height="5" fill="#6C5CE7" />
+            <rect x="50" y="44" width="5" height="5" fill="#2563EB" />
             <rect x="60" y="44" width="5" height="5" fill="#07070D" />
             <rect x="70" y="44" width="5" height="5" fill="#07070D" />
             <rect x="80" y="44" width="5" height="5" fill="#07070D" />
@@ -52,14 +64,22 @@ export default function DownloadModal({ onClose }) {
             <rect x="56" y="64" width="6" height="6" fill="#07070D" />
             <rect x="66" y="64" width="6" height="6" fill="#07070D" />
           </svg>
-        </div>
+        </a>
 
-        <button className="btn-main" style={{ width: '100%', justifyContent: 'center', marginBottom: '12px' }} onClick={handleDownload}>
-          <span>🤖</span> Download for Android (Direct APK)
-        </button>
+        <a 
+          href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-main" 
+          style={{ width: '100%', justifyContent: 'center', marginBottom: '10px', gap: '8px', fontSize: '13px', textDecoration: 'none' }} 
+          onClick={handleDownload}
+        >
+          <PlayStoreIcon size={18} />
+          <span>Download from Play Store</span>
+        </a>
 
         <div style={{ fontSize: '11px', color: 'var(--text-3)' }}>
-          Version 2.4.1 (Stable) · Zero Ads · Android 8.0+
+          Verified on Google Play Protect · Zero Ads · Android 8.0+
         </div>
       </div>
     </div>

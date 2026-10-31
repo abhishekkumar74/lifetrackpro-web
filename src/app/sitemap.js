@@ -1,6 +1,6 @@
 export default function sitemap() {
-  const baseUrl = 'https://abhishekkumar74.github.io/lifetrackpro-web';
-  const lastModified = '2026-10-29';
+  const baseUrl = 'https://lifetrackpro.in';
+  const lastModified = new Date().toISOString().split('T')[0];
 
   return [
     {
@@ -66,8 +66,20 @@ export default function sitemap() {
     {
       url: `${baseUrl}/faq`,
       lastModified,
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
       priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/privacy`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/terms`,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.5,
     },
   ];
 }

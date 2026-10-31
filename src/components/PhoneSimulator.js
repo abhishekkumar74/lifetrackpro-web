@@ -60,25 +60,25 @@ export default function PhoneSimulator() {
           </div>
 
           <div className="sim-nav-switcher">
-            <button 
+            <button
               className={`sim-tab-btn ${activeTab === 'timer' ? 'active' : ''}`}
               onClick={() => setActiveTab('timer')}
             >
               Timer
             </button>
-            <button 
+            <button
               className={`sim-tab-btn ${activeTab === 'cards' ? 'active' : ''}`}
               onClick={() => setActiveTab('cards')}
             >
               Cards
             </button>
-            <button 
+            <button
               className={`sim-tab-btn ${activeTab === 'habits' ? 'active' : ''}`}
               onClick={() => setActiveTab('habits')}
             >
               Habits
             </button>
-            <button 
+            <button
               className={`sim-tab-btn ${activeTab === 'rooms' ? 'active' : ''}`}
               onClick={() => setActiveTab('rooms')}
             >
@@ -92,11 +92,11 @@ export default function PhoneSimulator() {
               <div className="timer-circle-wrap">
                 <svg className="timer-svg" viewBox="0 0 160 160">
                   <circle className="timer-track" cx="80" cy="80" r="70"></circle>
-                  <circle 
-                    className="timer-progress" 
-                    cx="80" 
-                    cy="80" 
-                    r="70" 
+                  <circle
+                    className="timer-progress"
+                    cx="80"
+                    cy="80"
+                    r="70"
                     style={{ strokeDashoffset: ringOffset }}
                   ></circle>
                 </svg>
@@ -107,32 +107,32 @@ export default function PhoneSimulator() {
               </div>
 
               <div className="timer-controls">
-                <button 
-                  className="timer-btn primary" 
+                <button
+                  className="timer-btn primary"
                   onClick={() => setTimerRunning(!timerRunning)}
                 >
-                  {timerRunning ? '⏸ Pause' : '▶ Start'}
+                  {timerRunning ? 'Pause' : 'Start Focus'}
                 </button>
-                <button 
-                  className="timer-btn" 
+                <button
+                  className="timer-btn"
                   onClick={() => { setTimerRunning(false); setSecondsLeft(25 * 60); }}
                 >
-                  ↺ Reset
+                  Reset
                 </button>
               </div>
 
               <div style={{ fontSize: '11px', color: 'var(--text-3)', textAlign: 'center', marginTop: '10px' }}>
-                Binaural Ambient Soundscapes:
+                Binaural Ambient Soundscapes
               </div>
               <div style={{ display: 'flex', gap: '6px', justifyContent: 'center', marginTop: '4px' }}>
-                <span style={{ fontSize: '10px', background: 'var(--primary-soft)', padding: '3px 8px', borderRadius: '100px', color: '#fff', border: '1px solid var(--primary-light)' }}>
-                  🌧️ Rain
+                <span style={{ fontSize: '10px', background: 'rgba(37, 99, 235, 0.25)', padding: '3px 10px', borderRadius: '100px', color: '#93C5FD', border: '1px solid #3B82F6', fontWeight: 600 }}>
+                  Rainfall
                 </span>
-                <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.05)', padding: '3px 8px', borderRadius: '100px', color: 'var(--text-3)' }}>
-                  ☕ Café
+                <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.06)', padding: '3px 10px', borderRadius: '100px', color: '#94A3B8' }}>
+                  Café Ambient
                 </span>
-                <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.05)', padding: '3px 8px', borderRadius: '100px', color: 'var(--text-3)' }}>
-                  🎧 Lo-Fi
+                <span style={{ fontSize: '10px', background: 'rgba(255,255,255,0.06)', padding: '3px 10px', borderRadius: '100px', color: '#94A3B8' }}>
+                  432Hz Lo-Fi
                 </span>
               </div>
             </div>
@@ -141,29 +141,29 @@ export default function PhoneSimulator() {
           {/* TAB 2: FLASHCARDS */}
           {activeTab === 'cards' && (
             <div className="sim-view active">
-              <div style={{ fontSize: '11px', color: 'var(--text-3)', display: 'flex', justifyContent: 'space-between' }}>
+              <div style={{ fontSize: '11px', color: '#94A3B8', display: 'flex', justifyContent: 'space-between' }}>
                 <span>Deck: Physics NEET / JEE</span>
-                <span style={{ color: 'var(--cyan)' }}>Card 3 of 28</span>
+                <span style={{ color: '#60A5FA', fontWeight: 650 }}>Card 3 of 28</span>
               </div>
 
               <div className="flashcard-3d-box" onClick={() => setCardFlipped(!cardFlipped)}>
                 <div className={`flashcard-inner ${cardFlipped ? 'flipped' : ''}`}>
                   <div className="flashcard-front">
-                    <div className="fc-deck-badge">Question (Click to flip)</div>
+                    <div className="fc-deck-badge" style={{ color: '#60A5FA' }}>Question (Click to flip)</div>
                     <div className="fc-question">State the Second Law of Thermodynamics (Clausius Statement)</div>
-                    <div style={{ fontSize: '10px', color: 'var(--text-3)', textAlign: 'center' }}>💡 Tap to reveal answer</div>
+                    <div style={{ fontSize: '10px', color: '#94A3B8', textAlign: 'center' }}>Tap to reveal answer</div>
                   </div>
                   <div className="flashcard-back">
-                    <div className="fc-deck-badge" style={{ color: 'var(--primary-light)' }}>Answer</div>
+                    <div className="fc-deck-badge" style={{ color: '#60A5FA' }}>Answer</div>
                     <div className="fc-question" style={{ fontSize: '12px', fontWeight: 500 }}>
-                      "Heat cannot spontaneously flow from a colder body to a warmer body without external work."
+                      &quot;Heat cannot spontaneously flow from a colder body to a warmer body without external work.&quot;
                     </div>
-                    <div style={{ fontSize: '10px', color: 'var(--text-3)', textAlign: 'center' }}>Tap to flip back</div>
+                    <div style={{ fontSize: '10px', color: '#94A3B8', textAlign: 'center' }}>Tap to flip back</div>
                   </div>
                 </div>
               </div>
 
-              <div style={{ fontSize: '10px', color: 'var(--text-3)', textAlign: 'center' }}>Rate Recall Difficulty:</div>
+              <div style={{ fontSize: '10px', color: '#94A3B8', textAlign: 'center' }}>Rate Recall Difficulty:</div>
               <div className="fc-grade-btns">
                 <button className="grade-btn grade-again" onClick={() => handleGrade('Again')}>Again</button>
                 <button className="grade-btn grade-hard" onClick={() => handleGrade('Hard')}>Hard</button>
@@ -176,10 +176,10 @@ export default function PhoneSimulator() {
           {/* TAB 3: HABITS */}
           {activeTab === 'habits' && (
             <div className="sim-view active">
-              <div style={{ fontSize: '11px', color: 'var(--text-3)', marginBottom: '4px' }}>Daily Consistency Routine:</div>
+              <div style={{ fontSize: '11px', color: '#94A3B8', marginBottom: '4px' }}>Daily Consistency Routine:</div>
               {habits.map((h) => (
-                <div 
-                  key={h.id} 
+                <div
+                  key={h.id}
                   className={`habit-item ${h.done ? 'completed' : ''}`}
                   onClick={() => toggleHabit(h.id)}
                 >
@@ -187,11 +187,13 @@ export default function PhoneSimulator() {
                     <div className="habit-check-box">{h.done ? '✓' : ''}</div>
                     <span className="habit-name">{h.name}</span>
                   </div>
-                  <div className="habit-streak">🔥 {h.streak}d</div>
+                  <div className="habit-streak" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                    <span style={{ color: 'var(--amber)', fontWeight: 800 }}>★</span> {h.streak}d
+                  </div>
                 </div>
               ))}
-              <div style={{ background: 'rgba(255,183,3,0.1)', border: '1px solid rgba(255,183,3,0.25)', borderRadius: '10px', padding: '8px 12px', fontSize: '11px', color: 'var(--amber)', marginTop: 'auto' }}>
-                ⚡ 1 freeze token remaining for this week!
+              <div style={{ background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.3)', borderRadius: '10px', padding: '8px 12px', fontSize: '11px', color: '#F59E0B', marginTop: 'auto' }}>
+                1 streak freeze shield remaining this week
               </div>
             </div>
           )}
@@ -199,19 +201,19 @@ export default function PhoneSimulator() {
           {/* TAB 4: ROOMS */}
           {activeTab === 'rooms' && (
             <div className="sim-view active">
-              <div style={{ background: 'rgba(108,92,231,0.12)', border: '1px solid rgba(108,92,231,0.3)', borderRadius: '12px', padding: '12px' }}>
+              <div style={{ background: 'rgba(37, 99, 235, 0.16)', border: '1px solid rgba(59, 130, 246, 0.35)', borderRadius: '12px', padding: '12px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#fff' }}>🎯 JEE Physics Grind</span>
-                  <span style={{ background: '#FF5376', color: 'white', fontSize: '9px', fontWeight: 800, padding: '2px 6px', borderRadius: '100px' }}>LIVE</span>
+                  <span style={{ fontSize: '13px', fontWeight: 700, color: '#fff' }}>JEE Physics Marathon</span>
+                  <span style={{ background: '#EF4444', color: 'white', fontSize: '9px', fontWeight: 800, padding: '2px 6px', borderRadius: '100px' }}>LIVE</span>
                 </div>
-                <div style={{ fontSize: '11px', color: 'var(--text-3)' }}>42 students studying together</div>
+                <div style={{ fontSize: '11px', color: '#94A3B8' }}>42 students studying together</div>
                 <div style={{ display: 'flex', alignItems: 'center', margin: '8px 0' }}>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 700 }}>A</div>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#00b894', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 700, marginLeft: '-6px' }}>P</div>
-                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#0984e3', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 700, marginLeft: '-6px' }}>+40</div>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#2563EB', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 700, color: '#fff' }}>A</div>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#059669', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 700, marginLeft: '-6px', color: '#fff' }}>P</div>
+                  <div style={{ width: '24px', height: '24px', borderRadius: '50%', background: '#0284C7', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 700, marginLeft: '-6px', color: '#fff' }}>+40</div>
                 </div>
-                <div style={{ fontSize: '11px', color: 'var(--cyan)' }}>
-                  🎧 Binaural 432Hz Audio Stream Active
+                <div style={{ fontSize: '11px', color: '#60A5FA', fontWeight: 550 }}>
+                  Binaural 432Hz Soundscape Active
                 </div>
               </div>
             </div>
