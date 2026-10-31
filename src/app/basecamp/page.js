@@ -99,6 +99,7 @@ function LoginForm() {
     setGoogleLoading(true);
     setFormError('');
 
+    // Production Supabase client environment credentials
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
