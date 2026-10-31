@@ -99,7 +99,6 @@ function LoginForm() {
     setGoogleLoading(true);
     setFormError('');
 
-    // Production Supabase client environment credentials
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
     const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -111,7 +110,7 @@ function LoginForm() {
 
     try {
       const supabase = createBrowserClient(supabaseUrl, anonKey);
-      const callbackUrl = `${window.location.origin}/api/auth/callback?next=${encodeURIComponent(returnTo)}`;
+      const callbackUrl = `${window.location.origin}/api/auth/callback`;
 
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
@@ -185,12 +184,12 @@ function LoginForm() {
         {/* Brand header */}
         <div style={{ textAlign: 'center', marginBottom: '24px' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: '14px' }}>
-            <Image 
-              src="/icon.png" 
-              alt="LifeTrack Pro" 
-              width={48} 
-              height={48} 
-              style={{ borderRadius: '12px' }} 
+            <Image
+              src="/icon.png"
+              alt="LifeTrack Pro"
+              width={48}
+              height={48}
+              style={{ borderRadius: '12px' }}
             />
           </div>
           <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '22px', fontWeight: 800, color: '#fff', margin: '0 0 6px 0' }}>
@@ -294,8 +293,8 @@ function LoginForm() {
         {/* Password login form */}
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <label 
-              htmlFor="admin-email" 
+            <label
+              htmlFor="admin-email"
               style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: 'var(--text-2)', marginBottom: '6px' }}
             >
               Administrator Email
@@ -324,8 +323,8 @@ function LoginForm() {
           </div>
 
           <div>
-            <label 
-              htmlFor="admin-password" 
+            <label
+              htmlFor="admin-password"
               style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: 'var(--text-2)', marginBottom: '6px' }}
             >
               Password
@@ -373,8 +372,8 @@ function LoginForm() {
         </form>
 
         <div style={{ marginTop: '24px', textAlign: 'center' }}>
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             style={{ fontSize: '12px', color: 'var(--text-3)', textDecoration: 'none' }}
           >
             ← Return to public website
