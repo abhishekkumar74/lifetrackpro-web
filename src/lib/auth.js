@@ -7,9 +7,7 @@ const SESSION_DURATION_MS = 8 * 60 * 60 * 1000; // 8 hours
  * In production over HTTPS, use __Host- prefix for strongest origin isolation.
  */
 export function getAdminCookieName() {
-  return process.env.NODE_ENV === 'production'
-    ? '__Host-ltp_admin_session'
-    : 'ltp_admin_session';
+  return 'ltp_admin_session';
 }
 
 /**
@@ -135,7 +133,7 @@ export function verifyAdminSession(request) {
   if (!sessionSecret) return null;
 
   const cookieName = getAdminCookieName();
-  const sessionCookie = request.cookies?.get?.(cookieName)?.value;
+  const sessionCookie = request.cookies?.get?.(cookieName)?.value || request.cookies?.get?.('ltp_admin_session')?.value || request.cookies?.get?.('__Host-ltp_admin_session')?.value;
   if (!sessionCookie) return null;
 
   return verifySessionToken(sessionCookie, sessionSecret);

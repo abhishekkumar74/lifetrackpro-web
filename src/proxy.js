@@ -13,7 +13,7 @@ export function proxy(request) {
   const pathname = request.nextUrl.pathname;
   const sessionSecret = process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_SECRET_KEY;
   const cookieName = getAdminCookieName();
-  const sessionCookie = request.cookies.get(cookieName)?.value;
+  const sessionCookie = request.cookies.get(cookieName)?.value || request.cookies.get('ltp_admin_session')?.value || request.cookies.get('__Host-ltp_admin_session')?.value;
 
   // 1. Check existing session validity
   const validSession = sessionSecret ? verifySessionToken(sessionCookie, sessionSecret) : null;

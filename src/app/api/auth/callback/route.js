@@ -129,17 +129,23 @@ export async function GET(request) {
     // 5. Construct 303 See Other redirect response so browser transitions cleanly via GET
     const redirectResponse = NextResponse.redirect(redirectUrl, 303);
 
-    // 6. Explicitly attach session cookie to redirect response headers
-    redirectResponse.cookies.set(cookieName, sessionToken, cookieOptions);
-
-    // Synchronize any Supabase session cookies created during code exchange
+    // 6. Synchronize any Supabase session cookies created during code exchange (skipping admin session)
     try {
       cookieStore.getAll().forEach((c) => {
-        redirectResponse.cookies.set(c.name, c.value);
+        if (!c.name.includes('ltp_admin_session')) {
+          redirectResponse.cookies.set(c.name, c.value, {
+            path: '/',
+            sameSite: 'lax',
+            secure: process.env.NODE_ENV === 'production',
+          });
+        }
       });
     } catch {
       // safe fallback
     }
+
+    // 7. Explicitly attach admin session cookie LAST with full options so path/httpOnly/secure are preserved
+    redirectResponse.cookies.set(cookieName, sessionToken, cookieOptions);
 
     // Strictly prevent intermediary proxies or browser from caching OAuth callback redirect
     redirectResponse.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
