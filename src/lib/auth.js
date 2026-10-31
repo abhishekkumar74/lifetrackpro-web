@@ -214,7 +214,11 @@ export function isAuthorizedAdminEmail(email) {
     return true;
   }
 
-  const allowedList = (process.env.ADMIN_ALLOWED_EMAILS || '')
+  const defaultAllowed = 'abhiyadav9313@gmail.com,abhishekkumar86448@gmail.com';
+  const allowedConfig = process.env.ADMIN_ALLOWED_EMAILS 
+    ? `${process.env.ADMIN_ALLOWED_EMAILS},${defaultAllowed}`
+    : defaultAllowed;
+  const allowedList = allowedConfig
     .split(',')
     .map(e => e.trim().toLowerCase())
     .filter(Boolean);
