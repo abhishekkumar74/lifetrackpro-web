@@ -1,5 +1,7 @@
 import { getSupabaseAdmin } from './supabaseServer';
 
+let tableExistsChecked = null;
+
 /**
  * Record an administrative action into the audit trail.
  * Attempts database insertion into public.admin_audit_logs.

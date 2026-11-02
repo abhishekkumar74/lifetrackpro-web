@@ -51,34 +51,53 @@ export async function GET(request) {
     const { data: profiles, count, error } = await query;
     if (error) throw error;
 
-    // 4. Reconcile with auth.users to safely resolve emails for the current page
-    let emailMap = new Map();
+    // 4. Reconcile with auth.users to safely resolve emails, account status, and activity
+    const emailMap = new Map();
+    const authMetaMap = new Map();
     try {
       const { data: authData } = await supabase.auth.admin.listUsers({ page: 1, perPage: 100 });
       if (authData?.users) {
         for (const u of authData.users) {
-          if (u.id) emailMap.set(u.id, u.email || null);
+          if (u.id) {
+            emailMap.set(u.id, u.email || null);
+            const isBanned = Boolean(u.banned_until && new Date(u.banned_until) > new Date());
+            const status = u.user_metadata?.status || (isBanned ? 'suspended' : 'active');
+            authMetaMap.set(u.id, {
+              status,
+              lastSignInAt: u.last_sign_in_at || null,
+            });
+          }
         }
       }
     } catch (e) {
-      console.warn('[AUTH RECONCILIATION NOTICE] Could not list auth emails:', e.message);
+      console.warn('[AUTH RECONCILIATION NOTICE] Could not list auth metadata:', e.message);
     }
 
     // 5. Structure student response records
-    const users = (profiles || []).map((p) => ({
-      id: p.id,
-      name: p.name || 'Anonymous Student',
-      email: emailMap.get(p.id) || 'Not provided',
-      category: p.category || 'general',
-      subCategory: p.sub_category || [],
-      dailyHours: p.daily_hours || 4,
-      peakTime: p.peak_time || 'morning',
-      xp: p.xp_points || 0,
-      level: p.level || 1,
-      isPremium: Boolean(p.is_premium),
-      createdAt: p.created_at,
-      updatedAt: p.updated_at,
-    }));
+    let users = (profiles || []).map((p) => {
+      const meta = authMetaMap.get(p.id) || {};
+      return {
+        id: p.id,
+        name: p.name || 'Anonymous Student',
+        email: emailMap.get(p.id) || 'Not provided',
+        category: p.category || 'general',
+        subCategory: p.sub_category || [],
+        dailyHours: p.daily_hours || 4,
+        peakTime: p.peak_time || 'morning',
+        xp: p.xp_points || 0,
+        level: p.level || 1,
+        isPremium: Boolean(p.is_premium),
+        status: meta.status || 'active',
+        lastSignInAt: meta.lastSignInAt || p.updated_at || null,
+        createdAt: p.created_at,
+        updatedAt: p.updated_at,
+      };
+    });
+
+    const statusFilter = searchParams.get('status');
+    if (statusFilter && statusFilter !== 'ALL') {
+      users = users.filter((u) => u.status === statusFilter.toLowerCase());
+    }
 
     const total = count ?? 0;
     const totalPages = Math.ceil(total / limit) || 1;

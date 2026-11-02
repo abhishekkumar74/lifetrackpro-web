@@ -1,5 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
+import SiteBroadcastBanner from '@/components/SiteBroadcastBanner';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -27,6 +28,7 @@ export default function PublicShell({ children }) {
 
   return (
     <>
+      <SiteBroadcastBanner />
       <Navbar />
       <main style={{ flex: 1 }}>
         {children}
