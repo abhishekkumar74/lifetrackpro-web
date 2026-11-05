@@ -95,7 +95,7 @@ export default function InteractivePomodoro() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '24px', alignItems: 'center' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: '24px', alignItems: 'center' }}>
         {/* Timer Display */}
         <div style={{ textAlign: 'center', padding: '20px 16px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
           <div style={{ position: 'relative', width: '150px', height: '150px', margin: '0 auto 16px' }}>
@@ -174,7 +174,17 @@ export default function InteractivePomodoro() {
             {soundscapes.map((s) => (
               <div
                 key={s.id}
+                role="button"
+                tabIndex={0}
+                aria-label={`Select ${s.name} soundscape`}
                 onClick={() => { setActiveSound(s.id); setSoundPlaying(true); }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setActiveSound(s.id);
+                    setSoundPlaying(true);
+                  }
+                }}
                 style={{
                   background: activeSound === s.id ? 'var(--primary-soft)' : 'var(--bg-warm)',
                   border: `1.5px solid ${activeSound === s.id ? 'var(--primary)' : 'var(--border-subtle)'}`,

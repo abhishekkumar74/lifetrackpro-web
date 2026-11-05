@@ -1,5 +1,26 @@
 import './globals.css';
+import { Inter, Plus_Jakarta_Sans, DM_Mono } from 'next/font/google';
 import PublicShell from '@/components/PublicShell';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-plus-jakarta-sans',
+});
+
+const dmMono = DM_Mono({
+  weight: ['400', '500'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dm-mono',
+});
 
 export const metadata = {
   metadataBase: new URL('https://lifetrackpro.in'),
@@ -23,9 +44,6 @@ export const metadata = {
   authors: [{ name: 'LifeTrack Pro' }],
   creator: 'Abhishek Kumar',
   publisher: 'LifeTrack Pro',
-  alternates: {
-    canonical: './',
-  },
   robots: {
     index: true,
     follow: true,
@@ -74,21 +92,13 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
+  viewportFit: 'cover',
   themeColor: '#2563EB',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link 
-          href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" 
-          rel="stylesheet" 
-        />
-      </head>
+    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable} ${dmMono.variable}`}>
       <body>
         <PublicShell>
           {children}

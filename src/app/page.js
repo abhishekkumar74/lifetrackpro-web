@@ -6,8 +6,10 @@ import CinematicScrollShowcase from '@/components/CinematicScrollShowcase';
 import InteractiveExamShowcase from '@/components/InteractiveExamShowcase';
 
 export const metadata = {
-  title: 'LifeTrack Pro — All-in-One Study OS | Pomodoro, Flashcards & Habit Tracker',
-  description: 'LifeTrack Pro unifies a smart Pomodoro focus timer with ambient soundscapes, SM-2 spaced repetition flashcards, habit streaks with freeze shields, and live study rooms.',
+  title: {
+    absolute: 'LifeTrack Pro — Pomodoro, Flashcards & Study OS',
+  },
+  description: 'LifeTrack Pro unifies a Pomodoro focus timer with ambient audio, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms. Free.',
   keywords: [
     'lifetrack pro',
     'study os',
@@ -28,8 +30,8 @@ export const metadata = {
     canonical: 'https://lifetrackpro.in/',
   },
   openGraph: {
-    title: 'LifeTrack Pro — All-in-One Study OS | Focus, Flashcards & Habits',
-    description: 'Stop juggling 5 fragmented apps. Smart Pomodoro timer, SM-2 flashcard spaced repetition, habit streaks & silent live study rooms in one unified interface.',
+    title: 'LifeTrack Pro — Pomodoro, Flashcards & Study OS',
+    description: 'Stop juggling 5 fragmented apps. Smart Pomodoro timer, SM-2 flashcard spaced repetition, habit streaks & silent live study rooms in one unified app.',
     url: 'https://lifetrackpro.in/',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
@@ -45,7 +47,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LifeTrack Pro — Complete Study & Life OS',
+    title: 'LifeTrack Pro — Pomodoro, Flashcards & Study OS',
     description: 'Smart Pomodoro focus timer, SM-2 spaced repetition, habit streak shields, and 24/7 virtual study rooms.',
     images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
     creator: '@LifeTrackPro',
@@ -77,6 +79,11 @@ export default function HomePage() {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "120"
         },
         "featureList": [
           "Smart Pomodoro Focus Timer with 432Hz Binaural Soundscapes",
@@ -159,6 +166,92 @@ export default function HomePage() {
       {/* ── TAILORED PREPARATION SYSTEMS (INTERACTIVE EXAM SHOWCASE) ── */}
       <InteractiveExamShowcase />
 
+      {/* ── FREE ONLINE STUDY TOOLS & SCHEDULERS ── */}
+      <section className="container" style={{ padding: '60px 20px 20px' }} aria-label="Free Online Study Tools">
+        <div className="reveal" style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 32px' }}>
+          <div className="section-eyebrow">Free Web Utilities • No Sign-Up</div>
+          <h2 className="section-h2" style={{ marginBottom: '12px' }}>
+            Free Online Study Tools &amp; Schedulers
+          </h2>
+          <p className="section-desc" style={{ margin: '0 auto' }}>
+            Instant interactive planning utilities for students: generate daily timetables, calculate study hours needed for your syllabus, and measure deep focus time.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px' }}>
+          <Link href="/tools/study-timetable-generator" style={{ textDecoration: 'none' }}>
+            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--primary)' }}>Study Timetable Generator</span>
+                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'var(--primary-soft)', color: 'var(--primary)' }}>Interactive</span>
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                Build hour-by-hour revision timetables for JEE, NEET, UPSC &amp; College with 50/10 Pomodoro blocks.
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/tools/daily-routine-generator" style={{ textDecoration: 'none' }}>
+            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--emerald)' }}>Daily Routine Generator</span>
+                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'rgba(5,150,105,0.1)', color: 'var(--emerald)' }}>Circadian</span>
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                24-hour daily schedule planner matched to your natural biological energy peaks and rest dips.
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/tools/study-hours-calculator" style={{ textDecoration: 'none' }}>
+            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--sky)' }}>Study Hours Calculator</span>
+                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'rgba(2,132,199,0.1)', color: 'var(--sky)' }}>Calculator</span>
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                Calculate daily hours required to finish your syllabus chapters and multiple revision cycles.
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/tools/focus-time-calculator" style={{ textDecoration: 'none' }}>
+            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--rose)' }}>Focus Time Calculator</span>
+                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'rgba(225,29,72,0.1)', color: 'var(--rose)' }}>Attention</span>
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                Quantify net deep work hours versus time lost to phone notifications and attention residue.
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/tools/weekly-study-planner" style={{ textDecoration: 'none' }}>
+            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--amber)' }}>Weekly Study Planner</span>
+                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'rgba(217,119,6,0.1)', color: 'var(--amber)' }}>7-Day Plan</span>
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                Balance multiple subjects across a 7-day template with Sunday mock tests and backlog clearance.
+              </p>
+            </div>
+          </Link>
+
+          <Link href="/tools" style={{ textDecoration: 'none' }}>
+            <div style={{ background: 'var(--primary-soft)', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--primary-soft-border)', boxShadow: 'var(--shadow-sm)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+              <div style={{ fontSize: '14px', fontWeight: 750, color: 'var(--primary)', marginBottom: '4px' }}>
+                Explore All Free Tools →
+              </div>
+              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                Access the complete hub of free student productivity and exam timetable utilities.
+              </p>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* ── INTEGRATED STUDY TOOLS CLOUD (MATCHES REFERENCE DESIGN) ── */}
       <section className="tools-cloud-section" aria-label="Integrated Study Tools and Frameworks">
         <div className="container">
@@ -217,6 +310,11 @@ export default function HomePage() {
                 <span className="tool-pill-text">Focus Calculator</span>
               </Link>
 
+              <Link href="/tools" className="tool-pill-badge" role="listitem">
+                <span className="tool-pill-emoji" aria-hidden="true">🛠️</span>
+                <span className="tool-pill-text">Free Study Tools</span>
+              </Link>
+
               <Link href="/features" className="tool-pill-badge tool-pill-more" role="listitem">
                 <span className="tool-pill-text">20+ More</span>
               </Link>
@@ -226,9 +324,13 @@ export default function HomePage() {
       </section>
 
       {/* ── CALL TO ACTION BANNER (NO PRICING SECTION) ── */}
-      <section>
+      <section className="cta-section">
         <div className="container">
           <div className="cta-box reveal">
+            <div className="cta-top-badge">
+              <span className="cta-top-badge-dot" aria-hidden="true"></span>
+              <span>100% FREE LIFE OS • NO SUBSCRIPTION</span>
+            </div>
             <h2 className="cta-h2">
               Build Unbreakable Daily Discipline.<br />
               <span className="cta-gradient-accent">Master Your Syllabus Without Burnout.</span>

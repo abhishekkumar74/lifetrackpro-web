@@ -10,9 +10,10 @@ import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractivePomodoro from '@/components/InteractivePomodoro';
 
 export const metadata = {
-  title: 'Pomodoro Focus Timer for Students with Ambient Soundscapes',
-  description: 'Free Pomodoro study timer with customizable 25/5 and 50/10 focus intervals, 432Hz ambient soundscapes, zero ads, and background persistence for deep work.',
+  title: 'Pomodoro Timer for Students & Deep Work',
+  description: 'Free Pomodoro study timer with 25/5 and 50/10 focus intervals, 432Hz ambient soundscapes, zero ads, and lock-screen background persistence for deep work.',
   keywords: [
+    'pomodoro timer for students',
     'pomodoro timer online',
     'study timer for students',
     'binaural beats study timer',
@@ -39,7 +40,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Pomodoro Focus Timer for Students with Ambient Soundscapes | LifeTrack Pro',
+    title: 'Pomodoro Timer for Students & Deep Work | LifeTrack Pro',
     description: 'Custom 25/5 and 50/10 Pomodoro blocks with 432Hz binaural audio and background persistence. Build deep work study momentum with LifeTrack Pro.',
     url: 'https://lifetrackpro.in/features/pomodoro-timer',
     siteName: 'LifeTrack Pro',
@@ -56,7 +57,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pomodoro Focus Timer for Students | LifeTrack Pro',
+    title: 'Pomodoro Timer for Students & Deep Work | LifeTrack Pro',
     description: 'Custom 25/5 and 50/10 focus cadences with binaural 432Hz soundscapes. Zero ads and uninterrupted study focus.',
     images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
     creator: '@LifeTrackPro',
@@ -71,7 +72,7 @@ export default function PomodoroTimerPage() {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/features/pomodoro-timer#webpage",
         "url": "https://lifetrackpro.in/features/pomodoro-timer",
-        "name": "Pomodoro Focus Timer for Students with Ambient Soundscapes",
+        "name": "Pomodoro Timer for Students & Deep Work | LifeTrack Pro",
         "description": "Smart Pomodoro focus timer with binaural soundscapes, customizable study cadences, and zero ads.",
         "isPartOf": {
           "@type": "WebSite",
@@ -87,6 +88,20 @@ export default function PomodoroTimerPage() {
           { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "Pomodoro Timer", "item": "https://lifetrackpro.in/features/pomodoro-timer" }
         ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://lifetrackpro.in/#app",
+        "name": "LifeTrack Pro",
+        "operatingSystem": "Android",
+        "applicationCategory": "ProductivityApplication",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
+        "description": "Smart Pomodoro focus timer with 432Hz ambient soundscapes, customizable study cadences, background persistence, SM-2 flashcards, and habit streak shields.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        }
       },
       {
         "@type": "HowTo",
@@ -182,7 +197,7 @@ export default function PomodoroTimerPage() {
           </nav>
 
           <div className="section-eyebrow">Focus &amp; Flow State Engine</div>
-          <h1 className="subpage-h1">Smart Pomodoro Focus Timer for Students &amp; Deep Work</h1>
+          <h1 className="subpage-h1">Pomodoro Focus Timer for Students &amp; Deep Work</h1>
           
           <p className="subpage-lead">
             Unstructured study intervals and constant phone notifications destroy academic momentum. LifeTrack Pro&apos;s Pomodoro focus engine pairs scientifically calibrated work cadences with ambient acoustic masking to help you enter and sustain deep flow on command.
@@ -194,7 +209,7 @@ export default function PomodoroTimerPage() {
           {/* Educational Science Section */}
           <div className="content-card reveal">
             <h2 className="content-card-h2">
-              How the Pomodoro Technique Induces Peak Flow State
+              The Science of Pomodoro: Why 25/5 &amp; 50/10 Cadences Induce Flow State
             </h2>
             <p className="content-card-p">
               Originally formulated by Francesco Cirillo in the late 1980s, the Pomodoro Technique uses structured time-chunking to bypass task resistance. Cognitive psychology studies show that the human prefrontal cortex experiences severe decision fatigue after 45 to 50 minutes of uninterrupted analytical exertion.
@@ -213,7 +228,7 @@ export default function PomodoroTimerPage() {
           {/* Cadence Selection Guide */}
           <div className="content-card reveal reveal-delay-1">
             <h2 className="content-card-h2">
-              Choosing the Right Focus Cadence: 25/5 vs. 50/10 vs. 90-Minute Blocks
+              Choosing Your Study Cadence: 25/5 vs. 50/10 vs. 90-Minute Blocks
             </h2>
             <p className="content-card-p">
               Not all study tasks require the same mental rhythm. LifeTrack Pro provides dedicated presets tailored for different stages of learning:
@@ -228,7 +243,7 @@ export default function PomodoroTimerPage() {
           {/* Acoustic Masking Section */}
           <div className="content-card reveal">
             <h2 className="content-card-h2">
-              Acoustic Masking: Block Library &amp; Hostel Distractions
+              Acoustic Soundscapes: Block Library &amp; Hostel Chatter with 432Hz Audio
             </h2>
             <p className="content-card-p">
               Auditory neurobiology demonstrates that unpredictable human speech breaks focus faster than any continuous sound. When studying in crowded libraries, coaching centers, or shared hostel rooms, ambient soundscapes create an acoustic shield that insulates your working memory.
@@ -242,53 +257,55 @@ export default function PomodoroTimerPage() {
           </div>
 
           {/* Feature Comparison Matrix */}
-          <div className="content-card reveal reveal-delay-1" style={{ overflowX: 'auto' }}>
-            <h2 className="content-card-h2">Pomodoro App Comparison Matrix</h2>
+          <div className="content-card reveal reveal-delay-1">
+            <h2 className="content-card-h2">Pomodoro Timer Comparison: LifeTrack Pro vs. Standard Clock Apps</h2>
             <p className="content-card-p">
               See how LifeTrack Pro compares to ordinary clock apps and ad-supported online study streams:
             </p>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', marginTop: '12px' }} aria-label="Pomodoro Feature Comparison">
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--border-mid)', textAlign: 'left' }}>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Feature</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--primary)', fontWeight: 700 }}>LifeTrack Pro</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Phone Clock</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>YouTube Study Streams</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Screen-Lock Background Audio</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Built-In</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Requires Premium</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Binaural 432Hz &amp; Rain Presets</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Zero Ads</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Video Ads Interrupt</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Sync with Habit Streaks</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Automatic</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Multiplayer Live Study Rooms</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Synchronized</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Passive Chat Only</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Battery Consumption</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>&lt; 2% per hour</td>
-                  <td style={{ padding: '10px 12px' }}>&lt; 1%</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>15–20% per hour (video)</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="table-responsive-wrapper">
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', marginTop: '12px' }} aria-label="Pomodoro Feature Comparison">
+                <thead>
+                  <tr style={{ borderBottom: '2px solid var(--border-mid)', textAlign: 'left' }}>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Feature</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--primary)', fontWeight: 700 }}>LifeTrack Pro</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Phone Clock</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>YouTube Study Streams</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Screen-Lock Background Audio</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Built-In</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Requires Premium</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Binaural 432Hz &amp; Rain Presets</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Zero Ads</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Video Ads Interrupt</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Sync with Habit Streaks</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Automatic</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Multiplayer Live Study Rooms</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Synchronized</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Passive Chat Only</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Battery Consumption</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>&lt; 2% per hour</td>
+                    <td style={{ padding: '10px 12px' }}>&lt; 1%</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>15–20% per hour (video)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {/* Connected Life OS Ecosystem */}
@@ -346,32 +363,39 @@ export default function PomodoroTimerPage() {
             </div>
           </div>
 
-          {/* Quick FAQ block for Google SERP Snippets */}
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Why is 50/10 often better than 25/5 for competitive exams?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              Complex numerical problems in Physics, Calculus, or organic reaction pathways require 10 to 15 minutes simply to load context into working memory. Stopping at 25 minutes cuts off flow state prematurely. The 50/10 cadence allows 35 to 40 uninterrupted minutes of peak flow followed by a restorative 10-minute mental break.
-            </p>
-          </div>
+          {/* Frequently Asked Questions */}
+          <div className="content-card reveal reveal-delay-1">
+            <h2 className="content-card-h2">
+              Frequently Asked Questions About Pomodoro Study Timers
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '14px' }}>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  Why is 50/10 often better than 25/5 for competitive exams?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  Complex numerical problems in Physics, Calculus, or organic reaction pathways require 10 to 15 minutes simply to load context into working memory. Stopping at 25 minutes cuts off flow state prematurely. The 50/10 cadence allows 35 to 40 uninterrupted minutes of peak flow followed by a restorative 10-minute mental break.
+                </p>
+              </div>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Does the LifeTrack Pro timer keep ticking when the phone screen is locked?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              Yes. LifeTrack Pro utilizes a dedicated Android foreground service so your ambient soundscapes continue and your timer accurately counts down even in ultra power-saving lockscreen mode.
-            </p>
-          </div>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  Does the LifeTrack Pro timer keep ticking when the phone screen is locked?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  Yes. LifeTrack Pro utilizes a dedicated Android foreground service so your ambient soundscapes continue and your timer accurately counts down even in ultra power-saving lockscreen mode.
+                </p>
+              </div>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Are focus sessions interrupted by ads?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              No. LifeTrack Pro is 100% ad-free with zero pop-ups or full-screen commercials interrupting your study or break blocks.
-            </p>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  Are focus sessions interrupted by ads?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  No. LifeTrack Pro is 100% ad-free with zero pop-ups or full-screen commercials interrupting your study or break blocks.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Bottom CTAs */}

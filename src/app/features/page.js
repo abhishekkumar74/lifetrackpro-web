@@ -10,8 +10,8 @@ import {
 } from '@/components/Icons';
 
 export const metadata = {
-  title: 'All-in-One Study Features — Pomodoro, Flashcards & Habits',
-  description: 'Explore LifeTrack Pro study features: customizable Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms.',
+  title: 'Study Tools, Pomodoro & Flashcards',
+  description: 'Explore LifeTrack Pro study tools: Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms. Free.',
   keywords: [
     'study app features',
     'pomodoro focus timer',
@@ -38,8 +38,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'All-in-One Study Features — Pomodoro, Flashcards & Habits | LifeTrack Pro',
-    description: 'Explore LifeTrack Pro study features: customizable Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms.',
+    title: 'Study Tools, Pomodoro & Flashcards | LifeTrack Pro',
+    description: 'Explore LifeTrack Pro study tools: Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms. Free.',
     url: 'https://lifetrackpro.in/features',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
@@ -55,8 +55,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'All-in-One Study Features — Pomodoro, Flashcards & Habits | LifeTrack Pro',
-    description: 'Explore LifeTrack Pro study features: customizable Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms.',
+    title: 'Study Tools, Pomodoro & Flashcards | LifeTrack Pro',
+    description: 'Explore LifeTrack Pro study tools: Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms. Free.',
     images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
     creator: '@LifeTrackPro',
   },
@@ -67,10 +67,29 @@ export default function FeaturesPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "SoftwareApplication",
+        "@id": "https://lifetrackpro.in/#softwareapplication",
+        "name": "LifeTrack Pro",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationalApplication",
+        "url": "https://lifetrackpro.in/features",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "120"
+        }
+      },
+      {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/features#webpage",
         "url": "https://lifetrackpro.in/features",
-        "name": "LifeTrack Pro Features Hub — Focus Timer, Flashcards & Habit Tracker",
+        "name": "Study Tools, Pomodoro & Flashcards",
         "description": "Comprehensive feature ecosystem for student productivity: Pomodoro focus timer, SM-2 spaced repetition, daily habit streaks, and live study rooms.",
         "isPartOf": {
           "@type": "WebSite",
@@ -229,6 +248,25 @@ export default function FeaturesPage() {
               Calculate Study ROI →
             </Link>
           </div>
+
+          {/* Card 7: Free Online Study Tools */}
+          <div className="feat-card reveal" style={{ '--feat-bg': 'rgba(37,99,235,0.08)' }}>
+            <div className="feat-icon-box"><CalculatorIcon size={18} style={{ color: 'var(--primary)' }} /></div>
+            <h2 className="feat-title">Free Online Study Tools &amp; Schedulers</h2>
+            <p className="feat-desc">
+              Instant web utilities: study timetable generator, 24-hour daily routine builder, study hours calculator, focus time meter &amp; weekly 7-day schedule maker. 100% free with no login required.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px', flexWrap: 'wrap', gap: '6px' }}>
+              <Link href="/tools" className="feat-link" style={{ marginTop: 0 }} aria-label="Explore Free Online Study Tools">
+                Explore All Free Tools →
+              </Link>
+              <span style={{ display: 'flex', gap: '6px', fontSize: '10.5px' }}>
+                <Link href="/tools/study-timetable-generator" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>Timetable</Link>
+                <Link href="/tools/daily-routine-generator" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>Routine</Link>
+                <Link href="/tools/study-hours-calculator" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>Hours</Link>
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Contextual Section: Calculator and FAQ Deep Links */}
@@ -254,8 +292,11 @@ export default function FeaturesPage() {
             </p>
           </div>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            <Link href="/calculator" className="btn-main" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }} aria-label="Open Interactive Study ROI Calculator">
-              <CalculatorIcon size={15} /> Launch ROI Calculator
+            <Link href="/tools" className="btn-main" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }} aria-label="Browse Free Online Study Tools">
+              <CalculatorIcon size={15} /> Free Study Tools
+            </Link>
+            <Link href="/calculator" className="btn-secondary" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }} aria-label="Open Interactive Study ROI Calculator">
+              Launch ROI Calculator
             </Link>
             <Link href="/faq" className="btn-secondary" aria-label="Browse Frequently Asked Questions">
               Explore FAQs

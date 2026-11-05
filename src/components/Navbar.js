@@ -82,6 +82,9 @@ export default function Navbar() {
             <Link href="/features" className={`nav-btn ${pathname.startsWith('/features') ? 'active' : ''}`}>
               Features
             </Link>
+            <Link href="/tools" className={`nav-btn ${pathname.startsWith('/tools') ? 'active' : ''}`}>
+              Free Tools
+            </Link>
             <Link href="/calculator" className={`nav-btn ${pathname === '/calculator' ? 'active' : ''}`}>
               ROI Calculator
             </Link>
@@ -98,7 +101,7 @@ export default function Navbar() {
               className="cta-download" 
               title="Download LifeTrack Pro on Google Play Store"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={15} />
               <span className="cta-download-full">Download from Play Store</span>
               <span className="cta-download-short">Play Store</span>
             </a>
@@ -111,7 +114,7 @@ export default function Navbar() {
               aria-label={mobileMenuOpen ? 'Close mobile menu' : 'Open mobile menu'}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <CloseIcon size={20} /> : <MenuIcon size={20} />}
+              {mobileMenuOpen ? <CloseIcon size={18} /> : <MenuIcon size={18} />}
             </button>
           </div>
         </nav>
@@ -203,6 +206,53 @@ export default function Navbar() {
             <div className="drawer-divider" />
 
             <div className="drawer-section-label">Tools &amp; Help</div>
+
+            <Link href="/tools" className={`mobile-menu-link ${pathname === '/tools' ? 'active' : ''}`} onClick={closeDrawer}>
+              <span className="menu-link-title">
+                <CalculatorIcon size={16} className="menu-link-icon" />
+                <span>Free Study Tools Hub</span>
+              </span>
+              <span style={{ fontSize: '9.5px', fontWeight: 800, background: 'var(--primary-soft)', color: 'var(--primary)', padding: '2px 6px', borderRadius: '100px', marginRight: '6px' }}>FREE</span>
+              <ChevronRightIcon size={14} />
+            </Link>
+
+            <div className="drawer-submenu-group">
+              <Link href="/tools/study-timetable-generator" className="mobile-menu-link sub" onClick={closeDrawer}>
+                <span className="menu-link-title">
+                  <TimerIcon size={15} className="menu-link-icon" />
+                  <span>Timetable Generator</span>
+                </span>
+                <ChevronRightIcon size={13} />
+              </Link>
+              <Link href="/tools/daily-routine-generator" className="mobile-menu-link sub" onClick={closeDrawer}>
+                <span className="menu-link-title">
+                  <HabitFlameIcon size={15} className="menu-link-icon" />
+                  <span>Daily Routine Maker</span>
+                </span>
+                <ChevronRightIcon size={13} />
+              </Link>
+              <Link href="/tools/study-hours-calculator" className="mobile-menu-link sub" onClick={closeDrawer}>
+                <span className="menu-link-title">
+                  <CalculatorIcon size={15} className="menu-link-icon" />
+                  <span>Study Hours Calculator</span>
+                </span>
+                <ChevronRightIcon size={13} />
+              </Link>
+              <Link href="/tools/focus-time-calculator" className="mobile-menu-link sub" onClick={closeDrawer}>
+                <span className="menu-link-title">
+                  <HeadphonesIcon size={15} className="menu-link-icon" />
+                  <span>Focus Time Calculator</span>
+                </span>
+                <ChevronRightIcon size={13} />
+              </Link>
+              <Link href="/tools/weekly-study-planner" className="mobile-menu-link sub" onClick={closeDrawer}>
+                <span className="menu-link-title">
+                  <CardsIcon size={15} className="menu-link-icon" />
+                  <span>Weekly Study Planner</span>
+                </span>
+                <ChevronRightIcon size={13} />
+              </Link>
+            </div>
 
             <Link href="/calculator" className={`mobile-menu-link ${pathname === '/calculator' ? 'active' : ''}`} onClick={closeDrawer}>
               <span className="menu-link-title">

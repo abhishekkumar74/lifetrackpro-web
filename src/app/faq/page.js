@@ -13,7 +13,7 @@ import {
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 
 export const metadata = {
-  title: 'Frequently Asked Questions (FAQ) & Knowledge Base',
+  title: 'LifeTrack Pro FAQ & Study Guide',
   description: 'Find answers about LifeTrack Pro Pomodoro timer, SM-2 flashcard spaced repetition algorithm, habit streaks with freeze shields, and silent study rooms.',
   keywords: [
     'lifetrack pro faq',
@@ -42,7 +42,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Frequently Asked Questions (FAQ) & Knowledge Base | LifeTrack Pro',
+    title: 'LifeTrack Pro FAQ & Study Guide | LifeTrack Pro',
     description: 'Find answers about focus timers, spaced repetition algorithms, habit streak shields, and silent virtual study rooms.',
     url: 'https://lifetrackpro.in/faq',
     siteName: 'LifeTrack Pro',
@@ -59,7 +59,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Frequently Asked Questions (FAQ) & Knowledge Base | LifeTrack Pro',
+    title: 'LifeTrack Pro FAQ & Study Guide | LifeTrack Pro',
     description: 'Find answers about focus timers, spaced repetition algorithms, habit streak shields, and silent virtual study rooms.',
     images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
     creator: '@LifeTrackPro',
@@ -71,10 +71,29 @@ export default function FaqPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "SoftwareApplication",
+        "@id": "https://lifetrackpro.in/#softwareapplication",
+        "name": "LifeTrack Pro",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationalApplication",
+        "url": "https://lifetrackpro.in/faq",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "120"
+        }
+      },
+      {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/faq#webpage",
         "url": "https://lifetrackpro.in/faq",
-        "name": "Frequently Asked Questions (FAQ) & Knowledge Base | LifeTrack Pro",
+        "name": "LifeTrack Pro FAQ & Study Guide",
         "description": "Comprehensive knowledge base answering student questions regarding Pomodoro timers, SM-2 spaced repetition algorithms, habit streak freeze shields, and study rooms.",
         "isPartOf": {
           "@type": "WebSite",

@@ -10,8 +10,8 @@ import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveUpscTimer from '@/components/InteractiveUpscTimer';
 
 export const metadata = {
-  title: 'UPSC Study Planner & Daily Answer Writing Timer',
-  description: 'Optimize your UPSC CSE preparation with LifeTrack Pro: 7-min & 11-min Mains answer writing stopwatches, SM-2 flashcards for Polity, and focus study habit tracking.',
+  title: 'UPSC Study Planner & Mains Timer',
+  description: 'Optimize your UPSC CSE prep with LifeTrack Pro: 7 & 11-min Mains answer stopwatches, SM-2 flashcards for Polity, and focus habit tracking. Free.',
   keywords: [
     'UPSC study planner app',
     'UPSC daily answer writing timer',
@@ -38,7 +38,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'UPSC Study Planner & Daily Answer Writing Timer | LifeTrack Pro',
+    title: 'UPSC Study Planner & Mains Timer | LifeTrack Pro',
     description: 'Engineered for Civil Services aspirants: 7-min & 11-min Mains answer stopwatches, Constitutional Articles SM-2 flashcards, and focus habit tracking.',
     url: 'https://lifetrackpro.in/exams/upsc',
     siteName: 'LifeTrack Pro',
@@ -55,7 +55,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'UPSC Study Planner & Daily Answer Writing Timer | LifeTrack Pro',
+    title: 'UPSC Study Planner & Mains Timer | LifeTrack Pro',
     description: 'Strict 7-min & 11-min Mains answer stopwatches, SM-2 flashcards, and deep work focus timers for UPSC CSE aspirants.',
     images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
     creator: '@LifeTrackPro',
@@ -67,10 +67,29 @@ export default function UpscExamPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "SoftwareApplication",
+        "@id": "https://lifetrackpro.in/#softwareapplication",
+        "name": "LifeTrack Pro",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationalApplication",
+        "url": "https://lifetrackpro.in/exams/upsc",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "120"
+        }
+      },
+      {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/exams/upsc#webpage",
         "url": "https://lifetrackpro.in/exams/upsc",
-        "name": "UPSC CSE Study Planner & Daily Mains Answer Writing Timer",
+        "name": "UPSC Study Planner & Mains Timer",
         "description": "Productivity operating system for UPSC Civil Services Examination aspirants featuring Mains answer writing timers, SM-2 flashcard recall, and habit tracking.",
         "isPartOf": {
           "@type": "WebSite",
@@ -219,44 +238,46 @@ export default function UpscExamPage() {
           </div>
 
           {/* Time Management Comparison */}
-          <div className="content-card reveal" style={{ overflowX: 'auto' }}>
+          <div className="content-card reveal">
             <h2 className="content-card-h2">Preparation Strategy: Unstructured vs. LifeTrack Pro OS</h2>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', marginTop: '12px' }} aria-label="UPSC Preparation Strategy Comparison">
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--border-mid)', textAlign: 'left' }}>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Preparation Dimension</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Unstructured Routine</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--primary)', fontWeight: 750 }}>LifeTrack Pro OS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Mains Answer Practice</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Untimed writing; takes 20+ mins per answer</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--primary)', fontWeight: 600 }}>Strict 7m &amp; 11m stopwatches</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Fact &amp; Article Retention</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Passive re-reading; forgotten in weeks</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 600 }}>SM-2 spaced review before forgetting</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Daily Focus Consistency</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Frequent interruptions &amp; phone checks</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--primary)', fontWeight: 600 }}>50/10 Pomodoro blocks with ambient audio</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Accountability &amp; Discipline</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Isolated preparation leading to demotivation</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--primary)', fontWeight: 600 }}>Multiplayer study rooms &amp; streak shields</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Data Safety &amp; Offline Use</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Dependent on continuous internet connectivity</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 600 }}>100% offline local data storage</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="table-responsive-wrapper">
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', marginTop: '12px' }} aria-label="UPSC Preparation Strategy Comparison">
+                <thead>
+                  <tr style={{ borderBottom: '2px solid var(--border-mid)', textAlign: 'left' }}>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Preparation Dimension</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Unstructured Routine</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--primary)', fontWeight: 750 }}>LifeTrack Pro OS</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Mains Answer Practice</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Untimed writing; takes 20+ mins per answer</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--primary)', fontWeight: 600 }}>Strict 7m &amp; 11m stopwatches</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Fact &amp; Article Retention</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Passive re-reading; forgotten in weeks</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 600 }}>SM-2 spaced review before forgetting</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Daily Focus Consistency</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Frequent interruptions &amp; phone checks</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--primary)', fontWeight: 600 }}>50/10 Pomodoro blocks with ambient audio</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Accountability &amp; Discipline</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Isolated preparation leading to demotivation</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--primary)', fontWeight: 600 }}>Multiplayer study rooms &amp; streak shields</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Data Safety &amp; Offline Use</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Dependent on continuous internet connectivity</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 600 }}>100% offline local data storage</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {/* Connected Ecosystem & Other Exams */}
@@ -325,32 +346,47 @@ export default function UpscExamPage() {
             </div>
           </div>
 
-          {/* Quick FAQ Blocks for Search Snippets */}
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Why is timing daily Mains answer writing critical for UPSC CSE?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              In UPSC Mains General Studies papers, candidates must answer 20 questions in 180 minutes. This allows roughly 7 minutes per 10-marker (150 words) and 11 minutes per 15-marker (250 words). Without strict timing practice, candidates often run out of time and leave scoring questions blank.
-            </p>
-          </div>
+          {/* Frequently Asked Questions */}
+          <div className="content-card reveal reveal-delay-1">
+            <h2 className="content-card-h2">
+              Frequently Asked Questions About UPSC CSE Preparation
+            </h2>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              How does spaced repetition assist in UPSC preparation?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              The UPSC syllabus requires retaining dense factual details like Constitutional Articles, statutory provisions, landmark Supreme Court cases, international treaties, and environmental conventions. LifeTrack Pro&apos;s SM-2 spaced repetition schedules reviews right before memory decay occurs, ensuring high-accuracy recall without endless textbook re-reading.
-            </p>
-          </div>
+            <div className="content-card-faq" style={{ marginTop: '14px' }}>
+              <h3 className="content-card-faq-h3">
+                Why is timing daily Mains answer writing critical for UPSC CSE?
+              </h3>
+              <p className="content-card-p" style={{ marginBottom: 0 }}>
+                In UPSC Mains General Studies papers, candidates must answer 20 questions in 180 minutes. This allows roughly 7 minutes per 10-marker (150 words) and 11 minutes per 15-marker (250 words). Without strict timing practice, candidates often run out of time and leave scoring questions blank.
+              </p>
+            </div>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Does LifeTrack Pro provide notes or act as a productivity tool?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              LifeTrack Pro is a specialized study productivity operating system. It provides focus timers, answer writing stopwatches, flashcard recall algorithms, habit trackers, and virtual study rooms to help aspirants execute their preparation with consistency.
-            </p>
+            <div className="content-card-faq">
+              <h3 className="content-card-faq-h3">
+                How does spaced repetition assist in UPSC preparation?
+              </h3>
+              <p className="content-card-p" style={{ marginBottom: 0 }}>
+                The UPSC syllabus requires retaining dense factual details like Constitutional Articles, statutory provisions, landmark Supreme Court cases, international treaties, and environmental conventions. LifeTrack Pro&apos;s SM-2 spaced repetition schedules reviews right before memory decay occurs, ensuring high-accuracy recall without endless textbook re-reading.
+              </p>
+            </div>
+
+            <div className="content-card-faq">
+              <h3 className="content-card-faq-h3">
+                Does LifeTrack Pro provide notes or act as a productivity tool?
+              </h3>
+              <p className="content-card-p" style={{ marginBottom: 0 }}>
+                LifeTrack Pro is a specialized study productivity operating system. It provides focus timers, answer writing stopwatches, flashcard recall algorithms, habit trackers, and virtual study rooms to help aspirants execute their preparation with consistency.
+              </p>
+            </div>
+
+            <div className="content-card-faq">
+              <h3 className="content-card-faq-h3">
+                Can I use the timer and flashcards offline without internet access?
+              </h3>
+              <p className="content-card-p" style={{ marginBottom: 0 }}>
+                Yes. LifeTrack Pro uses an offline-first architecture. Timers, custom flashcards, and daily habit logs run locally on your device without requiring an active internet connection.
+              </p>
+            </div>
           </div>
 
           {/* Bottom CTAs */}

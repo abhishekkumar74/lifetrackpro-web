@@ -9,8 +9,9 @@ const EXAM_TRACKS = [
     focus: 'Physics, Chemistry & Mathematics Preparation',
     desc: 'Structured 90-minute simulation blocks, SM-2 formula flashcards, and ranker focus lounges.',
     accent: '#0F172A',
-    accentLight: '#F1F5F9',
-    accentBorder: '#CBD5E1',
+    accentColor: '#0F172A',
+    accentLight: '#F8FAFC',
+    accentBorder: '#E2E8F0',
     ctaLink: '/exams/jee',
     ctaText: 'Explore JEE Preparation',
     capabilities: [
@@ -40,8 +41,9 @@ const EXAM_TRACKS = [
     focus: 'Biology, Physics & Chemistry Preparation',
     desc: 'NCERT line-by-line active recall flashcards, Organic Chemistry reactions, and 12-hour routine blocks.',
     accent: '#0F172A',
-    accentLight: '#F1F5F9',
-    accentBorder: '#CBD5E1',
+    accentColor: '#0F172A',
+    accentLight: '#F8FAFC',
+    accentBorder: '#E2E8F0',
     ctaLink: '/exams/neet',
     ctaText: 'Explore NEET Preparation',
     capabilities: [
@@ -71,8 +73,9 @@ const EXAM_TRACKS = [
     focus: 'Subject-Wise Planning & Mains Writing',
     desc: 'Strict 7-min & 11-min answer stopwatches, Constitutional Articles recall, and Prelims countdowns.',
     accent: '#0F172A',
-    accentLight: '#F1F5F9',
-    accentBorder: '#CBD5E1',
+    accentColor: '#0F172A',
+    accentLight: '#F8FAFC',
+    accentBorder: '#E2E8F0',
     ctaLink: '/exams/upsc',
     ctaText: 'Explore UPSC Preparation',
     capabilities: [
@@ -99,7 +102,7 @@ const EXAM_TRACKS = [
 export default function InteractiveExamShowcase() {
   return (
     <section className="exam-prep-section" id="exam-systems" aria-label="Tailored Preparation Systems">
-      <div className="container">
+      <div className="container exam-prep-container">
         {/* Section A — Hero Header & Direct Exam Navigation */}
         <div className="reveal exam-prep-header">
           <div className="section-eyebrow">TAILORED PREPARATION SYSTEMS</div>
@@ -126,7 +129,7 @@ export default function InteractiveExamShowcase() {
               <span className="exam-nav-pill-arrow" aria-hidden="true">↗</span>
             </Link>
             <Link href="/features" className="exam-nav-link-pill pill-other">
-              <span className="exam-nav-pill-dot" style={{ background: '#0F172A' }} />
+              <span className="exam-nav-pill-dot" style={{ background: '#475569' }} />
               <span className="exam-nav-pill-title">Other Exams</span>
               <span className="exam-nav-pill-arrow" aria-hidden="true">↗</span>
             </Link>
@@ -145,6 +148,7 @@ export default function InteractiveExamShowcase() {
               className={`exam-timeline-stage reveal ${idx === 1 ? 'reveal-delay-1' : idx === 2 ? 'reveal-delay-2' : ''}`}
               style={{
                 '--stage-accent': track.accent,
+                '--stage-accent-color': track.accentColor,
                 '--stage-light': track.accentLight,
                 '--stage-border': track.accentBorder,
               }}
@@ -162,7 +166,7 @@ export default function InteractiveExamShowcase() {
                 {/* Stage Header Info */}
                 <div className="exam-stage-meta-row">
                   <span className="exam-stage-badge">
-                    <span className="exam-stage-badge-dot" />
+                    <span className="exam-stage-badge-dot" style={{ background: track.accentColor }} />
                     {track.category}
                   </span>
                   <span className="exam-stage-path-code">PATHWAY {track.stageNum}</span>
@@ -204,12 +208,17 @@ export default function InteractiveExamShowcase() {
 
         {/* Other Exams Footer Callout & Centered CTA Button */}
         <div className="exam-timeline-more reveal">
+          <div className="exam-timeline-more-pill">
+            <span className="exam-timeline-more-dot" />
+            <span>Additional Competitive Disciplines</span>
+          </div>
           <p className="exam-timeline-more-text">
             Preparing for CAT, GATE, NEET-PG, or State PSCs?
           </p>
           <div className="exam-timeline-more-btn-wrap">
             <Link href="/features" className="exam-timeline-cta-btn">
-              <span>Explore all flexible study tools &amp; custom schedules</span>
+              <span className="exam-cta-text-full">Explore all flexible study tools &amp; custom schedules</span>
+              <span className="exam-cta-text-mobile">Explore All Flexible Study Tools</span>
               <span className="exam-timeline-cta-arrow" aria-hidden="true">→</span>
             </Link>
           </div>

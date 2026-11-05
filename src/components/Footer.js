@@ -56,6 +56,18 @@ export default function Footer() {
             </div>
 
             <div className="footer-col">
+              <h4>Free Study Tools</h4>
+              <ul>
+                <li><Link href="/tools">All Online Tools</Link></li>
+                <li><Link href="/tools/study-timetable-generator">Timetable Generator</Link></li>
+                <li><Link href="/tools/daily-routine-generator">Daily Routine Maker</Link></li>
+                <li><Link href="/tools/study-hours-calculator">Study Hours Calculator</Link></li>
+                <li><Link href="/tools/focus-time-calculator">Focus Time Calculator</Link></li>
+                <li><Link href="/tools/weekly-study-planner">Weekly Study Planner</Link></li>
+              </ul>
+            </div>
+
+            <div className="footer-col">
               <h4>Target Aspirants</h4>
               <ul>
                 <li><Link href="/exams/neet">NEET UG &amp; PG Routine</Link></li>

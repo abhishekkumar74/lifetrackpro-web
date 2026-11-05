@@ -76,13 +76,22 @@ export default function InteractiveStudyRooms() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '20px', alignItems: 'start' }}>
         {/* Room Selection Grid */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
           {rooms.map((r) => (
             <div
               key={r.id}
-              onClick={() => { setActiveRoom(r); setInRoom(true); }}
+              role="button"
+              tabIndex={0}
+              aria-label={`Select ${r.title}`}
+              onClick={() => setActiveRoom(r)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setActiveRoom(r);
+                }
+              }}
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',

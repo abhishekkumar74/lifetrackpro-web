@@ -10,8 +10,8 @@ import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveHabitTracker from '@/components/InteractiveHabitTracker';
 
 export const metadata = {
-  title: 'Daily Student Habit Tracker & Streak Freeze Shields',
-  description: 'Track daily non-negotiable study routines, build 100+ day streaks, and protect your momentum with streak freeze shields. Engineered for serious students.',
+  title: 'Student Habit Tracker & Streak Freeze Shields',
+  description: 'Track daily non-negotiable study routines, build 100+ day streaks, and protect your momentum with streak freeze shields. Free habit tracker for students.',
   keywords: [
     'student habit tracker',
     'study streak app',
@@ -38,7 +38,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Daily Student Habit Tracker & Streak Freeze Shields | LifeTrack Pro',
+    title: 'Student Habit Tracker & Streak Freeze Shields | LifeTrack Pro',
     description: 'Build unbreakable daily study momentum. Track daily non-negotiables with streak freeze shields so illness or rest days never reset your hard-earned discipline.',
     url: 'https://lifetrackpro.in/features/habit-tracker',
     siteName: 'LifeTrack Pro',
@@ -70,7 +70,7 @@ export default function HabitTrackerPage() {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/features/habit-tracker#webpage",
         "url": "https://lifetrackpro.in/features/habit-tracker",
-        "name": "Daily Student Habit Tracker with Streak Freeze Shields",
+        "name": "Student Habit Tracker & Streak Freeze Shields | LifeTrack Pro",
         "description": "Student habit tracker combining daily checklists, loss aversion streak mechanics, and protective freeze tokens.",
         "isPartOf": {
           "@type": "WebSite",
@@ -86,6 +86,20 @@ export default function HabitTrackerPage() {
           { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "Habit Tracker", "item": "https://lifetrackpro.in/features/habit-tracker" }
         ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://lifetrackpro.in/#app",
+        "name": "LifeTrack Pro",
+        "operatingSystem": "Android",
+        "applicationCategory": "ProductivityApplication",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
+        "description": "Daily student habit tracker with loss aversion streak flames and protective streak freeze shields.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        }
       },
       {
         "@type": "FAQPage",
@@ -154,7 +168,7 @@ export default function HabitTrackerPage() {
           </nav>
 
           <div className="section-eyebrow">Consistency &amp; Routine Engine</div>
-          <h1 className="subpage-h1">Daily Student Habit Tracker with Streak Freeze Shields</h1>
+          <h1 className="subpage-h1">Student Habit Tracker with Streak Freeze Shields</h1>
           
           <p className="subpage-lead">
             Academic breakthroughs are never the result of sporadic all-nighters. They are built on small, non-negotiable daily habits repeated without fail. LifeTrack Pro combines identity-based habit loops with protective freeze shields so life emergencies never erase your hard-won momentum.
@@ -166,7 +180,7 @@ export default function HabitTrackerPage() {
           {/* How The Streak System Works */}
           <div className="content-card reveal">
             <h2 className="content-card-h2">
-              How the Habit Streak &amp; Freeze Shield System Works
+              How Habit Streaks &amp; Streak Freeze Shields Work in LifeTrack Pro
             </h2>
             <p className="content-card-p">
               Traditional habit tracker apps operate on punitive, all-or-nothing rules: miss one day due to sudden fever, travel, or post-exam rest, and your 60-day streak is wiped back to zero. This triggers the psychological &apos;what-the-hell effect&apos;, causing students to abandon their routines entirely.
@@ -186,7 +200,7 @@ export default function HabitTrackerPage() {
           {/* Behavioral Science of Student Consistency */}
           <div className="content-card reveal reveal-delay-1">
             <h2 className="content-card-h2">
-              The Behavioral Science of Student Consistency
+              The Behavioral Psychology of Student Consistency &amp; Streaks
             </h2>
             <p className="content-card-p">
               The difference between clearing top competitive exams and falling short rarely comes down to raw talent. It comes down to who can execute on days when motivation is low. LifeTrack Pro implements 4 proven behavioral principles:
@@ -202,7 +216,7 @@ export default function HabitTrackerPage() {
           {/* Exam-Specific Routines */}
           <div className="content-card reveal">
             <h2 className="content-card-h2">
-              Non-Negotiable Routines for India&apos;s Toughest Competitive Exams
+              Daily Study Habits for Competitive Exam Aspirants (JEE, NEET, UPSC)
             </h2>
             <p className="content-card-p">
               Top rankers use LifeTrack Pro to anchor distinct daily rituals calibrated to their target exam:
@@ -246,7 +260,7 @@ export default function HabitTrackerPage() {
           {/* Connected Life OS Ecosystem */}
           <div className="content-card reveal reveal-delay-1">
             <h2 className="content-card-h2">
-              Seamless Integration with the LifeTrack Pro Study OS
+              Part of Your Complete LifeTrack Pro Study OS
             </h2>
             <p className="content-card-p">
               In <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>LifeTrack Pro</Link>, your habits connect natively with your other productivity tools so you never have to juggle separate apps:
@@ -298,32 +312,39 @@ export default function HabitTrackerPage() {
             </div>
           </div>
 
-          {/* Quick FAQ blocks for Google SERP Snippets */}
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              How does the streak freeze shield work in LifeTrack Pro?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              Every user earns up to 2 streak freeze shields per month through consistent study. If you get sick, travel, or have an essential rest day after a grueling mock test, arming the freeze shield automatically absorbs the missed day, keeping your hard-earned streak count and momentum badge fully intact.
-            </p>
-          </div>
+          {/* Frequently Asked Questions */}
+          <div className="content-card reveal reveal-delay-1">
+            <h2 className="content-card-h2">
+              Frequently Asked Questions About Study Habit Tracking
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '14px' }}>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  How does the streak freeze shield work in LifeTrack Pro?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  Every user earns up to 2 streak freeze shields per month through consistent study. If you get sick, travel, or have an essential rest day after a grueling mock test, arming the freeze shield automatically absorbs the missed day, keeping your hard-earned streak count and momentum badge fully intact.
+                </p>
+              </div>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Why do habit streaks work so well for competitive exam aspirants?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              Behavioral economics demonstrates that humans experience loss aversion twice as intensely as equivalent gain. When an unbroken 30-day streak is burning on your device widget, the psychological friction of skipping a study day far outweighs short-term procrastination.
-            </p>
-          </div>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  Why do habit streaks work so well for competitive exam aspirants?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  Behavioral economics demonstrates that humans experience loss aversion twice as intensely as equivalent gain. When an unbroken 30-day streak is burning on your device widget, the psychological friction of skipping a study day far outweighs short-term procrastination.
+                </p>
+              </div>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Does the habit tracker require an active internet connection?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              No. LifeTrack Pro operates on an offline-first architecture. All habit logs, streak calculations, and completion percentages are stored locally on your device with zero cloud latency.
-            </p>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  Does the habit tracker require an active internet connection?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  No. LifeTrack Pro operates on an offline-first architecture. All habit logs, streak calculations, and completion percentages are stored locally on your device with zero cloud latency.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Bottom CTAs */}

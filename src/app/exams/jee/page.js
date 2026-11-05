@@ -7,8 +7,8 @@ import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveJeePlanner from '@/components/InteractiveJeePlanner';
 
 export const metadata = {
-  title: 'IIT JEE Study Planner, Formula Recall & Pomodoro Routine',
-  description: 'Master JEE Main & Advanced problem solving with LifeTrack Pro. Use 50-minute and 90-minute Pomodoro blocks, SM-2 formula flashcards, and daily habit streaks.',
+  title: 'IIT JEE Study Planner & Formula Recall',
+  description: 'Master JEE Main & Advanced problem solving with LifeTrack Pro. 90-minute exam focus blocks, SM-2 formula flashcards, and daily habit streaks. Free.',
   keywords: [
     'JEE study tracker',
     'JEE main study planner',
@@ -34,8 +34,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'IIT JEE Study Planner, Formula Recall & Pomodoro Routine | LifeTrack Pro',
-    description: 'Plan your daily JEE Main & Advanced preparation with LifeTrack Pro: 90-minute exam simulation blocks, SM-2 formula flashcards, and habit streak shields.',
+    title: 'IIT JEE Study Planner & Formula Recall | LifeTrack Pro',
+    description: 'Master JEE Main & Advanced problem solving with LifeTrack Pro: 90-minute exam simulation blocks, SM-2 formula flashcards, and habit streak shields.',
     url: 'https://lifetrackpro.in/exams/jee',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
@@ -63,10 +63,29 @@ export default function JeeExamPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "SoftwareApplication",
+        "@id": "https://lifetrackpro.in/#softwareapplication",
+        "name": "LifeTrack Pro",
+        "operatingSystem": "Android",
+        "applicationCategory": "EducationalApplication",
+        "url": "https://lifetrackpro.in/exams/jee",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "ratingCount": "120"
+        }
+      },
+      {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/exams/jee#webpage",
         "url": "https://lifetrackpro.in/exams/jee",
-        "name": "IIT JEE Study Planner, Formula Recall & Pomodoro Routine",
+        "name": "IIT JEE Study Planner & Formula Recall",
         "description": "Comprehensive IIT JEE study and revision planner integrating 90-minute exam simulation blocks, SM-2 formula flashcards, and habit streaks.",
         "isPartOf": {
           "@type": "WebSite",
@@ -238,32 +257,47 @@ export default function JeeExamPage() {
             </div>
           </div>
 
-          {/* Quick FAQ blocks for Google SERP Snippets */}
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              How does SM-2 spaced repetition help with JEE formulas?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              JEE Physics and Mathematics require instant recall of complex derivations, coordinate geometry identities, and calculus limits. The SM-2 algorithm dynamically calculates review intervals, showing tricky formulas right before you forget them, ensuring lightning-fast recall during exam conditions.
-            </p>
-          </div>
+          {/* Frequently Asked Questions */}
+          <div className="content-card reveal reveal-delay-1">
+            <h2 className="content-card-h2">
+              Frequently Asked Questions About IIT JEE Preparation
+            </h2>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Why are 90-minute focus blocks recommended for JEE Advanced?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              JEE Advanced problems frequently blend multiple concepts (such as rotational dynamics combined with electromagnetic induction). Solving multi-step numericals requires 15 minutes simply to build working context. A 90-minute ultradian sprint allows uninterrupted depth, matching official exam session stamina.
-            </p>
-          </div>
+            <div className="content-card-faq" style={{ marginTop: '14px' }}>
+              <h3 className="content-card-faq-h3">
+                How does SM-2 spaced repetition help with JEE formulas?
+              </h3>
+              <p className="content-card-p" style={{ marginBottom: 0 }}>
+                JEE Physics and Mathematics require instant recall of complex derivations, coordinate geometry identities, and calculus limits. The SM-2 algorithm dynamically calculates review intervals, showing tricky formulas right before you forget them, ensuring lightning-fast recall during exam conditions.
+              </p>
+            </div>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              How do streak freeze shields protect consistency during mock test weeks?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              On days when you complete a grueling 6-hour full-length mock test, completing regular daily checklists can feel overwhelming. Arming a streak freeze shield absorbs the rest day and keeps your multi-week consistency streak badge active.
-            </p>
+            <div className="content-card-faq">
+              <h3 className="content-card-faq-h3">
+                Why are 90-minute focus blocks recommended for JEE Advanced?
+              </h3>
+              <p className="content-card-p" style={{ marginBottom: 0 }}>
+                JEE Advanced problems frequently blend multiple concepts (such as rotational dynamics combined with electromagnetic induction). Solving multi-step numericals requires 15 minutes simply to build working context. A 90-minute ultradian sprint allows uninterrupted depth, matching official exam session stamina.
+              </p>
+            </div>
+
+            <div className="content-card-faq">
+              <h3 className="content-card-faq-h3">
+                How do streak freeze shields protect consistency during mock test weeks?
+              </h3>
+              <p className="content-card-p" style={{ marginBottom: 0 }}>
+                On days when you complete a grueling 6-hour full-length mock test, completing regular daily checklists can feel overwhelming. Arming a streak freeze shield absorbs the rest day and keeps your multi-week consistency streak badge active.
+              </p>
+            </div>
+
+            <div className="content-card-faq">
+              <h3 className="content-card-faq-h3">
+                Does LifeTrack Pro work offline in hostels or coaching libraries?
+              </h3>
+              <p className="content-card-p" style={{ marginBottom: 0 }}>
+                Yes. LifeTrack Pro is built offline-first. All flashcard reviews, Pomodoro timer sessions, and habit checks are logged locally on your smartphone with zero internet lag.
+              </p>
+            </div>
           </div>
 
           {/* Bottom CTAs */}

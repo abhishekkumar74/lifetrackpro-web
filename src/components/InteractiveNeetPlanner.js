@@ -78,7 +78,15 @@ export default function InteractiveNeetPlanner() {
           {ncertChapters.map((chap, idx) => (
             <div
               key={chap.name}
+              role="button"
+              tabIndex={0}
               onClick={() => toggleChapter(idx)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  toggleChapter(idx);
+                }
+              }}
               style={{
                 display: 'flex',
                 justifyContent: 'space-between',

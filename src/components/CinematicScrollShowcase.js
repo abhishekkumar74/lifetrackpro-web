@@ -209,6 +209,8 @@ export default function CinematicScrollShowcase() {
           <div className="showcase-mode-toggle" role="tablist" aria-label="Tour Mode">
             <button
               type="button"
+              role="tab"
+              aria-selected={viewMode === 'app'}
               className={`mode-toggle-btn ${viewMode === 'app' ? 'is-active' : ''}`}
               onClick={() => setViewMode('app')}
             >
@@ -217,6 +219,8 @@ export default function CinematicScrollShowcase() {
             </button>
             <button
               type="button"
+              role="tab"
+              aria-selected={viewMode === 'simulator'}
               className={`mode-toggle-btn ${viewMode === 'simulator' ? 'is-active' : ''}`}
               onClick={() => setViewMode('simulator')}
             >
@@ -356,8 +360,6 @@ export default function CinematicScrollShowcase() {
                     alt={current.alt}
                     width={1206}
                     height={2622}
-                    priority
-                    unoptimized
                     className="fixed-iphone-img"
                     sizes="(max-width: 768px) 210px, 350px"
                   />
@@ -413,6 +415,8 @@ export default function CinematicScrollShowcase() {
                   <button
                     key={c.id}
                     type="button"
+                    role="tab"
+                    aria-selected={i === activeChapter}
                     onClick={() => setActiveChapter(i)}
                     className={`fixed-mob-dot ${i === activeChapter ? 'is-active' : ''}`}
                     style={{

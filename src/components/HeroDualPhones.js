@@ -17,6 +17,12 @@ export default function HeroDualPhones() {
         isTimerHovered ? 'stage-timer-active' : 'stage-dashboard-active'
       }`}
       onMouseLeave={() => setHoveredPhone(null)}
+      style={{
+        WebkitTapHighlightColor: 'transparent',
+        WebkitTouchCallout: 'none',
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+      }}
     >
       <div className="hero-ambient-cloud" aria-hidden="true" />
 
@@ -28,8 +34,15 @@ export default function HeroDualPhones() {
         onMouseEnter={() => setHoveredPhone('dashboard')}
         onClick={() => setHoveredPhone(isDashboardActive && hoveredPhone ? null : 'dashboard')}
         role="button"
-        tabIndex={0}
+        tabIndex={-1}
         aria-label="LifeTrack Pro Daily Planner and Habit Dashboard Screen"
+        style={{
+          WebkitTapHighlightColor: 'transparent',
+          WebkitTouchCallout: 'none',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          outline: 'none',
+        }}
       >
         <div className="hero-phone-notch" />
         <div className="hero-phone-screen">
@@ -39,8 +52,17 @@ export default function HeroDualPhones() {
             width={600}
             height={1300}
             priority
+            draggable={false}
             sizes="(max-width: 640px) 200px, 260px"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              pointerEvents: 'none',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              WebkitTouchCallout: 'none',
+            }}
           />
         </div>
       </div>
@@ -53,8 +75,15 @@ export default function HeroDualPhones() {
         onMouseEnter={() => setHoveredPhone('timer')}
         onClick={() => setHoveredPhone(isTimerHovered ? null : 'timer')}
         role="button"
-        tabIndex={0}
+        tabIndex={-1}
         aria-label="LifeTrack Pro Focus Timer & Deep Work Session Screen"
+        style={{
+          WebkitTapHighlightColor: 'transparent',
+          WebkitTouchCallout: 'none',
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          outline: 'none',
+        }}
       >
         <div className="hero-phone-notch" />
         <div className="hero-phone-screen">
@@ -64,8 +93,17 @@ export default function HeroDualPhones() {
             width={600}
             height={1300}
             priority
+            draggable={false}
             sizes="(max-width: 640px) 190px, 250px"
-            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              pointerEvents: 'none',
+              userSelect: 'none',
+              WebkitUserSelect: 'none',
+              WebkitTouchCallout: 'none',
+            }}
           />
         </div>
       </div>

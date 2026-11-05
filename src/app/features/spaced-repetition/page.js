@@ -11,12 +11,12 @@ import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveSpacedRepetition from '@/components/InteractiveSpacedRepetition';
 
 export const metadata = {
-  title: 'SM-2 Spaced Repetition Flashcards & Active Recall',
-  description: 'Free SM-2 spaced repetition flashcard app for JEE, NEET & UPSC. Automate active recall, intercept the Ebbinghaus forgetting curve, and lock formulas into long-term memory.',
+  title: 'Spaced Repetition Flashcards & Active Recall',
+  description: 'Free SM-2 spaced repetition flashcard app. Automate active recall, beat the Ebbinghaus forgetting curve, and lock formulas into long-term memory for JEE & NEET.',
   keywords: [
     'spaced repetition flashcards',
-    'sm-2 algorithm app',
     'active recall flashcards',
+    'sm-2 algorithm app',
     'ebbinghaus forgetting curve',
     'neet biology flashcards',
     'jee physics formula recall',
@@ -40,7 +40,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'SM-2 Spaced Repetition Flashcards & Active Recall | LifeTrack Pro',
+    title: 'Spaced Repetition Flashcards & Active Recall | LifeTrack Pro',
     description: 'Automate active recall with the SuperMemo SM-2 algorithm. Schedule flashcards right before memory decay occurs for 95%+ permanent retention.',
     url: 'https://lifetrackpro.in/features/spaced-repetition',
     siteName: 'LifeTrack Pro',
@@ -57,7 +57,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SM-2 Spaced Repetition Flashcards & Active Recall | LifeTrack Pro',
+    title: 'Spaced Repetition Flashcards & Active Recall | LifeTrack Pro',
     description: 'Calculate expanding mathematical intervals for permanent memory retention with LifeTrack Pro.',
     images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
     creator: '@LifeTrackPro',
@@ -72,7 +72,7 @@ export default function SpacedRepetitionPage() {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/features/spaced-repetition#webpage",
         "url": "https://lifetrackpro.in/features/spaced-repetition",
-        "name": "SM-2 Spaced Repetition Flashcards & Active Recall System",
+        "name": "Spaced Repetition Flashcards & Active Recall | LifeTrack Pro",
         "description": "Scientific SuperMemo SM-2 algorithm for permanent memory retention in competitive examinations.",
         "isPartOf": {
           "@type": "WebSite",
@@ -89,6 +89,20 @@ export default function SpacedRepetitionPage() {
           { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "Spaced Repetition", "item": "https://lifetrackpro.in/features/spaced-repetition" }
         ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://lifetrackpro.in/#app",
+        "name": "LifeTrack Pro",
+        "operatingSystem": "Android",
+        "applicationCategory": "ProductivityApplication",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
+        "description": "Scientific SM-2 spaced repetition flashcard algorithm and active recall engine for permanent long-term memory retention.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        }
       },
       {
         "@type": "HowTo",
@@ -176,7 +190,7 @@ export default function SpacedRepetitionPage() {
           </nav>
 
           <div className="section-eyebrow">Memory Science &amp; Active Recall Engine</div>
-          <h1 className="subpage-h1">SM-2 Spaced Repetition Flashcards &amp; Active Recall System</h1>
+          <h1 className="subpage-h1">Spaced Repetition Flashcards &amp; SM-2 Active Recall</h1>
           
           <p className="subpage-lead">
             Passive re-reading and highlighting create a dangerous illusion of competence. LifeTrack Pro&apos;s SuperMemo SM-2 spaced repetition engine calculates mathematically optimal review intervals, intercepting memory decay right before forgetting happens to build permanent recall.
@@ -188,7 +202,7 @@ export default function SpacedRepetitionPage() {
           {/* Educational Science Section */}
           <div className="content-card reveal">
             <h2 className="content-card-h2">
-              The Ebbinghaus Forgetting Curve: Why Rote Re-reading Fails
+              The Science of Active Recall: Beating the Ebbinghaus Forgetting Curve
             </h2>
             <p className="content-card-p">
               In 1885, cognitive psychologist Hermann Ebbinghaus proved that without deliberate spaced retrieval, the human brain forgets over <strong>50% of newly learned facts within 1 hour</strong> and more than <strong>70% within 24 hours</strong>. When students repeatedly highlight or re-read textbooks, they practice recognition rather than retrieval—leaving memories vulnerable to rapid decay.
@@ -207,7 +221,7 @@ export default function SpacedRepetitionPage() {
           {/* SM-2 Mechanics Section */}
           <div className="content-card reveal reveal-delay-1">
             <h2 className="content-card-h2">
-              How the SuperMemo SM-2 Algorithm Works in LifeTrack Pro
+              How the SM-2 Spaced Repetition Algorithm Works in LifeTrack Pro
             </h2>
             <p className="content-card-p">
               Originally formulated by Dr. Piotr Woźniak, the SuperMemo SM-2 algorithm personalizes review spacing for every individual card based on four distinct feedback ratings:
@@ -230,59 +244,61 @@ export default function SpacedRepetitionPage() {
           </div>
 
           {/* Review Interval Progression Table */}
-          <div className="content-card reveal" style={{ overflowX: 'auto' }}>
-            <h2 className="content-card-h2">SM-2 Expanding Interval Schedule &amp; Retention Curve</h2>
+          <div className="content-card reveal">
+            <h2 className="content-card-h2">SM-2 Expanding Interval Schedule &amp; Memory Retention Curve</h2>
             <p className="content-card-p">
               Observe how spaced retrieval transforms a fleeting initial impression into permanent semantic memory over five review cycles:
             </p>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', marginTop: '12px' }} aria-label="SM-2 Expanding Interval Schedule">
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--border-mid)', textAlign: 'left' }}>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Review Stage</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Interval Timing</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--emerald)', fontWeight: 750 }}>Target Retention</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Neural Consolidation State</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Initial Encoding</td>
-                  <td style={{ padding: '10px 12px' }}>Day 0 (Immediate)</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>100%</td>
-                  <td style={{ padding: '10px 12px' }}>Fragile Working Memory</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>1st Scheduled Review</td>
-                  <td style={{ padding: '10px 12px' }}>Day 1 (+24 hours)</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>92%</td>
-                  <td style={{ padding: '10px 12px' }}>Synaptic Receptor Strengthening</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>2nd Scheduled Review</td>
-                  <td style={{ padding: '10px 12px' }}>Day 6 (+5 days)</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>95%</td>
-                  <td style={{ padding: '10px 12px' }}>Early Hippocampal Storage</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>3rd Scheduled Review</td>
-                  <td style={{ padding: '10px 12px' }}>Day 16 (+10 days)</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>97%</td>
-                  <td style={{ padding: '10px 12px' }}>Long-Term Potentiation (LTP)</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Mastered Concept</td>
-                  <td style={{ padding: '10px 12px' }}>Day 35+ (+19 days)</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>99%</td>
-                  <td style={{ padding: '10px 12px' }}>Permanent Semantic Neocortex Memory</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="table-responsive-wrapper">
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', marginTop: '12px' }} aria-label="SM-2 Expanding Interval Schedule">
+                <thead>
+                  <tr style={{ borderBottom: '2px solid var(--border-mid)', textAlign: 'left' }}>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Review Stage</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Interval Timing</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--emerald)', fontWeight: 750 }}>Target Retention</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Neural Consolidation State</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Initial Encoding</td>
+                    <td style={{ padding: '10px 12px' }}>Day 0 (Immediate)</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>100%</td>
+                    <td style={{ padding: '10px 12px' }}>Fragile Working Memory</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>1st Scheduled Review</td>
+                    <td style={{ padding: '10px 12px' }}>Day 1 (+24 hours)</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>92%</td>
+                    <td style={{ padding: '10px 12px' }}>Synaptic Receptor Strengthening</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>2nd Scheduled Review</td>
+                    <td style={{ padding: '10px 12px' }}>Day 6 (+5 days)</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>95%</td>
+                    <td style={{ padding: '10px 12px' }}>Early Hippocampal Storage</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>3rd Scheduled Review</td>
+                    <td style={{ padding: '10px 12px' }}>Day 16 (+10 days)</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>97%</td>
+                    <td style={{ padding: '10px 12px' }}>Long-Term Potentiation (LTP)</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Mastered Concept</td>
+                    <td style={{ padding: '10px 12px' }}>Day 35+ (+19 days)</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>99%</td>
+                    <td style={{ padding: '10px 12px' }}>Permanent Semantic Neocortex Memory</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {/* Exam Applications Section */}
           <div className="content-card reveal reveal-delay-1">
             <h2 className="content-card-h2">
-              High-Yield Active Recall for Competitive Aspirants
+              High-Yield Flashcard Revision for JEE, NEET &amp; UPSC Aspirants
             </h2>
             <p className="content-card-p">
               Spaced repetition delivers the highest return on investment for subjects requiring exact factual precision under time constraints:
@@ -326,7 +342,7 @@ export default function SpacedRepetitionPage() {
           {/* Connected Life OS Ecosystem */}
           <div className="content-card reveal">
             <h2 className="content-card-h2">
-              Integrated with Your Complete LifeTrack Pro OS
+              Part of Your Complete LifeTrack Pro Study OS
             </h2>
             <p className="content-card-p">
               Spaced repetition works best when integrated into your daily workflow. Inside <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>LifeTrack Pro</Link>, card reviews connect directly with your other study tools:
@@ -378,32 +394,39 @@ export default function SpacedRepetitionPage() {
             </div>
           </div>
 
-          {/* Quick FAQ Blocks for Search Snippets */}
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              How does the SM-2 algorithm calculate review dates?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              The SM-2 algorithm tracks two variables: repetition count (n) and Ease Factor (EF, default 2.50). When you rate a card Easy or Good, intervals scale exponentially: Day 1, Day 6, Day 16, Day 35+. If you fail a card (Again), the interval immediately resets to 10 minutes to guarantee knowledge mastery before moving forward.
-            </p>
-          </div>
+          {/* Frequently Asked Questions */}
+          <div className="content-card reveal reveal-delay-1">
+            <h2 className="content-card-h2">
+              Frequently Asked Questions About Spaced Repetition &amp; Flashcards
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '14px' }}>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  How does the SM-2 algorithm calculate review dates?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  The SM-2 algorithm tracks two variables: repetition count (n) and Ease Factor (EF, default 2.50). When you rate a card Easy or Good, intervals scale exponentially: Day 1, Day 6, Day 16, Day 35+. If you fail a card (Again), the interval immediately resets to 10 minutes to guarantee knowledge mastery before moving forward.
+                </p>
+              </div>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Why is active recall better than re-reading or highlighting?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              Passive re-reading creates recognition familiarity without testing mental retrieval pathways. Active recall forces your brain to generate the answer from scratch, strengthening synaptic connections and inducing long-term potentiation (LTP) in the hippocampus.
-            </p>
-          </div>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  Why is active recall better than re-reading or highlighting?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  Passive re-reading creates recognition familiarity without testing mental retrieval pathways. Active recall forces your brain to generate the answer from scratch, strengthening synaptic connections and inducing long-term potentiation (LTP) in the hippocampus.
+                </p>
+              </div>
 
-          <div className="content-card-faq reveal reveal-delay-1">
-            <h3 className="content-card-faq-h3">
-              Does the flashcard review feature work offline?
-            </h3>
-            <p className="content-card-p" style={{ marginBottom: 0 }}>
-              Yes. LifeTrack Pro is engineered with an offline-first local database. All flashcard decks, due dates, and Ease Factor ratings are stored locally on your device, allowing you to review flashcards during bus commutes or in areas with zero internet connectivity.
-            </p>
+              <div className="content-card-faq" style={{ margin: 0 }}>
+                <h3 className="content-card-faq-h3">
+                  Does the flashcard review feature work offline?
+                </h3>
+                <p className="content-card-p" style={{ marginBottom: 0 }}>
+                  Yes. LifeTrack Pro is engineered with an offline-first local database. All flashcard decks, due dates, and Ease Factor ratings are stored locally on your device, allowing you to review flashcards during bus commutes or in areas with zero internet connectivity.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Bottom Action Buttons */}

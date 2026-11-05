@@ -59,12 +59,21 @@ export default function InteractiveSpacedRepetition() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', alignItems: 'center' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '24px', alignItems: 'center' }}>
         {/* Flashcard 3D Box */}
         <div>
           <div 
             className="flashcard-3d-box" 
+            role="button"
+            tabIndex={0}
+            aria-label="Flip flashcard"
             onClick={() => setFlipped(!flipped)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setFlipped(!flipped);
+              }
+            }}
             style={{ height: '220px', cursor: 'pointer', perspective: '1000px', margin: 0 }}
           >
             <div className={`flashcard-inner ${flipped ? 'flipped' : ''}`} style={{ transition: 'transform 0.4s var(--ease-spring)' }}>

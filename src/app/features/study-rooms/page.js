@@ -12,18 +12,18 @@ import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveStudyRooms from '@/components/InteractiveStudyRooms';
 
 export const metadata = {
-  title: 'Virtual Study Rooms & Online Study Groups for Students',
-  description: 'Join silent virtual study rooms and online study groups. Practice body doubling with synchronized Pomodoro sessions, ambient audio, and zero video fatigue.',
+  title: 'Online Study Groups & Virtual Study Rooms',
+  description: 'Join silent virtual study rooms and online study groups. Practice camera-free body doubling with synchronized Pomodoro timers, 432Hz ambient audio, and zero ads.',
   keywords: [
-    'virtual study rooms',
     'online study groups',
-    'body doubling for students',
+    'virtual study rooms',
     'silent study room online',
-    'study with me live',
+    'study room without camera',
+    'camera free study room',
+    'body doubling for students',
+    'adhd body doubling study app',
     'pomodoro study group',
     'virtual study space',
-    'adhd body doubling study app',
-    'camera free study room',
     'jee virtual study room',
     'neet online study group',
     'upsc focus room',
@@ -44,7 +44,7 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Virtual Study Rooms & Online Study Groups for Students | LifeTrack Pro',
+    title: 'Online Study Groups & Virtual Study Rooms | LifeTrack Pro',
     description: 'Practice virtual body doubling in silent study rooms. Synchronized Pomodoro timers, ambient soundscapes, and focused peer accountability without video fatigue.',
     url: 'https://lifetrackpro.in/features/study-rooms',
     siteName: 'LifeTrack Pro',
@@ -61,8 +61,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Virtual Study Rooms & Online Study Groups | LifeTrack Pro',
-    description: 'Silent virtual study rooms with synchronized Pomodoro timers and ambient audio. Pure body doubling focus with zero video fatigue.',
+    title: 'Online Study Groups & Virtual Study Rooms | LifeTrack Pro',
+    description: 'Silent virtual study rooms and online study groups with synchronized Pomodoro timers and ambient audio. Pure body doubling focus with zero video fatigue.',
     images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
     creator: '@LifeTrackPro',
   },
@@ -76,7 +76,7 @@ export default function StudyRoomsPage() {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/features/study-rooms#webpage",
         "url": "https://lifetrackpro.in/features/study-rooms",
-        "name": "Virtual Study Rooms & Online Study Groups for Students | LifeTrack Pro",
+        "name": "Online Study Groups & Virtual Study Rooms | LifeTrack Pro",
         "description": "Silent virtual study rooms and online study groups engineered for student body doubling, synchronized Pomodoro focus blocks, and zero video fatigue.",
         "isPartOf": {
           "@type": "WebSite",
@@ -92,6 +92,20 @@ export default function StudyRoomsPage() {
           { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "Study Rooms", "item": "https://lifetrackpro.in/features/study-rooms" }
         ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://lifetrackpro.in/#app",
+        "name": "LifeTrack Pro",
+        "operatingSystem": "Android",
+        "applicationCategory": "ProductivityApplication",
+        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
+        "description": "Silent virtual study rooms, smart Pomodoro focus timer with ambient soundscapes, SM-2 active recall flashcards, and daily habit streaks with freeze shields.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "INR"
+        }
       },
       {
         "@type": "FAQPage",
@@ -168,7 +182,7 @@ export default function StudyRoomsPage() {
           </nav>
 
           <div className="section-eyebrow">Silent Focus &amp; Body Doubling</div>
-          <h1 className="subpage-h1">Virtual Study Rooms &amp; Online Study Groups for Deep Student Focus</h1>
+          <h1 className="subpage-h1">Online Study Groups &amp; Silent Virtual Study Rooms for Students</h1>
           
           <p className="subpage-lead">
             Solo studying often triggers isolation, wandering attention, and doomscrolling. LifeTrack Pro brings the quiet social accountability of a premier university library directly to your device with silent virtual study rooms, structured focus sessions, and camera-free body doubling.
@@ -204,7 +218,7 @@ export default function StudyRoomsPage() {
           {/* How LifeTrack Pro Focus Rooms Actually Work */}
           <div className="content-card reveal reveal-delay-1">
             <h2 className="content-card-h2">
-              How LifeTrack Pro Focus Rooms Work: Pure Focus, Zero Distractions
+              How Silent Study Rooms Work: Camera-Free, Zero Distractions
             </h2>
             <p className="content-card-p">
               Many online study groups fail because they rely on open voice channels or busy chat streams that create more distractions than they solve. LifeTrack Pro is deliberately designed around distraction-free focus:
@@ -219,59 +233,61 @@ export default function StudyRoomsPage() {
           </div>
 
           {/* Comparison Matrix: LifeTrack Pro vs Video Calls & Discord */}
-          <div className="content-card reveal" style={{ overflowX: 'auto' }}>
+          <div className="content-card reveal">
             <h2 className="content-card-h2">Virtual Study Rooms vs. Discord &amp; Zoom: Why Silent Focus Wins</h2>
             <p className="content-card-p">
               See why dedicated silent study rooms provide far superior focus compared to general-purpose meeting apps and chat servers:
             </p>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', marginTop: '12px' }} aria-label="Virtual Study Room Comparison">
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--border-mid)', textAlign: 'left' }}>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Feature</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--primary)', fontWeight: 700 }}>LifeTrack Pro Silent Rooms</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Zoom / Google Meet</th>
-                  <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Discord / WhatsApp Groups</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Camera / Video Pressure</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ 100% Camera-Free</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Webcam Required / Pressure</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Optional / Mixed</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Chat &amp; Notification Distractions</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Zero Text Spam</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--amber)' }}>In-Meeting Chat Pings</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Constant Memes &amp; Chats</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Cognitive Zoom Fatigue</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ None</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>High Self-Consciousness</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Moderate</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Integrated Pomodoro &amp; Soundscapes</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Native Built-In</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None (External App)</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Requires Bot Setup</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '10px 12px', fontWeight: 600 }}>Mobile Data &amp; Battery Drain</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Minimal (&lt; 2% / hr)</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Heavy (Video Streaming)</td>
-                  <td style={{ padding: '10px 12px', color: 'var(--amber)' }}>Moderate</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="table-responsive-wrapper">
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12.5px', marginTop: '12px' }} aria-label="Virtual Study Room Comparison">
+                <thead>
+                  <tr style={{ borderBottom: '2px solid var(--border-mid)', textAlign: 'left' }}>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-1)' }}>Feature</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--primary)', fontWeight: 700 }}>LifeTrack Pro Silent Rooms</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Zoom / Google Meet</th>
+                    <th style={{ padding: '8px 12px', color: 'var(--text-3)' }}>Discord / WhatsApp Groups</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Camera / Video Pressure</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ 100% Camera-Free</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Webcam Required / Pressure</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Optional / Mixed</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Chat &amp; Notification Distractions</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Zero Text Spam</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--amber)' }}>In-Meeting Chat Pings</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Constant Memes &amp; Chats</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Cognitive Zoom Fatigue</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ None</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>High Self-Consciousness</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Moderate</td>
+                  </tr>
+                  <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Integrated Pomodoro &amp; Soundscapes</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Native Built-In</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None (External App)</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Requires Bot Setup</td>
+                  </tr>
+                  <tr>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Mobile Data &amp; Battery Drain</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Minimal (&lt; 2% / hr)</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Heavy (Video Streaming)</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--amber)' }}>Moderate</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
 
           {/* Tailored Online Study Groups for Major Competitive Exams */}
           <div className="content-card reveal reveal-delay-1">
             <h2 className="content-card-h2">
-              Tailored Online Study Groups for Competitive Exam Aspirants
+              Tailored Online Study Groups for JEE, NEET &amp; UPSC Aspirants
             </h2>
             <p className="content-card-p">
               Competitive exam preparation requires rigorous, multi-hour focus blocks. LifeTrack Pro study rooms align with the demanding preparation schedules of India&apos;s toughest examinations:
@@ -376,7 +392,7 @@ export default function StudyRoomsPage() {
           {/* Frequently Asked Questions */}
           <div className="content-card reveal reveal-delay-1">
             <h2 className="content-card-h2">
-              Frequently Asked Questions About Virtual Study Rooms
+              Frequently Asked Questions About Virtual Study Rooms &amp; Online Groups
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '14px' }}>
               <div className="content-card-faq" style={{ margin: 0 }}>

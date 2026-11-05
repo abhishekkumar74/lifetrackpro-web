@@ -90,7 +90,15 @@ export default function InteractiveJeePlanner() {
         {currentChapters.map((chap, idx) => (
           <div
             key={chap.name}
+            role="button"
+            tabIndex={0}
             onClick={() => toggleChapter(activeSub, idx)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleChapter(activeSub, idx);
+              }
+            }}
             style={{
               display: 'flex',
               justifyContent: 'space-between',
