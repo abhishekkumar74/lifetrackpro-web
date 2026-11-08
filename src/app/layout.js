@@ -87,6 +87,9 @@ export const metadata = {
     images: ['/play_store_feature_graphic.png'],
     creator: '@LifeTrackPro',
   },
+  other: {
+    'google-adsense-account': 'ca-pub-3825001060710787',
+  },
 };
 
 export const viewport = {
@@ -99,6 +102,13 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable} ${dmMono.variable}`}>
+      <head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3825001060710787"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <PublicShell>
           {children}
