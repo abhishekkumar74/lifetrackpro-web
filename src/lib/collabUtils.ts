@@ -52,7 +52,7 @@ export function buildPlayStoreDestinationUrl(
   campaign: string,
   slug: string
 ): string {
-  const referrerPayload = `utm_source=${encodeURIComponent(platform)}&utm_campaign=${encodeURIComponent(campaign)}&utm_content=${encodeURIComponent(slug)}`;
+  const referrerPayload = `utm_source=${encodeURIComponent(platform)}&utm_campaign=${encodeURIComponent(campaign)}&utm_content=${encodeURIComponent(slug)}&referred_by=${encodeURIComponent(slug)}`;
   const encodedReferrer = encodeURIComponent(referrerPayload);
   return `https://play.google.com/store/apps/details?id=${PLAY_STORE_PACKAGE_ID}&referrer=${encodedReferrer}`;
 }

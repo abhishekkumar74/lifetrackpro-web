@@ -513,11 +513,30 @@ export default function FocusRoiCalculator() {
                     className="focus-roi-range-slider"
                     aria-label="Planned Daily Study Hours"
                   />
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: '#94A3B8', marginTop: '2px' }}>
-                    <span>2 hrs</span>
-                    <span>6 hrs (Typical)</span>
-                    <span>10 hrs (Aspirant)</span>
-                    <span>16 hrs</span>
+                  <div className="focus-roi-preset-row">
+                    {[
+                      { value: 2, label: '2 hrs' },
+                      { value: 6, label: '6 hrs (Typical)' },
+                      { value: 10, label: '10 hrs (Aspirant)' },
+                      { value: 16, label: '16 hrs' },
+                    ].map((preset) => {
+                      const isActive = quickDailyHours === preset.value;
+                      return (
+                        <button
+                          key={preset.value}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setQuickDailyHours(preset.value);
+                          }}
+                          className={`focus-roi-preset-btn ${isActive ? 'is-active' : ''}`}
+                          aria-label={`Set daily study hours to ${preset.value}`}
+                          aria-pressed={isActive}
+                        >
+                          {preset.label}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -541,11 +560,30 @@ export default function FocusRoiCalculator() {
                     className="focus-roi-range-slider"
                     aria-label="Study Days Per Week"
                   />
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: '#94A3B8', marginTop: '2px' }}>
-                    <span>1 day</span>
-                    <span>5 days</span>
-                    <span>6 days (Recommended)</span>
-                    <span>7 days</span>
+                  <div className="focus-roi-preset-row">
+                    {[
+                      { value: 1, label: '1 day' },
+                      { value: 5, label: '5 days' },
+                      { value: 6, label: '6 days (Recommended)' },
+                      { value: 7, label: '7 days' },
+                    ].map((preset) => {
+                      const isActive = quickDaysPerWeek === preset.value;
+                      return (
+                        <button
+                          key={preset.value}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setQuickDaysPerWeek(preset.value);
+                          }}
+                          className={`focus-roi-preset-btn ${isActive ? 'is-active' : ''}`}
+                          aria-label={`Set study days to ${preset.value}`}
+                          aria-pressed={isActive}
+                        >
+                          {preset.label}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -586,11 +624,30 @@ export default function FocusRoiCalculator() {
                     className="focus-roi-range-slider"
                     aria-label="Daily Interruptions"
                   />
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: '#94A3B8', marginTop: '2px' }}>
-                    <span>0 (Monk)</span>
-                    <span>8 (Guarded)</span>
-                    <span>15 (Average)</span>
-                    <span>40+ (Fractured)</span>
+                  <div className="focus-roi-preset-row">
+                    {[
+                      { value: 0, label: '0 (Monk)' },
+                      { value: 8, label: '8 (Guarded)' },
+                      { value: 15, label: '15 (Average)' },
+                      { value: 40, label: '40+ (Fractured)' },
+                    ].map((preset) => {
+                      const isActive = quickInterruptions === preset.value;
+                      return (
+                        <button
+                          key={preset.value}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setQuickInterruptions(preset.value);
+                          }}
+                          className={`focus-roi-preset-btn ${isActive ? 'is-active' : ''}`}
+                          aria-label={`Set daily interruptions to ${preset.value}`}
+                          aria-pressed={isActive}
+                        >
+                          {preset.label}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -671,11 +728,30 @@ export default function FocusRoiCalculator() {
                     className="focus-roi-range-slider"
                     aria-label="Avoidable Interruption Percentage"
                   />
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: '#94A3B8', marginTop: '2px' }}>
-                    <span>20% (Strict)</span>
-                    <span>50%</span>
-                    <span>75% (Standard)</span>
-                    <span>100%</span>
+                  <div className="focus-roi-preset-row">
+                    {[
+                      { value: 20, label: '20% (Strict)' },
+                      { value: 50, label: '50%' },
+                      { value: 75, label: '75% (Standard)' },
+                      { value: 100, label: '100%' },
+                    ].map((preset) => {
+                      const isActive = quickAvoidablePercent === preset.value;
+                      return (
+                        <button
+                          key={preset.value}
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setQuickAvoidablePercent(preset.value);
+                          }}
+                          className={`focus-roi-preset-btn ${isActive ? 'is-active' : ''}`}
+                          aria-label={`Set avoidable rate to ${preset.value}%`}
+                          aria-pressed={isActive}
+                        >
+                          {preset.label}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

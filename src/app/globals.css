@@ -1057,10 +1057,6 @@ a {
   will-change: transform;
 }
 
-.marquee-content:hover {
-  animation-play-state: paused;
-}
-
 @keyframes marqueeScroll {
   0% {
     transform: translateX(0);
@@ -7964,6 +7960,58 @@ input[type="time"]::-webkit-date-and-time-value {
   cursor: pointer;
   border: 3px solid #FFFFFF;
   box-shadow: 0 2px 6px rgba(91, 92, 240, 0.4);
+}
+
+/* Quick Preset Buttons Row */
+.focus-roi-preset-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.focus-roi-preset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #F8FAFC;
+  color: #64748B;
+  border: 1px solid #E2E8F0;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  touch-action: manipulation;
+  line-height: 1.25;
+  user-select: none;
+  font-family: inherit;
+}
+
+.focus-roi-preset-btn:hover {
+  background: #F1F5F9;
+  color: #1E293B;
+  border-color: #CBD5E1;
+}
+
+.focus-roi-preset-btn.is-active {
+  background: #EEF2FF;
+  color: #4F46E5;
+  border-color: #C7D2FE;
+  font-weight: 750;
+  box-shadow: 0 1px 2px rgba(79, 70, 229, 0.08);
+}
+
+@media (max-width: 480px) {
+  .focus-roi-preset-btn {
+    font-size: 10.5px;
+    padding: 2.5px 6px;
+  }
 }
 
 /* Secondary Metrics Grid */

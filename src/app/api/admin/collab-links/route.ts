@@ -28,13 +28,21 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       .order('created_at', { ascending: false });
 
     if (error) {
-      if (error.code === '42P01') {
+      const isMissingTable =
+        error.code === '42P01' ||
+        error.code === 'PGRST205' ||
+        error.code === 'PGRST200' ||
+        (error.message && error.message.toLowerCase().includes('schema cache')) ||
+        (error.message && error.message.toLowerCase().includes('does not exist'));
+
+      if (isMissingTable) {
         // Table not migrated yet
         return NextResponse.json({
           success: true,
           links: [],
           total: 0,
           pendingMigration: true,
+          message: 'Table public.collab_links has not been created yet in Supabase. Please run the SQL migration script in your Supabase SQL Editor.',
         });
       }
       return NextResponse.json(
@@ -129,6 +137,24 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       .maybeSingle();
 
     if (checkError && checkError.code !== 'PGRST116') {
+      const isMissingTable =
+        checkError.code === '42P01' ||
+        checkError.code === 'PGRST205' ||
+        checkError.code === 'PGRST200' ||
+        (checkError.message && checkError.message.toLowerCase().includes('schema cache')) ||
+        (checkError.message && checkError.message.toLowerCase().includes('does not exist'));
+
+      if (isMissingTable) {
+        return NextResponse.json(
+          {
+            success: false,
+            pendingMigration: true,
+            error: 'The database table "public.collab_links" does not exist yet. Please run the SQL migration script in your Supabase SQL Editor first, then try again.',
+          },
+          { status: 400 }
+        );
+      }
+
       return NextResponse.json(
         { success: false, error: `Database error: ${checkError.message}` },
         { status: 500 }
