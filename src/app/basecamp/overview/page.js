@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import StudentProfileModal from '@/components/StudentProfileModal';
+import CollabLinkManager from '@/components/admin/CollabLinkManager';
 
 
 export default function AdminPage() {
@@ -1089,7 +1090,20 @@ export default function AdminPage() {
           </button>
         </div>
 
-        {/* Group 3: Security & Platform */}
+        {/* Group 3: Growth & Attribution */}
+        <div className="admin-nav-group">
+          <span className="admin-nav-group-title">Growth & Attribution</span>
+          <button
+            type="button"
+            className={`admin-nav-item ${activeTab === 'collab' ? 'active' : ''}`}
+            onClick={() => { setActiveTab('collab'); setMobileDrawerOpen(false); }}
+          >
+            <span className="nav-icon">🔗</span>
+            <span>Collab & Campaign Links</span>
+          </button>
+        </div>
+
+        {/* Group 4: Security & Platform */}
         <div className="admin-nav-group">
           <span className="admin-nav-group-title">Security & Platform</span>
           <button
@@ -1221,6 +1235,7 @@ export default function AdminPage() {
                   {activeTab === 'system' && 'Security'}
                   {activeTab === 'database' && 'Database'}
                   {activeTab === 'broadcaster' && 'Broadcaster'}
+                  {activeTab === 'collab' && 'Collab & Campaigns'}
                 </span>
               </div>
               <h1 style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: 800, color: '#0F172A', margin: '2px 0 0 0', lineHeight: 1.2 }}>
@@ -1232,6 +1247,7 @@ export default function AdminPage() {
                 {activeTab === 'system' && 'Infrastructure & Security Posture'}
                 {activeTab === 'database' && 'Supabase Database & Schemas'}
                 {activeTab === 'broadcaster' && 'Site Announcement Broadcaster'}
+                {activeTab === 'collab' && 'Creator Collab & Campaign Attribution Tracking'}
               </h1>
             </div>
           </div>
@@ -3282,6 +3298,15 @@ export default function AdminPage() {
                   </div>
                 )}
               </div>
+            </div>
+          )}
+
+          {/* ══════════════════════════════════════════════════════════
+              TAB 9: COLLAB & CAMPAIGN ATTRIBUTION TRACKING
+             ══════════════════════════════════════════════════════════ */}
+          {activeTab === 'collab' && (
+            <div style={{ marginTop: '4px' }}>
+              <CollabLinkManager />
             </div>
           )}
         </main>

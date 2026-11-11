@@ -1,0 +1,46 @@
+// Prisma Schema for LifeTrack Pro Admin & Attribution Tracking
+// Generates PostgreSQL database mappings for CollabLink and Campaign Tracking
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Platform {
+  youtube
+  instagram
+  telegram
+  campus
+  other
+}
+
+enum DestinationType {
+  play_store
+  website
+  custom
+}
+
+model CollabLink {
+  id              String          @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name            String          @db.VarChar(255)
+  slug            String          @unique @db.VarChar(100)
+  platform        Platform        @default(other)
+  campaign        String          @db.VarChar(100)
+  customNotes     String?         @map("custom_notes") @db.Text
+  destinationType DestinationType @default(play_store) @map("destination_type")
+  isActive        Boolean         @default(true) @map("is_active")
+  clicksCount     Int             @default(0) @map("clicks_count")
+  createdAt       DateTime        @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt       DateTime        @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@index([slug], map: "idx_collab_links_slug")
+  @@index([platform], map: "idx_collab_links_platform")
+  @@index([campaign], map: "idx_collab_links_campaign")
+  @@index([isActive], map: "idx_collab_links_is_active")
+  @@map("collab_links")
+}
