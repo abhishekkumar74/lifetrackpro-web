@@ -9,7 +9,7 @@ import {
   CollabLinksListResponse,
   CollabLinkApiResponse,
 } from '@/types/collab';
-import { slugify, isValidSlug, buildCollabShareUrl } from '@/lib/collabUtils';
+import { slugify, isValidSlug, buildCollabShareUrl, buildPartnerStatsUrl } from '@/lib/collabUtils';
 
 const PLATFORM_CONFIG: Record<CollabPlatform, { label: string; icon: string; bg: string; color: string; border: string }> = {
   youtube: { label: 'YouTube', icon: '▶️', bg: '#FEF2F2', color: '#DC2626', border: '#FECACA' },
@@ -312,7 +312,7 @@ export function CollabLinkManager() {
             <button
               type="button"
               onClick={() => {
-                const sql = `-- Migration: Collab & Campaign Links Table\nDO $$\nBEGIN\n  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'collab_platform') THEN\n    CREATE TYPE collab_platform AS ENUM ('youtube', 'instagram', 'telegram', 'campus', 'other');\n  END IF;\n  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'collab_destination_type') THEN\n    CREATE TYPE collab_destination_type AS ENUM ('play_store', 'website', 'custom');\n  END IF;\nEND $$;\n\nCREATE TABLE IF NOT EXISTS public.collab_links (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  name VARCHAR(255) NOT NULL,\n  slug VARCHAR(100) NOT NULL UNIQUE,\n  platform collab_platform NOT NULL DEFAULT 'other',\n  campaign VARCHAR(100) NOT NULL,\n  custom_notes TEXT,\n  destination_type collab_destination_type NOT NULL DEFAULT 'play_store',\n  is_active BOOLEAN NOT NULL DEFAULT true,\n  clicks_count INTEGER NOT NULL DEFAULT 0,\n  created_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now()),\n  updated_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now())\n);\n\nCREATE OR REPLACE FUNCTION public.increment_collab_click(link_slug TEXT)\nRETURNS SETOF public.collab_links AS $$\nBEGIN\n  RETURN QUERY\n  UPDATE public.collab_links\n  SET clicks_count = clicks_count + 1,\n      updated_at = timezone('utc'::text, now())\n  WHERE slug = link_slug AND is_active = true\n  RETURNING *;\nEND;\n$$ LANGUAGE plpgsql SECURITY DEFINER;\n\nCREATE UNIQUE INDEX IF NOT EXISTS idx_collab_links_slug_lower ON public.collab_links (lower(slug));\nCREATE INDEX IF NOT EXISTS idx_collab_links_platform ON public.collab_links (platform);\nCREATE INDEX IF NOT EXISTS idx_collab_links_campaign ON public.collab_links (campaign);\nCREATE INDEX IF NOT EXISTS idx_collab_links_is_active ON public.collab_links (is_active);\n\nALTER TABLE public.collab_links ENABLE ROW LEVEL SECURITY;\n\nDROP POLICY IF EXISTS \"Public can view active collab links\" ON public.collab_links;\nCREATE POLICY \"Public can view active collab links\" ON public.collab_links FOR SELECT TO anon, authenticated USING (is_active = true);\n\nDROP POLICY IF EXISTS \"Service role has full management access\" ON public.collab_links;\nCREATE POLICY \"Service role has full management access\" ON public.collab_links FOR ALL TO service_role USING (true) WITH CHECK (true);`;
+                const sql = `-- Migration: Collab & Campaign Links Table\nDO $$\nBEGIN\n  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'collab_platform') THEN\n    CREATE TYPE collab_platform AS ENUM ('youtube', 'instagram', 'telegram', 'campus', 'other');\n  END IF;\n  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'collab_destination_type') THEN\n    CREATE TYPE collab_destination_type AS ENUM ('play_store', 'website', 'custom');\n  END IF;\nEND $$;\n\nCREATE TABLE IF NOT EXISTS public.collab_links (\n  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),\n  name VARCHAR(255) NOT NULL,\n  slug VARCHAR(100) NOT NULL UNIQUE,\n  platform collab_platform NOT NULL DEFAULT 'other',\n  campaign VARCHAR(100) NOT NULL,\n  custom_notes TEXT,\n  destination_type collab_destination_type NOT NULL DEFAULT 'play_store',\n  is_active BOOLEAN NOT NULL DEFAULT true,\n  clicks_count INTEGER NOT NULL DEFAULT 0,\n  partner_token VARCHAR(64) DEFAULT replace(gen_random_uuid()::text, '-', ''),\n  created_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now()),\n  updated_at TIMESTAMPTZ NOT NULL DEFAULT timezone('utc'::text, now())\n);\n\nALTER TABLE public.collab_links ADD COLUMN IF NOT EXISTS partner_token VARCHAR(64) DEFAULT replace(gen_random_uuid()::text, '-', '');\nUPDATE public.collab_links SET partner_token = replace(gen_random_uuid()::text, '-', '') WHERE partner_token IS NULL;\n\nCREATE OR REPLACE FUNCTION public.increment_collab_click(link_slug TEXT)\nRETURNS SETOF public.collab_links AS $$\nBEGIN\n  RETURN QUERY\n  UPDATE public.collab_links\n  SET clicks_count = clicks_count + 1,\n      updated_at = timezone('utc'::text, now())\n  WHERE slug = link_slug AND is_active = true\n  RETURNING *;\nEND;\n$$ LANGUAGE plpgsql SECURITY DEFINER;\n\nCREATE UNIQUE INDEX IF NOT EXISTS idx_collab_links_slug_lower ON public.collab_links (lower(slug));\nCREATE UNIQUE INDEX IF NOT EXISTS idx_collab_links_partner_token ON public.collab_links (partner_token);\nCREATE INDEX IF NOT EXISTS idx_collab_links_platform ON public.collab_links (platform);\nCREATE INDEX IF NOT EXISTS idx_collab_links_campaign ON public.collab_links (campaign);\nCREATE INDEX IF NOT EXISTS idx_collab_links_is_active ON public.collab_links (is_active);\n\nALTER TABLE public.collab_links ENABLE ROW LEVEL SECURITY;\n\nDROP POLICY IF EXISTS \"Public can view active collab links\" ON public.collab_links;\nCREATE POLICY \"Public can view active collab links\" ON public.collab_links FOR SELECT TO anon, authenticated USING (is_active = true);\n\nDROP POLICY IF EXISTS \"Service role has full management access\" ON public.collab_links;\nCREATE POLICY \"Service role has full management access\" ON public.collab_links FOR ALL TO service_role USING (true) WITH CHECK (true);`;
                 copyToClipboard(sql, 'SQL Migration Script');
               }}
               style={{
@@ -715,20 +715,75 @@ export function CollabLinkManager() {
                       </td>
 
                       <td style={{ padding: '12px 14px', textAlign: 'right' }}>
-                        <button
-                          type="button"
-                          onClick={() => copyToClipboard(fullUrl, `${item.name}'s Link`, item.slug)}
-                          className="admin-btn admin-btn-secondary"
-                          style={{
-                            fontSize: '11px',
-                            padding: '5px 10px',
-                            background: isCopied ? '#059669' : undefined,
-                            color: isCopied ? '#FFFFFF' : undefined,
-                            borderColor: isCopied ? '#059669' : undefined,
-                          }}
-                        >
-                          {isCopied ? '✓ Copied' : '📋 Copy Link'}
-                        </button>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+                          <button
+                            type="button"
+                            onClick={() => copyToClipboard(fullUrl, `${item.name}'s Campaign Link`, item.slug)}
+                            className="admin-btn admin-btn-secondary"
+                            title="Copy student campaign referral link"
+                            style={{
+                              fontSize: '11px',
+                              padding: '5px 9px',
+                              background: isCopied ? '#059669' : undefined,
+                              color: isCopied ? '#FFFFFF' : undefined,
+                              borderColor: isCopied ? '#059669' : undefined,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {isCopied ? '✓ Copied' : '📋 Copy Link'}
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const partnerUrl = buildPartnerStatsUrl(
+                                item.slug,
+                                item.partner_token,
+                                typeof window !== 'undefined' ? window.location.origin : 'https://lifetrackpro.in'
+                              );
+                              copyToClipboard(partnerUrl, `${item.name}'s Partner Stats Link`, `partner_${item.slug}`);
+                            }}
+                            className="admin-btn admin-btn-secondary"
+                            title="Copy secure read-only live stats link for the creator/partner"
+                            style={{
+                              fontSize: '11px',
+                              padding: '5px 9px',
+                              background: copiedSlug === `partner_${item.slug}` ? '#2563EB' : '#F0F9FF',
+                              color: copiedSlug === `partner_${item.slug}` ? '#FFFFFF' : '#0284C7',
+                              borderColor: copiedSlug === `partner_${item.slug}` ? '#2563EB' : '#BAE6FD',
+                              fontWeight: 650,
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {copiedSlug === `partner_${item.slug}` ? '✓ Copied Stats' : '📊 Copy Partner Stats Link'}
+                          </button>
+
+                          <a
+                            href={buildPartnerStatsUrl(
+                              item.slug,
+                              item.partner_token,
+                              typeof window !== 'undefined' ? window.location.origin : 'https://lifetrackpro.in'
+                            )}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title="Open live partner attribution dashboard in new tab"
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              width: '26px',
+                              height: '26px',
+                              borderRadius: '6px',
+                              border: '1px solid #CBD5E1',
+                              background: '#FFFFFF',
+                              color: '#64748B',
+                              textDecoration: 'none',
+                              fontSize: '12px',
+                            }}
+                          >
+                            ↗
+                          </a>
+                        </div>
                       </td>
                     </tr>
                   );

@@ -12,6 +12,7 @@ export interface CollabLinkRecord {
   destination_type: CollabDestinationType;
   is_active: boolean;
   clicks_count: number;
+  partner_token?: string;
   created_at: string;
   updated_at: string;
 }
@@ -23,6 +24,7 @@ export interface CreateCollabLinkInput {
   campaign: string;
   customNotes?: string;
   destinationType?: CollabDestinationType;
+  partnerToken?: string;
 }
 
 export interface UpdateCollabLinkInput {
@@ -56,4 +58,25 @@ export interface PostHogCollabEventProperties {
   destination: string;
   referrer_url?: string;
   user_agent?: string;
+}
+
+export interface PartnerConversionRecord {
+  id: string;
+  maskedIdentifier: string;
+  status: 'signed_up' | 'installed';
+  campaign: string;
+  timestamp: string;
+}
+
+export interface PartnerDashboardData {
+  partnerName: string;
+  slug: string;
+  platform: CollabPlatform;
+  campaign: string;
+  isActive: boolean;
+  clicksCount: number;
+  conversionsCount: number;
+  conversionRate: string;
+  conversions: PartnerConversionRecord[];
+  lastUpdated: string;
 }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { verifyAdminSession, verifyCsrfOrigin } from '@/lib/auth';
 import { getSupabaseAdmin } from '@/lib/supabaseServer';
 import { recordAdminAudit } from '@/lib/auditLog';
+import { getDeterministicPartnerToken } from '@/lib/partnerServer';
 import { CollabLinkRecord, UpdateCollabLinkInput } from '@/types/collab';
 
 interface RouteContext {
@@ -63,7 +64,12 @@ export async function PATCH(request: NextRequest, context: RouteContext): Promis
       return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 
-    const updatedRecord = data as CollabLinkRecord;
+    const updatedRecord = {
+      ...(data as CollabLinkRecord),
+      partner_token:
+        (data as CollabLinkRecord).partner_token ||
+        getDeterministicPartnerToken((data as CollabLinkRecord).id, (data as CollabLinkRecord).slug),
+    };
 
     await recordAdminAudit({
       adminEmail: session.email || 'admin@lifetrackpro.in',

@@ -3,6 +3,7 @@ import { verifyAdminSession, verifyCsrfOrigin } from '@/lib/auth';
 import { getSupabaseAdmin } from '@/lib/supabaseServer';
 import { recordAdminAudit } from '@/lib/auditLog';
 import { isValidSlug, slugify } from '@/lib/collabUtils';
+import { generateRandomPartnerToken, getDeterministicPartnerToken } from '@/lib/partnerServer';
 import { CollabPlatform, CreateCollabLinkInput, CollabLinkRecord } from '@/types/collab';
 
 const ALLOWED_PLATFORMS: CollabPlatform[] = ['youtube', 'instagram', 'telegram', 'campus', 'other'];
@@ -51,7 +52,14 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       );
     }
 
-    const links = (data || []) as CollabLinkRecord[];
+    const links = ((data || []) as CollabLinkRecord[]).map((item) => ({
+      ...item,
+      partner_token:
+        item.partner_token && item.partner_token.trim().length > 0
+          ? item.partner_token
+          : getDeterministicPartnerToken(item.id, item.slug),
+    }));
+
     return NextResponse.json({
       success: true,
       links,
@@ -171,8 +179,11 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       );
     }
 
+    // Generate secure partner token for public read-only stats
+    const generatedToken = generateRandomPartnerToken();
+
     // Insert new link
-    const newRecord = {
+    const newRecord: Record<string, unknown> = {
       name: name.trim(),
       slug: normalizedSlug,
       platform: selectedPlatform,
@@ -181,8 +192,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       destination_type: cleanDestination,
       is_active: true,
       clicks_count: 0,
+      partner_token: generatedToken,
     };
 
+    let insertedRecord: CollabLinkRecord | null = null;
     const { data: inserted, error: insertError } = await supabase
       .from('collab_links')
       .insert([newRecord])
@@ -190,13 +203,31 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       .single();
 
     if (insertError) {
-      return NextResponse.json(
-        { success: false, error: insertError.message },
-        { status: 500 }
-      );
+      // If error indicates partner_token column doesn't exist yet, retry without partner_token
+      if (insertError.message && insertError.message.includes('partner_token')) {
+        delete newRecord.partner_token;
+        const retry = await supabase.from('collab_links').insert([newRecord]).select().single();
+        if (retry.error) {
+          return NextResponse.json({ success: false, error: retry.error.message }, { status: 500 });
+        }
+        insertedRecord = retry.data as CollabLinkRecord;
+      } else {
+        return NextResponse.json(
+          { success: false, error: insertError.message },
+          { status: 500 }
+        );
+      }
+    } else {
+      insertedRecord = inserted as CollabLinkRecord;
     }
 
-    const createdRecord = inserted as CollabLinkRecord;
+    const createdRecord: CollabLinkRecord = {
+      ...insertedRecord,
+      partner_token:
+        insertedRecord.partner_token && insertedRecord.partner_token.trim().length > 0
+          ? insertedRecord.partner_token
+          : generatedToken,
+    };
 
     // Audit log
     await recordAdminAudit({

@@ -43,6 +43,20 @@ export function buildCollabShareUrl(
 }
 
 /**
+ * Builds the secure, read-only partner live stats URL.
+ * e.g. https://lifetrackpro.in/partner/starex?token=f028b49dd989c3bb21e70c37
+ */
+export function buildPartnerStatsUrl(
+  slug: string,
+  token?: string | null,
+  baseUrl: string = BASE_PRODUCTION_URL
+): string {
+  const cleanSlug = encodeURIComponent(slug.trim().toLowerCase());
+  const cleanToken = token ? encodeURIComponent(token.trim()) : '';
+  return `${baseUrl}/partner/${cleanSlug}${cleanToken ? `?token=${cleanToken}` : ''}`;
+}
+
+/**
  * Encodes the Google Play install referrer with double-encoding requirements.
  * Google Play requires the referrer parameter value to be a standard query string that is URL-encoded.
  * Result: https://play.google.com/store/apps/details?id=com.lifetrackpro.app&referrer=utm_source%3D{platform}%26utm_campaign%3D{campaign}%26utm_content%3D{slug}
