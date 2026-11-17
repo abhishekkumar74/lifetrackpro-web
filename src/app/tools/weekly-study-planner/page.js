@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import WeeklyStudyPlanner from '@/components/tools/WeeklyStudyPlanner';
 import RelatedAppFeatures from '@/components/tools/RelatedAppFeatures';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -9,6 +12,21 @@ import {
   SparklesIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
+
+const WEEKLY_PLANNER_FAQS = [
+  {
+    question: "How should I structure my study week across multiple subjects?",
+    answer: "The most balanced approach pairs two complementary subjects each day (such as an analytical subject like Physics with a conceptual subject like Biology or Inorganic Chemistry). This prevents cognitive saturation in any single topic."
+  },
+  {
+    question: "Should Sunday be used for studying or resting?",
+    answer: "For serious competitive aspirants, Sunday is ideally split into a 3-hour morning full-length mock test followed by deep error analysis, leaving the evening for mental decompression, family time, and resetting dopamine."
+  },
+  {
+    question: "How do streak freeze shields help during weekly planning?",
+    answer: "When unexpected illness or emergencies interrupt one day of your study week, LifeTrack Pro streak freeze shields automatically absorb the missed checklist, keeping your multi-week habit streak badge intact without resetting to zero."
+  }
+];
 
 export const metadata = {
   title: 'Weekly Study Planner & 7-Day Schedule',
@@ -109,32 +127,14 @@ export default function WeeklyStudyPlannerPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How should I structure my study week across multiple subjects?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The most balanced approach pairs two complementary subjects each day (such as an analytical subject like Physics with a conceptual subject like Biology or Inorganic Chemistry). This prevents cognitive saturation in any single topic."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Should Sunday be used for studying or resting?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "For serious competitive aspirants, Sunday is ideally split into a 3-hour morning full-length mock test followed by deep error analysis, leaving the evening for mental decompression, family time, and resetting dopamine."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do streak freeze shields help during weekly planning?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "When unexpected illness or emergencies interrupt one day of your study week, LifeTrack Pro streak freeze shields automatically absorb the missed checklist, keeping your multi-week habit streak badge intact without resetting to zero."
-            }
+        "mainEntity": WEEKLY_PLANNER_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -200,70 +200,80 @@ export default function WeeklyStudyPlannerPage() {
             <p className="content-card-p">
               Use our other planning tools to build an actionable daily timetable from your weekly plan:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px', marginTop: '12px' }}>
-              <Link href="/tools/study-timetable-generator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--primary)' }}>Study Timetable Generator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Build hour-by-hour scheduled revision timetables.</p>
-                </div>
-              </Link>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-4">
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>🗓️</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--primary)', margin: 0 }}>Study Timetable Generator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Build hour-by-hour scheduled revision timetables.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/study-timetable-generator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Timetable</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/daily-routine-generator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--emerald)' }}>Daily Routine Generator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>24-hour circadian schedule builder for students.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>⏰</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--emerald)', margin: 0 }}>Daily Routine Generator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    24-hour circadian schedule builder for students.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/daily-routine-generator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--emerald)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Circadian</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/study-hours-calculator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--sky)' }}>Study Hours Calculator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Calculate daily study hours needed for your syllabus.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>📊</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--sky)', margin: 0 }}>Study Hours Calculator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Calculate daily study hours needed for your syllabus.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/study-hours-calculator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--sky)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Syllabus</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/focus-time-calculator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--rose)' }}>Focus Time Calculator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Measure true deep work hours vs distraction residue.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>🧠</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--rose)', margin: 0 }}>Focus Time Calculator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Measure true deep work hours vs distraction residue.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/focus-time-calculator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--rose)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Attention</Badge>
+                </CardFooter>
+              </Card>
             </div>
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About Weekly Study Planning
-            </h2>
-
-            <div className="content-card-faq" style={{ marginTop: '14px' }}>
-              <h3 className="content-card-faq-h3">
-                How should I structure my study week across multiple subjects?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                The most balanced approach pairs two complementary subjects each day (such as an analytical subject like Physics with a conceptual subject like Biology or Inorganic Chemistry). This prevents cognitive saturation in any single topic.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Should Sunday be used for studying or resting?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                For serious competitive aspirants, Sunday is ideally split into a 3-hour morning full-length mock test followed by deep error analysis, leaving the evening for mental decompression, family time, and resetting dopamine.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                How do streak freeze shields help during weekly planning?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                When unexpected illness or emergencies interrupt one day of your study week, LifeTrack Pro streak freeze shields automatically absorb the missed checklist, keeping your multi-week habit streak badge intact without resetting to zero.
-              </p>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About Weekly Study Planning"
+              items={WEEKLY_PLANNER_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

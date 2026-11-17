@@ -2,7 +2,37 @@ import Link from 'next/link';
 import StudyHoursCalculator from '@/components/tools/StudyHoursCalculator';
 import RelatedAppFeatures from '@/components/tools/RelatedAppFeatures';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { IconActivity } from '@/components/tools/calculator/CalculatorIcons';
+
+const STUDY_HOURS_FAQS = [
+  {
+    question: "How does this study hours calculator calculate daily study time?",
+    answer: "The calculator sums primary learning hours (remaining chapters × learning speed), multi-cycle revision hours (35% decay per cycle), practice problem-solving, full mock simulations and analysis, plus a 10% safety buffer. It then divides this total workload across actual available calendar study days before your examination."
+  },
+  {
+    question: "Why is revision calculated at 35% of initial learning time?",
+    answer: "Based on Hermann Ebbinghaus's forgetting curve research, neuro-consolidation allows subsequent reviews to be substantially faster than the initial conceptual pass. The first revision cycle requires ~35% of the original learning investment, while subsequent cycles require ~25%."
+  },
+  {
+    question: "What is the difference between Study Hours Calculator, Daily Routine Generator, and Study Timetable Generator?",
+    answer: "The Study Hours Calculator computes total academic workload and mathematical feasibility. The Daily Routine Generator structures today's 24-hour circadian lifestyle (sleep, meals, classes). The Study Timetable Generator maps chapters and PYQ targets onto a date-by-date calendar roadmap until exam day."
+  },
+  {
+    question: "How many hours should I study daily for competitive exams like JEE, NEET, or UPSC?",
+    answer: "Top competitive aspirants typically maintain 6 to 9 hours of distraction-free daily study. Beyond 8 to 9 hours, cognitive fatigue reduces retention. If your workload calculation demands >10 daily hours, apply the 80/20 Pareto principle to prune low-yield topics."
+  },
+  {
+    question: "What should I do if my feasibility status is 'Not Feasible' or 'Tight'?",
+    answer: "First, reduce weekly rest days slightly or advance your daily study commitment by 1-2 hours. If still not feasible, prune low-weightage chapters (Pareto 80/20 analysis) and reduce revision cycles to high-yield flashcard drills instead of full re-reads."
+  },
+  {
+    question: "Does the calculator account for weekly rest days and unexpected delays?",
+    answer: "Yes. You can configure 5, 6, or 7 study days per week. The engine also applies a configurable 10% unexpected delay buffer to absorb illness, coaching test fatigue, and school assignments without derailing your exam date."
+  }
+];
 
 export const metadata = {
   title: 'Study Hours Calculator – Calculate Hours to Finish Syllabus',
@@ -104,56 +134,14 @@ export default function StudyHoursCalculatorPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How does this study hours calculator calculate daily study time?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The calculator sums primary learning hours (remaining chapters × learning speed), multi-cycle revision hours (35% decay per cycle), practice problem-solving, full mock simulations and analysis, plus a 10% safety buffer. It then divides this total workload across actual available calendar study days before your examination."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is revision calculated at 35% of initial learning time?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Based on Hermann Ebbinghaus's forgetting curve research, neuro-consolidation allows subsequent reviews to be substantially faster than the initial conceptual pass. The first revision cycle requires ~35% of the original learning investment, while subsequent cycles require ~25%."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the difference between Study Hours Calculator, Daily Routine Generator, and Study Timetable Generator?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The Study Hours Calculator computes total academic workload and mathematical feasibility. The Daily Routine Generator structures today's 24-hour circadian lifestyle (sleep, meals, classes). The Study Timetable Generator maps chapters and PYQ targets onto a date-by-date calendar roadmap until exam day."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How many hours should I study daily for competitive exams like JEE, NEET, or UPSC?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Top competitive aspirants typically maintain 6 to 9 hours of distraction-free daily study. Beyond 8 to 9 hours, cognitive fatigue reduces retention. If your workload calculation demands >10 daily hours, apply the 80/20 Pareto principle to prune low-yield topics."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What should I do if my feasibility status is 'Not Feasible' or 'Tight'?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "First, reduce weekly rest days slightly or advance your daily study commitment by 1-2 hours. If still not feasible, prune low-weightage chapters (Pareto 80/20 analysis) and reduce revision cycles to high-yield flashcard drills instead of full re-reads."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does the calculator account for weekly rest days and unexpected delays?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. You can configure 5, 6, or 7 study days per week. The engine also applies a configurable 10% unexpected delay buffer to absorb illness, coaching test fatigue, and school assignments without derailing your exam date."
-            }
+        "mainEntity": STUDY_HOURS_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -227,7 +215,7 @@ export default function StudyHoursCalculatorPage() {
               A common mathematical mistake students make is allocating the same number of hours to revision as initial learning. According to Hermann Ebbinghaus&apos;s forgetting curve and modern cognitive neuroscience research, memory traces consolidate when retrieved actively:
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', margin: '14px 0' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-3.5">
               <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
                 <div style={{ fontSize: '11px', fontWeight: 750, color: '#5B5CF0', textTransform: 'uppercase' }}>Cycle 1: Initial Learning</div>
                 <div style={{ fontSize: '16px', fontWeight: 800, color: '#0F172A', margin: '4px 0 2px' }}>100% Investment</div>
@@ -320,7 +308,7 @@ export default function StudyHoursCalculatorPage() {
               If the calculator indicates that you require 12 or 14 daily study hours—or shows a red deficit badge—do not despair or attempt an unsustainable 15-hour marathon. Instead, execute one of the following strategic recalibrations:
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
                 <div style={{ fontSize: '13px', fontWeight: 750, color: '#0F172A', marginBottom: '4px' }}>
                   1. Pareto 80/20 Syllabus Pruning
@@ -399,118 +387,89 @@ export default function StudyHoursCalculatorPage() {
         />
 
         {/* ── SIBLING TOOLS ECOSYSTEM ── */}
-        <section style={{ margin: '36px 0', background: '#FFFFFF', borderRadius: '14px', border: '1px solid #E2E8F0', padding: '24px 28px', boxShadow: '0 1px 3px rgba(15, 23, 42, 0.03)' }} aria-label="Connected LifeTrack Pro Tools">
-          <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0F172A', margin: '0 0 8px' }}>
-            Explore More Free Online Study Tools
-          </h2>
-          <p style={{ fontSize: '13px', color: '#64748B', margin: '0 0 16px', lineHeight: 1.55 }}>
-            LifeTrack Pro provides 3 distinct academic planning tools designed to work together seamlessly:
-          </p>
+        <section style={{ margin: '36px 0' }} aria-label="Connected LifeTrack Pro Tools">
+          <div style={{ marginBottom: '16px' }}>
+            <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0F172A', margin: '0 0 6px' }}>
+              Explore More Free Online Study Tools
+            </h2>
+            <p style={{ fontSize: '13px', color: '#64748B', margin: 0, lineHeight: 1.55 }}>
+              LifeTrack Pro provides distinct academic planning tools designed to work together seamlessly:
+            </p>
+          </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
-            <Link href="/tools/daily-routine-generator" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0', height: '100%', boxSizing: 'border-box', transition: 'all 0.15s ease' }}>
-                <div style={{ fontSize: '18px', marginBottom: '6px' }}>⏰</div>
-                <strong style={{ fontSize: '13.5px', color: '#0D9488', display: 'block', marginBottom: '4px' }}>Daily Routine Generator →</strong>
-                <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.45 }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+              <CardHeader style={{ padding: '16px 18px 10px' }}>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }}>⏰</div>
+                <CardTitle style={{ fontSize: '13.5px', color: '#0D9488', margin: 0 }}>Daily Routine Generator</CardTitle>
+                <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '4px 0 0', lineHeight: 1.45 }}>
                   Manages today&apos;s complete 24-hour circadian lifestyle, sleep, school, meals, and focus sprints.
-                </p>
-              </div>
-            </Link>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                <Link href="/tools/daily-routine-generator" style={{ fontSize: '11px', fontWeight: 700, color: '#0D9488', textDecoration: 'none' }}>
+                  Open Generator →
+                </Link>
+                <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Circadian</Badge>
+              </CardFooter>
+            </Card>
 
-            <Link href="/tools/study-timetable-generator" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0', height: '100%', boxSizing: 'border-box', transition: 'all 0.15s ease' }}>
-                <div style={{ fontSize: '18px', marginBottom: '6px' }}>🗓️</div>
-                <strong style={{ fontSize: '13.5px', color: '#5B5CF0', display: 'block', marginBottom: '4px' }}>Study Timetable Generator →</strong>
-                <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.45 }}>
+            <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+              <CardHeader style={{ padding: '16px 18px 10px' }}>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }}>🗓️</div>
+                <CardTitle style={{ fontSize: '13.5px', color: '#5B5CF0', margin: 0 }}>Study Timetable Generator</CardTitle>
+                <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '4px 0 0', lineHeight: 1.45 }}>
                   Creates a date-by-date academic roadmap with PYQ targets and Sunday full-length mock tests until exam day.
-                </p>
-              </div>
-            </Link>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                <Link href="/tools/study-timetable-generator" style={{ fontSize: '11px', fontWeight: 700, color: '#5B5CF0', textDecoration: 'none' }}>
+                  Open Timetable →
+                </Link>
+                <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Timetable</Badge>
+              </CardFooter>
+            </Card>
 
-            <Link href="/tools/focus-time-calculator" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0', height: '100%', boxSizing: 'border-box', transition: 'all 0.15s ease' }}>
-                <div style={{ fontSize: '18px', marginBottom: '6px' }}>🧠</div>
-                <strong style={{ fontSize: '13.5px', color: '#E11D48', display: 'block', marginBottom: '4px' }}>Focus Time Calculator →</strong>
-                <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.45 }}>
+            <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+              <CardHeader style={{ padding: '16px 18px 10px' }}>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }}>🧠</div>
+                <CardTitle style={{ fontSize: '13.5px', color: '#E11D48', margin: 0 }}>Focus Time Calculator</CardTitle>
+                <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '4px 0 0', lineHeight: 1.45 }}>
                   Measures true deep work capacity versus distraction residue, task-switching friction, and study fatigue.
-                </p>
-              </div>
-            </Link>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                <Link href="/tools/focus-time-calculator" style={{ fontSize: '11px', fontWeight: 700, color: '#E11D48', textDecoration: 'none' }}>
+                  Open Calculator →
+                </Link>
+                <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Attention</Badge>
+              </CardFooter>
+            </Card>
 
-            <Link href="/tools/weekly-study-planner" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0', height: '100%', boxSizing: 'border-box', transition: 'all 0.15s ease' }}>
-                <div style={{ fontSize: '18px', marginBottom: '6px' }}>📋</div>
-                <strong style={{ fontSize: '13.5px', color: '#D97706', display: 'block', marginBottom: '4px' }}>Weekly Study Planner →</strong>
-                <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.45 }}>
+            <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+              <CardHeader style={{ padding: '16px 18px 10px' }}>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }}>📋</div>
+                <CardTitle style={{ fontSize: '13.5px', color: '#D97706', margin: 0 }}>Weekly Study Planner</CardTitle>
+                <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '4px 0 0', lineHeight: 1.45 }}>
                   Balances subjects across a structured 7-day recurring template with built-in catch-up buffers.
-                </p>
-              </div>
-            </Link>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                <Link href="/tools/weekly-study-planner" style={{ fontSize: '11px', fontWeight: 700, color: '#D97706', textDecoration: 'none' }}>
+                  Open Planner →
+                </Link>
+                <Badge variant="secondary" style={{ fontSize: '9.5px' }}>7-Day Plan</Badge>
+              </CardFooter>
+            </Card>
           </div>
         </section>
 
         {/* ── FREQUENTLY ASKED QUESTIONS (FAQ) SECTION ── */}
-        <section style={{ margin: '36px 0 20px', background: '#FFFFFF', borderRadius: '14px', border: '1px solid #E2E8F0', padding: '24px 28px', boxShadow: '0 1px 3px rgba(15, 23, 42, 0.03)' }} aria-label="Frequently Asked Questions">
-          <h2 style={{ fontSize: '19px', fontWeight: 800, color: '#0F172A', margin: '0 0 16px', letterSpacing: '-0.3px' }}>
-            Frequently Asked Questions About Study Hours Planning
-          </h2>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                How does this study hours calculator calculate daily study time?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                The calculator sums primary learning hours (remaining chapters × learning speed), multi-cycle revision hours (35% decay per cycle), practice problem-solving, full mock simulations and analysis, plus a 10% safety buffer. It then divides this total workload across actual available calendar study days before your examination.
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                Why is revision calculated at 35% of initial learning time?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                Based on Hermann Ebbinghaus&apos;s forgetting curve research, neuro-consolidation allows subsequent reviews to be substantially faster than the initial conceptual pass. The first revision cycle requires ~35% of the original learning investment, while subsequent cycles require ~25%.
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                What is the difference between Study Hours Calculator, Daily Routine Generator, and Study Timetable Generator?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                The Study Hours Calculator computes total academic workload and mathematical feasibility. The Daily Routine Generator structures today&apos;s 24-hour circadian lifestyle (sleep, meals, classes). The Study Timetable Generator maps chapters and PYQ targets onto a date-by-date calendar roadmap until exam day.
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                How many hours should I study daily for competitive exams like JEE, NEET, or UPSC?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                Top competitive aspirants typically maintain 6 to 9 hours of distraction-free daily study. Beyond 8 to 9 hours, cognitive fatigue reduces retention. If your workload calculation demands &gt;10 daily hours, apply the 80/20 Pareto principle to prune low-yield topics.
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                What should I do if my feasibility status is &quot;Not Feasible&quot; or &quot;Tight&quot;?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                First, reduce weekly rest days slightly or advance your daily study commitment by 1-2 hours. If still not feasible, prune low-weightage chapters (Pareto 80/20 analysis) and reduce revision cycles to high-yield flashcard drills instead of full re-reads.
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                Does the calculator account for weekly rest days and unexpected delays?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                Yes. You can configure 5, 6, or 7 study days per week. The engine also applies a configurable 10% unexpected delay buffer to absorb illness, coaching test fatigue, and school assignments without derailing your exam date.
-              </p>
-            </div>
-          </div>
+        <section style={{ margin: '36px 0 20px' }} aria-label="Frequently Asked Questions">
+          <FaqAccordion
+            title="Frequently Asked Questions About Study Hours Planning"
+            items={STUDY_HOURS_FAQS}
+          />
         </section>
       </article>
     </>

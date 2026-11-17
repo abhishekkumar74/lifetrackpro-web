@@ -1,10 +1,30 @@
 import Link from 'next/link';
+import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   CalculatorIcon, 
   SparklesIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveNeetPlanner from '@/components/InteractiveNeetPlanner';
+
+const NEET_FAQS = [
+  {
+    question: "How does SM-2 spaced repetition help with NCERT Biology revision?",
+    answer: "NEET Biology requires memorizing thousands of factual details, examples, and diagram labels. The SM-2 algorithm calculates personalized review intervals based on how easily you recall each card. Difficult concepts appear frequently, while mastered topics graduate to multi-week intervals, preventing memory decay before exam day."
+  },
+  {
+    question: "What is the best Pomodoro study block duration for NEET Physics problems?",
+    answer: "A 50-minute focus block followed by a 10-minute break is generally optimal for NEET Physics. Multi-step numerical problems in Mechanics, Thermodynamics, and Electrodynamics require 10 to 15 minutes of context loading in working memory, making 50-minute sprints far more effective than 25-minute intervals."
+  },
+  {
+    question: "How do streak freeze shields help during intense NEET test series?",
+    answer: "During full-syllabus mock test days or unexpected illness, students often struggle to complete standard daily checklists. A streak freeze shield automatically preserves your hard-earned consistency streak without resetting your progress badge to zero."
+  },
+  {
+    question: "Can I use LifeTrack Pro offline during hostel or coaching hours?",
+    answer: "Yes. LifeTrack Pro is built with an offline-first architecture. Your daily habit checklists, flashcard queues, and Pomodoro logs are stored securely on your local device without requiring an active internet connection."
+  }
+];
 
 export const metadata = {
   title: 'NEET Study Tracker & NCERT Flashcards',
@@ -105,40 +125,14 @@ export default function NeetExamPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How does SM-2 spaced repetition help with NCERT Biology revision?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "NEET Biology requires memorizing thousands of factual details, examples, and diagram labels. The SM-2 algorithm calculates personalized review intervals based on how easily you recall each card. Difficult concepts appear frequently, while mastered topics graduate to multi-week intervals, preventing memory decay before exam day."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the best Pomodoro study block duration for NEET Physics problems?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A 50-minute focus block followed by a 10-minute break is generally optimal for NEET Physics. Multi-step numerical problems in Mechanics, Thermodynamics, and Electrodynamics require 10 to 15 minutes of context loading in working memory, making 50-minute sprints far more effective than 25-minute intervals."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do streak freeze shields help during intense NEET test series?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "During full-syllabus mock test days or unexpected illness, students often struggle to complete standard daily checklists. A streak freeze shield automatically preserves your hard-earned consistency streak without resetting your progress badge to zero."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use LifeTrack Pro offline during hostel or coaching hours?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. LifeTrack Pro is built with an offline-first architecture. Your daily habit checklists, flashcard queues, and Pomodoro logs are stored securely on your local device without requiring an active internet connection."
-            }
+        "mainEntity": NEET_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -225,7 +219,7 @@ export default function NeetExamPage() {
             <p className="content-card-p">
               LifeTrack Pro also provides specialized study frameworks for other competitive national exams:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
               <Link href="/exams/jee" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -262,47 +256,12 @@ export default function NeetExamPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About NEET Preparation
-            </h2>
-
-            <div className="content-card-faq" style={{ marginTop: '14px' }}>
-              <h3 className="content-card-faq-h3">
-                How does SM-2 spaced repetition help with NCERT Biology revision?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                NEET Biology requires memorizing thousands of factual details, examples, and diagram labels. The SM-2 algorithm calculates personalized review intervals based on how easily you recall each card. Difficult concepts appear frequently, while mastered topics graduate to multi-week intervals, preventing memory decay before exam day.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                What is the best Pomodoro study block duration for NEET Physics problems?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                A 50-minute focus block followed by a 10-minute break is generally optimal for NEET Physics. Multi-step numerical problems in Mechanics, Thermodynamics, and Electrodynamics require 10 to 15 minutes of context loading in working memory, making 50-minute sprints far more effective than 25-minute intervals.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                How do streak freeze shields help during intense NEET test series?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                During full-syllabus mock test days or unexpected illness, students often struggle to complete standard daily checklists. A streak freeze shield automatically preserves your hard-earned consistency streak without resetting your progress badge to zero.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Can I use LifeTrack Pro offline during hostel or coaching hours?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Yes. LifeTrack Pro is built with an offline-first architecture. Your daily habit checklists, flashcard queues, and Pomodoro logs are stored securely on your local device without requiring an active internet connection.
-              </p>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About NEET Preparation"
+              items={NEET_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

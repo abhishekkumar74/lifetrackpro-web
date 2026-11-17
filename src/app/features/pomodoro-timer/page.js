@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   CardsIcon, 
   HabitFlameIcon, 
@@ -8,6 +9,29 @@ import {
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractivePomodoro from '@/components/InteractivePomodoro';
+
+const POMODORO_FAQS = [
+  {
+    question: "What is the Pomodoro technique and how does it prevent study burnout?",
+    answer: "The Pomodoro Technique is a time-management methodology created by Francesco Cirillo. It breaks heavy academic work into focused sprints (typically 25 or 50 minutes) separated by short restorative breaks. This rhythmic cycle prevents cognitive exhaustion, preserves prefrontal glucose levels, and maintains high analytical retention over long study days."
+  },
+  {
+    question: "Why is 50/10 often better than 25/5 for competitive exams?",
+    answer: "Complex numerical problems in Physics, Calculus, or organic reaction pathways require 10 to 15 minutes simply to load context into working memory. Stopping at 25 minutes cuts off flow state prematurely. The 50/10 cadence allows 35 to 40 uninterrupted minutes of peak flow followed by a restorative 10-minute mental break."
+  },
+  {
+    question: "Does the LifeTrack Pro timer keep ticking when the phone screen is locked?",
+    answer: "Yes. On the Android application, LifeTrack Pro operates via a dedicated foreground background service so ambient soundscapes continue smoothly and the timer accurately counts down on your lockscreen widget without battery drain."
+  },
+  {
+    question: "Are focus sessions interrupted by ads?",
+    answer: "No. LifeTrack Pro is 100% ad-free with zero pop-ups or full-screen commercials interrupting your study or break blocks."
+  },
+  {
+    question: "How does the Pomodoro timer integrate with flashcards and habit streaks?",
+    answer: "Completed Pomodoro sessions automatically count towards your daily habit streak rings. You can also launch SM-2 spaced repetition flashcard review queues directly as a scheduled 25-minute study block."
+  }
+];
 
 export const metadata = {
   title: 'Pomodoro Timer for Students & Deep Work',
@@ -132,48 +156,14 @@ export default function PomodoroTimerPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the Pomodoro technique and how does it prevent study burnout?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The Pomodoro Technique is a time-management methodology created by Francesco Cirillo. It breaks heavy academic work into focused sprints (typically 25 or 50 minutes) separated by short restorative breaks. This rhythmic cycle prevents cognitive exhaustion, preserves prefrontal glucose levels, and maintains high analytical retention over long study days."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is the 50/10 rule often superior to 25/5 for competitive exam preparation?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Complex numerical problems in Physics, Calculus, or organic synthesis require 10 to 15 minutes simply to load context into working memory. Stopping at 25 minutes cuts off your peak flow state prematurely. The 50/10 cadence provides 35 uninterrupted minutes of deep immersion followed by a restorative 10-minute mental reset."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does the LifeTrack Pro focus timer keep ticking when the phone screen locks?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. On the Android application, LifeTrack Pro operates via a dedicated foreground background service so ambient soundscapes continue smoothly and the timer accurately counts down on your lockscreen widget without battery drain."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does the Pomodoro timer integrate with flashcards and habit streaks?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Completed Pomodoro sessions automatically count towards your daily habit streak rings. You can also launch SM-2 spaced repetition flashcard review queues directly as a scheduled 25-minute study block."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Are there any advertisements interrupting focus sessions in LifeTrack Pro?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. LifeTrack Pro is 100% ad-free. There are no full-screen pop-ups, banner distractions, or commercial video interruptions during your focus or break intervals."
-            }
+        "mainEntity": POMODORO_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -316,7 +306,7 @@ export default function PomodoroTimerPage() {
             <p className="content-card-p">
               The smart Pomodoro timer does not exist in isolation. Inside <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>LifeTrack Pro</Link>, your focus hours seamlessly power your entire daily learning routine:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
               <Link href="/features/spaced-repetition" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--emerald)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -364,39 +354,12 @@ export default function PomodoroTimerPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About Pomodoro Study Timers
-            </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '14px' }}>
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Why is 50/10 often better than 25/5 for competitive exams?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Complex numerical problems in Physics, Calculus, or organic reaction pathways require 10 to 15 minutes simply to load context into working memory. Stopping at 25 minutes cuts off flow state prematurely. The 50/10 cadence allows 35 to 40 uninterrupted minutes of peak flow followed by a restorative 10-minute mental break.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Does the LifeTrack Pro timer keep ticking when the phone screen is locked?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Yes. LifeTrack Pro utilizes a dedicated Android foreground service so your ambient soundscapes continue and your timer accurately counts down even in ultra power-saving lockscreen mode.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Are focus sessions interrupted by ads?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  No. LifeTrack Pro is 100% ad-free with zero pop-ups or full-screen commercials interrupting your study or break blocks.
-                </p>
-              </div>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About Pomodoro Study Timers"
+              items={POMODORO_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

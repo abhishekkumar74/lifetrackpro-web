@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { HeroDownloadCta, BottomDownloadCta } from '@/components/HeroDownloadCta';
 import HeroDualPhones from '@/components/HeroDualPhones';
 import AppleScrollText from '@/components/AppleScrollText';
@@ -178,77 +180,120 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px' }}>
-          <Link href="/tools/study-timetable-generator" style={{ textDecoration: 'none' }}>
-            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+            <CardHeader style={{ padding: '18px 20px 10px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--primary)' }}>Study Timetable Generator</span>
-                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'var(--primary-soft)', color: 'var(--primary)' }}>Interactive</span>
+                <CardTitle style={{ fontSize: '14px', fontWeight: 750, color: 'var(--primary)', margin: 0 }}>
+                  Study Timetable Generator
+                </CardTitle>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>Interactive</Badge>
               </div>
-              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+              <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                 Build hour-by-hour revision timetables for JEE, NEET, UPSC &amp; College with 50/10 Pomodoro blocks.
-              </p>
-            </div>
-          </Link>
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+              <Link href="/tools/study-timetable-generator" style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--primary)', textDecoration: 'none' }}>
+                Generate Timetable →
+              </Link>
+            </CardFooter>
+          </Card>
 
-          <Link href="/tools/daily-routine-generator" style={{ textDecoration: 'none' }}>
-            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+          <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+            <CardHeader style={{ padding: '18px 20px 10px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--emerald)' }}>Daily Routine Generator</span>
-                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'rgba(5,150,105,0.1)', color: 'var(--emerald)' }}>Circadian</span>
+                <CardTitle style={{ fontSize: '14px', fontWeight: 750, color: 'var(--emerald)', margin: 0 }}>
+                  Daily Routine Generator
+                </CardTitle>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>Circadian</Badge>
               </div>
-              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+              <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                 24-hour daily schedule planner matched to your natural biological energy peaks and rest dips.
-              </p>
-            </div>
-          </Link>
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+              <Link href="/tools/daily-routine-generator" style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--emerald)', textDecoration: 'none' }}>
+                Build Daily Routine →
+              </Link>
+            </CardFooter>
+          </Card>
 
-          <Link href="/tools/study-hours-calculator" style={{ textDecoration: 'none' }}>
-            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+          <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+            <CardHeader style={{ padding: '18px 20px 10px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--sky)' }}>Study Hours Calculator</span>
-                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'rgba(2,132,199,0.1)', color: 'var(--sky)' }}>Calculator</span>
+                <CardTitle style={{ fontSize: '14px', fontWeight: 750, color: 'var(--sky)', margin: 0 }}>
+                  Study Hours Calculator
+                </CardTitle>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>Calculator</Badge>
               </div>
-              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+              <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                 Calculate daily hours required to finish your syllabus chapters and multiple revision cycles.
-              </p>
-            </div>
-          </Link>
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+              <Link href="/tools/study-hours-calculator" style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--sky)', textDecoration: 'none' }}>
+                Calculate Study Hours →
+              </Link>
+            </CardFooter>
+          </Card>
 
-          <Link href="/tools/focus-time-calculator" style={{ textDecoration: 'none' }}>
-            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+          <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+            <CardHeader style={{ padding: '18px 20px 10px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--rose)' }}>Focus Time Calculator</span>
-                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'rgba(225,29,72,0.1)', color: 'var(--rose)' }}>Attention</span>
+                <CardTitle style={{ fontSize: '14px', fontWeight: 750, color: 'var(--rose)', margin: 0 }}>
+                  Focus Time Calculator
+                </CardTitle>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>Attention</Badge>
               </div>
-              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+              <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                 Quantify net deep work hours versus time lost to phone notifications and attention residue.
-              </p>
-            </div>
-          </Link>
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+              <Link href="/tools/focus-time-calculator" style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--rose)', textDecoration: 'none' }}>
+                Calculate Net Focus →
+              </Link>
+            </CardFooter>
+          </Card>
 
-          <Link href="/tools/weekly-study-planner" style={{ textDecoration: 'none' }}>
-            <div style={{ background: '#FFFFFF', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', height: '100%', transition: 'all 0.2s ease' }}>
+          <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+            <CardHeader style={{ padding: '18px 20px 10px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontSize: '13.5px', fontWeight: 750, color: 'var(--amber)' }}>Weekly Study Planner</span>
-                <span style={{ fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'rgba(217,119,6,0.1)', color: 'var(--amber)' }}>7-Day Plan</span>
+                <CardTitle style={{ fontSize: '14px', fontWeight: 750, color: 'var(--amber)', margin: 0 }}>
+                  Weekly Study Planner
+                </CardTitle>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>7-Day Plan</Badge>
               </div>
-              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+              <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                 Balance multiple subjects across a 7-day template with Sunday mock tests and backlog clearance.
-              </p>
-            </div>
-          </Link>
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+              <Link href="/tools/weekly-study-planner" style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--amber)', textDecoration: 'none' }}>
+                Plan Your Week →
+              </Link>
+            </CardFooter>
+          </Card>
 
-          <Link href="/tools" style={{ textDecoration: 'none' }}>
-            <div style={{ background: 'var(--primary-soft)', padding: '18px 20px', borderRadius: 'var(--radius-md)', border: '1px solid var(--primary-soft-border)', boxShadow: 'var(--shadow-sm)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-              <div style={{ fontSize: '14px', fontWeight: 750, color: 'var(--primary)', marginBottom: '4px' }}>
-                Explore All Free Tools →
+          <Card className="flex flex-col justify-between rounded-2xl border-indigo-100 bg-gradient-to-br from-indigo-50/60 via-white to-slate-50/80 shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+            <CardHeader style={{ padding: '18px 20px 10px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+                <CardTitle style={{ fontSize: '14px', fontWeight: 750, color: 'var(--primary)', margin: 0 }}>
+                  All Free Study Tools
+                </CardTitle>
+                <Badge variant="secondary" style={{ fontSize: '10px', backgroundColor: 'rgba(238, 242, 255, 0.9)', color: '#4338CA' }}>Complete Hub</Badge>
               </div>
-              <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
-                Access the complete hub of free student productivity and exam timetable utilities.
-              </p>
-            </div>
-          </Link>
+              <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                Access the complete hub of free student productivity and exam timetable utilities with zero ads.
+              </CardDescription>
+            </CardHeader>
+            <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+              <Link href="/tools" style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--primary)', textDecoration: 'none' }}>
+                Explore All Free Tools →
+              </Link>
+            </CardFooter>
+          </Card>
         </div>
       </section>
 

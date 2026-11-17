@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import FocusTimeCalculator from '@/components/tools/FocusTimeCalculator';
 import RelatedAppFeatures from '@/components/tools/RelatedAppFeatures';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -9,6 +12,21 @@ import {
   SparklesIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
+
+const FOCUS_TIME_FAQS = [
+  {
+    question: "What is 'attention residue' in study productivity?",
+    answer: "Attention residue is a cognitive phenomenon discovered by Dr. Sophie Leroy. When you switch from study to checking a phone notification, a portion of your cognitive working memory remains stuck on the distraction for up to 20 minutes, reducing problem-solving speed and comprehension."
+  },
+  {
+    question: "How many hours of true deep work can a student sustain daily?",
+    answer: "Scientific research indicates that elite performers sustain roughly 4 to 6 hours of true high-cognitive deep work daily. Beyond 6 hours, cognitive returns drop sharply unless interspersed with structured active recovery breaks."
+  },
+  {
+    question: "Why is a 50/10 Pomodoro cadence better than 25/5 for competitive exams?",
+    answer: "25-minute Pomodoro cycles are often too short for complex multi-step physics, math, or legal synthesis problems. 50-minute blocks provide enough uninterrupted runway to enter psychological 'flow state' while the 10-minute break ensures neural recovery."
+  }
+];
 
 export const metadata = {
   title: 'Focus Time Calculator: Deep Work & Pomodoro',
@@ -108,32 +126,14 @@ export default function FocusTimeCalculatorPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is 'attention residue' in study productivity?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Attention residue is a cognitive phenomenon discovered by Dr. Sophie Leroy. When you switch from study to checking a phone notification, a portion of your cognitive working memory remains stuck on the distraction for up to 20 minutes, reducing problem-solving speed and comprehension."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How many hours of true deep work can a student sustain daily?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Scientific research indicates that elite performers sustain roughly 4 to 6 hours of true high-cognitive deep work daily. Beyond 6 hours, cognitive returns drop sharply unless interspersed with structured active recovery breaks."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is a 50/10 Pomodoro cadence better than 25/5 for competitive exams?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "25-minute Pomodoro cycles are often too short for complex multi-step physics, math, or legal synthesis problems. 50-minute blocks provide enough uninterrupted runway to enter psychological 'flow state' while the 10-minute break ensures neural recovery."
-            }
+        "mainEntity": FOCUS_TIME_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -196,70 +196,80 @@ export default function FocusTimeCalculatorPage() {
             <p className="content-card-p">
               Use our other tools to structure your focus hours into actionable schedules:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px', marginTop: '12px' }}>
-              <Link href="/tools/study-timetable-generator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--primary)' }}>Study Timetable Generator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Build hour-by-hour scheduled revision timetables.</p>
-                </div>
-              </Link>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-4">
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>🗓️</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--primary)', margin: 0 }}>Study Timetable Generator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Build hour-by-hour scheduled revision timetables.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/study-timetable-generator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Timetable</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/daily-routine-generator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--emerald)' }}>Daily Routine Generator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>24-hour circadian schedule builder for students.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>⏰</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--emerald)', margin: 0 }}>Daily Routine Generator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    24-hour circadian schedule builder for students.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/daily-routine-generator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--emerald)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Circadian</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/study-hours-calculator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--sky)' }}>Study Hours Calculator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Calculate daily study hours needed for your syllabus.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>📊</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--sky)', margin: 0 }}>Study Hours Calculator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Calculate daily study hours needed for your syllabus.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/study-hours-calculator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--sky)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Syllabus</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/weekly-study-planner" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--amber)' }}>Weekly Study Planner →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Balance subjects across a structured 7-day template.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>📋</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--amber)', margin: 0 }}>Weekly Study Planner</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Balance subjects across a structured 7-day template.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/weekly-study-planner" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--amber)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>7-Day Matrix</Badge>
+                </CardFooter>
+              </Card>
             </div>
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About Deep Focus Time
-            </h2>
-
-            <div className="content-card-faq" style={{ marginTop: '14px' }}>
-              <h3 className="content-card-faq-h3">
-                What is &apos;attention residue&apos; in study productivity?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Attention residue is a cognitive phenomenon discovered by Dr. Sophie Leroy. When you switch from study to checking a phone notification, a portion of your cognitive working memory remains stuck on the distraction for up to 20 minutes, reducing problem-solving speed and comprehension.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                How many hours of true deep work can a student sustain daily?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Scientific research indicates that elite performers sustain roughly 4 to 6 hours of true high-cognitive deep work daily. Beyond 6 hours, cognitive returns drop sharply unless interspersed with structured active recovery breaks.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Why is a 50/10 Pomodoro cadence better than 25/5 for competitive exams?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                25-minute Pomodoro cycles are often too short for complex multi-step physics, math, or legal synthesis problems. 50-minute blocks provide enough uninterrupted runway to enter psychological &apos;flow state&apos; while the 10-minute break ensures neural recovery.
-              </p>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About Deep Focus Time"
+              items={FOCUS_TIME_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

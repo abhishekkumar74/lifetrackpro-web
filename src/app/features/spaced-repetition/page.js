@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   TimerIcon, 
   HabitFlameIcon, 
@@ -9,6 +10,25 @@ import {
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveSpacedRepetition from '@/components/InteractiveSpacedRepetition';
+
+const SPACED_REPETITION_FAQS = [
+  {
+    question: "How does the SM-2 spaced repetition algorithm calculate review dates?",
+    answer: "The SuperMemo SM-2 algorithm tracks two variables for each card: Repetition number (n) and Ease Factor (EF, default 2.50). For a successful recall, the next interval expands mathematically: Day 1, then Day 6, then previous interval multiplied by the Ease Factor (e.g. 15 days, 38 days, 95 days). If you fail a card (Again), the interval resets to 10 minutes to eliminate memory gaps."
+  },
+  {
+    question: "Why is active recall with flashcards superior to passive re-reading and highlighting?",
+    answer: "Passive re-reading creates an illusion of competence called recognition memory. Active recall forces the brain to reconstruct memory traces through neural retrieval pathways, triggering long-term potentiation (LTP) in the hippocampus and making facts durable under high-stress exam conditions."
+  },
+  {
+    question: "How does LifeTrack Pro prevent flashcard review overwhelm?",
+    answer: "Instead of confronting a daunting library of thousands of cards, LifeTrack Pro calculates expanding intervals so that only 40 to 60 cards are due on any single day, making consistent daily revision achievable in 15 to 20 minutes."
+  },
+  {
+    question: "Does the flashcard review feature work offline without internet?",
+    answer: "Yes. LifeTrack Pro is built with an offline-first local database. Your deck decks, rating histories, and review intervals are stored locally on your device, allowing seamless revision during commutes or in low-connectivity libraries."
+  }
+];
 
 export const metadata = {
   title: 'Spaced Repetition Flashcards & Active Recall',
@@ -133,40 +153,14 @@ export default function SpacedRepetitionPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How does the SM-2 spaced repetition algorithm calculate review dates?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The SuperMemo SM-2 algorithm tracks two variables for each card: Repetition number (n) and Ease Factor (EF, default 2.50). For a successful recall, the next interval expands mathematically: Day 1, then Day 6, then previous interval multiplied by the Ease Factor (e.g. 15 days, 38 days, 95 days). If you fail a card (Again), the interval resets to 10 minutes to eliminate memory gaps."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is active recall with flashcards superior to passive re-reading and highlighting?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Passive re-reading creates an illusion of competence called recognition memory. Active recall forces the brain to reconstruct memory traces through neural retrieval pathways, triggering long-term potentiation (LTP) in the hippocampus and making facts durable under high-stress exam conditions."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does LifeTrack Pro prevent flashcard review overwhelm?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Instead of confronting a daunting library of thousands of cards, LifeTrack Pro calculates expanding intervals so that only 40 to 60 cards are due on any single day, making consistent daily revision achievable in 15 to 20 minutes."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does the flashcard review feature work offline without internet?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. LifeTrack Pro is built with an offline-first local database. Your deck decks, rating histories, and review intervals are stored locally on your device, allowing seamless revision during commutes or in low-connectivity libraries."
-            }
+        "mainEntity": SPACED_REPETITION_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -303,7 +297,7 @@ export default function SpacedRepetitionPage() {
             <p className="content-card-p">
               Spaced repetition delivers the highest return on investment for subjects requiring exact factual precision under time constraints:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
               <Link href="/exams/neet" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', height: '100%' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--emerald)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -347,7 +341,7 @@ export default function SpacedRepetitionPage() {
             <p className="content-card-p">
               Spaced repetition works best when integrated into your daily workflow. Inside <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>LifeTrack Pro</Link>, card reviews connect directly with your other study tools:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
               <Link href="/features/pomodoro-timer" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -395,39 +389,12 @@ export default function SpacedRepetitionPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About Spaced Repetition &amp; Flashcards
-            </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '14px' }}>
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  How does the SM-2 algorithm calculate review dates?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  The SM-2 algorithm tracks two variables: repetition count (n) and Ease Factor (EF, default 2.50). When you rate a card Easy or Good, intervals scale exponentially: Day 1, Day 6, Day 16, Day 35+. If you fail a card (Again), the interval immediately resets to 10 minutes to guarantee knowledge mastery before moving forward.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Why is active recall better than re-reading or highlighting?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Passive re-reading creates recognition familiarity without testing mental retrieval pathways. Active recall forces your brain to generate the answer from scratch, strengthening synaptic connections and inducing long-term potentiation (LTP) in the hippocampus.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Does the flashcard review feature work offline?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Yes. LifeTrack Pro is engineered with an offline-first local database. All flashcard decks, due dates, and Ease Factor ratings are stored locally on your device, allowing you to review flashcards during bus commutes or in areas with zero internet connectivity.
-                </p>
-              </div>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About Spaced Repetition & Flashcards"
+              items={SPACED_REPETITION_FAQS}
+            />
+          </section>
 
           {/* Bottom Action Buttons */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

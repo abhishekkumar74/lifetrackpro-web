@@ -1,13 +1,55 @@
 'use client';
 import { useState } from 'react';
-import { ChevronRightIcon } from './Icons';
 import { ALL_FAQS } from '@/data/faqs';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
-export default function FaqAccordion() {
-  const [openIndex, setOpenIndex] = useState(0);
+export default function FaqAccordion({ title, subtitle, items, defaultValue = 'item-0', containerClassName = '' }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
 
+  // If specific items are provided, render as standalone accordion component
+  if (items && items.length > 0) {
+    return (
+      <div className={`faq-card-container rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm ${containerClassName}`}>
+        {title && (
+          <div className="faq-card-header mb-6">
+            <h2 className="faq-card-title text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+              {title}
+            </h2>
+            {subtitle && (
+              <p className="faq-card-subtitle mt-2 text-sm sm:text-base text-slate-600 leading-relaxed">
+                {subtitle}
+              </p>
+            )}
+          </div>
+        )}
+        <Accordion type="single" collapsible defaultValue={defaultValue} className="faq-accordion w-full">
+          {items.map((item, idx) => {
+            const question = item.question || item.q || '';
+            const answer = item.answer || item.a || '';
+            const itemKey = `item-${idx}`;
+            return (
+              <AccordionItem key={itemKey} value={itemKey} className="faq-accordion-item border-b border-slate-200/80 last:border-b-0">
+                <AccordionTrigger className="faq-accordion-trigger text-left font-semibold text-base sm:text-lg text-slate-900 hover:no-underline py-4">
+                  {question}
+                </AccordionTrigger>
+                <AccordionContent className="faq-accordion-content text-slate-600 text-sm sm:text-base leading-relaxed pb-4">
+                  {answer}
+                </AccordionContent>
+              </AccordionItem>
+            );
+          })}
+        </Accordion>
+      </div>
+    );
+  }
+
+  // Otherwise, render full searchable FAQ hub with category pills (for /faq page)
   const categories = ['All', 'Features', 'Spaced Repetition', 'Exams', 'Platforms & Privacy'];
 
   const filteredFaqs = ALL_FAQS.filter((faq) => {
@@ -67,47 +109,27 @@ export default function FaqAccordion() {
       </div>
 
       {/* Accordion Container */}
-      <div className="faq-container">
+      <div className="faq-card-container rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm">
         {filteredFaqs.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '30px', color: 'var(--text-3)', fontSize: '13px' }}>
             No questions found matching &quot;{searchQuery}&quot;. Try another keyword or reset category filter.
           </div>
         ) : (
-          filteredFaqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-            const itemKey = `faq-item-${index}`;
-            return (
-              <div key={faq.q} className={`faq-item ${isOpen ? 'active' : ''}`} style={{ background: '#FFFFFF' }}>
-                <button 
-                  id={`${itemKey}-btn`}
-                  type="button"
-                  className="faq-question-btn" 
-                  aria-expanded={isOpen}
-                  aria-controls={`${itemKey}-panel`}
-                  onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', textAlign: 'left', padding: '14px 18px', background: 'none', border: 'none', cursor: 'pointer' }}
-                >
-                  <span style={{ fontSize: '13.5px', fontWeight: 650, color: 'var(--text-1)', paddingRight: '12px' }}>
+          <Accordion type="single" collapsible defaultValue="item-0" className="faq-accordion w-full">
+            {filteredFaqs.map((faq, index) => {
+              const itemKey = `item-${index}`;
+              return (
+                <AccordionItem key={faq.q} value={itemKey} className="faq-accordion-item border-b border-slate-200/80 last:border-b-0">
+                  <AccordionTrigger className="faq-accordion-trigger text-left font-semibold text-base sm:text-lg text-slate-900 hover:no-underline py-4">
                     {faq.q}
-                  </span>
-                  <span style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.2s ease', color: 'var(--text-3)', display: 'inline-flex' }}>
-                    <ChevronRightIcon size={14} />
-                  </span>
-                </button>
-                {isOpen && (
-                  <div 
-                    id={`${itemKey}-panel`}
-                    role="region"
-                    aria-labelledby={`${itemKey}-btn`}
-                    className="faq-answer" 
-                    style={{ padding: '0 18px 16px', fontSize: '12.5px', color: 'var(--text-2)', lineHeight: '1.6' }}
-                  >
+                  </AccordionTrigger>
+                  <AccordionContent className="faq-accordion-content text-slate-600 text-sm sm:text-base leading-relaxed pb-4">
                     {faq.a}
-                  </div>
-                )}
-              </div>
-            );
-          })
+                  </AccordionContent>
+                </AccordionItem>
+              );
+            })}
+          </Accordion>
         )}
       </div>
     </div>

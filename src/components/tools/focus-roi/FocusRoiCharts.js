@@ -76,16 +76,7 @@ export function FocusTimeAllocationChart({ plannedMins = 360, loss = {}, efficie
 
       {/* Legend Grid */}
       <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
-          gap: '8px',
-          padding: '10px 12px',
-          background: '#F8FAFC',
-          borderRadius: '10px',
-          border: '1px solid #E2E8F0',
-          fontSize: '11px',
-        }}
+        className="focus-roi-chart-legend"
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
           <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10B981', flexShrink: 0 }} />
@@ -188,18 +179,10 @@ export function WhatIfScenarioGrid({ scenarios = [], activeCustom = 40, onCustom
         return (
           <div
             key={idx}
+            className="what-if-scenario-item"
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '10px 14px',
-              borderRadius: '10px',
               border: sc.isCustom ? '1.5px solid #5B5CF0' : '1px solid #E2E8F0',
               background: sc.isCustom ? '#F5F5FF' : '#FFFFFF',
-              boxSizing: 'border-box',
-              width: '100%',
-              flexWrap: 'wrap',
-              gap: '8px',
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0, flex: '1 1 auto' }}>
@@ -229,7 +212,7 @@ export function WhatIfScenarioGrid({ scenarios = [], activeCustom = 40, onCustom
               </div>
             </div>
 
-            <div style={{ textAlign: 'right', flexShrink: 0, marginLeft: 'auto' }}>
+            <div className="what-if-stat-col" style={{ textAlign: 'right', flexShrink: 0, marginLeft: 'auto' }}>
               <div style={{ fontSize: '13px', fontWeight: 850, color: '#10B981', fontFamily: 'monospace' }}>
                 +{sc.monthlyHours}h / month
               </div>

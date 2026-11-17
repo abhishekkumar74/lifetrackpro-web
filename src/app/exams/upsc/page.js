@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -8,6 +9,25 @@ import {
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveUpscTimer from '@/components/InteractiveUpscTimer';
+
+const UPSC_FAQS = [
+  {
+    question: "Why is timing daily Mains answer writing critical for UPSC CSE?",
+    answer: "In UPSC Mains General Studies papers (GS 1 to 4), candidates must complete 20 subjective questions within 180 minutes. This leaves roughly 7 minutes for each 10-marker (150 words) and 11 minutes for each 15-marker (250 words). Without disciplined time management during daily practice, candidates risk leaving high-scoring questions unattempted."
+  },
+  {
+    question: "How does spaced repetition assist in UPSC Prelims and Mains preparation?",
+    answer: "The UPSC syllabus requires retaining dense factual information, including Constitutional Articles, statutory provisions, landmark Supreme Court cases, international treaties, and environmental conventions. LifeTrack Pro's SM-2 spaced repetition schedules review right before memory decay occurs, ensuring high-accuracy recall without endless textbook re-reading."
+  },
+  {
+    question: "Does LifeTrack Pro provide study materials or act as a productivity tool?",
+    answer: "LifeTrack Pro is a specialized study productivity and time-management operating system. It provides focus timers, answer writing stopwatches, flashcard recall algorithms, habit trackers, and virtual study rooms to help aspirants execute their preparation with consistency."
+  },
+  {
+    question: "Can I use the timer and flashcards offline without internet access?",
+    answer: "Yes. LifeTrack Pro uses an offline-first architecture. Timers, custom flashcards, and daily habit logs run locally on your device without requiring an active internet connection."
+  }
+];
 
 export const metadata = {
   title: 'UPSC Study Planner & Mains Timer',
@@ -136,40 +156,14 @@ export default function UpscExamPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Why is strict timing essential for UPSC Mains answer writing?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "In UPSC Mains General Studies papers (GS 1 to 4), candidates must complete 20 subjective questions within 180 minutes. This leaves roughly 7 minutes for each 10-marker (150 words) and 11 minutes for each 15-marker (250 words). Without disciplined time management during daily practice, candidates risk leaving high-scoring questions unattempted."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does spaced repetition assist in UPSC Prelims and Mains preparation?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The UPSC syllabus requires retaining dense factual information, including Constitutional Articles, statutory provisions, landmark Supreme Court cases, international treaties, and environmental conventions. LifeTrack Pro's SM-2 spaced repetition schedules review right before memory decay occurs, ensuring high-accuracy recall without endless textbook re-reading."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does LifeTrack Pro provide study materials or act as a productivity tool?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "LifeTrack Pro is a specialized study productivity and time-management operating system. It provides focus timers, answer writing stopwatches, flashcard recall algorithms, habit trackers, and virtual study rooms to help aspirants execute their preparation with consistency."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use the timer and flashcards offline without internet access?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. LifeTrack Pro uses an offline-first architecture. Timers, custom flashcards, and daily habit logs run locally on your device without requiring an active internet connection."
-            }
+        "mainEntity": UPSC_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -288,7 +282,7 @@ export default function UpscExamPage() {
             <p className="content-card-p">
               Explore other specialized study tools and preparation pathways built into LifeTrack Pro:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3">
               <Link href="/features/pomodoro-timer" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', height: '100%' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -347,47 +341,12 @@ export default function UpscExamPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About UPSC CSE Preparation
-            </h2>
-
-            <div className="content-card-faq" style={{ marginTop: '14px' }}>
-              <h3 className="content-card-faq-h3">
-                Why is timing daily Mains answer writing critical for UPSC CSE?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                In UPSC Mains General Studies papers, candidates must answer 20 questions in 180 minutes. This allows roughly 7 minutes per 10-marker (150 words) and 11 minutes per 15-marker (250 words). Without strict timing practice, candidates often run out of time and leave scoring questions blank.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                How does spaced repetition assist in UPSC preparation?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                The UPSC syllabus requires retaining dense factual details like Constitutional Articles, statutory provisions, landmark Supreme Court cases, international treaties, and environmental conventions. LifeTrack Pro&apos;s SM-2 spaced repetition schedules reviews right before memory decay occurs, ensuring high-accuracy recall without endless textbook re-reading.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Does LifeTrack Pro provide notes or act as a productivity tool?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                LifeTrack Pro is a specialized study productivity operating system. It provides focus timers, answer writing stopwatches, flashcard recall algorithms, habit trackers, and virtual study rooms to help aspirants execute their preparation with consistency.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Can I use the timer and flashcards offline without internet access?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Yes. LifeTrack Pro uses an offline-first architecture. Timers, custom flashcards, and daily habit logs run locally on your device without requiring an active internet connection.
-              </p>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About UPSC CSE Preparation"
+              items={UPSC_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

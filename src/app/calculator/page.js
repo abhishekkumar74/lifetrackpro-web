@@ -2,6 +2,33 @@ import Link from 'next/link';
 import FocusRoiCalculator from '@/components/tools/FocusRoiCalculator';
 import RelatedAppFeatures from '@/components/tools/RelatedAppFeatures';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+
+const CALCULATOR_FAQS = [
+  {
+    question: 'What is the difference between Study Efficiency Calculator, Study Hours Calculator, and Daily Routine Generator?',
+    answer: "The Study Efficiency Calculator measures study time lost to distractions and computes potential recoverable focus hours. The Study Hours Calculator computes total syllabus completion hours and preparation feasibility before exam day. The Daily Routine Generator structures today's 24-hour circadian schedule (sleep, meals, classes, and focus sprints)."
+  },
+  {
+    question: 'What is Attention Residue and why does refocus lag matter?',
+    answer: "Research by Dr. Gloria Mark at UC Irvine shows that when an interruption occurs, attention does not immediately shift back to the primary task. A portion of cognitive bandwidth remains stuck on the distraction ('attention residue'). Even a brief 2-minute phone notification can trigger 5 to 15 minutes of suboptimal resumption lag."
+  },
+  {
+    question: 'How does this calculator estimate recoverable monthly focus time?',
+    answer: 'The engine sums direct interruption minutes plus cognitive refocus lag for each occurrence. It then multiplies this total daily loss by your avoidable interruption percentage and expands it across your net monthly study days.'
+  },
+  {
+    question: 'Why is 6 hours of high-efficiency study better than 10 hours of fragmented study?',
+    answer: 'Frequent context switching exhausts the prefrontal cortex and prevents deep conceptual encoding. Six hours of uninterrupted Pomodoro focus yields significantly higher active recall retention and problem-solving speed than 10 hours broken up by constant notification checks and tab switching.'
+  },
+  {
+    question: 'Can I save and export my focus calculation report?',
+    answer: 'Yes. You can save multiple calculation scenarios to your browser, copy a structured plain-text audit to your clipboard, or export a high-resolution A4 portrait PDF report with zero login required.'
+  }
+];
 
 export const metadata = {
   title: 'Study Efficiency & Focus Time ROI Calculator – LifeTrack Pro',
@@ -103,48 +130,14 @@ export default function CalculatorPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the difference between Study Efficiency Calculator, Study Hours Calculator, and Daily Routine Generator?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The Study Efficiency Calculator measures study time lost to distractions and computes potential recoverable focus hours. The Study Hours Calculator computes total syllabus completion hours and preparation feasibility before exam day. The Daily Routine Generator structures today's 24-hour circadian schedule (sleep, meals, classes, and focus sprints)."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is Attention Residue and why does refocus lag matter?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Research by Dr. Gloria Mark at UC Irvine shows that when an interruption occurs, attention does not immediately shift back to the primary task. A portion of cognitive bandwidth remains stuck on the distraction ('attention residue'). Even a brief 2-minute phone notification can trigger 5 to 15 minutes of suboptimal resumption lag."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does this calculator estimate recoverable monthly focus time?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The engine sums direct interruption minutes plus cognitive refocus lag for each occurrence. It then multiplies this total daily loss by your avoidable interruption percentage and expands it across your net monthly study days."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is 6 hours of high-efficiency study better than 10 hours of fragmented study?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Frequent context switching exhausts the prefrontal cortex and prevents deep conceptual encoding. Six hours of uninterrupted Pomodoro focus yields significantly higher active recall retention and problem-solving speed than 10 hours broken up by constant notification checks and tab switching."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I save and export my focus calculation report?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. You can save multiple calculation scenarios to your browser, copy a structured plain-text audit to your clipboard, or export a high-resolution A4 portrait PDF report with zero login required."
-            }
+        "mainEntity": CALCULATOR_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -196,7 +189,7 @@ export default function CalculatorPage() {
               Most students underestimate how much time they waste because they only count the seconds their eyes were actually looking at their phone. In reality, a distraction has two distinct cognitive cost stages:
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', margin: '14px 0' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-3.5">
               <div style={{ padding: '16px', background: '#FFFBEB', borderRadius: '10px', border: '1px solid #FDE68A' }}>
                 <div style={{ fontSize: '11px', fontWeight: 750, color: '#D97706', textTransform: 'uppercase' }}>Stage 1: Direct Distraction</div>
                 <div style={{ fontSize: '16px', fontWeight: 800, color: '#0F172A', margin: '4px 0 2px' }}>The Off-Task Event</div>
@@ -228,7 +221,7 @@ export default function CalculatorPage() {
               Aspirants who crack national examinations like IIT JEE, NEET UG, and UPSC CSE rarely rely on willpower alone. Instead, they engineer low-friction study environments using three proven frameworks:
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
                 <strong style={{ fontSize: '13px', color: '#5B5CF0', display: 'block', marginBottom: '4px' }}>1. Physical Distance Shield</strong>
                 <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.5 }}>
@@ -254,32 +247,38 @@ export default function CalculatorPage() {
         </section>
 
         {/* ── STRATEGIC COMPACT APP PROMOTION BANNER ── */}
-        <section className="focus-roi-promo-card" aria-label="LifeTrack Pro Focus Companion">
-          <div style={{ maxWidth: '680px' }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 750, color: '#5B5CF0', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>
-              <span>🚀</span>
-              <span>LIFETRACK PRO FOCUS OS</span>
+        <Card className="rounded-2xl border-indigo-100 bg-gradient-to-br from-indigo-50/60 via-white to-slate-50/80 p-6 sm:p-8 shadow-xs my-8" aria-label="LifeTrack Pro Focus Companion">
+          <div className="cta-banner-content">
+            <div style={{ maxWidth: '640px', minWidth: 0 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+                <span style={{ fontSize: '12px' }}>🚀</span>
+                <Badge variant="secondary" style={{ backgroundColor: 'rgba(238, 242, 255, 0.9)', color: '#4338CA', borderColor: '#E0E7FF', fontSize: '10.5px' }}>
+                  LIFETRACK PRO FOCUS OS
+                </Badge>
+              </div>
+              <h2 style={{ fontSize: '20px', fontWeight: 850, color: '#0F172A', margin: '0 0 6px', letterSpacing: '-0.3px' }}>
+                Eliminate App Distractions &amp; Recover Your Deep Study Time
+              </h2>
+              <p style={{ fontSize: '13.5px', color: '#475569', margin: 0, lineHeight: 1.55 }}>
+                LifeTrack Pro unifies Pomodoro timers, SM-2 flashcard queues, and habit streak shields with freeze protection. Keep your focus intact with acoustic ambient soundscapes and zero advertising.
+              </p>
             </div>
-            <h2 style={{ fontSize: '20px', fontWeight: 850, color: '#0F172A', margin: '0 0 6px', letterSpacing: '-0.3px' }}>
-              Eliminate App Distractions &amp; Recover Your Deep Study Time
-            </h2>
-            <p style={{ fontSize: '13.5px', color: '#475569', margin: 0, lineHeight: 1.55 }}>
-              LifeTrack Pro unifies Pomodoro timers, SM-2 flashcard queues, and habit streak shields with freeze protection. Keep your focus intact with acoustic ambient soundscapes and zero advertising.
-            </p>
-          </div>
 
-          <div style={{ flexShrink: 0 }}>
-            <a
-              href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="focus-roi-promo-btn"
-            >
-              <PlayStoreIcon size={16} />
-              <span>Explore LifeTrack Pro on Play Store →</span>
-            </a>
+            <div className="cta-banner-action" style={{ flexShrink: 0 }}>
+              <Button asChild className="ui-button-brand min-h-[44px] px-6 rounded-xl shadow-sm">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#FFFFFF', textDecoration: 'none' }}
+                >
+                  <PlayStoreIcon size={16} />
+                  <span>Explore LifeTrack Pro on Play Store →</span>
+                </a>
+              </Button>
+            </div>
           </div>
-        </section>
+        </Card>
 
         {/* ── RELATED APP FEATURES INTEGRATION ── */}
         <RelatedAppFeatures
@@ -289,109 +288,97 @@ export default function CalculatorPage() {
         />
 
         {/* ── SIBLING TOOLS ECOSYSTEM ── */}
-        <section style={{ margin: '36px 0', background: '#FFFFFF', borderRadius: '14px', border: '1px solid #E2E8F0', padding: '24px 28px', boxShadow: '0 1px 3px rgba(15, 23, 42, 0.03)' }} aria-label="Connected LifeTrack Pro Tools">
-          <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0F172A', margin: '0 0 8px' }}>
-            Explore More Free Online Study Tools
-          </h2>
-          <p style={{ fontSize: '13px', color: '#64748B', margin: '0 0 16px', lineHeight: 1.55 }}>
-            Each LifeTrack Pro planning tool addresses a distinct stage of your academic workflow:
-          </p>
+        <section style={{ margin: '36px 0' }} aria-label="Connected LifeTrack Pro Tools">
+          <div style={{ marginBottom: '16px' }}>
+            <h2 style={{ fontSize: '18px', fontWeight: 800, color: '#0F172A', margin: '0 0 6px' }}>
+              Explore More Free Online Study Tools
+            </h2>
+            <p style={{ fontSize: '13px', color: '#64748B', margin: 0, lineHeight: 1.55 }}>
+              Each LifeTrack Pro planning tool addresses a distinct stage of your academic workflow:
+            </p>
+          </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '12px' }}>
-            <Link href="/tools/daily-routine-generator" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0', height: '100%', boxSizing: 'border-box' }}>
-                <div style={{ fontSize: '18px', marginBottom: '6px' }}>⏰</div>
-                <strong style={{ fontSize: '13.5px', color: '#0D9488', display: 'block', marginBottom: '4px' }}>Daily Routine Generator →</strong>
-                <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.45 }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+            <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+              <CardHeader style={{ padding: '16px 18px 10px' }}>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }}>⏰</div>
+                <CardTitle style={{ fontSize: '14px', color: '#0D9488', margin: 0 }}>
+                  Daily Routine Generator
+                </CardTitle>
+                <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>
                   Builds today&apos;s complete 24-hour circadian schedule, sleep, school, meals, and focus sprints.
-                </p>
-              </div>
-            </Link>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                <Link href="/tools/daily-routine-generator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#0D9488', textDecoration: 'none' }}>
+                  Open Generator →
+                </Link>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>Circadian</Badge>
+              </CardFooter>
+            </Card>
 
-            <Link href="/tools/study-timetable-generator" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0', height: '100%', boxSizing: 'border-box' }}>
-                <div style={{ fontSize: '18px', marginBottom: '6px' }}>🗓️</div>
-                <strong style={{ fontSize: '13.5px', color: '#5B5CF0', display: 'block', marginBottom: '4px' }}>Study Timetable Generator →</strong>
-                <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.45 }}>
+            <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+              <CardHeader style={{ padding: '16px 18px 10px' }}>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }}>🗓️</div>
+                <CardTitle style={{ fontSize: '14px', color: '#5B5CF0', margin: 0 }}>
+                  Study Timetable Generator
+                </CardTitle>
+                <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>
                   Creates a date-by-date syllabus completion roadmap with PYQ targets and weekly full mocks.
-                </p>
-              </div>
-            </Link>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                <Link href="/tools/study-timetable-generator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#5B5CF0', textDecoration: 'none' }}>
+                  Open Generator →
+                </Link>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>Timetable</Badge>
+              </CardFooter>
+            </Card>
 
-            <Link href="/tools/study-hours-calculator" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0', height: '100%', boxSizing: 'border-box' }}>
-                <div style={{ fontSize: '18px', marginBottom: '6px' }}>📊</div>
-                <strong style={{ fontSize: '13.5px', color: '#D97706', display: 'block', marginBottom: '4px' }}>Study Hours Calculator →</strong>
-                <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.45 }}>
+            <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+              <CardHeader style={{ padding: '16px 18px 10px' }}>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }}>📊</div>
+                <CardTitle style={{ fontSize: '14px', color: '#D97706', margin: 0 }}>
+                  Study Hours Calculator
+                </CardTitle>
+                <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>
                   Computes exact syllabus chapters, 35% revision decay, and daily pace feasibility before exam date.
-                </p>
-              </div>
-            </Link>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                <Link href="/tools/study-hours-calculator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#D97706', textDecoration: 'none' }}>
+                  Open Calculator →
+                </Link>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>Syllabus</Badge>
+              </CardFooter>
+            </Card>
 
-            <Link href="/tools/weekly-study-planner" style={{ textDecoration: 'none' }}>
-              <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0', height: '100%', boxSizing: 'border-box' }}>
-                <div style={{ fontSize: '18px', marginBottom: '6px' }}>📋</div>
-                <strong style={{ fontSize: '13.5px', color: '#6366F1', display: 'block', marginBottom: '4px' }}>Weekly Study Planner →</strong>
-                <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.45 }}>
+            <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+              <CardHeader style={{ padding: '16px 18px 10px' }}>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }}>📋</div>
+                <CardTitle style={{ fontSize: '14px', color: '#6366F1', margin: 0 }}>
+                  Weekly Study Planner
+                </CardTitle>
+                <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>
                   Distributes subjects across a balanced 7-day recurring template with catch-up buffers.
-                </p>
-              </div>
-            </Link>
+                </CardDescription>
+              </CardHeader>
+              <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                <Link href="/tools/weekly-study-planner" style={{ fontSize: '11.5px', fontWeight: 700, color: '#6366F1', textDecoration: 'none' }}>
+                  Open Planner →
+                </Link>
+                <Badge variant="secondary" style={{ fontSize: '10px' }}>7-Day Matrix</Badge>
+              </CardFooter>
+            </Card>
           </div>
         </section>
 
         {/* ── FREQUENTLY ASKED QUESTIONS (FAQ) SECTION ── */}
-        <section style={{ margin: '36px 0 20px', background: '#FFFFFF', borderRadius: '14px', border: '1px solid #E2E8F0', padding: '24px 28px', boxShadow: '0 1px 3px rgba(15, 23, 42, 0.03)' }} aria-label="Frequently Asked Questions">
-          <h2 style={{ fontSize: '19px', fontWeight: 800, color: '#0F172A', margin: '0 0 16px', letterSpacing: '-0.3px' }}>
-            Frequently Asked Questions About Study Efficiency &amp; Distraction Recovery
-          </h2>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                What is the difference between Study Efficiency Calculator, Study Hours Calculator, and Daily Routine Generator?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                The Study Efficiency Calculator measures study time lost to distractions and computes potential recoverable focus hours. The Study Hours Calculator computes total syllabus completion hours and preparation feasibility before exam day. The Daily Routine Generator structures today&apos;s 24-hour circadian schedule (sleep, meals, classes, and focus sprints).
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                What is Attention Residue and why does refocus lag matter?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                Research by Dr. Gloria Mark at UC Irvine shows that when an interruption occurs, attention does not immediately shift back to the primary task. A portion of cognitive bandwidth remains stuck on the distraction (&apos;attention residue&apos;). Even a brief 2-minute phone notification can trigger 5 to 15 minutes of suboptimal resumption lag.
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                How does this calculator estimate recoverable monthly focus time?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                The engine sums direct interruption minutes plus cognitive refocus lag for each occurrence. It then multiplies this total daily loss by your avoidable interruption percentage and expands it across your net monthly study days.
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                Why is 6 hours of high-efficiency study better than 10 hours of fragmented study?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                Frequent context switching exhausts the prefrontal cortex and prevents deep conceptual encoding. Six hours of uninterrupted Pomodoro focus yields significantly higher active recall retention and problem-solving speed than 10 hours broken up by constant notification checks and tab switching.
-              </p>
-            </div>
-
-            <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-              <h3 style={{ fontSize: '14px', fontWeight: 750, color: '#0F172A', margin: '0 0 6px' }}>
-                Can I save and export my focus calculation report?
-              </h3>
-              <p style={{ fontSize: '13px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
-                Yes. You can save multiple calculation scenarios to your browser, copy a structured plain-text audit to your clipboard, or export a high-resolution A4 portrait PDF report with zero login required.
-              </p>
-            </div>
-          </div>
+        <section style={{ margin: '36px 0 20px' }} aria-label="Frequently Asked Questions">
+          <FaqAccordion
+            title="Frequently Asked Questions About Study Efficiency & Distraction Recovery"
+            items={CALCULATOR_FAQS}
+          />
         </section>
       </article>
     </>

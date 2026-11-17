@@ -764,7 +764,7 @@ export default function FocusRoiCalculator() {
                 <div style={{ fontSize: '13px', fontWeight: 800, color: '#0F172A', marginBottom: '12px' }}>
                   ⚙️ Daily Session Structure
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '12px' }}>
+                <div className="focus-roi-cadence-grid">
                   <div>
                     <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '4px' }}>
                       Block Duration:
@@ -910,7 +910,7 @@ export default function FocusRoiCalculator() {
                     </div>
 
                     {cat.enabled && (
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '10px', marginTop: '8px', paddingTop: '8px', borderTop: '1px solid #F1F5F9' }}>
+                      <div className="focus-roi-cat-fields-grid" style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid #F1F5F9' }}>
                         <div>
                           <span style={{ fontSize: '11px', color: '#64748B', display: 'block', marginBottom: '2px', fontWeight: 650 }}>
                             Frequency / Day:

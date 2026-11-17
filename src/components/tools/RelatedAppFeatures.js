@@ -3,6 +3,8 @@ import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { TimerIcon, HabitFlameIcon, TargetIcon, ChartIcon } from '@/components/Icons';
 import { buildPlayStoreUrl, trackAppConversionEvent } from '@/lib/conversionTracking';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 /**
  * RelatedAppFeatures — Strategic App Promotion Section
@@ -137,54 +139,30 @@ export default function RelatedAppFeatures({
       </p>
 
       {/* 4-Feature Responsive Grid */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))',
-          gap: '12px',
-        }}
-      >
+      <div className="related-features-grid">
         {features.map((item) => (
-          <div
+          <Card
             key={item.id}
-            style={{
-              background: 'var(--bg-cream)',
-              padding: '16px',
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--border-subtle)',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              transition: 'border-color 0.15s ease, transform 0.15s ease',
-            }}
+            className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0"
           >
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '7px', color: item.color, fontWeight: 750, fontSize: '13px' }}>
+            <CardHeader style={{ padding: '16px 18px 10px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '6px' }}>
+                <CardTitle style={{ display: 'flex', alignItems: 'center', gap: '7px', color: item.color, fontWeight: 750, fontSize: '13px', margin: 0 }}>
                   {item.icon}
                   <span>{item.name}</span>
-                </div>
-                <span
-                  style={{
-                    fontSize: '9.5px',
-                    fontWeight: 700,
-                    padding: '2px 7px',
-                    borderRadius: '100px',
-                    background: 'rgba(255, 255, 255, 0.8)',
-                    color: item.color,
-                    border: '1px solid var(--border-subtle)',
-                  }}
-                >
+                </CardTitle>
+                <Badge variant="secondary" style={{ fontSize: '10px', color: item.color, backgroundColor: 'rgba(241, 245, 249, 0.9)' }}>
                   {item.badge}
-                </span>
+                </Badge>
               </div>
-
-              <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: '0 0 12px 0', lineHeight: 1.5 }}>
+              <CardDescription style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.5 }}>
                 {item.description}
-              </p>
-            </div>
+              </CardDescription>
+            </CardHeader>
 
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '8px', borderTop: '1px solid var(--border-subtle)', fontSize: '11px' }}>
+            <CardContent style={{ padding: 0 }} />
+
+            <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
               <Link
                 href={item.href}
                 onClick={() => handleFeatureClick(item.name)}
@@ -192,6 +170,7 @@ export default function RelatedAppFeatures({
                   color: item.color,
                   fontWeight: 700,
                   textDecoration: 'none',
+                  fontSize: '11px',
                 }}
               >
                 {item.actionText}
@@ -211,8 +190,8 @@ export default function RelatedAppFeatures({
               >
                 App Feature ↗
               </a>
-            </div>
-          </div>
+            </CardFooter>
+          </Card>
         ))}
       </div>
     </section>

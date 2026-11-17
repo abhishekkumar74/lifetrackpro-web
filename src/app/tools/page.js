@@ -1,4 +1,8 @@
 import Link from 'next/link';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -9,6 +13,21 @@ import {
   TargetIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
+
+const TOOLS_FAQS = [
+  {
+    question: "Are these study tools free to use?",
+    answer: "Yes, all LifeTrack Pro web tools—including the Study Timetable Generator, Daily Routine Planner, and Study Hours Calculator—are 100% free with no login or registration required."
+  },
+  {
+    question: "Can I save or export my generated study timetable?",
+    answer: "Yes, every tool includes an instant one-click 'Copy to Clipboard' feature so you can paste your daily timetable or routine into your notes, calendar, or print it out."
+  },
+  {
+    question: "How does LifeTrack Pro help beyond web tools?",
+    answer: "The free LifeTrack Pro Android mobile app provides an offline-first execution environment: 50/10 Pomodoro timers with 432Hz soundscapes, SM-2 spaced repetition flashcards, habit streak freeze shields, and 24/7 virtual study rooms."
+  }
+];
 
 export const metadata = {
   title: 'Free Online Study Tools & Planners',
@@ -108,32 +127,14 @@ export default function ToolsHubPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Are these study tools free to use?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, all LifeTrack Pro web tools—including the Study Timetable Generator, Daily Routine Planner, and Study Hours Calculator—are 100% free with no login or registration required."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I save or export my generated study timetable?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, every tool includes an instant one-click 'Copy to Clipboard' feature so you can paste your daily timetable or routine into your notes, calendar, or print it out."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does LifeTrack Pro help beyond web tools?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The free LifeTrack Pro Android mobile app provides an offline-first execution environment: 50/10 Pomodoro timers with 432Hz soundscapes, SM-2 spaced repetition flashcards, habit streak freeze shields, and 24/7 virtual study rooms."
-            }
+        "mainEntity": TOOLS_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -221,23 +222,31 @@ export default function ToolsHubPage() {
           {/* Tools Grid */}
           <div className="features-grid" style={{ marginTop: '24px' }}>
             {toolsList.map((tool) => (
-              <div 
-                key={tool.slug} 
-                className="feat-card reveal" 
-                style={{ '--feat-bg': tool.bg }}
+              <Card
+                key={tool.slug}
+                className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0"
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
-                  <div className="feat-icon-box">{tool.icon}</div>
-                  <span style={{ fontSize: '10.5px', fontWeight: 700, padding: '2px 8px', borderRadius: '100px', background: 'var(--bg-cream)', color: 'var(--text-2)', border: '1px solid var(--border-subtle)' }}>
-                    {tool.badge}
-                  </span>
-                </div>
-                <h2 className="feat-title" style={{ fontSize: '16px' }}>{tool.title}</h2>
-                <p className="feat-desc">{tool.desc}</p>
-                <Link href={tool.slug} className="feat-link" aria-label={`Open ${tool.title}`}>
-                  {tool.cta}
-                </Link>
-              </div>
+                <CardHeader style={{ padding: '20px 20px 10px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                    <div className="feat-icon-box" style={{ margin: 0 }}>{tool.icon}</div>
+                    <Badge variant="secondary" style={{ fontSize: '10px' }}>
+                      {tool.badge}
+                    </Badge>
+                  </div>
+                  <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>{tool.title}</CardTitle>
+                  <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
+                    {tool.desc}
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '12px 20px 16px' }}>
+                  <Link href={tool.slug} className="feat-link" style={{ margin: 0 }} aria-label={`Open ${tool.title}`}>
+                    {tool.cta}
+                  </Link>
+                  <Badge variant="outline" style={{ fontSize: '9.5px', color: '#64748B' }}>
+                    Free Utility
+                  </Badge>
+                </CardFooter>
+              </Card>
             ))}
           </div>
 
@@ -267,7 +276,7 @@ export default function ToolsHubPage() {
             <p className="content-card-p">
               Preparing for a specific national competitive examination? Explore our dedicated exam blueprints:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px', marginTop: '14px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3.5">
               <Link href="/exams/jee" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -304,59 +313,38 @@ export default function ToolsHubPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About Online Study Tools
-            </h2>
-
-            <div className="content-card-faq" style={{ marginTop: '14px' }}>
-              <h3 className="content-card-faq-h3">
-                Are these study tools free to use?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Yes, all LifeTrack Pro web tools—including the Study Timetable Generator, Daily Routine Planner, and Study Hours Calculator—are 100% free with no login or registration required.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Can I save or export my generated study timetable?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Yes, every tool includes an instant one-click &apos;Copy to Clipboard&apos; feature so you can paste your daily timetable or routine into your notes, calendar, or print it out.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                How does LifeTrack Pro help beyond web tools?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                The free LifeTrack Pro Android mobile app provides an offline-first execution environment: 50/10 Pomodoro timers with 432Hz soundscapes, SM-2 spaced repetition flashcards, habit streak freeze shields, and 24/7 virtual study rooms.
-              </p>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About Online Study Tools"
+              items={TOOLS_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
-            <a 
-              href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-            >
-              <PlayStoreIcon size={16} />
-              <span>Get LifeTrack Pro Free on Play Store</span>
-            </a>
-            <Link href="/features" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Explore All Features</span>
-            </Link>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Reclaimed Focus Hours</span>
-            </Link>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '28px' }}>
+            <Button asChild className="ui-button-brand min-h-[44px] px-5 rounded-xl shadow-sm">
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
+              >
+                <PlayStoreIcon size={16} />
+                <span>Get LifeTrack Pro Free on Play Store</span>
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="ui-button-outline min-h-[44px] px-5 rounded-xl">
+              <Link href="/features" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+                <SparklesIcon size={16} />
+                <span>Explore All Features</span>
+              </Link>
+            </Button>
+            <Button asChild variant="secondary" className="ui-button-secondary min-h-[44px] px-5 rounded-xl">
+              <Link href="/calculator" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+                <CalculatorIcon size={16} />
+                <span>Calculate Reclaimed Focus Hours</span>
+              </Link>
+            </Button>
           </div>
         </div>
       </article>

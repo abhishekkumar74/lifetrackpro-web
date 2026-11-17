@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -8,6 +9,29 @@ import {
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveHabitTracker from '@/components/InteractiveHabitTracker';
+
+const HABIT_TRACKER_FAQS = [
+  {
+    question: "How does the streak freeze shield work in LifeTrack Pro?",
+    answer: "Every user earns up to 2 streak freeze shields per month through consistent study. If you get sick, travel, or have an essential rest day after a grueling mock test, arming the freeze shield automatically absorbs the missed day, keeping your hard-earned streak count and momentum badge fully intact."
+  },
+  {
+    question: "Why do habit streaks work so well for competitive exam preparation?",
+    answer: "Behavioral economics demonstrates that humans experience loss aversion twice as intensely as equivalent gain. When an unbroken 30-day streak is burning on your device widget, the psychological friction of skipping a study day far outweighs short-term procrastination."
+  },
+  {
+    question: "How do I choose the right daily non-negotiable study habits?",
+    answer: "Keep your non-negotiables to 3-5 high-leverage actions rather than 20 vague resolutions. Top rankers track precise micro-anchors such as: Solve 40 MCQs, Clear due flashcard queue, Complete one 50-minute Pomodoro block, and Review mock errors."
+  },
+  {
+    question: "Does the habit tracker require an active internet connection?",
+    answer: "No. LifeTrack Pro operates on an offline-first architecture. All habit logs, streak calculations, and completion percentages are stored locally on your device with zero cloud latency."
+  },
+  {
+    question: "How does habit tracking connect with Pomodoro timers and flashcards?",
+    answer: "Inside LifeTrack Pro, your habit routines integrate directly with the other study modules. Completing your scheduled Pomodoro focus blocks or clearing your SM-2 flashcard review queue directly marks corresponding daily habit anchors as done."
+  }
+];
 
 export const metadata = {
   title: 'Student Habit Tracker & Streak Freeze Shields',
@@ -103,48 +127,14 @@ export default function HabitTrackerPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How does the streak freeze shield work in LifeTrack Pro?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Every user earns up to 2 streak freeze shields per month through consistent study. If you get sick, travel, or have an essential rest day after a grueling mock test, arming the freeze shield automatically absorbs the missed day, keeping your hard-earned streak count and momentum badge fully intact."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why do habit streaks work so well for competitive exam preparation?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Behavioral economics demonstrates that humans experience loss aversion twice as intensely as equivalent gain. When an unbroken 30-day streak is burning on your device widget, the psychological friction of skipping a study day far outweighs short-term procrastination."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I choose the right daily non-negotiable study habits?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Keep your non-negotiables to 3-5 high-leverage actions rather than 20 vague resolutions. Top rankers track precise micro-anchors such as: Solve 40 MCQs, Clear due flashcard queue, Complete one 50-minute Pomodoro block, and Review mock errors."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does the habit tracker require an active internet connection?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. LifeTrack Pro operates on an offline-first architecture. All habit logs, streak calculations, and completion percentages are stored locally on your device with zero cloud latency."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does habit tracking connect with Pomodoro timers and flashcards?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Inside LifeTrack Pro, your habit routines integrate directly with the other study modules. Completing your scheduled Pomodoro focus blocks or clearing your SM-2 flashcard review queue directly marks corresponding daily habit anchors as done."
-            }
+        "mainEntity": HABIT_TRACKER_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -221,7 +211,7 @@ export default function HabitTrackerPage() {
             <p className="content-card-p">
               Top rankers use LifeTrack Pro to anchor distinct daily rituals calibrated to their target exam:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
               <Link href="/exams/jee" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -265,7 +255,7 @@ export default function HabitTrackerPage() {
             <p className="content-card-p">
               In <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>LifeTrack Pro</Link>, your habits connect natively with your other productivity tools so you never have to juggle separate apps:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
               <Link href="/features/pomodoro-timer" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--primary)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -313,39 +303,12 @@ export default function HabitTrackerPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About Study Habit Tracking
-            </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '14px' }}>
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  How does the streak freeze shield work in LifeTrack Pro?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Every user earns up to 2 streak freeze shields per month through consistent study. If you get sick, travel, or have an essential rest day after a grueling mock test, arming the freeze shield automatically absorbs the missed day, keeping your hard-earned streak count and momentum badge fully intact.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Why do habit streaks work so well for competitive exam aspirants?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Behavioral economics demonstrates that humans experience loss aversion twice as intensely as equivalent gain. When an unbroken 30-day streak is burning on your device widget, the psychological friction of skipping a study day far outweighs short-term procrastination.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Does the habit tracker require an active internet connection?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  No. LifeTrack Pro operates on an offline-first architecture. All habit logs, streak calculations, and completion percentages are stored locally on your device with zero cloud latency.
-                </p>
-              </div>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About Study Habit Tracking"
+              items={HABIT_TRACKER_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import AiStudyPlanner from '@/components/tools/AiStudyPlanner';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -8,6 +11,29 @@ import {
   SparklesIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
+
+const STUDY_TIMETABLE_FAQS = [
+  {
+    question: "How does a Study Timetable differ from a Daily Routine?",
+    answer: "A Daily Routine manages your complete 24-hour lifestyle: wake-up times, sleep hygiene, school/coaching schedules, meals, exercise, and leisure, creating available study windows. The Study Timetable Generator operates exclusively inside those study windows: it maps specific subjects (Physics, Chemistry, Math, GS), chapters, weak-topic weighting, timed PYQs, and SM-2 active recall."
+  },
+  {
+    question: "How does the AI prioritize weak subjects in my study timetable?",
+    answer: "When you mark a subject as Weak, the algorithm applies a 1.4x priority multiplier and places it in your earliest peak cognitive window. This ensures high-difficulty concept comprehension happens when mental alertness and willpower are at their maximum."
+  },
+  {
+    question: "Can I import study hours directly from my Daily Routine?",
+    answer: "Yes! In Step 2, click 'Import from Daily Routine Planner' to instantly pull available study blocks created in our Daily Routine tool. Your sleep, meal breaks, and coaching commitments remain 100% protected while academic topics are assigned to open focus windows."
+  },
+  {
+    question: "Can I export my study timetable to Google Calendar or Apple Calendar?",
+    answer: "Yes. Clicking 'Export to iCal (.ics)' downloads a standard calendar file that imports directly into Google Calendar, Apple Calendar, Outlook, and Notion Calendar with pre-configured session notifications."
+  },
+  {
+    question: "What should I do when I miss a scheduled study block?",
+    answer: "LifeTrack Pro includes Adaptive Rescheduling: instead of feeling guilty and discarding the whole plan, click 'Find Free Slot' on any missed block to automatically locate an open review buffer later in the day."
+  }
+];
 
 export const metadata = {
   title: 'Free Study Timetable Generator for Students | AI Subject & Exam Planner',
@@ -109,48 +135,14 @@ export default function StudyTimetableGeneratorPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How does a Study Timetable differ from a Daily Routine?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A Daily Routine manages your complete 24-hour lifestyle: wake-up times, sleep hygiene, school/coaching schedules, meals, exercise, and leisure, creating available study windows. The Study Timetable Generator operates exclusively inside those study windows: it maps specific subjects (Physics, Chemistry, Math, GS), chapters, weak-topic weighting, timed PYQs, and SM-2 active recall."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does the AI prioritize weak subjects in my study timetable?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "When you mark a subject as Weak, the algorithm applies a 1.4x priority multiplier and places it in your earliest peak cognitive window. This ensures high-difficulty concept comprehension happens when mental alertness and willpower are at their maximum."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I import study hours directly from my Daily Routine?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes! In Step 2, click 'Import from Daily Routine Planner' to instantly pull available study blocks created in our Daily Routine tool. Your sleep, meal breaks, and coaching commitments remain 100% protected while academic topics are assigned to open focus windows."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I export my study timetable to Google Calendar or Apple Calendar?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Clicking 'Export to iCal (.ics)' downloads a standard calendar file that imports directly into Google Calendar, Apple Calendar, Outlook, and Notion Calendar with pre-configured session notifications."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What should I do when I miss a scheduled study block?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "LifeTrack Pro includes Adaptive Rescheduling: instead of feeling guilty and discarding the whole plan, click 'Find Free Slot' on any missed block to automatically locate an open review buffer later in the day."
-            }
+        "mainEntity": STUDY_TIMETABLE_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -196,7 +188,7 @@ export default function StudyTimetableGeneratorPage() {
               <p className="planner-card-subtitle" style={{ fontSize: '14px', marginBottom: '16px' }}>
                 Traditional study schedules fail because they treat all study hours equally. A top-tier academic timetable relies on cognitive science principles to maximize syllabus retention and exam problem velocity:
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--planner-border)' }}>
                   <strong style={{ fontSize: '13.5px', color: 'var(--planner-indigo)', display: 'block', marginBottom: '4px' }}>
                     1. Weighted Subject Interleaving
@@ -243,7 +235,7 @@ export default function StudyTimetableGeneratorPage() {
               <p className="planner-card-subtitle" style={{ fontSize: '14px', marginBottom: '16px' }}>
                 Different competitive examinations require distinct cognitive time-blocking:
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '14px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div style={{ background: '#F8FAFC', padding: '16px', borderRadius: '12px', border: '1px solid var(--planner-border)' }}>
                   <strong style={{ fontSize: '14px', color: '#2563EB', display: 'block', marginBottom: '6px' }}>IIT JEE &amp; GATE Engineering</strong>
                   <p style={{ fontSize: '13px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.55 }}>
@@ -285,7 +277,7 @@ export default function StudyTimetableGeneratorPage() {
               <p style={{ fontSize: '13.5px', color: '#334155', lineHeight: 1.6, margin: '0 0 14px' }}>
                 For the best results, use our two planners as complementary partners:
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '12px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div style={{ padding: '12px 14px', background: '#FFFFFF', borderRadius: '10px', border: '1px solid #E0F2FE' }}>
                   <strong style={{ fontSize: '13px', color: '#0284C7', display: 'block', marginBottom: '4px' }}>
                     Step 1: Set Lifestyle in Daily Routine Generator
@@ -313,7 +305,7 @@ export default function StudyTimetableGeneratorPage() {
               <p className="planner-card-subtitle" style={{ fontSize: '14px', marginBottom: '16px' }}>
                 A timetable is only as powerful as your daily execution. Connect your schedule directly to specialized tools in the LifeTrack Pro ecosystem:
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                 <Link href="/features/pomodoro-timer" style={{ textDecoration: 'none' }}>
                   <div style={{ background: '#F8FAFC', padding: '16px', borderRadius: '12px', border: '1px solid var(--planner-border)', height: '100%', transition: 'all 0.15s' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--planner-indigo)', fontWeight: 700, fontSize: '14px', marginBottom: '6px' }}>
@@ -357,90 +349,80 @@ export default function StudyTimetableGeneratorPage() {
               <p className="planner-card-subtitle" style={{ fontSize: '14px', marginBottom: '16px' }}>
                 Complementary academic calculators to optimize your daily preparation:
               </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
-                <Link href="/tools/daily-routine-generator" style={{ textDecoration: 'none' }}>
-                  <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                    <strong style={{ fontSize: '13.5px', color: 'var(--emerald)', display: 'block', marginBottom: '4px' }}>Daily Routine Generator →</strong>
-                    <p style={{ fontSize: '12px', color: 'var(--planner-text-secondary)', margin: 0 }}>24-hour lifestyle and sleep schedule builder for students.</p>
-                  </div>
-                </Link>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                  <CardHeader style={{ padding: '16px 18px 10px' }}>
+                    <div style={{ fontSize: '20px', marginBottom: '8px' }}>⏰</div>
+                    <CardTitle style={{ fontSize: '13.5px', color: 'var(--emerald)', margin: 0 }}>Daily Routine Generator</CardTitle>
+                    <CardDescription style={{ fontSize: '11px', color: 'var(--planner-text-secondary)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                      24-hour lifestyle and sleep schedule builder for students.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                    <Link href="/tools/daily-routine-generator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--emerald)', textDecoration: 'none' }}>
+                      Open Tool →
+                    </Link>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Circadian</Badge>
+                  </CardFooter>
+                </Card>
 
-                <Link href="/tools/study-hours-calculator" style={{ textDecoration: 'none' }}>
-                  <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                    <strong style={{ fontSize: '13.5px', color: 'var(--sky)', display: 'block', marginBottom: '4px' }}>Study Hours Calculator →</strong>
-                    <p style={{ fontSize: '12px', color: 'var(--planner-text-secondary)', margin: 0 }}>Calculate daily hours needed to complete your syllabus.</p>
-                  </div>
-                </Link>
+                <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                  <CardHeader style={{ padding: '16px 18px 10px' }}>
+                    <div style={{ fontSize: '20px', marginBottom: '8px' }}>📊</div>
+                    <CardTitle style={{ fontSize: '13.5px', color: 'var(--sky)', margin: 0 }}>Study Hours Calculator</CardTitle>
+                    <CardDescription style={{ fontSize: '11px', color: 'var(--planner-text-secondary)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                      Calculate daily hours needed to complete your syllabus.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                    <Link href="/tools/study-hours-calculator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--sky)', textDecoration: 'none' }}>
+                      Open Tool →
+                    </Link>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Syllabus</Badge>
+                  </CardFooter>
+                </Card>
 
-                <Link href="/tools/focus-time-calculator" style={{ textDecoration: 'none' }}>
-                  <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                    <strong style={{ fontSize: '13.5px', color: 'var(--rose)', display: 'block', marginBottom: '4px' }}>Focus Time Calculator →</strong>
-                    <p style={{ fontSize: '12px', color: 'var(--planner-text-secondary)', margin: 0 }}>Measure true deep work hours vs distraction residue.</p>
-                  </div>
-                </Link>
+                <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                  <CardHeader style={{ padding: '16px 18px 10px' }}>
+                    <div style={{ fontSize: '20px', marginBottom: '8px' }}>🧠</div>
+                    <CardTitle style={{ fontSize: '13.5px', color: 'var(--rose)', margin: 0 }}>Focus Time Calculator</CardTitle>
+                    <CardDescription style={{ fontSize: '11px', color: 'var(--planner-text-secondary)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                      Measure true deep work hours vs distraction residue.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                    <Link href="/tools/focus-time-calculator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--rose)', textDecoration: 'none' }}>
+                      Open Tool →
+                    </Link>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Attention</Badge>
+                  </CardFooter>
+                </Card>
 
-                <Link href="/tools/weekly-study-planner" style={{ textDecoration: 'none' }}>
-                  <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                    <strong style={{ fontSize: '13.5px', color: 'var(--planner-indigo)', display: 'block', marginBottom: '4px' }}>Weekly Study Planner →</strong>
-                    <p style={{ fontSize: '12px', color: 'var(--planner-text-secondary)', margin: 0 }}>Balance subjects across a structured 7-day template.</p>
-                  </div>
-                </Link>
+                <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                  <CardHeader style={{ padding: '16px 18px 10px' }}>
+                    <div style={{ fontSize: '20px', marginBottom: '8px' }}>📋</div>
+                    <CardTitle style={{ fontSize: '13.5px', color: 'var(--planner-indigo)', margin: 0 }}>Weekly Study Planner</CardTitle>
+                    <CardDescription style={{ fontSize: '11px', color: 'var(--planner-text-secondary)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                      Balance subjects across a structured 7-day template.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                    <Link href="/tools/weekly-study-planner" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--planner-indigo)', textDecoration: 'none' }}>
+                      Open Tool →
+                    </Link>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>7-Day Plan</Badge>
+                  </CardFooter>
+                </Card>
               </div>
             </div>
 
             {/* Frequently Asked Questions */}
-            <div className="planner-card">
-              <h2 className="planner-card-title" style={{ fontSize: '20px', marginBottom: '16px' }}>
-                Frequently Asked Questions About Study Timetables
-              </h2>
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: 750, color: 'var(--planner-text-primary)', margin: '0 0 6px' }}>
-                    How does a Study Timetable differ from a Daily Routine?
-                  </h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.55 }}>
-                    A Daily Routine manages your complete 24-hour lifestyle: wake-up times, sleep hygiene, school/coaching schedules, meals, exercise, and leisure, creating available study windows. The Study Timetable Generator operates exclusively inside those study windows: it maps specific subjects (Physics, Chemistry, Math, GS), chapters, weak-topic weighting, timed PYQs, and SM-2 active recall.
-                  </p>
-                </div>
-
-                <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: 750, color: 'var(--planner-text-primary)', margin: '0 0 6px' }}>
-                    How does the AI prioritize weak subjects in my study timetable?
-                  </h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.55 }}>
-                    When you mark a subject as Weak, the algorithm applies a 1.4x priority multiplier and places it in your earliest peak cognitive window. This ensures high-difficulty concept comprehension happens when mental alertness and willpower are at their maximum.
-                  </p>
-                </div>
-
-                <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: 750, color: 'var(--planner-text-primary)', margin: '0 0 6px' }}>
-                    Can I import study hours directly from my Daily Routine?
-                  </h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.55 }}>
-                    Yes! In Step 2, click &apos;Import from Daily Routine Planner&apos; to instantly pull available study blocks created in our Daily Routine tool. Your sleep, meal breaks, and coaching commitments remain 100% protected while academic topics are assigned to open focus windows.
-                  </p>
-                </div>
-
-                <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: 750, color: 'var(--planner-text-primary)', margin: '0 0 6px' }}>
-                    Can I export my study timetable to Google Calendar or Apple Calendar?
-                  </h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.55 }}>
-                    Yes! Clicking &apos;Export to iCal (.ics)&apos; instantly downloads a standard calendar file that imports directly into Google Calendar, Apple Calendar, Outlook, and Notion Calendar with pre-configured session notifications.
-                  </p>
-                </div>
-
-                <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid var(--planner-border)' }}>
-                  <h3 style={{ fontSize: '15px', fontWeight: 750, color: 'var(--planner-text-primary)', margin: '0 0 6px' }}>
-                    What should I do when I miss a scheduled study block?
-                  </h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.55 }}>
-                    LifeTrack Pro features Adaptive Rescheduling: instead of feeling guilty and abandoning your schedule, click &apos;Find Free Slot&apos; on any missed session to automatically locate an open review buffer later in your evening.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <section aria-label="Frequently Asked Questions">
+              <FaqAccordion
+                title="Frequently Asked Questions About Study Timetables"
+                items={STUDY_TIMETABLE_FAQS}
+              />
+            </section>
 
             {/* Bottom CTAs */}
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '12px' }}>

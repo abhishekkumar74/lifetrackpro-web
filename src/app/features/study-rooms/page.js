@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -10,6 +11,33 @@ import {
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveStudyRooms from '@/components/InteractiveStudyRooms';
+
+const STUDY_ROOMS_FAQS = [
+  {
+    question: "What is a virtual study room and how does it help students focus?",
+    answer: "A virtual study room is an online, structured focus environment where students work independently alongside each other. By synchronizing study and break intervals with focused peers, students experience quiet social accountability that overcomes procrastination and isolation without the interruptions of casual group chats."
+  },
+  {
+    question: "What is body doubling and why is it effective for studying?",
+    answer: "Body doubling is a recognized productivity and focus technique where the presence of another focused individual keeps you anchored to your task. It is widely used by students and individuals with ADHD to lower task resistance, reduce boredom, eliminate doomscrolling, and maintain sustained concentration during difficult academic sessions."
+  },
+  {
+    question: "Do I need a camera or microphone to use LifeTrack Pro study rooms?",
+    answer: "No. LifeTrack Pro is 100% camera-free and microphone-free. We deliberately avoid video feeds to protect student privacy, reduce mobile data and battery drain, and prevent 'Zoom fatigue' and performance anxiety. You receive all the accountability of a university library without feeling watched."
+  },
+  {
+    question: "How do synchronized Pomodoro timers work in focus sessions?",
+    answer: "Focus sessions use synchronized intervals (such as 25/5 or 50/10 minute blocks). Starting and finishing intervals alongside study themes establishes structured study rhythms, encouraging deep immersion followed by timely mental recovery."
+  },
+  {
+    question: "Can I use virtual study rooms for competitive exams like JEE, NEET, and UPSC?",
+    answer: "Yes. LifeTrack Pro offers exam-themed rooms tailored for rigorous preparations including IIT JEE numerical problem solving, NEET biology active recall, and UPSC GS answer writing sprints."
+  },
+  {
+    question: "Does the interactive study room widget on this web page show real-time user data?",
+    answer: "The interactive web widget is a client-side simulation demonstrating room themes, soundscapes (such as 432Hz binaural beats and rain), and synchronized countdown clocks. The LifeTrack Pro mobile application provides the actual distraction-free focus environment with background audio persistence on your device."
+  }
+];
 
 export const metadata = {
   title: 'Online Study Groups & Virtual Study Rooms',
@@ -109,56 +137,14 @@ export default function StudyRoomsPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is a virtual study room and how does it help students focus?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A virtual study room is an online, structured focus environment where students work independently alongside each other. By synchronizing study and break intervals with focused peers, students experience quiet social accountability that overcomes procrastination and isolation without the interruptions of casual group chats."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is body doubling and why is it effective for studying?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Body doubling is a recognized productivity and focus technique where the presence of another focused individual keeps you anchored to your task. It is widely used by students and individuals with ADHD to lower task resistance, reduce boredom, eliminate doomscrolling, and maintain sustained concentration during difficult academic sessions."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do I need a camera or microphone to use LifeTrack Pro study rooms?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. LifeTrack Pro is 100% camera-free and microphone-free. We deliberately avoid video feeds to protect student privacy, reduce mobile data and battery drain, and prevent 'Zoom fatigue' and performance anxiety. You receive all the accountability of a university library without feeling watched."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do synchronized Pomodoro timers work in focus sessions?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Focus sessions use synchronized intervals (such as 25/5 or 50/10 minute blocks). Starting and finishing intervals alongside study themes establishes structured study rhythms, encouraging deep immersion followed by timely mental recovery."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use virtual study rooms for competitive exams like JEE, NEET, and UPSC?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. LifeTrack Pro offers exam-themed rooms tailored for rigorous preparations including IIT JEE numerical problem solving, NEET biology active recall, and UPSC GS answer writing sprints."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does the interactive study room widget on this web page show real-time user data?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The interactive web widget is a client-side simulation demonstrating room themes, soundscapes (such as 432Hz binaural beats and rain), and synchronized countdown clocks. The LifeTrack Pro mobile application provides the actual distraction-free focus environment with background audio persistence on your device."
-            }
+        "mainEntity": STUDY_ROOMS_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -292,7 +278,7 @@ export default function StudyRoomsPage() {
             <p className="content-card-p">
               Competitive exam preparation requires rigorous, multi-hour focus blocks. LifeTrack Pro study rooms align with the demanding preparation schedules of India&apos;s toughest examinations:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px', marginTop: '14px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3.5">
               <div style={{ background: 'var(--bg-cream)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', fontWeight: 700, fontSize: '14px', marginBottom: '6px' }}>
                   <TargetIcon size={16} />
@@ -342,7 +328,7 @@ export default function StudyRoomsPage() {
             <p className="content-card-p">
               Virtual study rooms are tightly integrated with the rest of the <Link href="/" style={{ color: 'var(--primary)', fontWeight: 600 }}>LifeTrack Pro</Link> ecosystem. Everything you do works together to build lasting academic discipline:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
               <Link href="/features/pomodoro-timer" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', height: '100%' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--rose)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -390,66 +376,12 @@ export default function StudyRoomsPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About Virtual Study Rooms &amp; Online Groups
-            </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginTop: '14px' }}>
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  What is a virtual study room and how does it help students focus?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  A virtual study room is an online, structured focus environment where students work independently alongside each other. By synchronizing study and break intervals with focused peers, students experience quiet social accountability that overcomes procrastination and isolation without the interruptions of casual group chats.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  What is body doubling and why is it effective for studying?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Body doubling is a recognized productivity and focus technique where the presence of another focused individual keeps you anchored to your task. It is widely used by students and individuals with ADHD to lower task resistance, reduce boredom, eliminate doomscrolling, and maintain sustained concentration during difficult academic sessions.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Do I need a camera or microphone to use LifeTrack Pro study rooms?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  No. LifeTrack Pro is 100% camera-free and microphone-free. We deliberately avoid video feeds to protect student privacy, reduce mobile data and battery drain, and prevent &apos;Zoom fatigue&apos; and performance anxiety. You receive all the accountability of a university library without feeling watched.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  How do synchronized Pomodoro timers work in focus sessions?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Focus sessions use synchronized intervals (such as 25/5 or 50/10 minute blocks). Starting and finishing intervals alongside study themes establishes structured study rhythms, encouraging deep immersion followed by timely mental recovery.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Can I use virtual study rooms for competitive exams like JEE, NEET, and UPSC?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  Yes. LifeTrack Pro offers exam-themed rooms tailored for rigorous preparations including IIT JEE numerical problem solving, NEET biology active recall, and UPSC GS answer writing sprints.
-                </p>
-              </div>
-
-              <div className="content-card-faq" style={{ margin: 0 }}>
-                <h3 className="content-card-faq-h3">
-                  Does the interactive study room widget on this web page show real-time user data?
-                </h3>
-                <p className="content-card-p" style={{ marginBottom: 0 }}>
-                  The interactive web widget is a client-side simulation demonstrating room themes, soundscapes (such as 432Hz binaural beats and rain), and synchronized countdown clocks. The LifeTrack Pro mobile application provides the actual distraction-free focus environment with background audio persistence on your device.
-                </p>
-              </div>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About Virtual Study Rooms & Online Groups"
+              items={STUDY_ROOMS_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

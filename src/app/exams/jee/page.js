@@ -1,10 +1,30 @@
 import Link from 'next/link';
+import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   CalculatorIcon, 
   SparklesIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 import InteractiveJeePlanner from '@/components/InteractiveJeePlanner';
+
+const JEE_FAQS = [
+  {
+    question: "How does SM-2 spaced repetition help with JEE formulas?",
+    answer: "JEE Physics and Mathematics require instant recall of complex derivations, coordinate geometry identities, and calculus limits. The SM-2 algorithm dynamically calculates review intervals, showing tricky formulas right before you forget them, ensuring lightning-fast recall during exam conditions."
+  },
+  {
+    question: "Why are 90-minute focus blocks recommended for JEE Advanced?",
+    answer: "JEE Advanced problems frequently blend multiple concepts (such as rotational dynamics combined with electromagnetic induction). Solving multi-step numericals requires 15 minutes simply to build working context. A 90-minute ultradian sprint allows uninterrupted depth, matching official exam session stamina."
+  },
+  {
+    question: "How do streak freeze shields protect consistency during mock test weeks?",
+    answer: "On days when you complete a grueling 6-hour full-length mock test, completing regular daily checklists can feel overwhelming. Arming a streak freeze shield absorbs the rest day and keeps your multi-week consistency streak badge active."
+  },
+  {
+    question: "Does LifeTrack Pro work offline in hostels or coaching libraries?",
+    answer: "Yes. LifeTrack Pro is built offline-first. All flashcard reviews, Pomodoro timer sessions, and habit checks are logged locally on your smartphone with zero internet lag."
+  }
+];
 
 export const metadata = {
   title: 'IIT JEE Study Planner & Formula Recall',
@@ -104,40 +124,14 @@ export default function JeeExamPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How does SM-2 spaced repetition help with JEE formulas?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "JEE Physics and Mathematics require instant recall of complex derivations, coordinate geometry identities, and calculus limits. The SM-2 algorithm dynamically calculates review intervals, showing tricky formulas right before you forget them, ensuring lightning-fast recall during exam conditions."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Why are 90-minute focus blocks recommended for JEE Advanced?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "JEE Advanced problems frequently blend multiple concepts (such as rotational dynamics combined with electromagnetic induction). Solving multi-step numericals requires 15 minutes simply to build working context. A 90-minute ultradian sprint allows uninterrupted depth, matching official exam session stamina."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do streak freeze shields protect consistency during mock test weeks?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "On days when you complete a grueling 6-hour full-length mock test, completing regular daily checklists can feel overwhelming. Arming a streak freeze shield absorbs the rest day and keeps your multi-week consistency streak badge active."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does LifeTrack Pro work offline in hostels or coaching libraries?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. LifeTrack Pro is built offline-first. All flashcard reviews, Pomodoro timer sessions, and habit checks are logged locally on your smartphone with zero internet lag."
-            }
+        "mainEntity": JEE_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -221,7 +215,7 @@ export default function JeeExamPage() {
             <p className="content-card-p">
               LifeTrack Pro also provides dedicated frameworks tailored for other competitive examinations:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
               <Link href="/exams/neet" style={{ textDecoration: 'none' }}>
                 <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                   <div style={{ color: 'var(--emerald)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
@@ -258,47 +252,12 @@ export default function JeeExamPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About IIT JEE Preparation
-            </h2>
-
-            <div className="content-card-faq" style={{ marginTop: '14px' }}>
-              <h3 className="content-card-faq-h3">
-                How does SM-2 spaced repetition help with JEE formulas?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                JEE Physics and Mathematics require instant recall of complex derivations, coordinate geometry identities, and calculus limits. The SM-2 algorithm dynamically calculates review intervals, showing tricky formulas right before you forget them, ensuring lightning-fast recall during exam conditions.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Why are 90-minute focus blocks recommended for JEE Advanced?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                JEE Advanced problems frequently blend multiple concepts (such as rotational dynamics combined with electromagnetic induction). Solving multi-step numericals requires 15 minutes simply to build working context. A 90-minute ultradian sprint allows uninterrupted depth, matching official exam session stamina.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                How do streak freeze shields protect consistency during mock test weeks?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                On days when you complete a grueling 6-hour full-length mock test, completing regular daily checklists can feel overwhelming. Arming a streak freeze shield absorbs the rest day and keeps your multi-week consistency streak badge active.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Does LifeTrack Pro work offline in hostels or coaching libraries?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Yes. LifeTrack Pro is built offline-first. All flashcard reviews, Pomodoro timer sessions, and habit checks are logged locally on your smartphone with zero internet lag.
-              </p>
-            </div>
-          </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About IIT JEE Preparation"
+              items={JEE_FAQS}
+            />
+          </section>
 
           {/* Bottom CTAs */}
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>

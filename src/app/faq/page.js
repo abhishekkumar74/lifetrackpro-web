@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import FaqAccordion from '@/components/FaqAccordion';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { ALL_FAQS } from '@/data/faqs';
 import { 
   TimerIcon, 
@@ -159,50 +162,86 @@ export default function FaqPage() {
             <p className="content-card-p">
               LifeTrack Pro unifies the four critical pillars of academic productivity. Dive deeper into the science and mechanics behind each tool:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '14px' }}>
-              <Link href="/features/pomodoro-timer" style={{ textDecoration: 'none' }}>
-                <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', height: '100%' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--rose)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
-                    <TimerIcon size={15} /> Pomodoro Timer
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-4">
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', marginBottom: '6px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--rose)', fontWeight: 700, fontSize: '13px' }}>
+                      <TimerIcon size={16} />
+                      <CardTitle style={{ fontSize: '13px', color: 'var(--rose)', margin: 0 }}>Pomodoro Timer</CardTitle>
+                    </div>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Binaural</Badge>
                   </div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: '1.45' }}>
+                  <CardDescription style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                     Configurable 25/5 and 50/10 focus cadences with 432Hz binaural audio and zero ads.
-                  </p>
-                </div>
-              </Link>
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/features/pomodoro-timer" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--rose)', textDecoration: 'none' }}>
+                    Explore Timer →
+                  </Link>
+                </CardFooter>
+              </Card>
 
-              <Link href="/features/spaced-repetition" style={{ textDecoration: 'none' }}>
-                <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', height: '100%' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--emerald)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
-                    <CardsIcon size={15} /> SM-2 Flashcards
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', marginBottom: '6px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--emerald)', fontWeight: 700, fontSize: '13px' }}>
+                      <CardsIcon size={16} />
+                      <CardTitle style={{ fontSize: '13px', color: 'var(--emerald)', margin: 0 }}>SM-2 Flashcards</CardTitle>
+                    </div>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>SuperMemo</Badge>
                   </div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: '1.45' }}>
+                  <CardDescription style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                     Active recall algorithm scheduling card reviews right before memory decay occurs.
-                  </p>
-                </div>
-              </Link>
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/features/spaced-repetition" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--emerald)', textDecoration: 'none' }}>
+                    Explore Flashcards →
+                  </Link>
+                </CardFooter>
+              </Card>
 
-              <Link href="/features/habit-tracker" style={{ textDecoration: 'none' }}>
-                <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', height: '100%' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--amber)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
-                    <HabitFlameIcon size={15} /> Habit Streak Shields
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', marginBottom: '6px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--amber)', fontWeight: 700, fontSize: '13px' }}>
+                      <HabitFlameIcon size={16} />
+                      <CardTitle style={{ fontSize: '13px', color: 'var(--amber)', margin: 0 }}>Habit Streak Shields</CardTitle>
+                    </div>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Shields</Badge>
                   </div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: '1.45' }}>
+                  <CardDescription style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                     Loss-aversion streak tracking protected by earned freeze shields for missed days.
-                  </p>
-                </div>
-              </Link>
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/features/habit-tracker" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--amber)', textDecoration: 'none' }}>
+                    Explore Habits →
+                  </Link>
+                </CardFooter>
+              </Card>
 
-              <Link href="/features/study-rooms" style={{ textDecoration: 'none' }}>
-                <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)', height: '100%' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--sky)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
-                    <HeadphonesIcon size={15} /> Silent Study Rooms
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', marginBottom: '6px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--sky)', fontWeight: 700, fontSize: '13px' }}>
+                      <HeadphonesIcon size={16} />
+                      <CardTitle style={{ fontSize: '13px', color: 'var(--sky)', margin: 0 }}>Silent Study Rooms</CardTitle>
+                    </div>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Multiplayer</Badge>
                   </div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: '1.45' }}>
+                  <CardDescription style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
                     Camera-free virtual body doubling with synchronized Pomodoro blocks and ambient audio.
-                  </p>
-                </div>
-              </Link>
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/features/study-rooms" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--sky)', textDecoration: 'none' }}>
+                    Explore Rooms →
+                  </Link>
+                </CardFooter>
+              </Card>
             </div>
           </div>
 
@@ -214,76 +253,104 @@ export default function FaqPage() {
             <p className="content-card-p">
               Whether you are preparing for medical, engineering, or civil services competitive examinations, see how LifeTrack Pro structures your daily study schedule:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px', marginTop: '14px' }}>
-              <div style={{ background: 'var(--bg-cream)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', fontWeight: 700, fontSize: '14px', marginBottom: '6px' }}>
-                  <TargetIcon size={16} />
-                  <span>IIT JEE Study Routine</span>
-                </div>
-                <p style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: '1.5', marginBottom: '10px' }}>
-                  Structure 90-minute numerical sprints for Mechanics, Calculus, and Organic Chemistry, and test formula recall.
-                </p>
-                <Link href="/exams/jee" style={{ color: 'var(--primary)', fontWeight: 600, fontSize: '12px', textDecoration: 'none' }}>
-                  Explore IIT JEE Planner →
-                </Link>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-4">
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '18px 20px 10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', fontWeight: 700, fontSize: '13.5px' }}>
+                      <TargetIcon size={16} />
+                      <CardTitle style={{ fontSize: '13.5px', color: 'var(--primary)', margin: 0 }}>IIT JEE Study Routine</CardTitle>
+                    </div>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Engineering</Badge>
+                  </div>
+                  <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.5 }}>
+                    Structure 90-minute numerical sprints for Mechanics, Calculus, and Organic Chemistry, and test formula recall.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+                  <Link href="/exams/jee" style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '11.5px', textDecoration: 'none' }}>
+                    Explore IIT JEE Planner →
+                  </Link>
+                </CardFooter>
+              </Card>
 
-              <div style={{ background: 'var(--bg-cream)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--emerald)', fontWeight: 700, fontSize: '14px', marginBottom: '6px' }}>
-                  <CardsIcon size={16} />
-                  <span>NEET Medical Timetable</span>
-                </div>
-                <p style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: '1.5', marginBottom: '10px' }}>
-                  Master NCERT Biology line-by-line active recall and review reaction mechanisms with automated SM-2 intervals.
-                </p>
-                <Link href="/exams/neet" style={{ color: 'var(--emerald)', fontWeight: 600, fontSize: '12px', textDecoration: 'none' }}>
-                  Explore NEET Routine →
-                </Link>
-              </div>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '18px 20px 10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--emerald)', fontWeight: 700, fontSize: '13.5px' }}>
+                      <CardsIcon size={16} />
+                      <CardTitle style={{ fontSize: '13.5px', color: 'var(--emerald)', margin: 0 }}>NEET Medical Timetable</CardTitle>
+                    </div>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Medical</Badge>
+                  </div>
+                  <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.5 }}>
+                    Master NCERT Biology line-by-line active recall and review reaction mechanisms with automated SM-2 intervals.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+                  <Link href="/exams/neet" style={{ color: 'var(--emerald)', fontWeight: 700, fontSize: '11.5px', textDecoration: 'none' }}>
+                    Explore NEET Routine →
+                  </Link>
+                </CardFooter>
+              </Card>
 
-              <div style={{ background: 'var(--bg-cream)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--amber)', fontWeight: 700, fontSize: '14px', marginBottom: '6px' }}>
-                  <TimerIcon size={16} />
-                  <span>UPSC Civil Services Hub</span>
-                </div>
-                <p style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: '1.5', marginBottom: '10px' }}>
-                  Structure 8-hour daily preparation across GS Papers 1–4, schedule timed Mains answer writing sprints, and retain Constitutional articles.
-                </p>
-                <Link href="/exams/upsc" style={{ color: 'var(--amber)', fontWeight: 600, fontSize: '12px', textDecoration: 'none' }}>
-                  Explore UPSC Focus Hub →
-                </Link>
-              </div>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '18px 20px 10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--amber)', fontWeight: 700, fontSize: '13.5px' }}>
+                      <TimerIcon size={16} />
+                      <CardTitle style={{ fontSize: '13.5px', color: 'var(--amber)', margin: 0 }}>UPSC Civil Services Hub</CardTitle>
+                    </div>
+                    <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Civil Services</Badge>
+                  </div>
+                  <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.5 }}>
+                    Structure 8-hour daily preparation across GS Papers 1–4, schedule timed Mains answer writing sprints, and retain Constitutional articles.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>
+                  <Link href="/exams/upsc" style={{ color: 'var(--amber)', fontWeight: 700, fontSize: '11.5px', textDecoration: 'none' }}>
+                    Explore UPSC Focus Hub →
+                  </Link>
+                </CardFooter>
+              </Card>
             </div>
           </div>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
-            <a 
-              href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-            >
-              <PlayStoreIcon size={16} />
-              <span>Get LifeTrack Pro on Play Store</span>
-            </a>
-            <Link href="/features" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Explore All Features</span>
-            </Link>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Focus ROI Calculator</span>
-            </Link>
-            <a 
-              href="https://chat.whatsapp.com/B8uwXjT9R665ahqcXVsZdk" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-glass"
-            >
-              Ask on WhatsApp Community
-            </a>
+          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '28px' }}>
+            <Button asChild className="ui-button-brand min-h-[44px] px-5 rounded-xl shadow-sm">
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
+              >
+                <PlayStoreIcon size={16} />
+                <span>Get LifeTrack Pro on Play Store</span>
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="ui-button-outline min-h-[44px] px-5 rounded-xl">
+              <Link href="/features" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+                <SparklesIcon size={16} />
+                <span>Explore All Features</span>
+              </Link>
+            </Button>
+            <Button asChild variant="secondary" className="ui-button-secondary min-h-[44px] px-5 rounded-xl">
+              <Link href="/calculator" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+                <CalculatorIcon size={16} />
+                <span>Focus ROI Calculator</span>
+              </Link>
+            </Button>
+            <Button asChild variant="ghost" className="ui-button-ghost min-h-[44px] px-5 rounded-xl">
+              <a 
+                href="https://chat.whatsapp.com/B8uwXjT9R665ahqcXVsZdk" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                style={{ textDecoration: 'none' }}
+              >
+                Ask on WhatsApp Community
+              </a>
+            </Button>
           </div>
         </div>
       </article>

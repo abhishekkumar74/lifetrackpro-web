@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import DailyRoutineGenerator from '@/components/tools/DailyRoutineGenerator';
 import RelatedAppFeatures from '@/components/tools/RelatedAppFeatures';
+import FaqAccordion from '@/components/shared/FaqAccordion';
+import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -11,6 +14,29 @@ import {
   ChartIcon
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
+
+const DAILY_ROUTINE_FAQS = [
+  {
+    question: "What is the best daily routine for competitive exam aspirants (JEE / NEET / UPSC)?",
+    answer: "The most effective daily routine for competitive aspirants balances 7 to 9 hours of high-cognitive deep work with 7.5 to 8 hours of restorative sleep. It frontloads difficult numerical problems or complex theory into the morning peak alertness window (6:30 AM to 11:30 AM), schedules timed practice drills and answer writing in the late afternoon, and reserves the final 45 minutes of the evening for active recall flashcards."
+  },
+  {
+    question: "How many hours should school and college students study daily?",
+    answer: "For school students with 6 hours of daytime classes, 3.5 to 4.5 hours of focused self-study is optimal to complete homework, revise concepts, and avoid burnout. For college students, 4 to 5 hours of evening self-study balances semester coursework with technical placement prep (DSA, system design, or core projects)."
+  },
+  {
+    question: "How does this 24-hour daily routine planner prevent study burnout?",
+    answer: "Our planner applies constraint-satisfaction scheduling: it first locks your non-negotiable sleep (7 to 8 hours), meal breaks, and fixed school/college commitments. It then distributes study blocks with mandatory 10 to 15-minute cognitive recovery buffers to eliminate attentional residue and mental fatigue."
+  },
+  {
+    question: "Can I edit, save, and print my generated daily routine?",
+    answer: "Yes. Every activity in the generated timetable can be edited, shifted, or marked complete. You can save multiple routine versions directly in your browser's local storage, copy the formatted schedule text to your clipboard, or print a clean PDF version for your study desk."
+  },
+  {
+    question: "What should I do if I miss a scheduled study block?",
+    answer: "Instead of feeling guilty and abandoning your entire routine, use our intelligent rescheduling feature (⚡ button) to automatically identify an open evening buffer or low-priority wind-down slot to recover your missed focus session without disturbing meal or sleep hours."
+  }
+];
 
 export const metadata = {
   title: 'Free Daily Routine Generator for Students | 24-Hour Lifestyle & Schedule Planner',
@@ -112,48 +138,14 @@ export default function DailyRoutineGeneratorPage() {
       },
       {
         "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the best daily routine for competitive exam aspirants (JEE / NEET / UPSC)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The most effective daily routine for competitive aspirants balances 7 to 9 hours of high-cognitive deep work with 7.5 to 8 hours of restorative sleep. It frontloads difficult numerical problems or complex theory into the morning peak alertness window (6:30 AM to 11:30 AM), schedules timed practice drills and answer writing in the late afternoon, and reserves the final 45 minutes of the evening for active recall flashcards."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How many hours should school and college students study daily?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "For school students with 6 hours of daytime classes, 3.5 to 4.5 hours of focused self-study is optimal to complete homework, revise concepts, and avoid burnout. For college students, 4 to 5 hours of evening self-study balances semester coursework with technical placement prep (DSA, system design, or core projects)."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does this 24-hour daily routine planner prevent study burnout?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our planner applies constraint-satisfaction scheduling: it first locks your non-negotiable sleep (7 to 8 hours), meal breaks, and fixed school/college commitments. It then distributes study blocks with mandatory 10 to 15-minute cognitive recovery buffers to eliminate attentional residue and mental fatigue."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I edit, save, and print my generated daily routine?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Every activity in the generated timetable can be edited, shifted, or marked complete. You can save multiple routine versions directly in your browser's local storage, copy the formatted schedule text to your clipboard, or print a clean PDF version for your study desk."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What should I do if I miss a scheduled study block?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Instead of feeling guilty and abandoning your entire routine, use our intelligent rescheduling feature (⚡ button) to automatically identify an open evening buffer or low-priority wind-down slot to recover your missed focus session without disturbing meal or sleep hours."
-            }
+        "mainEntity": DAILY_ROUTINE_FAQS.map((faq) => ({
+          "@type": "Question",
+          "name": faq.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": faq.answer
           }
-        ]
+        }))
       }
     ]
   };
@@ -225,7 +217,7 @@ export default function DailyRoutineGeneratorPage() {
               Competitive national examinations like IIT JEE and NEET UG demand intensive problem-solving endurance and rapid conceptual recall under timed exam conditions. High-scoring toppers do not study 16 hours a day; they execute 7 to 9 hours of ultra-focused deep work divided into three distinct biological phases:
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginTop: '16px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 mt-4">
               <div style={{ background: 'var(--bg-cream)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                 <strong style={{ fontSize: '13px', color: '#2563EB', display: 'block', marginBottom: '6px' }}>
                   Phase 1: Morning Deep Sprints (6:30 AM – 12:30 PM)
@@ -290,7 +282,7 @@ export default function DailyRoutineGeneratorPage() {
             <p className="content-card-p">
               The foundation of sustainable high performance is the classic <strong>8-8-8 circadian framework</strong>:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', marginTop: '14px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3.5">
               <div style={{ padding: '14px', background: 'rgba(91, 92, 240, 0.05)', borderRadius: '10px', border: '1px solid rgba(91, 92, 240, 0.2)' }}>
                 <strong style={{ fontSize: '13px', color: '#5B5CF0', display: 'block', marginBottom: '4px' }}>8 Hours of Deep Work &amp; Study</strong>
                 <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
@@ -325,7 +317,7 @@ export default function DailyRoutineGeneratorPage() {
             <p className="content-card-p">
               The ideal number of daily study hours depends directly on whether you attend classes or are preparing full-time:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px', marginTop: '12px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 mt-3">
               <div style={{ padding: '12px 14px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
                 <div style={{ fontSize: '12.5px', fontWeight: 750, color: 'var(--primary)' }}>School Students (Classes 8 AM – 2 PM)</div>
                 <div style={{ fontSize: '14px', fontWeight: 850, color: '#0F172A', margin: '4px 0' }}>3.5 to 4.5 Hours / Day</div>
@@ -382,87 +374,79 @@ export default function DailyRoutineGeneratorPage() {
             <p className="content-card-p">
               Pair your daily routine with our complementary academic calculators and schedule builders:
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px', marginTop: '12px' }}>
-              <Link href="/tools/study-timetable-generator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--primary)' }}>Study Timetable Generator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>AI-powered hour-by-hour scheduled revision timetables.</p>
-                </div>
-              </Link>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 mt-4">
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>🗓️</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--primary)', margin: 0 }}>Study Timetable Generator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    AI-powered hour-by-hour scheduled revision timetables.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/study-timetable-generator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--primary)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Timetable</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/study-hours-calculator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--sky)' }}>Study Hours Calculator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Calculate daily study hours needed to complete syllabus.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>📊</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--sky)', margin: 0 }}>Study Hours Calculator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Calculate daily study hours needed to complete syllabus.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/study-hours-calculator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--sky)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Syllabus</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/focus-time-calculator" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--rose)' }}>Focus Time Calculator →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Measure true deep work focus hours vs attention residue.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>🧠</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--rose)', margin: 0 }}>Focus Time Calculator</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Measure true deep work focus hours vs attention residue.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/focus-time-calculator" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--rose)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>Attention</Badge>
+                </CardFooter>
+              </Card>
 
-              <Link href="/tools/weekly-study-planner" style={{ textDecoration: 'none' }}>
-                <div style={{ padding: '10px 12px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', border: '1px solid var(--border-subtle)' }}>
-                  <strong style={{ fontSize: '12.5px', color: 'var(--emerald)' }}>Weekly Study Planner →</strong>
-                  <p style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0' }}>Balance subjects across a structured 7-day template.</p>
-                </div>
-              </Link>
+              <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
+                <CardHeader style={{ padding: '16px 18px 10px' }}>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>📋</div>
+                  <CardTitle style={{ fontSize: '13.5px', color: 'var(--emerald)', margin: 0 }}>Weekly Study Planner</CardTitle>
+                  <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
+                    Balance subjects across a structured 7-day template.
+                  </CardDescription>
+                </CardHeader>
+                <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
+                  <Link href="/tools/weekly-study-planner" style={{ fontSize: '11px', fontWeight: 700, color: 'var(--emerald)', textDecoration: 'none' }}>
+                    Open Tool →
+                  </Link>
+                  <Badge variant="secondary" style={{ fontSize: '9.5px' }}>7-Day Plan</Badge>
+                </CardFooter>
+              </Card>
             </div>
           </section>
 
           {/* Section 9: Frequently Asked Questions */}
-          <section className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
-              Frequently Asked Questions About Student Daily Routines
-            </h2>
-
-            <div className="content-card-faq" style={{ marginTop: '14px' }}>
-              <h3 className="content-card-faq-h3">
-                What is the best daily routine for competitive exam aspirants?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                The most effective daily routine balances three 90-minute morning deep work blocks with afternoon numerical problem practice, evening active recall flashcards, and a mandatory 7.5 to 8 hours of restorative sleep to cement long-term memory.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                How do I avoid afternoon sluggishness during daily study sessions?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Human circadian biology experiences a natural alertness dip between 1:30 PM and 3:30 PM. Schedule a light protein-rich lunch, take a 20-minute power nap or walk outside in natural light, and reserve high-analytical problem solving for early morning or early evening.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Can school or college students use this daily routine generator?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Yes, our routine generator includes specialized profile options for school students (Classes 8 AM – 2 PM) and college/working aspirants to balance daytime classes with 4 to 5 hours of structured evening study and homework.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                Can I edit, save, and print my generated daily routine?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Yes. Every activity in the generated timetable can be edited, shifted, or marked complete. You can save multiple routine versions directly in your browser&apos;s local storage, copy the formatted schedule text to your clipboard, or print a clean PDF version for your study desk.
-              </p>
-            </div>
-
-            <div className="content-card-faq">
-              <h3 className="content-card-faq-h3">
-                What should I do if I miss a scheduled study block?
-              </h3>
-              <p className="content-card-p" style={{ marginBottom: 0 }}>
-                Instead of feeling guilty and abandoning your routine, use our intelligent rescheduling feature (⚡ button) to automatically identify an open evening buffer or low-priority wind-down slot to recover your missed focus session without disturbing meal or sleep hours.
-              </p>
-            </div>
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+            <FaqAccordion
+              title="Frequently Asked Questions About Student Daily Routines"
+              items={DAILY_ROUTINE_FAQS}
+            />
           </section>
 
           {/* Bottom CTAs */}
