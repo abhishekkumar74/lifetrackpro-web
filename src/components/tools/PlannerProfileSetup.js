@@ -1040,7 +1040,7 @@ export default function PlannerProfileSetup({
         onMouseEnter={(e) => { e.currentTarget.style.background = '#4338CA'; }}
         onMouseLeave={(e) => { e.currentTarget.style.background = '#4F46E5'; }}
       >
-        <span>⚡ Generate AI-Optimized Timetable</span>
+        <span>⚡ Generate Smart Timetable</span>
       </button>
 
       {/* ── USER'S REQUESTED PERMANENT SINGLE-LINE TEXT LINK (ZERO DISTRACTION) ── */}

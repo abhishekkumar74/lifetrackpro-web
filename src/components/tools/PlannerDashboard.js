@@ -174,7 +174,7 @@ export default function PlannerDashboard({
 
     lines.push('==================================================');
     lines.push(
-      'Generated with LifeTrack Pro AI Study Planner: https://lifetrackpro.in/tools/study-timetable-generator'
+      'Generated with LifeTrack Pro Smart Study Planner: https://lifetrackpro.in/tools/study-timetable-generator'
     );
 
     navigator.clipboard.writeText(lines.join('\n')).then(() => {
@@ -216,7 +216,7 @@ export default function PlannerDashboard({
 
     lines.push('\n==================================================');
     lines.push(
-      'Generated with LifeTrack Pro AI Study Planner: https://lifetrackpro.in/tools/study-timetable-generator'
+      'Generated with LifeTrack Pro Smart Study Planner: https://lifetrackpro.in/tools/study-timetable-generator'
     );
 
     navigator.clipboard.writeText(lines.join('\n')).then(() => {
@@ -236,7 +236,7 @@ export default function PlannerDashboard({
       const icsLines = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//LifeTrack Pro//AI Study Timetable//EN',
+        'PRODID:-//LifeTrack Pro//Smart Study Timetable//EN',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
       ];

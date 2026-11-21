@@ -2837,7 +2837,7 @@ export default function AdminPage() {
 
                       <label style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', background: '#F8FAFC', borderRadius: '8px', border: '1px solid #E2E8F0', cursor: 'pointer' }}>
                         <div>
-                          <div style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A' }}>AI Study Insights</div>
+                          <div style={{ fontSize: '13px', fontWeight: 600, color: '#0F172A' }}>Smart Study Insights</div>
                           <div style={{ fontSize: '11px', color: '#64748B' }}>Personalized retention and focus tips</div>
                         </div>
                         <input

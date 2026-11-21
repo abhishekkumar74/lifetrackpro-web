@@ -9,23 +9,15 @@ import {
   HeadphonesIcon, 
   TargetIcon, 
   ChartIcon,
-  CalculatorIcon 
+  CalculatorIcon,
+  HelpCircleIcon
 } from '@/components/Icons';
 
 export const metadata = {
-  title: 'Study Tools, Pomodoro & Flashcards',
-  description: 'Explore LifeTrack Pro study tools: Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms. Free.',
-  keywords: [
-    'study app features',
-    'pomodoro focus timer',
-    'spaced repetition flashcards',
-    'sm-2 algorithm app',
-    'habit tracker for students',
-    'virtual study rooms online',
-    'study time calculator',
-    'competitive exam study planner',
-    'deep work study app'
-  ],
+  title: {
+    absolute: 'Student Productivity Tools and Features | LifeTrack Pro',
+  },
+  description: 'Explore science-backed student productivity tools: 50/10 Pomodoro timer, SM-2 spaced repetition, habit streak shields and live study rooms. Try them free now.',
   alternates: {
     canonical: 'https://lifetrackpro.in/features',
   },
@@ -41,26 +33,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Study Tools, Pomodoro & Flashcards | LifeTrack Pro',
-    description: 'Explore LifeTrack Pro study tools: Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms. Free.',
+    title: 'Student Productivity Tools and Features | LifeTrack Pro',
+    description: 'Explore science-backed student productivity tools: 50/10 Pomodoro timer, SM-2 spaced repetition, habit streak shields and live study rooms. Try them free now.',
     url: 'https://lifetrackpro.in/features',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
-        alt: 'LifeTrack Pro Study Features Suite — Focus Timer, Flashcards and Habit Tracking',
+        url: 'https://lifetrackpro.in/og/og-features.png',
+        width: 1200,
+        height: 630,
+        alt: 'LifeTrack Pro Science-Backed Student Productivity Tools',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Study Tools, Pomodoro & Flashcards | LifeTrack Pro',
-    description: 'Explore LifeTrack Pro study tools: Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms. Free.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Student Productivity Tools and Features | LifeTrack Pro',
+    description: 'Explore science-backed student productivity tools: 50/10 Pomodoro timer, SM-2 spaced repetition, habit streak shields and live study rooms. Try them free now.',
+    images: ['https://lifetrackpro.in/og/og-features.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -81,18 +73,13 @@ export default function FeaturesPage() {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/features#webpage",
         "url": "https://lifetrackpro.in/features",
-        "name": "Study Tools, Pomodoro & Flashcards",
+        "name": "Student Productivity Tools & Features",
         "description": "Comprehensive feature ecosystem for student productivity: Pomodoro focus timer, SM-2 spaced repetition, daily habit streaks, and live study rooms.",
         "isPartOf": {
           "@type": "WebSite",
@@ -162,13 +149,20 @@ export default function FeaturesPage() {
       />
 
       <div className="container" style={{ padding: '40px 20px' }}>
+        {/* Visual Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumbs" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', color: 'var(--text-3)', marginBottom: '16px', flexWrap: 'wrap' }}>
+          <Link href="/" style={{ color: 'var(--text-3)', textDecoration: 'none' }}>Home</Link>
+          <span>/</span>
+          <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Features</span>
+        </nav>
+
         <div className="reveal" style={{ textAlign: 'center', maxWidth: '640px', margin: '0 auto 28px' }}>
           <div className="section-eyebrow">Product Ecosystem</div>
           <h1 className="section-h2" style={{ marginBottom: '14px' }}>
-            All-in-One Study &amp; Productivity Features
+            Science-Backed Student Productivity Tools
           </h1>
           <p className="section-desc" style={{ margin: '0 auto' }}>
-            Stop juggling disconnected timer, flashcard, and habit apps. LifeTrack Pro unites scientific deep work systems, SM-2 spaced repetition, and multiplayer study accountability in one distraction-free platform.
+            Explore dedicated student productivity tools designed to eliminate app fragmentation. LifeTrack Pro unites scientific deep work timers, SM-2 spaced repetition, and silent study accountability in one unified system.
           </p>
         </div>
 
@@ -180,13 +174,13 @@ export default function FeaturesPage() {
                 <div className="feat-icon-box" style={{ margin: 0 }}><TimerIcon size={18} style={{ color: 'var(--primary)' }} /></div>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>25/5 &amp; 50/10</Badge>
               </div>
-              <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>Smart Pomodoro Focus Timer</CardTitle>
+              <CardTitle as="h2" style={{ fontSize: '16px', margin: '0 0 6px' }}>Smart Pomodoro Focus Timer</CardTitle>
               <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
-                Custom work and break intervals (25/5 or 50/10) with binaural audio soundscapes (432Hz, lo-fi, café, rain). Tracks focus sessions in the background even with your phone screen locked.
+                Custom work and break intervals (25/5 or 50/10) with ambient audio soundscapes (alpha tones, lo-fi, café, rain). Tracks focus sessions in the background even with your phone screen locked.
               </CardDescription>
             </CardHeader>
             <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '12px 20px 16px' }}>
-              <Link href="/features/pomodoro-timer" className="feat-link" style={{ margin: 0 }} aria-label="Explore Smart Pomodoro Focus Timer">
+              <Link href="/features/pomodoro-timer" className="feat-link" style={{ margin: 0 }} aria-label="Explore Focus Timer - Smart Pomodoro Technique">
                 Explore Focus Timer →
               </Link>
             </CardFooter>
@@ -199,13 +193,13 @@ export default function FeaturesPage() {
                 <div className="feat-icon-box" style={{ margin: 0 }}><CardsIcon size={18} style={{ color: 'var(--emerald)' }} /></div>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>SuperMemo SM-2</Badge>
               </div>
-              <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>SM-2 Spaced Repetition Flashcards</CardTitle>
+              <CardTitle as="h2" style={{ fontSize: '16px', margin: '0 0 6px' }}>SM-2 Spaced Repetition Flashcards</CardTitle>
               <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
                 Active recall flashcard engine powered by the scientific SuperMemo SM-2 algorithm. Automatically schedules card reviews right before memory decay to lock in formulas and key concepts.
               </CardDescription>
             </CardHeader>
             <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '12px 20px 16px' }}>
-              <Link href="/features/spaced-repetition" className="feat-link" style={{ margin: 0 }} aria-label="Explore SM-2 Spaced Repetition Flashcards">
+              <Link href="/features/spaced-repetition" className="feat-link" style={{ margin: 0 }} aria-label="Explore Spaced Repetition - SM-2 Flashcards">
                 Explore Spaced Repetition →
               </Link>
             </CardFooter>
@@ -218,13 +212,13 @@ export default function FeaturesPage() {
                 <div className="feat-icon-box" style={{ margin: 0 }}><HabitFlameIcon size={18} style={{ color: 'var(--amber)' }} /></div>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>Freeze Shields</Badge>
               </div>
-              <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>Habit Streak Shields &amp; Routines</CardTitle>
+              <CardTitle as="h2" style={{ fontSize: '16px', margin: '0 0 6px' }}>Habit Streak Shields &amp; Routines</CardTitle>
               <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
                 Build non-negotiable daily study habits with automated streak freeze shields. Protect your long-term consistency when unexpected illness or travel interrupts your study schedule.
               </CardDescription>
             </CardHeader>
             <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '12px 20px 16px' }}>
-              <Link href="/features/habit-tracker" className="feat-link" style={{ margin: 0 }} aria-label="Explore Daily Habit Tracker and Streak Shields">
+              <Link href="/features/habit-tracker" className="feat-link" style={{ margin: 0 }} aria-label="Explore Habit Tracker - Habit Streaks">
                 Explore Habit Tracker →
               </Link>
             </CardFooter>
@@ -237,13 +231,13 @@ export default function FeaturesPage() {
                 <div className="feat-icon-box" style={{ margin: 0 }}><HeadphonesIcon size={18} style={{ color: 'var(--rose)' }} /></div>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>Multiplayer 24/7</Badge>
               </div>
-              <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>Live 24/7 Virtual Study Rooms</CardTitle>
+              <CardTitle as="h2" style={{ fontSize: '16px', margin: '0 0 6px' }}>Live 24/7 Virtual Study Rooms</CardTitle>
               <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
                 Join silent multiplayer focus rooms with real-time peer presence and synchronous Pomodoro cycles. Study alongside thousands of dedicated competitive exam aspirants across India.
               </CardDescription>
             </CardHeader>
             <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '12px 20px 16px' }}>
-              <Link href="/features/study-rooms" className="feat-link" style={{ margin: 0 }} aria-label="Explore Live 24/7 Virtual Study Rooms">
+              <Link href="/features/study-rooms" className="feat-link" style={{ margin: 0 }} aria-label="Explore Live Study Rooms - Virtual Focus Rooms">
                 Explore Live Study Rooms →
               </Link>
             </CardFooter>
@@ -256,13 +250,13 @@ export default function FeaturesPage() {
                 <div className="feat-icon-box" style={{ margin: 0 }}><TargetIcon size={18} style={{ color: '#9333EA' }} /></div>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>JEE • NEET • UPSC</Badge>
               </div>
-              <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>Target Exam Syllabus Planners</CardTitle>
+              <CardTitle as="h2" style={{ fontSize: '16px', margin: '0 0 6px' }}>Target Exam Syllabus Planners</CardTitle>
               <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
                 Set exam milestone dates for IIT JEE, NEET UG, and UPSC CSE. Animated syllabus completion rings and daily chapter quotas keep your preparation on track for exam day.
               </CardDescription>
             </CardHeader>
             <CardFooter className="mt-auto pt-3 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100" style={{ padding: '12px 20px 16px' }}>
-              <Link href="/exams/jee" className="feat-link" style={{ margin: 0 }} aria-label="Explore Target Exam Syllabus Planners">
+              <Link href="/exams/jee" className="feat-link" style={{ margin: 0 }} aria-label="Explore Exam Planners - Target Exam Syllabi">
                 Explore Exam Planners →
               </Link>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', fontSize: '11px' }}>
@@ -280,13 +274,13 @@ export default function FeaturesPage() {
                 <div className="feat-icon-box" style={{ margin: 0 }}><ChartIcon size={18} style={{ color: 'var(--sky)' }} /></div>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>Heatmap Metrics</Badge>
               </div>
-              <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>Productivity Analytics &amp; ROI</CardTitle>
+              <CardTitle as="h2" style={{ fontSize: '16px', margin: '0 0 6px' }}>Productivity Analytics &amp; ROI</CardTitle>
               <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
                 Visualize your daily consistency with GitHub-style study heatmaps and subject distribution charts. Measure your annual focus hour gains and memory retention improvement.
               </CardDescription>
             </CardHeader>
             <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '12px 20px 16px' }}>
-              <Link href="/calculator" className="feat-link" style={{ margin: 0 }} aria-label="Try Interactive Study ROI Calculator">
+              <Link href="/calculator" className="feat-link" style={{ margin: 0 }} aria-label="Calculate Study ROI - Productivity Analytics">
                 Calculate Study ROI →
               </Link>
             </CardFooter>
@@ -299,13 +293,13 @@ export default function FeaturesPage() {
                 <div className="feat-icon-box" style={{ margin: 0 }}><CalculatorIcon size={18} style={{ color: 'var(--primary)' }} /></div>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>Free Web Tools</Badge>
               </div>
-              <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>Free Online Study Tools &amp; Schedulers</CardTitle>
+              <CardTitle as="h2" style={{ fontSize: '16px', margin: '0 0 6px' }}>Free Online Study Tools &amp; Schedulers</CardTitle>
               <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
                 Instant web utilities: study timetable generator, 24-hour daily routine builder, study hours calculator, focus time meter &amp; weekly 7-day schedule maker. 100% free with no login required.
               </CardDescription>
             </CardHeader>
             <CardFooter className="mt-auto pt-3 flex flex-wrap items-center justify-between gap-2 border-t border-slate-100" style={{ padding: '12px 20px 16px' }}>
-              <Link href="/tools" className="feat-link" style={{ margin: 0 }} aria-label="Explore Free Online Study Tools">
+              <Link href="/tools" className="feat-link" style={{ margin: 0 }} aria-label="Explore All Free Tools - Online Study Schedulers">
                 Explore All Free Tools →
               </Link>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', fontSize: '11px' }}>
@@ -318,40 +312,52 @@ export default function FeaturesPage() {
         </div>
 
         {/* Contextual Section: Calculator and FAQ Deep Links */}
-        <Card className="rounded-2xl border-indigo-100 bg-gradient-to-br from-indigo-50/60 via-white to-slate-50/80 p-6 sm:p-8 shadow-xs" style={{ marginTop: '36px' }}>
+        <Card className="features-roi-banner">
           <div className="cta-banner-content">
             <div style={{ maxWidth: '640px', minWidth: 0 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
-                <span style={{ fontSize: '12px' }}>📊</span>
+                <span style={{ fontSize: '12px' }} aria-hidden="true">📊</span>
                 <Badge variant="secondary" style={{ backgroundColor: 'rgba(238, 242, 255, 0.9)', color: '#4338CA', borderColor: '#E0E7FF', fontSize: '10.5px' }}>
                   STUDY ROI ENGINE
                 </Badge>
               </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 850, color: '#0F172A', margin: '0 0 6px', letterSpacing: '-0.3px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 850, color: '#0F172A', margin: '0 0 8px', letterSpacing: '-0.3px', lineHeight: 1.3 }}>
                 Measure Your Daily Focus &amp; Retention Gains
               </h2>
-              <p style={{ fontSize: '13.5px', color: '#475569', margin: 0, lineHeight: 1.55 }}>
+              <p style={{ fontSize: '13.5px', color: '#475569', margin: 0, lineHeight: 1.6 }}>
                 Use our interactive study calculator to model how structured Pomodoro blocks and SM-2 spaced repetition save up to 450+ hours of wasted revision annually.
               </p>
             </div>
 
             <div className="features-cta-button-group">
-              <Button asChild className="ui-button-brand min-h-[44px] px-5 rounded-xl shadow-sm">
-                <Link href="/tools" aria-label="Browse Free Online Study Tools">
-                  <CalculatorIcon size={16} />
-                  <span>Free Study Tools</span>
+              <Link 
+                href="/calculator" 
+                className="features-cta-btn-primary"
+                aria-label="Launch ROI Calculator - Focus Recovery"
+              >
+                <ChartIcon size={16} />
+                <span>Launch ROI Calculator</span>
+                <span className="cta-arrow" aria-hidden="true">→</span>
+              </Link>
+
+              <div className="features-cta-subgroup">
+                <Link 
+                  href="/tools" 
+                  className="features-cta-btn-secondary"
+                  aria-label="Free Study Tools - Browse Online Schedulers"
+                >
+                  <CalculatorIcon size={15} />
+                  <span>Free Tools</span>
                 </Link>
-              </Button>
-              <Button asChild variant="outline" className="ui-button-outline min-h-[44px] px-5 rounded-xl">
-                <Link href="/calculator" aria-label="Open Interactive Study ROI Calculator">
-                  <span>Launch ROI Calculator →</span>
-                </Link>
-              </Button>
-              <Button asChild variant="secondary" className="ui-button-secondary min-h-[44px] px-5 rounded-xl">
-                <Link href="/faq" aria-label="Browse Frequently Asked Questions">
+                <Link 
+                  href="/faq" 
+                  className="features-cta-btn-secondary"
+                  aria-label="Explore FAQs - Frequently Asked Questions"
+                >
+                  <HelpCircleIcon size={15} />
                   <span>Explore FAQs</span>
                 </Link>
-              </Button>
+              </div>
             </div>
           </div>
         </Card>

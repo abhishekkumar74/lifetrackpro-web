@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "dev:network": "next dev -H 0.0.0.0",
-    "build": "next build",
+    "build": "next build && node scripts/check-rendered-html.mjs",
+    "check:todos": "node scripts/check-rendered-html.mjs",
     "start": "next start",
     "start:network": "next start -H 0.0.0.0",
     "lint": "eslint",
+    "validate:jsonld": "node scripts/validate-jsonld.mjs",
+    "crawl": "node scripts/crawl-site.mjs",
     "hash-password": "node scripts/generate-password.mjs"
   },
   "dependencies": {
@@ -30,6 +33,7 @@
     "@types/node": "26.6.6",
     "@types/react": "19.3.0",
     "eslint": "^9",
-    "eslint-config-next": "16.4.6"
+    "eslint-config-next": "16.4.6",
+    "playwright": "^1.65.1"
   }
 }

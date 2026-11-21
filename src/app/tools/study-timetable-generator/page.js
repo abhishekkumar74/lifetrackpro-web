@@ -18,7 +18,7 @@ const STUDY_TIMETABLE_FAQS = [
     answer: "A Daily Routine manages your complete 24-hour lifestyle: wake-up times, sleep hygiene, school/coaching schedules, meals, exercise, and leisure, creating available study windows. The Study Timetable Generator operates exclusively inside those study windows: it maps specific subjects (Physics, Chemistry, Math, GS), chapters, weak-topic weighting, timed PYQs, and SM-2 active recall."
   },
   {
-    question: "How does the AI prioritize weak subjects in my study timetable?",
+    question: "How does the algorithm prioritize weak subjects in my study timetable?",
     answer: "When you mark a subject as Weak, the algorithm applies a 1.4x priority multiplier and places it in your earliest peak cognitive window. This ensures high-difficulty concept comprehension happens when mental alertness and willpower are at their maximum."
   },
   {
@@ -36,20 +36,10 @@ const STUDY_TIMETABLE_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Free Study Timetable Generator for Students | AI Subject & Exam Planner',
-  description: 'Free study timetable generator for students. Plan subjects, schedule chapters, prioritize weak topics, and build revision timetables for JEE, NEET, UPSC, GATE, and semester exams.',
-  keywords: [
-    'study timetable generator',
-    'study timetable for students',
-    'study schedule maker',
-    'exam preparation timetable',
-    'jee study timetable',
-    'neet study timetable',
-    'subject wise study planner',
-    'weekly study planner',
-    'adaptive study timetable',
-    'lifetrack pro study planner'
-  ],
+  title: {
+    absolute: 'Study Timetable Generator for Students | LifeTrack Pro',
+  },
+  description: 'Create a balanced schedule with our free study timetable generator for students. Schedule chapters, active recall passes and Pomodoro sessions. Generate now.',
   alternates: {
     canonical: 'https://lifetrackpro.in/tools/study-timetable-generator',
   },
@@ -65,26 +55,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Free Study Timetable Generator for Students | LifeTrack Pro',
-    description: 'Intelligently allocate your daily study hours across subjects, chapters, and revision cycles. Prioritizes weak topics, schedules active recall (SM-2), and timed PYQ drills.',
+    title: 'Study Timetable Generator for Students | LifeTrack Pro',
+    description: 'Create a balanced schedule with our free study timetable generator for students. Schedule chapters, active recall passes and Pomodoro sessions. Generate now.',
     url: 'https://lifetrackpro.in/tools/study-timetable-generator',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
+        url: 'https://lifetrackpro.in/og/og-tools.png',
+        width: 1200,
+        height: 630,
         alt: 'LifeTrack Pro Free Online Study Timetable Generator for Students',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Study Timetable Generator for Students | LifeTrack Pro',
-    description: 'Plan subjects, complete chapters, schedule revision and stay on track for your target exam.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Study Timetable Generator for Students | LifeTrack Pro',
+    description: 'Create a balanced schedule with our free study timetable generator for students. Schedule chapters, active recall passes and Pomodoro sessions. Generate now.',
+    images: ['https://lifetrackpro.in/og/og-tools.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -94,22 +84,17 @@ export default function StudyTimetableGeneratorPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
+        "@type": "WebApplication",
+        "@id": "https://lifetrackpro.in/tools/study-timetable-generator#webapp",
         "name": "LifeTrack Pro Study Timetable Generator",
-        "operatingSystem": "Android, Web",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
         "applicationCategory": "EducationalApplication",
         "url": "https://lifetrackpro.in/tools/study-timetable-generator",
-        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "138"
         }
       },
       {
@@ -128,7 +113,7 @@ export default function StudyTimetableGeneratorPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://lifetrackpro.in/tools" },
           { "@type": "ListItem", "position": 3, "name": "Study Timetable Generator", "item": "https://lifetrackpro.in/tools/study-timetable-generator" }
         ]
@@ -167,11 +152,11 @@ export default function StudyTimetableGeneratorPage() {
 
           <div className="section-eyebrow" style={{ display: 'inline-block', marginBottom: '8px' }}>Free Online Academic Preparation Tool</div>
           <h1 className="subpage-h1" style={{ fontSize: 'clamp(20px, 3.2vw, 32px)', fontWeight: 800, color: '#172033', letterSpacing: '-0.5px', marginBottom: '12px', lineHeight: 1.25, wordBreak: 'break-word' }}>
-            Free Study Timetable Generator for Students
+            Study Timetable Generator for Students
           </h1>
           
           <p className="subpage-lead" style={{ fontSize: '14px', color: 'var(--text-2)', lineHeight: 1.6, maxWidth: '880px', marginBottom: '24px' }}>
-            Plan subjects, complete chapters, schedule revision and stay on track for your target exam. Prioritizes weak topics, active recall (SM-2), timed PYQ drills, and mock tests.
+            Use our free study timetable generator for students to allocate daily focus hours across subjects, chapters, active recall (SM-2), and timed revision drills for JEE, NEET, UPSC, and college exams.
           </p>
         </div>
 
@@ -199,7 +184,7 @@ export default function StudyTimetableGeneratorPage() {
                 </div>
 
                 <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--planner-border)' }}>
-                  <strong style={{ fontSize: '13.5px', color: 'var(--rose)', display: 'block', marginBottom: '4px' }}>
+                  <strong style={{ fontSize: '13.5px', color: '#BE123C', display: 'block', marginBottom: '4px' }}>
                     2. Weak Subject Frontloading
                   </strong>
                   <p style={{ fontSize: '12.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.5 }}>
@@ -208,7 +193,7 @@ export default function StudyTimetableGeneratorPage() {
                 </div>
 
                 <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--planner-border)' }}>
-                  <strong style={{ fontSize: '13.5px', color: 'var(--sky)', display: 'block', marginBottom: '4px' }}>
+                  <strong style={{ fontSize: '13.5px', color: '#0369A1', display: 'block', marginBottom: '4px' }}>
                     3. Timed PYQ Sprints
                   </strong>
                   <p style={{ fontSize: '12.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.5 }}>
@@ -217,7 +202,7 @@ export default function StudyTimetableGeneratorPage() {
                 </div>
 
                 <div style={{ padding: '14px', background: '#F8FAFC', borderRadius: '12px', border: '1px solid var(--planner-border)' }}>
-                  <strong style={{ fontSize: '13.5px', color: 'var(--emerald)', display: 'block', marginBottom: '4px' }}>
+                  <strong style={{ fontSize: '13.5px', color: '#047857', display: 'block', marginBottom: '4px' }}>
                     4. SM-2 Spaced Retrieval
                   </strong>
                   <p style={{ fontSize: '12.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.5 }}>
@@ -244,14 +229,14 @@ export default function StudyTimetableGeneratorPage() {
                 </div>
 
                 <div style={{ background: '#F8FAFC', padding: '16px', borderRadius: '12px', border: '1px solid var(--planner-border)' }}>
-                  <strong style={{ fontSize: '14px', color: '#059669', display: 'block', marginBottom: '6px' }}>NEET UG Medical Preparation</strong>
+                  <strong style={{ fontSize: '14px', color: '#047857', display: 'block', marginBottom: '6px' }}>NEET UG Medical Preparation</strong>
                   <p style={{ fontSize: '13px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.55 }}>
                     Combine <strong>50/10 Pomodoro bursts</strong> for NCERT Biology memorization with dedicated 75-minute Physics numerical sprints and evening flashcard formula drills.
                   </p>
                 </div>
 
                 <div style={{ background: '#F8FAFC', padding: '16px', borderRadius: '12px', border: '1px solid var(--planner-border)' }}>
-                  <strong style={{ fontSize: '14px', color: '#D97706', display: 'block', marginBottom: '6px' }}>UPSC Civil Services</strong>
+                  <strong style={{ fontSize: '14px', color: '#92400E', display: 'block', marginBottom: '6px' }}>UPSC Civil Services</strong>
                   <p style={{ fontSize: '13px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.55 }}>
                     Reserve morning slots for editorial synthesis and static GS core. Allocate afternoon hours to Optional subjects and reserve 45 minutes daily for strict timed Mains answer writing.
                   </p>
@@ -279,18 +264,18 @@ export default function StudyTimetableGeneratorPage() {
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div style={{ padding: '12px 14px', background: '#FFFFFF', borderRadius: '10px', border: '1px solid #E0F2FE' }}>
-                  <strong style={{ fontSize: '13px', color: '#0284C7', display: 'block', marginBottom: '4px' }}>
+                  <strong style={{ fontSize: '13px', color: '#0369A1', display: 'block', marginBottom: '4px' }}>
                     Step 1: Set Lifestyle in Daily Routine Generator
                   </strong>
-                  <span style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.45, display: 'block' }}>
-                    Lock in your wake-up time, 7.5h sleep, school/coaching hours, and meals in the <Link href="/tools/daily-routine-generator" style={{ color: '#0284C7', fontWeight: 650 }}>Daily Routine Generator →</Link>
+                  <span style={{ fontSize: '12px', color: '#475569', lineHeight: 1.45, display: 'block' }}>
+                    Lock in your wake-up time, 7.5h sleep, school/coaching hours, and meals in the <Link href="/tools/daily-routine-generator" style={{ color: '#0369A1', fontWeight: 650 }}>Daily Routine Generator →</Link>
                   </span>
                 </div>
                 <div style={{ padding: '12px 14px', background: '#FFFFFF', borderRadius: '10px', border: '1px solid #E0F2FE' }}>
-                  <strong style={{ fontSize: '13px', color: '#0284C7', display: 'block', marginBottom: '4px' }}>
+                  <strong style={{ fontSize: '13px', color: '#0369A1', display: 'block', marginBottom: '4px' }}>
                     Step 2: Import &amp; Map Academic Subjects
                   </strong>
-                  <span style={{ fontSize: '12px', color: '#64748B', lineHeight: 1.45, display: 'block' }}>
+                  <span style={{ fontSize: '12px', color: '#475569', lineHeight: 1.45, display: 'block' }}>
                     Open this Study Timetable Generator and click &quot;Import from Daily Routine&quot; to automatically map subjects into those exact focus windows!
                   </span>
                 </div>
@@ -312,7 +297,7 @@ export default function StudyTimetableGeneratorPage() {
                       <TimerIcon size={16} /> 50/10 Pomodoro Timer
                     </div>
                     <p style={{ fontSize: '12.5px', color: 'var(--planner-text-secondary)', margin: 0, lineHeight: 1.5 }}>
-                      Execute scheduled study blocks with 432Hz alpha frequencies, brown noise, and rain soundscapes.
+                      Execute scheduled study blocks with ambient focus audio, brown noise, and rain soundscapes.
                     </p>
                   </div>
                 </Link>
@@ -384,7 +369,7 @@ export default function StudyTimetableGeneratorPage() {
 
                 <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
                   <CardHeader style={{ padding: '16px 18px 10px' }}>
-                    <div style={{ fontSize: '20px', marginBottom: '8px' }}>🧠</div>
+                    <div style={{ fontSize: '20px', marginBottom: '8px' }} aria-hidden="true">🧠</div>
                     <CardTitle style={{ fontSize: '13.5px', color: 'var(--rose)', margin: 0 }}>Focus Time Calculator</CardTitle>
                     <CardDescription style={{ fontSize: '11px', color: 'var(--planner-text-secondary)', margin: '4px 0 0', lineHeight: 1.45 }}>
                       Measure true deep work hours vs distraction residue.
@@ -425,25 +410,28 @@ export default function StudyTimetableGeneratorPage() {
             </section>
 
             {/* Bottom CTAs */}
-            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '12px' }}>
+            <div className="subpage-bottom-cta-card">
               <a 
                 href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="planner-btn-primary" 
-                style={{ height: '46px', padding: '0 20px', fontSize: '14px', background: '#4F46E5' }}
+                className="tools-cta-primary-btn"
+                aria-label="Get LifeTrack Pro Free on Play Store - Android Study App"
               >
-                <PlayStoreIcon size={16} />
+                <PlayStoreIcon size={18} />
                 <span>Get LifeTrack Pro Free on Play Store</span>
+                <span className="tools-cta-arrow" aria-hidden="true">→</span>
               </a>
-              <Link href="/tools" className="planner-btn-secondary" style={{ height: '46px', padding: '0 18px', fontSize: '14px' }}>
-                <SparklesIcon size={16} />
-                <span>Explore All Tools</span>
-              </Link>
-              <Link href="/calculator" className="planner-btn-secondary" style={{ height: '46px', padding: '0 18px', fontSize: '14px' }}>
-                <CalculatorIcon size={16} />
-                <span>Calculate Reclaimed Focus Hours</span>
-              </Link>
+              <div className="tools-cta-secondary-grid">
+                <Link href="/tools" className="tools-cta-secondary-btn" aria-label="Explore All Tools">
+                  <SparklesIcon size={16} />
+                  <span>Explore All Tools</span>
+                </Link>
+                <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Reclaimed Focus Hours">
+                  <CalculatorIcon size={16} />
+                  <span>Calculate Reclaimed Focus Hours</span>
+                </Link>
+              </div>
             </div>
           </div>
       </article>

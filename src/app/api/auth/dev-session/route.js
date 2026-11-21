@@ -8,11 +8,11 @@ import { createSessionToken, getAdminCookieName, getCookieOptions } from '@/lib/
  */
 export async function GET(request) {
   if (process.env.NODE_ENV === 'production') {
-    return NextResponse.json({ error: 'Forbidden: Disabled in production.' }, { status: 403 });
+    return NextResponse.json({ error: 'Not Found' }, { status: 404 });
   }
 
   const sessionSecret = process.env.ADMIN_SESSION_SECRET || process.env.ADMIN_SECRET_KEY;
-  const adminEmail = process.env.ADMIN_EMAIL || 'abhiyadav9313@gmail.com';
+  const adminEmail = process.env.ADMIN_EMAIL || 'admin@lifetrackpro.in';
 
   const sessionToken = createSessionToken(
     {

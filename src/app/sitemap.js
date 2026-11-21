@@ -1,121 +1,106 @@
+/**
+ * Dynamic Sitemap Generator (Next.js App Router)
+ * Generates canonical /sitemap.xml for all 22 public pages.
+ *
+ * Maintenance note:
+ * - Google ignores <priority> and <changefreq>, so only <loc> and <lastmod> are included.
+ * - 'lastModified' uses fixed constant dates rather than dynamic new Date().
+ * - Since all routes underwent the major Nov 2026 overhaul, all are initialized to '2026-11-21'.
+ * - NOTE: Update an individual page's lastModified date ONLY when its actual content changes.
+ * - Do NOT include /basecamp (internal admin portal), /api, /c (attribution redirects), or /partner (private portal).
+ */
 export default function sitemap() {
   const baseUrl = 'https://lifetrackpro.in';
-  const lastModified = new Date().toISOString().split('T')[0];
+  const OVERHAUL_DATE = '2026-11-21';
 
   return [
     {
       url: baseUrl,
-      lastModified,
-      changeFrequency: 'daily',
-      priority: 1.0,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/features`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/features/pomodoro-timer`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/features/spaced-repetition`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/features/habit-tracker`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/features/study-rooms`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      lastModified: OVERHAUL_DATE,
     },
     {
-      url: `${baseUrl}/exams/neet`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      url: `${baseUrl}/exams`,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/exams/jee`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      lastModified: OVERHAUL_DATE,
+    },
+    {
+      url: `${baseUrl}/exams/neet`,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/exams/upsc`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/calculator`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.8,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/tools`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/tools/study-timetable-generator`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.85,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/tools/daily-routine-generator`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/tools/study-hours-calculator`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.85,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/tools/focus-time-calculator`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.85,
+      lastModified: OVERHAUL_DATE,
+    },
+    {
+      url: `${baseUrl}/tools/study-hours-calculator`,
+      lastModified: OVERHAUL_DATE,
+    },
+    {
+      url: `${baseUrl}/tools/study-timetable-generator`,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/tools/weekly-study-planner`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.85,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/faq`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.8,
+      lastModified: OVERHAUL_DATE,
+    },
+    {
+      url: `${baseUrl}/about`,
+      lastModified: OVERHAUL_DATE,
+    },
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      lastModified: OVERHAUL_DATE,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.5,
+      lastModified: OVERHAUL_DATE,
     },
   ];
 }

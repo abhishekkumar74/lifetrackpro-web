@@ -9,7 +9,11 @@ import {
   TargetIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
-import InteractiveSpacedRepetition from '@/components/InteractiveSpacedRepetition';
+import dynamic from 'next/dynamic';
+
+const InteractiveSpacedRepetition = dynamic(() => import('@/components/InteractiveSpacedRepetition'), {
+  loading: () => <div style={{ minHeight: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748B', fontSize: '13px' }}>Loading SM-2 Flashcard Simulator...</div>,
+});
 
 const SPACED_REPETITION_FAQS = [
   {
@@ -31,20 +35,10 @@ const SPACED_REPETITION_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Spaced Repetition Flashcards & Active Recall',
-  description: 'Free SM-2 spaced repetition flashcard app. Automate active recall, beat the Ebbinghaus forgetting curve, and lock formulas into long-term memory for JEE & NEET.',
-  keywords: [
-    'spaced repetition flashcards',
-    'active recall flashcards',
-    'sm-2 algorithm app',
-    'ebbinghaus forgetting curve',
-    'neet biology flashcards',
-    'jee physics formula recall',
-    'upsc polity flashcards',
-    'anki alternative for android',
-    'spaced repetition study app',
-    'lifetrack pro flashcards'
-  ],
+  title: {
+    absolute: 'Spaced Repetition Flashcards App | LifeTrack Pro',
+  },
+  description: 'Master active recall with our spaced repetition flashcards app. Uses the SM-2 algorithm to schedule formula and concept reviews before you forget. Try it free.',
   alternates: {
     canonical: 'https://lifetrackpro.in/features/spaced-repetition',
   },
@@ -60,26 +54,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Spaced Repetition Flashcards & Active Recall | LifeTrack Pro',
-    description: 'Automate active recall with the SuperMemo SM-2 algorithm. Schedule flashcards right before memory decay occurs for 95%+ permanent retention.',
+    title: 'Spaced Repetition Flashcards App | LifeTrack Pro',
+    description: 'Master active recall with our spaced repetition flashcards app. Uses the SM-2 algorithm to schedule formula and concept reviews before you forget. Try it free.',
     url: 'https://lifetrackpro.in/features/spaced-repetition',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
-        alt: 'LifeTrack Pro SM-2 Spaced Repetition Flashcards and Active Recall System',
+        url: 'https://lifetrackpro.in/og/og-features.png',
+        width: 1200,
+        height: 630,
+        alt: 'LifeTrack Pro SM-2 Spaced Repetition Flashcards App',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Spaced Repetition Flashcards & Active Recall | LifeTrack Pro',
-    description: 'Calculate expanding mathematical intervals for permanent memory retention with LifeTrack Pro.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Spaced Repetition Flashcards App | LifeTrack Pro',
+    description: 'Master active recall with our spaced repetition flashcards app. Uses the SM-2 algorithm to schedule formula and concept reviews before you forget. Try it free.',
+    images: ['https://lifetrackpro.in/og/og-features.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -97,7 +91,7 @@ export default function SpacedRepetitionPage() {
         "isPartOf": {
           "@type": "WebSite",
           "@id": "https://lifetrackpro.in/#website",
-          "url": "https://lifetrackpro.in/",
+          "url": "https://lifetrackpro.in",
           "name": "LifeTrack Pro"
         }
       },
@@ -105,13 +99,13 @@ export default function SpacedRepetitionPage() {
         "@type": "BreadcrumbList",
         "@id": "https://lifetrackpro.in/features/spaced-repetition#breadcrumbs",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "Spaced Repetition", "item": "https://lifetrackpro.in/features/spaced-repetition" }
         ]
       },
       {
-        "@type": "SoftwareApplication",
+        "@type": "MobileApplication",
         "@id": "https://lifetrackpro.in/#app",
         "name": "LifeTrack Pro",
         "operatingSystem": "Android",
@@ -123,33 +117,6 @@ export default function SpacedRepetitionPage() {
           "price": "0",
           "priceCurrency": "INR"
         }
-      },
-      {
-        "@type": "HowTo",
-        "name": "How To Build Permanent Long-Term Memory Using SM-2 Spaced Repetition",
-        "description": "A scientific active recall framework to master formulas, biology definitions, and statutory articles without forgetting.",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "name": "Convert High-Yield Facts into Flashcards",
-            "text": "Frame concise questions on the front face and precise answers, diagrams, or formula derivations on the back."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Force Active Neural Retrieval Before Flipping",
-            "text": "Attempt to retrieve the answer completely from memory before revealing the back. This mental effort stimulates synaptic consolidation."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Grade Your Recall Accurately",
-            "text": "Rate your recall difficulty honestly using Again, Hard, Good, or Easy to recalibrate the mathematical Ease Factor of that card."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Complete Today's Due Queue Daily",
-            "text": "Spend 15 to 20 minutes each day clearing only the cards due for review to maintain an expanding memory curve without review backlogs."
-          }
-        ]
       },
       {
         "@type": "FAQPage",
@@ -184,10 +151,10 @@ export default function SpacedRepetitionPage() {
           </nav>
 
           <div className="section-eyebrow">Memory Science &amp; Active Recall Engine</div>
-          <h1 className="subpage-h1">Spaced Repetition Flashcards &amp; SM-2 Active Recall</h1>
+          <h1 className="subpage-h1">SM-2 Spaced Repetition Flashcards App</h1>
           
           <p className="subpage-lead">
-            Passive re-reading and highlighting create a dangerous illusion of competence. LifeTrack Pro&apos;s SuperMemo SM-2 spaced repetition engine calculates mathematically optimal review intervals, intercepting memory decay right before forgetting happens to build permanent recall.
+            A science-backed spaced repetition flashcards app helps eliminate the illusion of competence from passive re-reading. LifeTrack Pro&apos;s SM-2 based spaced repetition engine calculates mathematically optimal review intervals, intercepting memory decay right before forgetting happens to build permanent exam recall.
           </p>
 
           {/* Interactive SM-2 Flashcard Simulator */}
@@ -397,25 +364,28 @@ export default function SpacedRepetitionPage() {
           </section>
 
           {/* Bottom Action Buttons */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div className="subpage-bottom-cta-card">
             <a 
               href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro on Play Store - Android Study App"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={18} />
               <span>Get LifeTrack Pro on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Retention ROI</span>
-            </Link>
-            <Link href="/features" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Back to All Features</span>
-            </Link>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/features" className="tools-cta-secondary-btn" aria-label="Back to All Features">
+                <SparklesIcon size={16} />
+                <span>Back to All Features</span>
+              </Link>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Retention ROI">
+                <CalculatorIcon size={16} />
+                <span>Calculate Retention ROI</span>
+              </Link>
+            </div>
           </div>
         </div>
       </article>

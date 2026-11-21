@@ -92,7 +92,7 @@ export function FocusTimeAllocationChart({ plannedMins = 360, loss = {}, efficie
           <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#F59E0B', flexShrink: 0 }} />
           <div>
             <span style={{ color: '#64748B', display: 'block' }}>Direct Distraction:</span>
-            <strong style={{ color: '#D97706', fontFamily: 'monospace' }}>
+            <strong style={{ color: '#92400E', fontFamily: 'monospace' }}>
               {directMins}m ({directPct}%)
             </strong>
           </div>
@@ -102,7 +102,7 @@ export function FocusTimeAllocationChart({ plannedMins = 360, loss = {}, efficie
           <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#EF4444', flexShrink: 0 }} />
           <div>
             <span style={{ color: '#64748B', display: 'block' }}>Cognitive Refocus Lag:</span>
-            <strong style={{ color: '#DC2626', fontFamily: 'monospace' }}>
+            <strong style={{ color: '#B91C1C', fontFamily: 'monospace' }}>
               {refocusMins}m ({refocusPct}%)
             </strong>
           </div>
@@ -206,17 +206,17 @@ export function WhatIfScenarioGrid({ scenarios = [], activeCustom = 40, onCustom
                 <div style={{ fontSize: '12.5px', fontWeight: 750, color: '#0F172A', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {sc.label}
                 </div>
-                <div style={{ fontSize: '10.5px', color: '#64748B' }}>
+                <div style={{ fontSize: '10.5px', color: '#475569' }}>
                   {sc.subtitle}
                 </div>
               </div>
             </div>
 
             <div className="what-if-stat-col" style={{ textAlign: 'right', flexShrink: 0, marginLeft: 'auto' }}>
-              <div style={{ fontSize: '13px', fontWeight: 850, color: '#10B981', fontFamily: 'monospace' }}>
+              <div style={{ fontSize: '13px', fontWeight: 850, color: '#047857', fontFamily: 'monospace' }}>
                 +{sc.monthlyHours}h / month
               </div>
-              <div style={{ fontSize: '10px', color: '#64748B', marginTop: '2px' }}>
+              <div style={{ fontSize: '10px', color: '#475569', marginTop: '2px' }}>
                 +{sc.extraSessions} deep Pomodoro blocks
               </div>
             </div>

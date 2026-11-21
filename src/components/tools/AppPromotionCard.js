@@ -164,7 +164,7 @@ export default function AppPromotionCard({
           </a>
 
           <span style={{ fontSize: '11px', color: 'var(--text-3)', fontWeight: 500 }}>
-            Free on Google Play • No account required
+            Free on Google Play • Quick Setup &amp; Cloud Sync
           </span>
         </div>
       </div>

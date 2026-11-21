@@ -45,7 +45,7 @@ export default function Footer() {
 
           <div className="footer-links-group">
             <div className="footer-col">
-              <h4>Core Features</h4>
+              <h3>Core Features</h3>
               <ul>
                 <li><Link href="/features/pomodoro-timer">Pomodoro Timer</Link></li>
                 <li><Link href="/features/spaced-repetition">SM-2 Spaced Repetition</Link></li>
@@ -56,7 +56,7 @@ export default function Footer() {
             </div>
 
             <div className="footer-col">
-              <h4>Free Study Tools</h4>
+              <h3>Free Study Tools</h3>
               <ul>
                 <li><Link href="/tools">All Online Tools</Link></li>
                 <li><Link href="/tools/study-timetable-generator">Timetable Generator</Link></li>
@@ -68,24 +68,26 @@ export default function Footer() {
             </div>
 
             <div className="footer-col">
-              <h4>Target Aspirants</h4>
+              <h3>Target Aspirants</h3>
               <ul>
+                <li><Link href="/exams">All Competitive Exams</Link></li>
                 <li><Link href="/exams/neet">NEET UG &amp; PG Routine</Link></li>
                 <li><Link href="/exams/jee">JEE Main &amp; Advanced</Link></li>
                 <li><Link href="/exams/upsc">UPSC Civil Services</Link></li>
-                <li><Link href="/features">Tech &amp; Coding Placements</Link></li>
                 <li><Link href="/faq">Common Questions</Link></li>
               </ul>
             </div>
 
             <div className="footer-col">
-              <h4>Resources</h4>
+              <h3>Resources</h3>
               <ul>
                 <li>
                   <a href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" target="_blank" rel="noopener noreferrer">
                     Download on Play Store
                   </a>
                 </li>
+                <li><Link href="/about">About LifeTrack Pro</Link></li>
+                <li><Link href="/contact">Contact &amp; Support</Link></li>
                 <li><Link href="/faq">FAQ Documentation</Link></li>
                 <li><Link href="/privacy">Privacy Policy</Link></li>
                 <li><Link href="/terms">Terms of Service</Link></li>
@@ -95,7 +97,7 @@ export default function Footer() {
             </div>
 
             <div className="footer-col">
-              <h4>Community</h4>
+              <h3>Community</h3>
               <ul>
                 <li>
                   <a href="https://chat.whatsapp.com/B8uwXjT9R665ahqcXVsZdk" target="_blank" rel="noopener noreferrer" className="footer-link-with-icon">

@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import DownloadModal from './DownloadModal';
 import PlayStoreIcon from './PlayStoreIcon';
 import { 
@@ -13,6 +13,7 @@ import {
   HabitFlameIcon, 
   HeadphonesIcon, 
   CalculatorIcon, 
+  TargetIcon,
   HelpCircleIcon, 
   ChevronRightIcon, 
   MenuIcon, 
@@ -22,9 +23,20 @@ import { LinkedInIcon, InstagramIcon, WhatsAppIcon, TelegramIcon } from './Socia
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
   const [scrolled, setScrolled] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [isPinned, setIsPinned] = useState(false);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown on route change during render without cascading effect
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    setDropdownOpen(false);
+    setIsPinned(false);
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +45,60 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close dropdown on outside click or Escape key
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setDropdownOpen(false);
+        setIsPinned(false);
+      }
+    };
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setDropdownOpen(false);
+        setIsPinned(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+
+  const handleDropdownMouseEnter = () => {
+    if (!isPinned) {
+      setDropdownOpen(true);
+    }
+  };
+
+  const handleDropdownMouseLeave = () => {
+    if (!isPinned) {
+      setDropdownOpen(false);
+    }
+  };
+
+  const handleDropdownToggle = (e) => {
+    e.preventDefault();
+    if (isPinned) {
+      // It was pinned, now unpin and close
+      setIsPinned(false);
+      setDropdownOpen(false);
+    } else {
+      // Pin open so moving mouse away keeps it open ("click pai ruke")
+      setIsPinned(true);
+      setDropdownOpen(true);
+    }
+  };
+
+  const handleDropdownItemClick = () => {
+    setDropdownOpen(false);
+    setIsPinned(false);
+  };
+
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -59,14 +125,13 @@ export default function Navbar() {
     <>
       <header className="site-header-wrapper">
         <nav className={`site-nav ${scrolled ? 'scrolled' : ''}`}>
-          <Link href="/" className="brand-wrap" onClick={handleHomeClick} aria-label="LifeTrack Pro Home">
+          <Link href="/" className="brand-wrap" onClick={handleHomeClick}>
             <Image 
               src="/icon.png" 
               alt="LifeTrack Pro Icon" 
               width={32} 
               height={32} 
               className="brand-icon-img"
-              priority
             />
             <div className="brand-title">
               LifeTrack <span style={{ color: 'var(--primary)' }}>Pro</span>
@@ -82,6 +147,56 @@ export default function Navbar() {
             <Link href="/features" className={`nav-btn ${pathname.startsWith('/features') ? 'active' : ''}`}>
               Features
             </Link>
+
+            {/* Exams Dropdown (Hover opens, mouse-leave closes, click pins open, item click closes) */}
+            <div 
+              ref={dropdownRef}
+              className={`nav-dropdown-wrapper ${dropdownOpen ? 'open' : ''}`}
+              onMouseEnter={handleDropdownMouseEnter}
+              onMouseLeave={handleDropdownMouseLeave}
+            >
+              <button 
+                type="button" 
+                id="exams-dropdown-btn"
+                className={`nav-btn ${pathname.startsWith('/exams') ? 'active' : ''}`}
+                onClick={handleDropdownToggle}
+                aria-haspopup="true"
+                aria-expanded={dropdownOpen}
+                aria-controls="exams-dropdown-menu"
+                style={{ 
+                  cursor: 'pointer',
+                  border: 'none',
+                  fontFamily: 'inherit',
+                  background: dropdownOpen ? 'rgba(15, 23, 42, 0.06)' : undefined 
+                }}
+              >
+                Exams ▾
+              </button>
+              <div 
+                id="exams-dropdown-menu"
+                className={`nav-dropdown-menu ${dropdownOpen ? 'open' : ''}`}
+                role="menu"
+                aria-labelledby="exams-dropdown-btn"
+              >
+                <Link href="/exams" className="nav-dropdown-item" role="menuitem" onClick={handleDropdownItemClick}>
+                  <strong>All Exam Hubs</strong>
+                  <span>Overview &amp; preparation roadmaps</span>
+                </Link>
+                <Link href="/exams/jee" className="nav-dropdown-item" role="menuitem" onClick={handleDropdownItemClick}>
+                  <strong>IIT JEE Main &amp; Adv</strong>
+                  <span>90m blocks &amp; formula recall</span>
+                </Link>
+                <Link href="/exams/neet" className="nav-dropdown-item" role="menuitem" onClick={handleDropdownItemClick}>
+                  <strong>NEET UG Prep</strong>
+                  <span>NCERT biology &amp; 50m sprints</span>
+                </Link>
+                <Link href="/exams/upsc" className="nav-dropdown-item" role="menuitem" onClick={handleDropdownItemClick}>
+                  <strong>UPSC Civil Services</strong>
+                  <span>Mains answer timers &amp; GS recall</span>
+                </Link>
+              </div>
+            </div>
+
             <Link href="/tools" className={`nav-btn ${pathname.startsWith('/tools') ? 'active' : ''}`}>
               Free Tools
             </Link>
@@ -131,7 +246,7 @@ export default function Navbar() {
           <div className="mobile-menu-drawer" role="dialog" aria-label="Mobile Navigation">
             {/* Drawer Header with Prominent Close (X) Button */}
             <div className="drawer-header">
-              <Link href="/" className="brand-wrap" onClick={handleHomeClick} aria-label="LifeTrack Pro Home">
+              <Link href="/" className="brand-wrap" onClick={handleHomeClick} aria-label="LifeTrack Pro - Mobile Home">
                 <Image 
                   src="/icon.png" 
                   alt="LifeTrack Pro" 
@@ -198,6 +313,42 @@ export default function Navbar() {
                 <span className="menu-link-title">
                   <HeadphonesIcon size={15} className="menu-link-icon" />
                   <span>Live Study Rooms</span>
+                </span>
+                <ChevronRightIcon size={13} />
+              </Link>
+            </div>
+
+            <div className="drawer-divider" />
+
+            <div className="drawer-section-label">Exams</div>
+
+            <Link href="/exams" className={`mobile-menu-link ${pathname.startsWith('/exams') ? 'active' : ''}`} onClick={closeDrawer}>
+              <span className="menu-link-title">
+                <TargetIcon size={16} className="menu-link-icon" />
+                <span>Exams Hub</span>
+              </span>
+              <ChevronRightIcon size={14} />
+            </Link>
+
+            <div className="drawer-submenu-group">
+              <Link href="/exams/jee" className="mobile-menu-link sub" onClick={closeDrawer}>
+                <span className="menu-link-title">
+                  <span style={{ fontSize: '11px', fontWeight: 800, color: '#2563EB', marginRight: '6px' }}>JEE</span>
+                  <span>IIT JEE Study Planner</span>
+                </span>
+                <ChevronRightIcon size={13} />
+              </Link>
+              <Link href="/exams/neet" className="mobile-menu-link sub" onClick={closeDrawer}>
+                <span className="menu-link-title">
+                  <span style={{ fontSize: '11px', fontWeight: 800, color: '#059669', marginRight: '6px' }}>NEET</span>
+                  <span>NEET Study Tracker</span>
+                </span>
+                <ChevronRightIcon size={13} />
+              </Link>
+              <Link href="/exams/upsc" className="mobile-menu-link sub" onClick={closeDrawer}>
+                <span className="menu-link-title">
+                  <span style={{ fontSize: '11px', fontWeight: 800, color: '#D97706', marginRight: '6px' }}>UPSC</span>
+                  <span>UPSC CSE Prep OS</span>
                 </span>
                 <ChevronRightIcon size={13} />
               </Link>

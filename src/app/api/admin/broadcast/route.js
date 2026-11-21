@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { verifyAdminSession } from '@/lib/auth';
 import { getSupabaseAdmin } from '@/lib/supabaseServer';
 import { recordAdminAudit } from '@/lib/auditLog';
+import { BroadcastBannerSchema, validateRequestBody } from '@/lib/apiValidation';
 
 const VALID_SEVERITIES = ['info', 'warning', 'critical', 'success'];
 
@@ -73,28 +74,24 @@ export async function POST(request) {
     return NextResponse.json({ error: 'Invalid JSON request payload.' }, { status: 400 });
   }
 
-  const { active, message, severity, link_url, link_text } = body || {};
+  const validation = validateRequestBody(BroadcastBannerSchema, {
+    enabled: Boolean(body?.active),
+    message: body?.message || '',
+    severity: body?.severity || 'info',
+    ctaText: body?.link_text || '',
+    ctaLink: body?.link_url || '',
+  });
 
-  const cleanMessage = typeof message === 'string' ? message.trim() : '';
-  const isActive = Boolean(active);
-
-  if (isActive && (!cleanMessage || cleanMessage.length > 300)) {
-    return NextResponse.json(
-      { error: 'Active broadcast must include a message under 300 characters.' },
-      { status: 400 }
-    );
+  if (!validation.success) {
+    return NextResponse.json({ error: validation.error }, { status: 400 });
   }
 
-  const chosenSeverity = VALID_SEVERITIES.includes(severity) ? severity : 'info';
-  const cleanLinkUrl = typeof link_url === 'string' ? link_url.trim().slice(0, 200) : '';
-  const cleanLinkText = typeof link_text === 'string' ? link_text.trim().slice(0, 60) : '';
-
   const broadcastValue = {
-    active: isActive,
-    message: cleanMessage,
-    severity: chosenSeverity,
-    link_url: cleanLinkUrl || null,
-    link_text: cleanLinkText || null,
+    active: validation.data.enabled,
+    message: validation.data.message,
+    severity: validation.data.severity,
+    link_url: validation.data.ctaLink || null,
+    link_text: validation.data.ctaText || null,
     updated_at: new Date().toISOString(),
     updated_by: adminSession.email || 'administrator',
   };

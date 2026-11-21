@@ -12,8 +12,8 @@ export default function InteractivePomodoro() {
 
   const soundscapes = [
     { id: 'rain', name: 'Gentle Rainfall', freq: 'Masks hostel chatter' },
-    { id: 'binaural', name: '432Hz Alpha Waves', freq: 'Prefrontal flow state' },
-    { id: 'cafe', name: 'Ambient Library Café', freq: 'Hawthorne focus effect' },
+    { id: 'binaural', name: 'Alpha Focus Tones', freq: 'Calm alertness' },
+    { id: 'cafe', name: 'Ambient Library Café', freq: 'Ambient library hum' },
     { id: 'lofi', name: 'Chill Lo-Fi Beats', freq: 'Zero-distraction rhythm' },
   ];
 
@@ -71,7 +71,7 @@ export default function InteractivePomodoro() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', background: 'var(--bg-cream)', borderRadius: '100px', padding: '3px', border: '1px solid var(--border-subtle)' }}>
+        <div style={{ display: 'flex', background: 'var(--bg-cream)', borderRadius: '100px', padding: '3px', border: '1px solid var(--border-subtle)', overflowX: 'auto', maxWidth: '100%', scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}>
           {modes.map((m) => (
             <button
               key={m.id}
@@ -86,7 +86,9 @@ export default function InteractivePomodoro() {
                 fontWeight: activeMode.id === m.id ? 700 : 500,
                 cursor: 'pointer',
                 boxShadow: activeMode.id === m.id ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
-                transition: 'all 0.15s ease'
+                transition: 'all 0.15s ease',
+                whiteSpace: 'nowrap',
+                flexShrink: 0
               }}
             >
               {m.name}

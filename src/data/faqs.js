@@ -7,12 +7,12 @@ export const ALL_FAQS = [
   {
     category: 'Spaced Repetition',
     q: "How does the SM-2 algorithm calculate my flashcard review intervals?",
-    a: "LifeTrack Pro implements the SuperMemo SM-2 algorithm. Each card starts with an Ease Factor of 2.5. Based on your self-assessment rating (Again, Hard, Good, or Easy), the algorithm dynamically calculates optimal review intervals (typically 1 day, 6 days, 16 days, 35 days, and beyond), scheduling active recall right before memory decay occurs to lock facts into long-term retention."
+    a: "LifeTrack Pro implements an SM-2 based spaced repetition algorithm. Each card starts with an Ease Factor of 2.50. Based on your recall rating (Again, Hard, Good, or Easy), the algorithm dynamically calculates expanding review intervals (typically 1 day, 6 days, 15 days, 38 days, 95 days, and beyond), scheduling active recall right before memory decay occurs to lock facts into long-term retention."
   },
   {
     category: 'Features',
     q: "Does the Pomodoro focus timer work when my phone screen is locked?",
-    a: "Yes. On the Android application, LifeTrack Pro operates via a dedicated foreground service so your ambient soundscapes (such as 432Hz binaural tones, café audio, or rainfall) continue playing seamlessly, and your countdown timer remains active on your lockscreen widget with minimal battery consumption."
+    a: "Yes. On the Android application, LifeTrack Pro operates via a dedicated foreground service so your ambient soundscapes (such as focus tones, café audio, or rainfall) continue playing seamlessly, and your countdown timer remains active on your lockscreen widget with minimal battery consumption."
   },
   {
     category: 'Exams',

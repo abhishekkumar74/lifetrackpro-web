@@ -1,4 +1,5 @@
 import './globals.css';
+import Script from 'next/script';
 import { Inter, Plus_Jakarta_Sans, DM_Mono } from 'next/font/google';
 import PublicShell from '@/components/PublicShell';
 
@@ -25,22 +26,10 @@ const dmMono = DM_Mono({
 export const metadata = {
   metadataBase: new URL('https://lifetrackpro.in'),
   title: {
-    default: 'LifeTrack Pro — All-in-One Focus, Flashcards & Habit Tracker App',
+    default: 'All-in-One Study OS & Productivity App | LifeTrack Pro',
     template: '%s | LifeTrack Pro'
   },
-  description: 'LifeTrack Pro unifies Pomodoro focus timer with ambient soundscapes, SM-2 spaced repetition flashcards, daily habit streaks, and live study rooms.',
-  keywords: [
-    'focus timer',
-    'pomodoro timer',
-    'spaced repetition app',
-    'anki alternative',
-    'habit tracker',
-    'live study rooms',
-    'jee study tracker',
-    'neet focus app',
-    'lifetrack pro',
-    'productivity life os'
-  ],
+  description: 'LifeTrack Pro is an all in one study app uniting Pomodoro focus, SM-2 flashcards, habit streaks & silent study rooms. Start building deep focus for free today.',
   authors: [{ name: 'LifeTrack Pro' }],
   creator: 'Abhishek Kumar',
   publisher: 'LifeTrack Pro',
@@ -67,24 +56,24 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://lifetrackpro.in/',
-    title: 'LifeTrack Pro — All-in-One Focus, Flashcards & Habit Tracker App',
-    description: 'Stop juggling 5 apps. Pomodoro timer, SM-2 flashcard spaced repetition, habit streaks & real-time study rooms in one beautiful interface.',
+    url: 'https://lifetrackpro.in',
+    title: 'All-in-One Study OS & Productivity App | LifeTrack Pro',
+    description: 'LifeTrack Pro is an all in one study app uniting Pomodoro focus, SM-2 flashcards, habit streaks & silent study rooms. Start building deep focus for free today.',
     siteName: 'LifeTrack Pro',
     images: [
       {
-        url: '/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
-        alt: 'LifeTrack Pro - Your Complete Life OS',
+        url: 'https://lifetrackpro.in/og/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'LifeTrack Pro - All-in-One Focus, Flashcards & Habit Tracker App',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LifeTrack Pro — Your Complete Life & Study OS',
-    description: 'Focus timer, spaced repetition, habit tracking & live study rooms. Achieve effortless consistency.',
-    images: ['/play_store_feature_graphic.png'],
+    title: 'All-in-One Study OS & Productivity App | LifeTrack Pro',
+    description: 'LifeTrack Pro is an all in one study app uniting Pomodoro focus, SM-2 flashcards, habit streaks & silent study rooms. Start building deep focus for free today.',
+    images: ['https://lifetrackpro.in/og/og-default.png'],
     creator: '@LifeTrackPro',
   },
   other: {
@@ -99,12 +88,50 @@ export const viewport = {
   themeColor: '#2563EB',
 };
 
+const sitewideJsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://lifetrackpro.in/#organization',
+      name: 'LifeTrack Pro',
+      url: 'https://lifetrackpro.in',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://lifetrackpro.in/icon.png',
+        width: 192,
+        height: 192,
+      },
+      sameAs: [
+        'https://www.instagram.com/lifetrackpro/',
+        'https://www.linkedin.com/company/lifetrackpro',
+        'https://t.me/lifetrackpro',
+        'https://play.google.com/store/apps/details?id=com.lifetrackpro.app',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://lifetrackpro.in/#website',
+      url: 'https://lifetrackpro.in',
+      name: 'LifeTrack Pro',
+      publisher: {
+        '@id': 'https://lifetrackpro.in/#organization',
+      },
+      inLanguage: 'en-IN',
+    },
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable} ${dmMono.variable}`}>
+    <html lang="en-IN" className={`${inter.variable} ${plusJakartaSans.variable} ${dmMono.variable}`}>
       <head>
         <script
-          async
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(sitewideJsonLd) }}
+        />
+        <Script
+          strategy="lazyOnload"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3825001060710787"
           crossOrigin="anonymous"
         />

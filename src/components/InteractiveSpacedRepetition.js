@@ -59,7 +59,7 @@ export default function InteractiveSpacedRepetition() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '24px', alignItems: 'center' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '24px', alignItems: 'start' }}>
         {/* Flashcard 3D Box */}
         <div>
           <div 
@@ -74,11 +74,11 @@ export default function InteractiveSpacedRepetition() {
                 setFlipped(!flipped);
               }
             }}
-            style={{ height: '220px', cursor: 'pointer', perspective: '1000px', margin: 0 }}
+            style={{ minHeight: '260px', width: '100%', cursor: 'pointer', perspective: '1000px', margin: 0 }}
           >
-            <div className={`flashcard-inner ${flipped ? 'flipped' : ''}`} style={{ transition: 'transform 0.4s var(--ease-spring)' }}>
+            <div className={`flashcard-inner ${flipped ? 'flipped' : ''}`} style={{ minHeight: '260px', flex: '1 1 auto', transition: 'transform 0.4s var(--ease-spring)' }}>
               {/* Front Face */}
-              <div className="flashcard-front" style={{ background: 'var(--bg-warm)', padding: '24px', borderRadius: 'var(--radius-md)', border: '1.5px solid var(--border-mid)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+              <div className="flashcard-front" style={{ background: 'var(--bg-warm)', padding: '24px', borderRadius: 'var(--radius-md)', border: '1.5px solid var(--border-mid)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', boxSizing: 'border-box' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: '10px', fontWeight: 750, color: 'var(--emerald)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                     {currentCard.subject}
@@ -96,7 +96,7 @@ export default function InteractiveSpacedRepetition() {
               </div>
 
               {/* Back Face */}
-              <div className="flashcard-back" style={{ background: '#FFFFFF', padding: '24px', borderRadius: 'var(--radius-md)', border: '1.5px solid var(--emerald)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+              <div className="flashcard-back" style={{ background: '#FFFFFF', padding: '24px', borderRadius: 'var(--radius-md)', border: '1.5px solid var(--emerald)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%', boxSizing: 'border-box' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span style={{ fontSize: '10px', fontWeight: 750, color: 'var(--emerald)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                     Correct Answer

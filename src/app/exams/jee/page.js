@@ -1,11 +1,15 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   CalculatorIcon, 
   SparklesIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
-import InteractiveJeePlanner from '@/components/InteractiveJeePlanner';
+
+const InteractiveJeePlanner = dynamic(() => import('@/components/InteractiveJeePlanner'), {
+  loading: () => <div style={{ minHeight: '360px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748B', fontSize: '13px' }}>Loading JEE Planner Simulator...</div>,
+});
 
 const JEE_FAQS = [
   {
@@ -27,18 +31,10 @@ const JEE_FAQS = [
 ];
 
 export const metadata = {
-  title: 'IIT JEE Study Planner & Formula Recall',
-  description: 'Master JEE Main & Advanced problem solving with LifeTrack Pro. 90-minute exam focus blocks, SM-2 formula flashcards, and daily habit streaks. Free.',
-  keywords: [
-    'JEE study tracker',
-    'JEE main study planner',
-    'JEE advanced pomodoro timer',
-    'JEE physics formula flashcards',
-    'IIT JEE revision schedule',
-    'math formula recall app',
-    'jee mock error tracker',
-    'lifetrack pro jee'
-  ],
+  title: {
+    absolute: 'IIT JEE Study Planner & Formula Recall | LifeTrack Pro',
+  },
+  description: 'Structure your preparation with a dedicated JEE study planner. Combine 90-minute exam blocks, SM-2 formula flashcards & daily streaks. Start planning today.',
   alternates: {
     canonical: 'https://lifetrackpro.in/exams/jee',
   },
@@ -55,16 +51,16 @@ export const metadata = {
   },
   openGraph: {
     title: 'IIT JEE Study Planner & Formula Recall | LifeTrack Pro',
-    description: 'Master JEE Main & Advanced problem solving with LifeTrack Pro: 90-minute exam simulation blocks, SM-2 formula flashcards, and habit streak shields.',
+    description: 'Structure your preparation with a dedicated JEE study planner. Combine 90-minute exam blocks, SM-2 formula flashcards & daily streaks. Start planning today.',
     url: 'https://lifetrackpro.in/exams/jee',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
+        url: 'https://lifetrackpro.in/og/og-exams.png',
+        width: 1200,
+        height: 630,
         alt: 'LifeTrack Pro IIT JEE Study Planner and Formula Recall System',
       },
     ],
@@ -72,8 +68,8 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'IIT JEE Study Planner & Formula Recall | LifeTrack Pro',
-    description: 'Structure your daily JEE Main & Advanced revision with 90-minute simulation blocks and SM-2 formula recall.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    description: 'Structure your preparation with a dedicated JEE study planner. Combine 90-minute exam blocks, SM-2 formula flashcards & daily streaks. Start planning today.',
+    images: ['https://lifetrackpro.in/og/og-exams.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -83,8 +79,8 @@ export default function JeeExamPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
+        "@type": "MobileApplication",
+        "@id": "https://lifetrackpro.in/#app",
         "name": "LifeTrack Pro",
         "operatingSystem": "Android",
         "applicationCategory": "EducationalApplication",
@@ -94,11 +90,6 @@ export default function JeeExamPage() {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
@@ -110,15 +101,15 @@ export default function JeeExamPage() {
         "isPartOf": {
           "@type": "WebSite",
           "@id": "https://lifetrackpro.in/#website",
-          "url": "https://lifetrackpro.in/",
+          "url": "https://lifetrackpro.in",
           "name": "LifeTrack Pro"
         }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
-          { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
+          { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "JEE Study Planner", "item": "https://lifetrackpro.in/exams/jee" }
         ]
       },
@@ -155,10 +146,10 @@ export default function JeeExamPage() {
           </nav>
 
           <div className="section-eyebrow">Engineering Aspirants &amp; Problem Solving</div>
-          <h1 className="subpage-h1">IIT JEE Study Planner: Master Complex Problem Solving &amp; Formula Recall</h1>
+          <h1 className="subpage-h1">IIT JEE Study Planner &amp; Formula Revision System</h1>
           
           <p className="subpage-lead">
-            Clearing JEE Main and Advanced requires exceptional mathematical stamina and immediate formula recall under pressure. LifeTrack Pro replaces fragmented study tools with a disciplined, unified system built for rigorous problem solving.
+            Structure your engineering preparation with a dedicated JEE study planner. Clearing JEE Main and Advanced requires exceptional mathematical stamina and immediate formula recall under pressure. LifeTrack Pro replaces fragmented study tools with a disciplined, unified system built for rigorous problem solving.
           </p>
 
           {/* Interactive JEE Syllabus & Formula Tracker */}
@@ -174,10 +165,10 @@ export default function JeeExamPage() {
             </p>
             <ul className="content-card-list">
               <li>✓ <strong>SM-2 Formula Spaced Recall:</strong> Keep complex calculus derivations, conic section equations, and organic named reaction mechanisms fresh using <Link href="/features/spaced-repetition" style={{ color: 'var(--primary)', fontWeight: 600 }}>SM-2 spaced repetition flashcards</Link>.</li>
-              <li>✓ <strong>50 &amp; 90-Minute Focus Blocks:</strong> Solve multi-step numericals without distraction using the <Link href="/features/pomodoro-timer" style={{ color: 'var(--primary)', fontWeight: 600 }}>Pomodoro Focus Timer</Link> with 432Hz alpha frequencies and rain soundscapes.</li>
+              <li>✓ <strong>50 &amp; 90-Minute Focus Blocks:</strong> Solve multi-step numericals without distraction using the <Link href="/features/pomodoro-timer" style={{ color: 'var(--primary)', fontWeight: 600 }}>Pomodoro Focus Timer</Link> with focus soundscapes and rain ambient audio.</li>
               <li>✓ <strong>Daily Non-Negotiable Streaks:</strong> Track habits like &apos;Solve 40 Advanced MCQs&apos; and &apos;Analyze Mock Mistakes&apos; with <Link href="/features/habit-tracker" style={{ color: 'var(--primary)', fontWeight: 600 }}>Streak Freeze Shields</Link> protecting your streak badge.</li>
               <li>✓ <strong>Silent Focus Lounges:</strong> Study alongside fellow engineering aspirants in camera-free, distraction-free <Link href="/features/study-rooms" style={{ color: 'var(--primary)', fontWeight: 600 }}>24/7 Virtual Study Rooms</Link>.</li>
-              <li>✓ <strong>100% Offline Capability:</strong> Solve problem sheets and review formulas anywhere without mobile data or Wi-Fi dependencies.</li>
+              <li>✓ <strong>Offline-First Reliability:</strong> Solve problem sheets and review formulas anywhere with local-first storage and automatic cloud backup.</li>
             </ul>
           </div>
 
@@ -187,10 +178,15 @@ export default function JeeExamPage() {
               Tackling Multi-Concept Problems with Calibrated Focus Blocks
             </h2>
             <p className="content-card-p">
-              Standard 25-minute study intervals are often too brief for JEE Advanced problems. When a question merges electromagnetic induction with rotational kinematics, students require 10 to 15 minutes simply to construct the mental model.
+              Standard 25-minute study intervals are often too brief for rigorous engineering problem solving. When complex numericals merge rotational dynamics with electromagnetic induction, students require 10 to 15 minutes simply to construct the mental model.
             </p>
             <p className="content-card-p">
-              LifeTrack Pro allows you to select 50-minute deep sprints or full 90-minute simulation blocks. This conditions your biological clock to the official 3-hour NTA exam shifts (9:00 AM – 12:00 PM and 2:30 PM – 5:30 PM) so mental stamina peaks when it matters most.
+              {/* TODO: Verify exact JEE Main shift timings with latest NTA information bulletin */}
+              <strong>JEE Main (NTA Shifts):</strong> LifeTrack Pro conditions your biological clock to the official 3-hour NTA exam shifts (Shift 1: 9:00 AM – 12:00 PM and Shift 2: 3:00 PM – 6:00 PM) with calibrated 90-minute simulation blocks so mental stamina peaks during actual testing windows.
+            </p>
+            <p className="content-card-p">
+              {/* TODO-verify: Confirm exact JEE Advanced 2026 Paper 1 and Paper 2 shift schedule with organizing IIT information brochure */}
+              <strong>JEE Advanced (IIT Schedule):</strong> For JEE Advanced aspirants, simulate Paper 1 and Paper 2 shift schedules as per the organizing IIT brochure to build exam endurance without cognitive burnout.
             </p>
           </div>
 
@@ -260,25 +256,28 @@ export default function JeeExamPage() {
           </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div className="subpage-bottom-cta-card">
             <a 
               href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro on Play Store - Android Study App"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={18} />
               <span>Get LifeTrack Pro on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <Link href="/features" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Explore All Features</span>
-            </Link>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Reclaimed Focus Hours</span>
-            </Link>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/features" className="tools-cta-secondary-btn" aria-label="Explore All Features">
+                <SparklesIcon size={16} />
+                <span>Explore All Features</span>
+              </Link>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Reclaimed Focus Hours">
+                <CalculatorIcon size={16} />
+                <span>Calculate Reclaimed Focus Hours</span>
+              </Link>
+            </div>
           </div>
         </div>
       </article>

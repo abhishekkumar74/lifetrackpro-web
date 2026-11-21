@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   TimerIcon, 
@@ -10,7 +11,10 @@ import {
   HelpCircleIcon
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
-import InteractiveStudyRooms from '@/components/InteractiveStudyRooms';
+
+const InteractiveStudyRooms = dynamic(() => import('@/components/InteractiveStudyRooms'), {
+  loading: () => <div style={{ minHeight: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748B', fontSize: '13px' }}>Loading Study Room Preview...</div>,
+});
 
 const STUDY_ROOMS_FAQS = [
   {
@@ -23,7 +27,7 @@ const STUDY_ROOMS_FAQS = [
   },
   {
     question: "Do I need a camera or microphone to use LifeTrack Pro study rooms?",
-    answer: "No. LifeTrack Pro is 100% camera-free and microphone-free. We deliberately avoid video feeds to protect student privacy, reduce mobile data and battery drain, and prevent 'Zoom fatigue' and performance anxiety. You receive all the accountability of a university library without feeling watched."
+    answer: "No. LifeTrack Pro is camera-free and microphone-free. We deliberately avoid video feeds to protect student privacy, reduce mobile data usage, and prevent 'Zoom fatigue' and performance anxiety. You receive all the accountability of a university library without feeling watched."
   },
   {
     question: "How do synchronized Pomodoro timers work in focus sessions?",
@@ -35,28 +39,15 @@ const STUDY_ROOMS_FAQS = [
   },
   {
     question: "Does the interactive study room widget on this web page show real-time user data?",
-    answer: "The interactive web widget is a client-side simulation demonstrating room themes, soundscapes (such as 432Hz binaural beats and rain), and synchronized countdown clocks. The LifeTrack Pro mobile application provides the actual distraction-free focus environment with background audio persistence on your device."
+    answer: "The interactive web widget is a client-side demo preview demonstrating room themes, ambient soundscapes (such as focus tones and rain), and synchronized countdown clocks. The LifeTrack Pro mobile application provides the actual distraction-free focus environment with background audio persistence on your device."
   }
 ];
 
 export const metadata = {
-  title: 'Online Study Groups & Virtual Study Rooms',
-  description: 'Join silent virtual study rooms and online study groups. Practice camera-free body doubling with synchronized Pomodoro timers, 432Hz ambient audio, and zero ads.',
-  keywords: [
-    'online study groups',
-    'virtual study rooms',
-    'silent study room online',
-    'study room without camera',
-    'camera free study room',
-    'body doubling for students',
-    'adhd body doubling study app',
-    'pomodoro study group',
-    'virtual study space',
-    'jee virtual study room',
-    'neet online study group',
-    'upsc focus room',
-    'lifetrack pro study rooms'
-  ],
+  title: {
+    absolute: 'Virtual Study Room Online for Students | LifeTrack Pro',
+  },
+  description: 'Join a silent virtual study room online. Camera-free body doubling, shared Pomodoro timers and distraction-free accountability for serious students. Join free.',
   alternates: {
     canonical: 'https://lifetrackpro.in/features/study-rooms',
   },
@@ -72,26 +63,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Online Study Groups & Virtual Study Rooms | LifeTrack Pro',
-    description: 'Practice virtual body doubling in silent study rooms. Synchronized Pomodoro timers, ambient soundscapes, and focused peer accountability without video fatigue.',
+    title: 'Virtual Study Room Online for Students | LifeTrack Pro',
+    description: 'Join a silent virtual study room online. Camera-free body doubling, shared Pomodoro timers and distraction-free accountability for serious students. Join free.',
     url: 'https://lifetrackpro.in/features/study-rooms',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
-        alt: 'LifeTrack Pro Silent Virtual Study Rooms and Student Focus Sessions',
+        url: 'https://lifetrackpro.in/og/og-features.png',
+        width: 1200,
+        height: 630,
+        alt: 'LifeTrack Pro Silent Virtual Study Room Online and Body Doubling',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Online Study Groups & Virtual Study Rooms | LifeTrack Pro',
-    description: 'Silent virtual study rooms and online study groups with synchronized Pomodoro timers and ambient audio. Pure body doubling focus with zero video fatigue.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Virtual Study Room Online for Students | LifeTrack Pro',
+    description: 'Join a silent virtual study room online. Camera-free body doubling, shared Pomodoro timers and distraction-free accountability for serious students. Join free.',
+    images: ['https://lifetrackpro.in/og/og-features.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -109,20 +100,20 @@ export default function StudyRoomsPage() {
         "isPartOf": {
           "@type": "WebSite",
           "@id": "https://lifetrackpro.in/#website",
-          "url": "https://lifetrackpro.in/",
+          "url": "https://lifetrackpro.in",
           "name": "LifeTrack Pro"
         }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "Study Rooms", "item": "https://lifetrackpro.in/features/study-rooms" }
         ]
       },
       {
-        "@type": "SoftwareApplication",
+        "@type": "MobileApplication",
         "@id": "https://lifetrackpro.in/#app",
         "name": "LifeTrack Pro",
         "operatingSystem": "Android",
@@ -168,17 +159,17 @@ export default function StudyRoomsPage() {
           </nav>
 
           <div className="section-eyebrow">Silent Focus &amp; Body Doubling</div>
-          <h1 className="subpage-h1">Online Study Groups &amp; Silent Virtual Study Rooms for Students</h1>
+          <h1 className="subpage-h1">Silent Virtual Study Room Online for Students</h1>
           
           <p className="subpage-lead">
-            Solo studying often triggers isolation, wandering attention, and doomscrolling. LifeTrack Pro brings the quiet social accountability of a premier university library directly to your device with silent virtual study rooms, structured focus sessions, and camera-free body doubling.
+            Joining a silent virtual study room online provides the quiet social accountability of a premier university library directly to your device. Practice camera-free body doubling with synchronized Pomodoro timers, structured focus intervals, and ambient soundscapes without video fatigue.
           </p>
 
           {/* Interactive Study Rooms Simulator Widget */}
           <section aria-label="Interactive Study Room Demonstration">
             <InteractiveStudyRooms />
             <p style={{ fontSize: '12px', color: 'var(--text-3)', textAlign: 'center', marginTop: '-14px', marginBottom: '24px' }}>
-              Interactive Demonstration: Preview silent room themes, acoustic soundscapes, and synchronized interval pacing.
+              Demo Preview: Interactive simulation illustrating silent room themes, ambient soundscapes, and synchronized interval pacing.
             </p>
           </section>
 
@@ -191,7 +182,7 @@ export default function StudyRoomsPage() {
               <strong>Body doubling</strong> is a well-established cognitive focus technique where working in the quiet presence of others anchors your executive function. When studying alone in a bedroom or hostel room, low dopamine and task inertia frequently lead to procrastination, tab-switching, and phone checks.
             </p>
             <p className="content-card-p">
-              Behavioral researchers link this to the <em>Hawthorne Effect</em> and social facilitation theory: humans instinctively maintain higher discipline and diligence when aware of shared academic effort. LifeTrack Pro recreates this psychological anchor virtually without the social anxiety or awkwardness of open webcams.
+              Behavioral researchers link this to social facilitation theory: humans instinctively maintain higher discipline and diligence when aware of shared academic effort. LifeTrack Pro recreates this psychological anchor virtually without the social anxiety or awkwardness of open webcams.
             </p>
             <ul className="content-card-list">
               <li>✓ <strong>Lowers Task Initiation Friction:</strong> Knowing that other students are quietly logging focus blocks makes cracking open difficult textbooks significantly easier.</li>
@@ -212,8 +203,8 @@ export default function StudyRoomsPage() {
             <ul className="content-card-list">
               <li>• <strong>100% Silent &amp; Camera-Free:</strong> No intrusive video feeds, no open microphones, and no side-conversations. You get the calm reassurance of mutual dedication without interruptions.</li>
               <li>• <strong>Synchronized Pomodoro Cadences:</strong> Integrated with our <Link href="/features/pomodoro-timer" style={{ color: 'var(--primary)', fontWeight: 600 }}>Pomodoro Focus Timer</Link>. Choose between 25/5 short sprints or 50/10 marathon intervals so study blocks and mental recovery periods remain structured.</li>
-              <li>• <strong>Built-In Acoustic Masking:</strong> Immerse yourself in built-in focus soundscapes including 432Hz binaural tones, gentle rainfall, café white noise, and soothing lo-fi beats that run smoothly in the background.</li>
-              <li>• <strong>Battery &amp; Bandwidth Friendly:</strong> Because there are no power-hungry video streams or resource-heavy background processes, study sessions consume minimal mobile data and preserve battery life during full-day library marathons.</li>
+              <li>• <strong>Built-In Acoustic Masking:</strong> Immerse yourself in built-in focus soundscapes including alpha tones, gentle rainfall, café background hum, and soothing lo-fi beats that run smoothly in the background.</li>
+              <li>• <strong>Bandwidth &amp; Resource Friendly:</strong> Because there are no power-hungry video streams or resource-heavy background processes, study sessions consume minimal mobile data during long study marathons.</li>
               <li>• <strong>Dedicated Exam Themes:</strong> Choose rooms tailored to your exact academic focus, from competitive syllabus marathons to late-night revision sessions.</li>
             </ul>
           </div>
@@ -335,7 +326,7 @@ export default function StudyRoomsPage() {
                     <TimerIcon size={15} /> Pomodoro Timer
                   </div>
                   <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: '1.45' }}>
-                    Customizable 25/5 and 50/10 focus intervals with acoustic soundscapes and zero ads.
+                    Customizable 25/5 and 50/10 focus intervals with acoustic soundscapes and distraction-free focus.
                   </p>
                 </div>
               </Link>
@@ -384,28 +375,32 @@ export default function StudyRoomsPage() {
           </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div className="subpage-bottom-cta-card">
             <a 
               href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro on Play Store - Android Study App"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={18} />
               <span>Get LifeTrack Pro on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Reclaimed Focus Hours</span>
-            </Link>
-            <Link href="/features" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Explore All Features</span>
-            </Link>
-            <Link href="/faq" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/features" className="tools-cta-secondary-btn" aria-label="Explore All Features">
+                <SparklesIcon size={16} />
+                <span>Explore All Features</span>
+              </Link>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Reclaimed Focus Hours">
+                <CalculatorIcon size={16} />
+                <span>Calculate Reclaimed Focus Hours</span>
+              </Link>
+            </div>
+            <Link href="/faq" className="subpage-cta-tertiary-btn" aria-label="Student FAQ">
               <HelpCircleIcon size={16} />
               <span>Student FAQ</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </Link>
           </div>
         </div>

@@ -9,8 +9,8 @@ export default function InteractiveStudyRooms() {
       title: 'IIT JEE Physics Marathon',
       badge: 'JEE Main & Adv',
       badgeColor: '#2563EB',
-      participants: 48,
-      soundscape: 'Binaural 432Hz',
+      cadence: '50/10 Pomodoro',
+      soundscape: 'Focus Alpha Tones',
       topic: 'Rotational Motion & Electrodynamics Practice'
     },
     {
@@ -18,7 +18,7 @@ export default function InteractiveStudyRooms() {
       title: 'NEET Biology Rapid Recall',
       badge: 'Medical AIIMS',
       badgeColor: '#059669',
-      participants: 64,
+      cadence: '50/10 Pomodoro',
       soundscape: 'Gentle Rain Stream',
       topic: 'NCERT Class 12 Genetics & Biotechnology'
     },
@@ -27,18 +27,18 @@ export default function InteractiveStudyRooms() {
       title: 'UPSC Mains Answer Sprint',
       badge: 'Civil Services',
       badgeColor: '#D97706',
-      participants: 32,
+      cadence: '25/5 Sprint',
       soundscape: 'Café White Noise',
       topic: 'GS Paper 2 Polity & Governance 15-Markers'
     },
     {
       id: 'lofi',
-      title: 'Late Night Lo-Fi Grind',
+      title: 'Late Night Focus Grind',
       badge: 'Universal Focus',
       badgeColor: '#1D4ED8',
-      participants: 86,
-      soundscape: '432Hz Chill Lo-Fi',
-      topic: 'Silent Deep Work & Midnight Problem Solving'
+      cadence: '50/10 Pomodoro',
+      soundscape: 'Chill Lo-Fi Beats',
+      topic: 'Silent Deep Work & Problem Solving'
     }
   ];
 
@@ -65,20 +65,20 @@ export default function InteractiveStudyRooms() {
             <HeadphonesIcon size={18} />
           </div>
           <div>
-            <div style={{ fontSize: '15px', fontWeight: 750, color: 'var(--text-1)' }}>Virtual Study Room Hub</div>
-            <div style={{ fontSize: '11px', color: 'var(--text-3)' }}>230+ students actively studying across India right now</div>
+            <div style={{ fontSize: '15px', fontWeight: 750, color: 'var(--text-1)' }}>Virtual Study Room Simulator</div>
+            <div style={{ fontSize: '11px', color: 'var(--text-3)' }}>Demo preview of camera-free multiplayer focus rooms</div>
           </div>
         </div>
 
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(225,29,72,0.1)', padding: '4px 10px', borderRadius: '100px', color: 'var(--rose)', fontSize: '11px', fontWeight: 750 }}>
-          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--rose)', display: 'inline-block' }} />
-          LIVE SYNCHRONOUS
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(37,99,235,0.08)', padding: '4px 10px', borderRadius: '100px', color: 'var(--primary)', fontSize: '11px', fontWeight: 750 }}>
+          <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--primary)', display: 'inline-block' }} />
+          DEMO PREVIEW
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '20px', alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '20px', alignItems: 'stretch' }}>
         {/* Room Selection Grid */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', height: '100%', justifyContent: 'space-between' }}>
           {rooms.map((r) => (
             <div
               key={r.id}
@@ -120,11 +120,11 @@ export default function InteractiveStudyRooms() {
               </div>
 
               <div style={{ textAlign: 'right' }}>
-                <span style={{ fontSize: '12px', fontWeight: 750, color: 'var(--emerald)' }}>
-                  {r.participants} online
+                <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--text-2)' }}>
+                  {r.cadence}
                 </span>
                 <span style={{ display: 'block', fontSize: '10px', color: 'var(--primary)', fontWeight: 600 }}>
-                  {activeRoom.id === r.id ? 'Joined' : 'Join →'}
+                  {activeRoom.id === r.id ? 'Active' : 'Preview →'}
                 </span>
               </div>
             </div>
@@ -132,7 +132,7 @@ export default function InteractiveStudyRooms() {
         </div>
 
         {/* Live Active Room Simulator Screen */}
-        <div style={{ background: 'var(--bg-warm)', borderRadius: 'var(--radius-md)', padding: '20px', border: '1px solid var(--border-subtle)' }}>
+        <div style={{ background: 'var(--bg-warm)', borderRadius: 'var(--radius-md)', padding: '20px', border: '1px solid var(--border-subtle)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
             <div>
               <div style={{ fontSize: '14px', fontWeight: 750, color: 'var(--text-1)' }}>
@@ -155,7 +155,7 @@ export default function InteractiveStudyRooms() {
                 cursor: 'pointer'
               }}
             >
-              {audioStreamActive ? '432Hz Audio Stream On' : 'Audio Stream Muted'}
+              {audioStreamActive ? 'Ambient Soundscape On' : 'Soundscape Muted'}
             </button>
           </div>
 
@@ -169,18 +169,17 @@ export default function InteractiveStudyRooms() {
           </div>
 
           <div style={{ fontSize: '11px', color: 'var(--text-2)', marginBottom: '10px' }}>
-            <strong>Active Peers in this Room:</strong>
+            <strong>Room Focus Guidelines (Camera-Free):</strong>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
             {[
-              { name: 'Aditya K. (Kota)', status: '42m streak', state: 'Solving Physics HC Verma' },
-              { name: 'Sneha R. (Delhi)', status: '50m streak', state: 'Active Recall Biology NCERT' },
-              { name: 'Vikram S. (Hyderabad)', status: '35m streak', state: 'UPSC Mains GS Paper 2' },
-            ].map((peer, i) => (
-              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11px', padding: '6px 10px', background: '#FFFFFF', borderRadius: '6px', border: '1px solid var(--border-subtle)' }}>
-                <span style={{ fontWeight: 600, color: 'var(--text-1)' }}>{peer.name}</span>
-                <span style={{ color: 'var(--text-3)' }}>{peer.state}</span>
-                <span style={{ color: 'var(--amber)', fontWeight: 700 }}>{peer.status}</span>
+              { rule: '100% Silent Environment', desc: 'No open microphones or side chatter. Pure task immersion.' },
+              { rule: 'Synchronized Interval Timer', desc: '50-minute study blocks + 10-minute rest chimes.' },
+              { rule: 'Zero Video Fatigue', desc: 'No webcams required. Protects student privacy and mobile data.' },
+            ].map((item, i) => (
+              <div key={i} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '11px', padding: '8px 10px', background: '#FFFFFF', borderRadius: '6px', border: '1px solid var(--border-subtle)', flexWrap: 'wrap', gap: '4px' }}>
+                <span style={{ fontWeight: 650, color: 'var(--text-1)' }}>✓ {item.rule}</span>
+                <span style={{ color: 'var(--text-3)', fontSize: '10.5px' }}>{item.desc}</span>
               </div>
             ))}
           </div>

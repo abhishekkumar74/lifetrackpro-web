@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { 
   STUDENT_PERSONAS, 
   CATEGORY_STYLES, 
@@ -33,12 +34,18 @@ export default function RoutinePrintDocument({
   const wakeMin = timeStringToMinutes(profile.wakeTime || '06:00');
   const bedtimeMin = calculateBedtimeMinutes(profile.wakeTime || '06:00', profile.sleepHours || 7.5);
   
-  const currentDateFormatted = new Date().toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const [currentDateFormatted, setCurrentDateFormatted] = useState('');
+
+  useEffect(() => {
+    setCurrentDateFormatted(
+      new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    );
+  }, []);
 
   return (
     <div
@@ -106,9 +113,9 @@ export default function RoutinePrintDocument({
         {/* Main Document Title & Unified Metadata Ribbon */}
         <div style={{ marginBottom: '14px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '6px' }}>
-            <h1 style={{ fontSize: '20px', fontWeight: 850, color: '#172033', margin: 0, letterSpacing: '-0.3px' }}>
+            <div role="heading" aria-level="2" style={{ fontSize: '20px', fontWeight: 850, color: '#172033', margin: 0, letterSpacing: '-0.3px' }}>
               My Daily Study Routine
-            </h1>
+            </div>
             <div style={{ fontSize: '10.5px', color: '#64748B' }}>
               📌 <strong>Study Desk Instructions:</strong> Pin on wall. Follow daily.
             </div>

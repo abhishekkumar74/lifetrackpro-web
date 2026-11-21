@@ -37,6 +37,11 @@ yarn-error.log*
 
 # scratch scripts & local tests
 scratch/
+.lighthouseci/
+docs/ui-audit/*.png
+scripts/audit-safety-net-off.mjs
+scripts/smoke-test-tools.mjs
+scripts/mobile-shell-tests.mjs
 
 # vercel
 .vercel

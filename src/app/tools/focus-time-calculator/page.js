@@ -29,18 +29,10 @@ const FOCUS_TIME_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Focus Time Calculator: Deep Work & Pomodoro',
-  description: 'Free focus time calculator. Measure net deep work focus hours versus attention residue lost to distractions, and find your optimal 50/10 Pomodoro blocks. Free.',
-  keywords: [
-    'focus time calculator',
-    'deep work calculator',
-    'study efficiency calculator',
-    'pomodoro block calculator',
-    'attention residue calculator',
-    'net study focus calculator',
-    'how much deep work per day',
-    'lifetrack pro focus calculator'
-  ],
+  title: {
+    absolute: 'Focus Time Calculator & Deep Work Meter | LifeTrack Pro',
+  },
+  description: 'Measure net study hours versus distraction residue with our free focus time calculator. Find your optimal 50/10 Pomodoro intervals. Calculate your focus now.',
   alternates: {
     canonical: 'https://lifetrackpro.in/tools/focus-time-calculator',
   },
@@ -56,26 +48,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Focus Time Calculator: Deep Work & Pomodoro | LifeTrack Pro',
-    description: 'Measure your net deep work focus hours versus attention residue lost to phone distractions. Find your optimal 50/10 Pomodoro cadence.',
+    title: 'Focus Time Calculator & Deep Work Meter | LifeTrack Pro',
+    description: 'Measure net study hours versus distraction residue with our free focus time calculator. Find your optimal 50/10 Pomodoro intervals. Calculate your focus now.',
     url: 'https://lifetrackpro.in/tools/focus-time-calculator',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
+        url: 'https://lifetrackpro.in/og/og-tools.png',
+        width: 1200,
+        height: 630,
         alt: 'LifeTrack Pro Free Focus Time Calculator',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Focus Time Calculator: Deep Work & Pomodoro | LifeTrack Pro',
-    description: 'Calculate your net deep work focus hours and determine your optimal Pomodoro blocks.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Focus Time Calculator & Deep Work Meter | LifeTrack Pro',
+    description: 'Measure net study hours versus distraction residue with our free focus time calculator. Find your optimal 50/10 Pomodoro intervals. Calculate your focus now.',
+    images: ['https://lifetrackpro.in/og/og-tools.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -85,22 +77,17 @@ export default function FocusTimeCalculatorPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
-        "name": "LifeTrack Pro",
-        "operatingSystem": "Android",
+        "@type": "WebApplication",
+        "@id": "https://lifetrackpro.in/tools/focus-time-calculator#webapp",
+        "name": "LifeTrack Pro Focus Time Calculator",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
         "applicationCategory": "EducationalApplication",
         "url": "https://lifetrackpro.in/tools/focus-time-calculator",
-        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
@@ -119,7 +106,7 @@ export default function FocusTimeCalculatorPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://lifetrackpro.in/tools" },
           { "@type": "ListItem", "position": 3, "name": "Focus Time Calculator", "item": "https://lifetrackpro.in/tools/focus-time-calculator" }
         ]
@@ -157,10 +144,10 @@ export default function FocusTimeCalculatorPage() {
           </nav>
 
           <div className="section-eyebrow">Free Online Study Tool</div>
-          <h1 className="subpage-h1">Focus Time Calculator: Measure Net Deep Work &amp; Pomodoro Sprints</h1>
+          <h1 className="subpage-h1">Focus Time Calculator for Deep Work &amp; Pomodoro</h1>
           
           <p className="subpage-lead">
-            Sitting at a desk for 8 hours does not equal 8 hours of learning. Calculate your true net deep focus hours, quantify time lost to attention residue, and determine your optimal Pomodoro interval structure.
+            Use our free focus time calculator to measure your true net deep work hours versus attention residue lost to distractions. Calculate your optimal 50/10 Pomodoro intervals and maximize learning efficiency before exams.
           </p>
 
           {/* Calculator Widget */}
@@ -175,9 +162,9 @@ export default function FocusTimeCalculatorPage() {
               Students often believe that glancing at a notification or replying to a quick chat message only wastes 30 seconds. In reality, modern cognitive psychology reveals that interruptions carry a massive &quot;attention residue&quot; penalty:
             </p>
             <ul className="content-card-list">
-              <li>• <strong>Context Switching Friction:</strong> Every time you shift attention from studying electrostatics to checking social media, your brain must unload the working memory mental model. Re-loading that context takes an average of 15 to 20 minutes.</li>
+              <li>• <strong>Context Switching Friction:</strong> Every time you shift attention from studying electrostatics to checking social media, your brain must unload the working memory mental model. Cognitive research by Dr. Gloria Mark (University of California) demonstrates that fully recovering deep task focus takes an average of 23 minutes.</li>
               <li>• <strong>Superficial Reading Syndrome:</strong> Under frequent interruptions, students unconsciously switch to shallow processing—skimming textbook pages without encoding deep logical connections.</li>
-              <li>• <strong>Binaural Soundscape Shielding:</strong> Playing continuous 432Hz alpha wave audio or rain soundscapes creates an acoustic barrier that protects against environmental background noise, as integrated in our <Link href="/features/pomodoro-timer" style={{ color: 'var(--primary)', fontWeight: 600 }}>Pomodoro focus timer</Link>.</li>
+              <li>• <strong>Acoustic Soundscape Shielding:</strong> Playing continuous alpha wave audio, brown noise, or rain soundscapes creates an acoustic barrier that protects against environmental background noise, as integrated in our <Link href="/features/pomodoro-timer" style={{ color: 'var(--primary)', fontWeight: 600 }}>Pomodoro focus timer</Link>.</li>
             </ul>
           </div>
 
@@ -272,25 +259,28 @@ export default function FocusTimeCalculatorPage() {
           </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div className="subpage-bottom-cta-card">
             <a 
               href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro Free on Play Store - Android Study App"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={18} />
               <span>Get LifeTrack Pro Free on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <Link href="/tools" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Explore All Tools</span>
-            </Link>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Reclaimed Focus Hours</span>
-            </Link>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/tools" className="tools-cta-secondary-btn" aria-label="Explore All Tools">
+                <SparklesIcon size={16} />
+                <span>Explore All Tools</span>
+              </Link>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Reclaimed Focus Hours">
+                <CalculatorIcon size={16} />
+                <span>Calculate Reclaimed Focus Hours</span>
+              </Link>
+            </div>
           </div>
         </div>
       </article>

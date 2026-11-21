@@ -18,6 +18,13 @@ import FocusRoiSavedModal from './focus-roi/FocusRoiSavedModal';
 import FocusRoiPrintDocument from './focus-roi/FocusRoiPrintDocument';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
 
+function getAccessibleTextColor(color) {
+  if (color === '#F59E0B' || color === '#D97706') return '#92400E';
+  if (color === '#10B981') return '#047857';
+  if (color === '#EF4444' || color === '#DC2626') return '#B91C1C';
+  return color;
+}
+
 export default function FocusRoiCalculator() {
   const [mode, setMode] = useState('quick'); // 'quick' | 'advanced'
   const [studentName, setStudentName] = useState('');
@@ -465,9 +472,9 @@ export default function FocusRoiCalculator() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
                 <span style={{ fontSize: '18px' }}>⚡</span>
                 <div>
-                  <h3 style={{ margin: 0, fontSize: '15px', fontWeight: 800, color: '#0F172A' }}>
+                  <h2 style={{ margin: 0, fontSize: '15px', fontWeight: 800, color: '#0F172A' }}>
                     Study Cadence &amp; Interruption Estimates
-                  </h3>
+                  </h2>
                   <p style={{ margin: '2px 0 0', fontSize: '11.5px', color: '#64748B' }}>
                     Assumptions are fully editable to reflect your real study environment
                   </p>
@@ -530,7 +537,6 @@ export default function FocusRoiCalculator() {
                             setQuickDailyHours(preset.value);
                           }}
                           className={`focus-roi-preset-btn ${isActive ? 'is-active' : ''}`}
-                          aria-label={`Set daily study hours to ${preset.value}`}
                           aria-pressed={isActive}
                         >
                           {preset.label}
@@ -577,7 +583,6 @@ export default function FocusRoiCalculator() {
                             setQuickDaysPerWeek(preset.value);
                           }}
                           className={`focus-roi-preset-btn ${isActive ? 'is-active' : ''}`}
-                          aria-label={`Set study days to ${preset.value}`}
                           aria-pressed={isActive}
                         >
                           {preset.label}
@@ -606,7 +611,7 @@ export default function FocusRoiCalculator() {
                         padding: '4px 8px',
                         fontSize: '14px',
                         fontWeight: 800,
-                        color: '#EF4444',
+                        color: '#B91C1C',
                         borderRadius: '7px',
                         border: '1.5px solid #CBD5E1',
                         textAlign: 'center',
@@ -641,7 +646,6 @@ export default function FocusRoiCalculator() {
                             setQuickInterruptions(preset.value);
                           }}
                           className={`focus-roi-preset-btn ${isActive ? 'is-active' : ''}`}
-                          aria-label={`Set daily interruptions to ${preset.value}`}
                           aria-pressed={isActive}
                         >
                           {preset.label}
@@ -714,7 +718,7 @@ export default function FocusRoiCalculator() {
                     <label style={{ fontSize: '12px', fontWeight: 700, color: '#334155' }}>
                       Estimated Avoidable Interruption Rate:
                     </label>
-                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#10B981' }}>
+                    <span style={{ fontSize: '13px', fontWeight: 850, color: '#047857' }}>
                       {quickAvoidablePercent}% Avoidable
                     </span>
                   </div>
@@ -745,7 +749,6 @@ export default function FocusRoiCalculator() {
                             setQuickAvoidablePercent(preset.value);
                           }}
                           className={`focus-roi-preset-btn ${isActive ? 'is-active' : ''}`}
-                          aria-label={`Set avoidable rate to ${preset.value}%`}
                           aria-pressed={isActive}
                         >
                           {preset.label}
@@ -1007,7 +1010,7 @@ export default function FocusRoiCalculator() {
                   POTENTIAL MONTHLY FOCUS TIME RECOVERED
                 </div>
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', margin: '6px 0 4px', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: 'clamp(34px, 5vw, 44px)', fontWeight: 850, color: '#10B981', fontFamily: 'Consolas, Menlo, monospace', lineHeight: 1 }}>
+                  <span style={{ fontSize: 'clamp(34px, 5vw, 44px)', fontWeight: 850, color: '#047857', fontFamily: 'Consolas, Menlo, monospace', lineHeight: 1 }}>
                     +{calcData.recoverable.monthlyHours}
                   </span>
                   <span style={{ fontSize: '15px', fontWeight: 700, color: '#475569' }}>
@@ -1031,7 +1034,7 @@ export default function FocusRoiCalculator() {
                     fontSize: '12px',
                     fontWeight: 750,
                     background: calcData.efficiency.bg,
-                    color: calcData.efficiency.color,
+                    color: getAccessibleTextColor(calcData.efficiency.color),
                     border: `1px solid ${calcData.efficiency.border}`,
                   }}
                 >
@@ -1056,7 +1059,7 @@ export default function FocusRoiCalculator() {
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
               <span style={{ fontSize: '18px' }}>⚖️</span>
-              <strong style={{ fontSize: '13.5px', color: calcData.efficiency.color }}>
+              <strong style={{ fontSize: '13.5px', color: getAccessibleTextColor(calcData.efficiency.color) }}>
                 Study Efficiency &amp; Cognitive Time Balance
               </strong>
             </div>
@@ -1070,21 +1073,21 @@ export default function FocusRoiCalculator() {
                 </strong>
               </div>
               <div style={{ borderLeft: '1px solid #E2E8F0', borderRight: '1px solid #E2E8F0' }}>
-                <span style={{ fontSize: '10px', color: '#EF4444', display: 'block', fontWeight: 700 }}>LOST TO DISTRACTION</span>
-                <strong style={{ fontSize: '15px', color: '#EF4444', fontFamily: 'monospace' }}>
+                <span style={{ fontSize: '10px', color: '#B91C1C', display: 'block', fontWeight: 700 }}>LOST TO DISTRACTION</span>
+                <strong style={{ fontSize: '15px', color: '#B91C1C', fontFamily: 'monospace' }}>
                   -{calcData.loss.monthlyHours}h/mo
                 </strong>
               </div>
               <div>
-                <span style={{ fontSize: '10px', color: '#10B981', display: 'block', fontWeight: 700 }}>RECOVERABLE (ROI)</span>
-                <strong style={{ fontSize: '15px', color: '#10B981', fontFamily: 'monospace' }}>
+                <span style={{ fontSize: '10px', color: '#047857', display: 'block', fontWeight: 700 }}>RECOVERABLE (ROI)</span>
+                <strong style={{ fontSize: '15px', color: '#047857', fontFamily: 'monospace' }}>
                   +{calcData.recoverable.monthlyHours}h/mo
                 </strong>
               </div>
             </div>
 
             {/* Plain-English Explanation */}
-            <p style={{ margin: '0 0 10px', fontSize: '12.5px', color: calcData.efficiency.color, lineHeight: 1.5 }}>
+            <p style={{ margin: '0 0 10px', fontSize: '12.5px', color: getAccessibleTextColor(calcData.efficiency.color), lineHeight: 1.5 }}>
               <strong>Diagnosis:</strong> You are currently losing approximately <strong>{calcData.loss.dailyMinutes} minutes every study day</strong> (split between {calcData.loss.directMinutes}m direct distraction and {calcData.loss.refocusMinutes}m cognitive resumption lag).
             </p>
 
@@ -1116,11 +1119,11 @@ export default function FocusRoiCalculator() {
           <div className="focus-roi-metrics-grid">
             {/* 1. Daily Time Lost */}
             <div style={{ padding: '12px 14px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#EF4444', textTransform: 'uppercase' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#B91C1C', textTransform: 'uppercase' }}>
                 <span>⏳</span>
                 <span>Daily Lost</span>
               </div>
-              <div style={{ fontSize: '20px', fontWeight: 850, color: '#EF4444', fontFamily: 'monospace', margin: '4px 0 2px' }}>
+              <div style={{ fontSize: '20px', fontWeight: 850, color: '#B91C1C', fontFamily: 'monospace', margin: '4px 0 2px' }}>
                 {calcData.loss.dailyMinutes}m
               </div>
               <div style={{ fontSize: '11px', color: '#64748B' }}>~{calcData.loss.dailyHours} hrs per study day</div>
@@ -1128,11 +1131,11 @@ export default function FocusRoiCalculator() {
 
             {/* 2. Weekly Time Lost */}
             <div style={{ padding: '12px 14px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#EF4444', textTransform: 'uppercase' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#B91C1C', textTransform: 'uppercase' }}>
                 <span>📅</span>
                 <span>Weekly Lost</span>
               </div>
-              <div style={{ fontSize: '20px', fontWeight: 850, color: '#EF4444', fontFamily: 'monospace', margin: '4px 0 2px' }}>
+              <div style={{ fontSize: '20px', fontWeight: 850, color: '#B91C1C', fontFamily: 'monospace', margin: '4px 0 2px' }}>
                 {calcData.loss.weeklyHours}h
               </div>
               <div style={{ fontSize: '11px', color: '#64748B' }}>Across {calcData.inputs.studyDaysPerWeek} study days</div>
@@ -1140,11 +1143,11 @@ export default function FocusRoiCalculator() {
 
             {/* 3. Monthly Time Lost */}
             <div style={{ padding: '12px 14px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#DC2626', textTransform: 'uppercase' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#B91C1C', textTransform: 'uppercase' }}>
                 <span>🗓️</span>
                 <span>Monthly Lost</span>
               </div>
-              <div style={{ fontSize: '20px', fontWeight: 850, color: '#DC2626', fontFamily: 'monospace', margin: '4px 0 2px' }}>
+              <div style={{ fontSize: '20px', fontWeight: 850, color: '#B91C1C', fontFamily: 'monospace', margin: '4px 0 2px' }}>
                 {calcData.loss.monthlyHours}h
               </div>
               <div style={{ fontSize: '11px', color: '#64748B' }}>Gross distraction overhead</div>
@@ -1152,11 +1155,11 @@ export default function FocusRoiCalculator() {
 
             {/* 4. Direct Distraction */}
             <div style={{ padding: '12px 14px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#D97706', textTransform: 'uppercase' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#92400E', textTransform: 'uppercase' }}>
                 <span>📱</span>
                 <span>Direct Distraction</span>
               </div>
-              <div style={{ fontSize: '20px', fontWeight: 850, color: '#D97706', fontFamily: 'monospace', margin: '4px 0 2px' }}>
+              <div style={{ fontSize: '20px', fontWeight: 850, color: '#92400E', fontFamily: 'monospace', margin: '4px 0 2px' }}>
                 {calcData.loss.directMinutes}m
               </div>
               <div style={{ fontSize: '11px', color: '#64748B' }}>{calcData.loss.directPercentOfLoss}% of total daily loss</div>
@@ -1176,11 +1179,11 @@ export default function FocusRoiCalculator() {
 
             {/* 6. Potential Weekly Recovered */}
             <div style={{ padding: '12px 14px', background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', boxSizing: 'border-box' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#10B981', textTransform: 'uppercase' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '10px', fontWeight: 700, color: '#047857', textTransform: 'uppercase' }}>
                 <span>✨</span>
                 <span>Weekly Recovered</span>
               </div>
-              <div style={{ fontSize: '20px', fontWeight: 850, color: '#10B981', fontFamily: 'monospace', margin: '4px 0 2px' }}>
+              <div style={{ fontSize: '20px', fontWeight: 850, color: '#047857', fontFamily: 'monospace', margin: '4px 0 2px' }}>
                 +{calcData.recoverable.weeklyHours}h
               </div>
               <div style={{ fontSize: '11px', color: '#64748B' }}>+{calcData.recoverable.dailyHours}h each study day</div>

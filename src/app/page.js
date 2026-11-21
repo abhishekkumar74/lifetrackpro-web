@@ -1,57 +1,47 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { HeroDownloadCta, BottomDownloadCta } from '@/components/HeroDownloadCta';
 import HeroDualPhones from '@/components/HeroDualPhones';
 import AppleScrollText from '@/components/AppleScrollText';
-import CinematicScrollShowcase from '@/components/CinematicScrollShowcase';
-import InteractiveExamShowcase from '@/components/InteractiveExamShowcase';
+
+const CinematicScrollShowcase = dynamic(() => import('@/components/CinematicScrollShowcase'), {
+  loading: () => <div style={{ minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748B', fontSize: '13px' }}>Loading Interactive Preview...</div>,
+});
+const InteractiveExamShowcase = dynamic(() => import('@/components/InteractiveExamShowcase'), {
+  loading: () => <div style={{ minHeight: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748B', fontSize: '13px' }}>Loading Exam Pathways...</div>,
+});
 
 export const metadata = {
   title: {
-    absolute: 'LifeTrack Pro — Pomodoro, Flashcards & Study OS',
+    absolute: 'All-in-One Study OS and Focus App | LifeTrack Pro',
   },
-  description: 'LifeTrack Pro unifies a Pomodoro focus timer with ambient audio, SM-2 spaced repetition flashcards, habit streak shields, and 24/7 virtual study rooms. Free.',
-  keywords: [
-    'lifetrack pro',
-    'study os',
-    'all in one study app',
-    'pomodoro focus timer',
-    'spaced repetition flashcards',
-    'sm2 algorithm app',
-    'anki alternative india',
-    'study habit tracker',
-    'streak freeze shield',
-    'live virtual study rooms',
-    'jee study tracker',
-    'neet biology flashcards',
-    'upsc answer writing timer',
-    'deep work app'
-  ],
+  description: 'LifeTrack Pro is the student study OS uniting Pomodoro focus, SM-2 flashcards, habit streaks and silent study rooms. Start building deep exam focus for free.',
   alternates: {
-    canonical: 'https://lifetrackpro.in/',
+    canonical: 'https://lifetrackpro.in',
   },
   openGraph: {
-    title: 'LifeTrack Pro — Pomodoro, Flashcards & Study OS',
-    description: 'Stop juggling 5 fragmented apps. Smart Pomodoro timer, SM-2 flashcard spaced repetition, habit streaks & silent live study rooms in one unified app.',
-    url: 'https://lifetrackpro.in/',
+    title: 'All-in-One Study OS and Focus App | LifeTrack Pro',
+    description: 'LifeTrack Pro is the student study OS uniting Pomodoro focus, SM-2 flashcards, habit streaks and silent study rooms. Start building deep exam focus for free.',
+    url: 'https://lifetrackpro.in',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
-        alt: 'LifeTrack Pro application interface displaying Pomodoro focus timer, SM-2 flashcard review queue, and habit streak tracker',
+        url: 'https://lifetrackpro.in/og/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'LifeTrack Pro - All-in-One Study OS and Productivity App',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'LifeTrack Pro — Pomodoro, Flashcards & Study OS',
-    description: 'Smart Pomodoro focus timer, SM-2 spaced repetition, habit streak shields, and 24/7 virtual study rooms.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'All-in-One Study OS and Focus App | LifeTrack Pro',
+    description: 'LifeTrack Pro is the student study OS uniting Pomodoro focus, SM-2 flashcards, habit streaks and silent study rooms. Start building deep exam focus for free.',
+    images: ['https://lifetrackpro.in/og/og-default.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -61,51 +51,25 @@ export default function HomePage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebSite",
-        "@id": "https://lifetrackpro.in/#website",
-        "url": "https://lifetrackpro.in/",
-        "name": "LifeTrack Pro",
-        "description": "Unified Study & Life OS combining Pomodoro focus timer, SM-2 spaced repetition flashcards, habit streaks, and live study rooms.",
-        "inLanguage": "en-US"
-      },
-      {
-        "@type": "SoftwareApplication",
+        "@type": "MobileApplication",
         "@id": "https://lifetrackpro.in/#app",
         "name": "LifeTrack Pro",
-        "operatingSystem": "Android, Web",
+        "operatingSystem": "Android",
         "applicationCategory": "ProductivityApplication",
         "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
         "description": "All-in-one productivity Life OS combining Pomodoro focus timer with ambient soundscapes, SM-2 active recall flashcards, daily habit streaks with freeze shields, and live study rooms.",
-        "image": "https://lifetrackpro.in/play_store_feature_graphic.png",
+        "image": "https://lifetrackpro.in/og/og-default.png",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
         },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
-        },
         "featureList": [
-          "Smart Pomodoro Focus Timer with 432Hz Binaural Soundscapes",
-          "SM-2 Spaced Repetition Flashcards & Active Recall Algorithm",
+          "Smart Pomodoro Focus Timer with Ambient Soundscapes",
+          "SM-2 Based Spaced Repetition Flashcards & Active Recall",
           "Daily Habit Streaks with Protective Streak Freeze Shields",
           "24/7 Silent Multiplayer Virtual Study Rooms",
           "Specialized Exam Trackers for JEE, NEET, and UPSC Aspirants"
-        ]
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://lifetrackpro.in/#organization",
-        "name": "LifeTrack Pro",
-        "url": "https://lifetrackpro.in/",
-        "logo": "https://lifetrackpro.in/icon.png",
-        "sameAs": [
-          "https://chat.whatsapp.com/B8uwXjT9R665ahqcXVsZdk",
-          "https://t.me/lifetrackpro",
-          "https://www.instagram.com/lifetrackpro/",
-          "https://www.linkedin.com/company/lifetrackpro"
         ]
       }
     ]
@@ -122,13 +86,13 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-content">
           <h1 className="hero-h1 hero-fade-in hero-fade-in-delay-1">
-            <span className="hero-phrase">Your Goals.</span>{' '}
-            <span className="hero-phrase">Your Focus.</span>{' '}
-            <span className="gradient-accent hero-phrase hero-phrase-accent">Your Growth.</span>
+            <span className="hero-phrase">The All-in-One Study App.</span>{' '}
+            <span className="hero-phrase">Smart Focus.</span>{' '}
+            <span className="gradient-accent hero-phrase hero-phrase-accent">Effortless Consistency.</span>
           </h1>
 
           <p className="hero-subtitle hero-fade-in hero-fade-in-delay-2">
-            One system to help you study smarter, build better habits, and make progress every day.
+            The all in one study app designed for Indian students. Pomodoro focus timers, SM-2 flashcards, habit streak shields, and 24/7 silent study rooms in one distraction-free interface.
           </p>
 
           {/* Interactive Hero Download CTA opening DownloadModal */}
@@ -142,17 +106,17 @@ export default function HomePage() {
             <div className="marquee-container">
               <div className="marquee-content">
                 <div className="marquee-item"><span className="marquee-pill">SM-2 RECALL</span> Biology &amp; Organic Chemistry Expanding Revision Schedules</div>
-                <div className="marquee-item"><span className="marquee-pill">DEEP WORK</span> 50/10 Pomodoro Cadence with 432Hz Soundscapes</div>
+                <div className="marquee-item"><span className="marquee-pill">DEEP WORK</span> 50/10 Pomodoro Cadence with Ambient Soundscapes</div>
                 <div className="marquee-item"><span className="marquee-pill">HABIT SHIELD</span> Emergency Streak Freeze Tokens for Rest Days</div>
                 <div className="marquee-item"><span className="marquee-pill">EXAM FOCUS</span> 90-Minute JEE &amp; 7-Min UPSC Mains Writing Blocks</div>
                 <div className="marquee-item"><span className="marquee-pill">STUDY ROOMS</span> Camera-Free Silent Multiplayer Accountability</div>
-                <div className="marquee-item"><span className="marquee-pill">OFFLINE FIRST</span> 100% Local Storage with Zero Data Mining</div>
-                <div className="marquee-item"><span className="marquee-pill">SM-2 RECALL</span> Biology &amp; Organic Chemistry Expanding Revision Schedules</div>
-                <div className="marquee-item"><span className="marquee-pill">DEEP WORK</span> 50/10 Pomodoro Cadence with 432Hz Soundscapes</div>
-                <div className="marquee-item"><span className="marquee-pill">HABIT SHIELD</span> Emergency Streak Freeze Tokens for Rest Days</div>
-                <div className="marquee-item"><span className="marquee-pill">EXAM FOCUS</span> 90-Minute JEE &amp; 7-Min UPSC Mains Writing Blocks</div>
-                <div className="marquee-item"><span className="marquee-pill">STUDY ROOMS</span> Camera-Free Silent Multiplayer Accountability</div>
-                <div className="marquee-item"><span className="marquee-pill">OFFLINE FIRST</span> 100% Local Storage with Zero Data Mining</div>
+                <div className="marquee-item"><span className="marquee-pill">OFFLINE FIRST</span> Offline-Capable Focus with Secure Cloud Sync</div>
+                <div className="marquee-item" aria-hidden="true"><span className="marquee-pill">SM-2 RECALL</span> Biology &amp; Organic Chemistry Expanding Revision Schedules</div>
+                <div className="marquee-item" aria-hidden="true"><span className="marquee-pill">DEEP WORK</span> 50/10 Pomodoro Cadence with Ambient Soundscapes</div>
+                <div className="marquee-item" aria-hidden="true"><span className="marquee-pill">HABIT SHIELD</span> Emergency Streak Freeze Tokens for Rest Days</div>
+                <div className="marquee-item" aria-hidden="true"><span className="marquee-pill">EXAM FOCUS</span> 90-Minute JEE &amp; 7-Min UPSC Mains Writing Blocks</div>
+                <div className="marquee-item" aria-hidden="true"><span className="marquee-pill">STUDY ROOMS</span> Camera-Free Silent Multiplayer Accountability</div>
+                <div className="marquee-item" aria-hidden="true"><span className="marquee-pill">OFFLINE FIRST</span> Offline-Capable Focus with Secure Cloud Sync</div>
               </div>
             </div>
           </div>
@@ -285,7 +249,7 @@ export default function HomePage() {
                 <Badge variant="secondary" style={{ fontSize: '10px', backgroundColor: 'rgba(238, 242, 255, 0.9)', color: '#4338CA' }}>Complete Hub</Badge>
               </div>
               <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
-                Access the complete hub of free student productivity and exam timetable utilities with zero ads.
+                Access the complete hub of free student productivity and exam timetable utilities for competitive aspirants.
               </CardDescription>
             </CardHeader>
             <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 20px 14px' }}>

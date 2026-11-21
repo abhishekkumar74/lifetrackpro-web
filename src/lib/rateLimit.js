@@ -143,3 +143,53 @@ export function resetDualRateLimit(ip, accountEmail) {
     attemptsStore.delete(`email:${accountEmail.trim().toLowerCase()}`);
   }
 }
+
+/**
+ * General sliding-window API Rate Limiter
+ * Defaults to 60 requests per minute per IP.
+ */
+const apiRateStore = new Map();
+
+export function checkApiRateLimit(identifier, limit = 60, windowMs = 60000) {
+  const now = Date.now();
+  const key = `api:${identifier}`;
+  const record = apiRateStore.get(key);
+
+  if (!record || now - record.startTime > windowMs) {
+    apiRateStore.set(key, { count: 1, startTime: now });
+    return { allowed: true, remaining: limit - 1, resetMs: windowMs };
+  }
+
+  if (record.count >= limit) {
+    const resetMs = windowMs - (now - record.startTime);
+    return { allowed: false, remaining: 0, resetMs };
+  }
+
+  record.count += 1;
+  return { allowed: true, remaining: limit - record.count, resetMs: windowMs - (now - record.startTime) };
+}
+
+/**
+ * CORS Allowlist for /api/* routes
+ */
+const ALLOWED_ORIGINS = new Set([
+  'https://lifetrackpro.in',
+  'https://www.lifetrackpro.in',
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://localhost:3002',
+  'http://127.0.0.1:3000',
+]);
+
+export function getCorsHeaders(request) {
+  const origin = request?.headers?.get?.('origin');
+  const isAllowed = origin && ALLOWED_ORIGINS.has(origin);
+
+  return {
+    'Access-Control-Allow-Origin': isAllowed ? origin : 'https://lifetrackpro.in',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+    'Access-Control-Allow-Credentials': 'true',
+    'Access-Control-Max-Age': '86400',
+  };
+}

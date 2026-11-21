@@ -57,7 +57,7 @@ export default function InteractiveUpscTimer() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', background: 'var(--bg-cream)', borderRadius: '100px', padding: '3px', border: '1px solid var(--border-subtle)' }}>
+        <div style={{ display: 'flex', background: 'var(--bg-cream)', borderRadius: '100px', padding: '3px', border: '1px solid var(--border-subtle)', overflowX: 'auto', scrollbarWidth: 'none', maxWidth: '100%', WebkitOverflowScrolling: 'touch' }}>
           {modes.map((m) => (
             <button
               key={m.id}
@@ -71,7 +71,9 @@ export default function InteractiveUpscTimer() {
                 fontSize: '11px',
                 fontWeight: activeMode.id === m.id ? 750 : 500,
                 cursor: 'pointer',
-                boxShadow: activeMode.id === m.id ? '0 1px 3px rgba(0,0,0,0.08)' : 'none'
+                boxShadow: activeMode.id === m.id ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
+                whiteSpace: 'nowrap',
+                flexShrink: 0
               }}
             >
               {m.name}

@@ -1,42 +1,55 @@
 import Link from 'next/link';
 
 export const metadata = {
-  title: 'Terms of Service — Transparent Student Guidelines',
-  description: 'LifeTrack Pro Terms of Service. Clear, ethical software terms, fair usage guidelines, and free educational access commitments.',
-  keywords: ['lifetrack pro terms', 'terms of service', 'study app terms of use'],
+  title: {
+    absolute: 'Terms of Service and Usage Policy | LifeTrack Pro',
+  },
+  description: 'Review the LifeTrack Pro terms of service: educational license, acceptable usage rules, cloud synchronization guidelines and fair student access policies.',
   alternates: {
     canonical: 'https://lifetrackpro.in/terms',
   },
   openGraph: {
-    title: 'Terms of Service | LifeTrack Pro',
-    description: 'Clear, ethical terms of service and community guidelines for students using LifeTrack Pro.',
+    title: 'Terms of Service and Usage Policy | LifeTrack Pro',
+    description: 'Review the LifeTrack Pro terms of service: educational license, acceptable usage rules, cloud synchronization guidelines and fair student access policies.',
     url: 'https://lifetrackpro.in/terms',
     siteName: 'LifeTrack Pro',
-    images: [{ url: 'https://lifetrackpro.in/play_store_feature_graphic.png', width: 1024, height: 500, alt: 'LifeTrack Pro Terms of Service' }],
-    type: 'website',
+    type: 'article',
+    locale: 'en_IN',
+    images: [{ url: 'https://lifetrackpro.in/og/og-default.png', width: 1200, height: 630, alt: 'LifeTrack Pro Terms of Service' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Terms of Service | LifeTrack Pro',
-    description: 'Clear, ethical terms of service and community guidelines for students using LifeTrack Pro.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Terms of Service and Usage Policy | LifeTrack Pro',
+    description: 'Review the LifeTrack Pro terms of service: educational license, acceptable usage rules, cloud synchronization guidelines and fair student access policies.',
+    images: ['https://lifetrackpro.in/og/og-default.png'],
   },
 };
 
 export default function TermsPage() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": "LifeTrack Pro Terms of Service",
-    "url": "https://lifetrackpro.in/terms",
-    "description": "LifeTrack Pro terms of use and student guidelines.",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
-        { "@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://lifetrackpro.in/terms" }
-      ]
-    }
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://lifetrackpro.in/terms#webpage",
+        "url": "https://lifetrackpro.in/terms",
+        "name": "LifeTrack Pro Terms of Service",
+        "description": "LifeTrack Pro terms of use and student guidelines.",
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://lifetrackpro.in/#website",
+          "url": "https://lifetrackpro.in",
+          "name": "LifeTrack Pro"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
+          { "@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://lifetrackpro.in/terms" }
+        ]
+      }
+    ]
   };
 
   return (
@@ -48,10 +61,17 @@ export default function TermsPage() {
 
       <article className="container subpage-container">
         <div>
+          {/* Visual Semantic Breadcrumb Navigation */}
+          <nav aria-label="Breadcrumbs" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', color: 'var(--text-3)', marginBottom: '14px', flexWrap: 'wrap' }}>
+            <Link href="/" style={{ color: 'var(--text-3)', textDecoration: 'none' }}>Home</Link>
+            <span>/</span>
+            <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Terms of Service</span>
+          </nav>
+
           <div className="section-eyebrow">Fair Usage &amp; Ethics</div>
-          <h1 className="subpage-h1">Terms of Service</h1>
+          <h1 className="subpage-h1">LifeTrack Pro Terms of Service</h1>
           <p className="subpage-lead">
-            Last Updated: October 30, 2026. Welcome to LifeTrack Pro. By downloading or accessing our web platform and Android application, you agree to these fair usage terms.
+            Last Updated: October 30, 2026. Welcome to the official <strong>LifeTrack Pro terms of service</strong>. By downloading or accessing our web platform and Android application, you agree to these fair usage terms.
           </p>
 
           <div className="content-card reveal">
@@ -88,9 +108,16 @@ export default function TermsPage() {
           </div>
 
           <div className="content-card reveal">
-            <h2 className="content-card-h2">5. Updates &amp; Contact</h2>
+            <h2 className="content-card-h2">5. Updates, Governing Law &amp; Contact</h2>
             <p className="content-card-p">
-              We may revise these Terms occasionally to reflect new product features or legal compliance requirements. Questions can be directed to <strong>support@lifetrackpro.app</strong>.
+              We may revise these Terms occasionally to reflect new product features or statutory legal requirements (including India&apos;s Digital Personal Data Protection Act 2023). Continued use of LifeTrack Pro after changes constitutes acceptance.
+            </p>
+            <p className="content-card-p">
+              {/* TODO: Specify official city / state jurisdiction for dispute resolution */}
+              These Terms shall be governed by and construed in accordance with the laws of India, subject to the jurisdiction of the competent courts in India.
+            </p>
+            <p className="content-card-p" style={{ marginBottom: 0 }}>
+              Questions, formal notices, and legal inquiries can be directed to <a href="mailto:support@lifetrackpro.in" style={{ color: 'var(--primary)', fontWeight: 600 }}>support@lifetrackpro.in</a> or <a href="mailto:grievance@lifetrackpro.in" style={{ color: 'var(--primary)', fontWeight: 600 }}>grievance@lifetrackpro.in</a>.
             </p>
           </div>
 

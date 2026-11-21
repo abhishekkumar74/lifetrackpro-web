@@ -21,7 +21,9 @@ const EXAM_TRACKS = [
       },
       {
         label: 'Focus Sessions & Study Planning',
-        detail: '90-minute exam simulation blocks calibrated to actual 3-hour problem-solving stamina.',
+        // TODO: Verify exact JEE Main shift timings with latest NTA information bulletin
+        // TODO-verify: Confirm exact JEE Advanced shift schedule with organizing IIT brochure
+        detail: '90-minute simulation blocks conditioned to official JEE Main (NTA) shifts (9:00 AM – 12:00 PM and 3:00 PM – 6:00 PM), with Paper 1 and Paper 2 schedules for JEE Advanced as per organizing IIT brochure.',
       },
       {
         label: 'Formula Flashcards & Revision Tools',
@@ -128,9 +130,9 @@ export default function InteractiveExamShowcase() {
               <span className="exam-nav-pill-title">UPSC</span>
               <span className="exam-nav-pill-arrow" aria-hidden="true">↗</span>
             </Link>
-            <Link href="/features" className="exam-nav-link-pill pill-other">
+            <Link href="/exams" className="exam-nav-link-pill pill-other">
               <span className="exam-nav-pill-dot" style={{ background: '#475569' }} />
-              <span className="exam-nav-pill-title">Other Exams</span>
+              <span className="exam-nav-pill-title">All Exams Hub</span>
               <span className="exam-nav-pill-arrow" aria-hidden="true">↗</span>
             </Link>
           </div>
@@ -216,9 +218,9 @@ export default function InteractiveExamShowcase() {
             Preparing for CAT, GATE, NEET-PG, or State PSCs?
           </p>
           <div className="exam-timeline-more-btn-wrap">
-            <Link href="/features" className="exam-timeline-cta-btn">
-              <span className="exam-cta-text-full">Explore all flexible study tools &amp; custom schedules</span>
-              <span className="exam-cta-text-mobile">Explore All Flexible Study Tools</span>
+            <Link href="/exams" className="exam-timeline-cta-btn">
+              <span className="exam-cta-text-full">Explore all competitive exam hubs &amp; study roadmaps</span>
+              <span className="exam-cta-text-mobile">Explore All Exam Hubs</span>
               <span className="exam-timeline-cta-arrow" aria-hidden="true">→</span>
             </Link>
           </div>

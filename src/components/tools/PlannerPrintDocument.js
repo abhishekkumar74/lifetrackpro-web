@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { BRAND_LOGO_BASE64 } from '@/lib/brandLogoBase64';
 import { 
   OFFICIAL_PLAY_STORE_URL, 
@@ -29,12 +30,18 @@ export default function PlannerPrintDocument({
     ? profile.customExamName 
     : (roadmap?.examDisplayName || examPreset.name || 'Competitive Exam');
 
-  const currentDateFormatted = new Date().toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const [currentDateFormatted, setCurrentDateFormatted] = useState('');
+
+  useEffect(() => {
+    setCurrentDateFormatted(
+      new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    );
+  }, []);
 
   // Day Timetable Metrics
   const studySessions = sessions.filter(s => s.type !== 'break' && s.type !== 'fixed' && !s.isFixed);
@@ -126,9 +133,9 @@ export default function PlannerPrintDocument({
         {/* Title Row */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '12px', flexWrap: 'wrap', gap: '10px' }}>
           <div>
-            <h1 style={{ fontSize: '20px', fontWeight: 850, color: '#172033', margin: '0 0 4px', letterSpacing: '-0.4px' }}>
+            <div role="heading" aria-level="2" style={{ fontSize: '20px', fontWeight: 850, color: '#172033', margin: '0 0 4px', letterSpacing: '-0.4px' }}>
               {examDisplayName} — {isDayMode ? 'My Daily Study Timetable' : 'Master Academic Roadmap'}
-            </h1>
+            </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap', fontSize: '11px', color: '#475569' }}>
               {isDayMode ? (
                 <>

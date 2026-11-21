@@ -1,4 +1,5 @@
 'use client';
+import { useState, useEffect } from 'react';
 import { BRAND_LOGO_BASE64 } from '@/lib/brandLogoBase64';
 import { 
   OFFICIAL_PLAY_STORE_URL, 
@@ -23,6 +24,19 @@ export default function StudyHoursPrintDocument({
   examName = 'Competitive Examination',
   isExportingPdf = false,
 }) {
+  const [currentDateFormatted, setCurrentDateFormatted] = useState('');
+
+  useEffect(() => {
+    setCurrentDateFormatted(
+      new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    );
+  }, []);
+
   if (!calcData) return null;
 
   const {
@@ -36,13 +50,6 @@ export default function StudyHoursPrintDocument({
     subjects = [],
     inputs = {},
   } = calcData;
-
-  const currentDateFormatted = new Date().toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
 
   const formattedExamDate = inputs.examDate ? new Date(inputs.examDate).toLocaleDateString('en-US', {
     year: 'numeric',
@@ -131,9 +138,9 @@ export default function StudyHoursPrintDocument({
         {/* Document Title & Countdown Ribbon */}
         <div style={{ marginBottom: '8px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '5px' }}>
-            <h1 style={{ fontSize: '17px', fontWeight: 850, color: '#172033', margin: 0, letterSpacing: '-0.3px' }}>
+            <div role="heading" aria-level="2" style={{ fontSize: '17px', fontWeight: 850, color: '#172033', margin: 0, letterSpacing: '-0.3px' }}>
               {examName} — Study Hours &amp; Feasibility Report
-            </h1>
+            </div>
             <div style={{ fontSize: '10px', color: '#64748B' }}>
               📌 <strong>Academic Planning Audit:</strong> Workload calculation
             </div>

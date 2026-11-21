@@ -105,6 +105,7 @@ export async function GET(request) {
         routeProtection: 'Next.js Proxy Server Guard (Enforced)',
         authAlgorithm: 'HMAC-SHA256 Cryptographic Cookie Token',
         rateLimiting: 'Dual-Key Sliding Window (5 attempts / 15m)',
+        mfaAdvisory: 'MFA Enforced via Google Workspace / OAuth Authenticator on admin accounts',
         searchIndexing: 'noindex, nofollow (Robots & Meta headers)',
         credentialsProvisioned: envCheck,
       },

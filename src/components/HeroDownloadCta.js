@@ -12,7 +12,7 @@ export function HeroDownloadCta() {
         target="_blank"
         rel="noopener noreferrer"
         className="btn-pill-primary"
-        aria-label="Download LifeTrack Pro for Android on Google Play Store"
+        aria-label="Download for Android on Google Play Store"
       >
         <span>Download for Android</span>
         <span className="btn-pill-arrow-chip" aria-hidden="true">
@@ -22,7 +22,7 @@ export function HeroDownloadCta() {
           </svg>
         </span>
       </a>
-      <a href="#tour" className="btn-pill-secondary" aria-label="Explore the LifeTrack Pro App">
+      <a href="#tour" className="btn-pill-secondary" aria-label="Explore the App - Interactive Feature Tour">
         <SparklesIcon size={15} />
         <span>Explore the App</span>
       </a>
@@ -39,12 +39,12 @@ export function BottomDownloadCta() {
           target="_blank"
           rel="noopener noreferrer"
           className="cta-btn-primary"
-          aria-label="Download LifeTrack Pro on Google Play Store"
+          aria-label="Get LifeTrack Pro Free on Google Play Store"
         >
           <PlayStoreIcon size={18} />
           <span>Get LifeTrack Pro Free</span>
         </a>
-        <Link href="/features" className="cta-btn-secondary" aria-label="Explore all features">
+        <Link href="/features" className="cta-btn-secondary" aria-label="Explore All Features of LifeTrack Pro">
           <SparklesIcon size={15} />
           <span>Explore All Features</span>
         </Link>
@@ -53,15 +53,15 @@ export function BottomDownloadCta() {
       <div className="cta-trust-row">
         <div className="cta-trust-chip">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>100% Free Forever</span>
+          <span>Free to Download</span>
         </div>
         <div className="cta-trust-chip">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Zero Hidden Fees</span>
+          <span>Cloud Sync Supported</span>
         </div>
         <div className="cta-trust-chip">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22C55E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-          <span>Works 100% Offline</span>
+          <span>Offline-Capable Focus</span>
         </div>
       </div>
     </>

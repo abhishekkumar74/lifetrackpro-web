@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import { 
   CardsIcon, 
@@ -8,12 +9,15 @@ import {
   SparklesIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
-import InteractivePomodoro from '@/components/InteractivePomodoro';
+
+const InteractivePomodoro = dynamic(() => import('@/components/InteractivePomodoro'), {
+  loading: () => <div style={{ minHeight: '380px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748B', fontSize: '13px' }}>Loading Focus Timer Simulator...</div>,
+});
 
 const POMODORO_FAQS = [
   {
     question: "What is the Pomodoro technique and how does it prevent study burnout?",
-    answer: "The Pomodoro Technique is a time-management methodology created by Francesco Cirillo. It breaks heavy academic work into focused sprints (typically 25 or 50 minutes) separated by short restorative breaks. This rhythmic cycle prevents cognitive exhaustion, preserves prefrontal glucose levels, and maintains high analytical retention over long study days."
+    answer: "The Pomodoro Technique is a time-management methodology created by Francesco Cirillo. It breaks heavy academic work into focused sprints (typically 25 or 50 minutes) separated by short restorative breaks. This rhythmic cycle prevents cognitive exhaustion, relieves mental fatigue, and maintains high analytical retention over long study days."
   },
   {
     question: "Why is 50/10 often better than 25/5 for competitive exams?",
@@ -21,11 +25,11 @@ const POMODORO_FAQS = [
   },
   {
     question: "Does the LifeTrack Pro timer keep ticking when the phone screen is locked?",
-    answer: "Yes. On the Android application, LifeTrack Pro operates via a dedicated foreground background service so ambient soundscapes continue smoothly and the timer accurately counts down on your lockscreen widget without battery drain."
+    answer: "Yes. On the Android application, LifeTrack Pro operates via a dedicated foreground background service so ambient soundscapes continue smoothly and the timer accurately counts down on your lockscreen widget with battery-optimized performance."
   },
   {
     question: "Are focus sessions interrupted by ads?",
-    answer: "No. LifeTrack Pro is 100% ad-free with zero pop-ups or full-screen commercials interrupting your study or break blocks."
+    answer: "No. Focus timer sessions are completely distraction-free with zero pop-up banners or interstitial commercials interrupting your study intervals."
   },
   {
     question: "How does the Pomodoro timer integrate with flashcards and habit streaks?",
@@ -34,21 +38,10 @@ const POMODORO_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Pomodoro Timer for Students & Deep Work',
-  description: 'Free Pomodoro study timer with 25/5 and 50/10 focus intervals, 432Hz ambient soundscapes, zero ads, and lock-screen background persistence for deep work.',
-  keywords: [
-    'pomodoro timer for students',
-    'pomodoro timer online',
-    'study timer for students',
-    'binaural beats study timer',
-    'pomodoro app android',
-    'deep work timer',
-    '50 10 study rule',
-    'focus timer with rain sounds',
-    'pomodoro technique for exams',
-    'ad free study timer',
-    'lifetrack pro pomodoro'
-  ],
+  title: {
+    absolute: 'Pomodoro Timer for Students and Deep Work | LifeTrack Pro',
+  },
+  description: 'Free Pomodoro timer for students with 25/5 and 50/10 focus intervals, ambient soundscapes, background lock persistence and zero ads. Start your focus session.',
   alternates: {
     canonical: 'https://lifetrackpro.in/features/pomodoro-timer',
   },
@@ -64,26 +57,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Pomodoro Timer for Students & Deep Work | LifeTrack Pro',
-    description: 'Custom 25/5 and 50/10 Pomodoro blocks with 432Hz binaural audio and background persistence. Build deep work study momentum with LifeTrack Pro.',
+    title: 'Pomodoro Timer for Students and Deep Work | LifeTrack Pro',
+    description: 'Free Pomodoro timer for students with 25/5 and 50/10 focus intervals, ambient soundscapes, background lock persistence and zero ads. Start your focus session.',
     url: 'https://lifetrackpro.in/features/pomodoro-timer',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
-        alt: 'LifeTrack Pro Pomodoro Focus Timer with Ambient Soundscapes',
+        url: 'https://lifetrackpro.in/og/og-features.png',
+        width: 1200,
+        height: 630,
+        alt: 'LifeTrack Pro Pomodoro Timer for Students',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Pomodoro Timer for Students & Deep Work | LifeTrack Pro',
-    description: 'Custom 25/5 and 50/10 focus cadences with binaural 432Hz soundscapes. Zero ads and uninterrupted study focus.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Pomodoro Timer for Students and Deep Work | LifeTrack Pro',
+    description: 'Free Pomodoro timer for students with 25/5 and 50/10 focus intervals, ambient soundscapes, background lock persistence and zero ads. Start your focus session.',
+    images: ['https://lifetrackpro.in/og/og-features.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -101,58 +94,31 @@ export default function PomodoroTimerPage() {
         "isPartOf": {
           "@type": "WebSite",
           "@id": "https://lifetrackpro.in/#website",
-          "url": "https://lifetrackpro.in/",
+          "url": "https://lifetrackpro.in",
           "name": "LifeTrack Pro"
         }
       },
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "Pomodoro Timer", "item": "https://lifetrackpro.in/features/pomodoro-timer" }
         ]
       },
       {
-        "@type": "SoftwareApplication",
+        "@type": "MobileApplication",
         "@id": "https://lifetrackpro.in/#app",
         "name": "LifeTrack Pro",
         "operatingSystem": "Android",
         "applicationCategory": "ProductivityApplication",
         "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
-        "description": "Smart Pomodoro focus timer with 432Hz ambient soundscapes, customizable study cadences, background persistence, SM-2 flashcards, and habit streak shields.",
+        "description": "Smart Pomodoro focus timer with ambient soundscapes, customizable study cadences, background persistence, SM-2 flashcards, and habit streak shields.",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
         }
-      },
-      {
-        "@type": "HowTo",
-        "name": "How To Study 8+ Hours Daily Using the LifeTrack Pro Pomodoro Technique",
-        "description": "A scientific step-by-step framework to maximize analytical exam focus without mental burnout.",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "name": "Select Your Optimal Focus Cadence",
-            "text": "Choose the standard 25/5 rhythm for rote revision, or the 50/10 block for intensive analytical problem solving (JEE, NEET, UPSC)."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Activate Ambient Acoustic Masking",
-            "text": "Switch on 432Hz alpha tones, gentle rain, or ambient café audio to block distracting library or hostel chatter."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Engage in Single-Task Execution",
-            "text": "Commit completely to one syllabus topic until the session chime sounds. LifeTrack Pro runs seamlessly in the background even when your screen locks."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Take Structured Physical Rest",
-            "text": "When the interval completes, step away from screens for 5 to 10 minutes to replenish prefrontal cortex cognitive energy."
-          }
-        ]
       },
       {
         "@type": "FAQPage",
@@ -187,10 +153,10 @@ export default function PomodoroTimerPage() {
           </nav>
 
           <div className="section-eyebrow">Focus &amp; Flow State Engine</div>
-          <h1 className="subpage-h1">Pomodoro Focus Timer for Students &amp; Deep Work</h1>
+          <h1 className="subpage-h1">Pomodoro Timer for Students &amp; Deep Focus</h1>
           
           <p className="subpage-lead">
-            Unstructured study intervals and constant phone notifications destroy academic momentum. LifeTrack Pro&apos;s Pomodoro focus engine pairs scientifically calibrated work cadences with ambient acoustic masking to help you enter and sustain deep flow on command.
+            A specialized pomodoro timer for students helps beat unstructured study intervals and constant phone notifications. LifeTrack Pro&apos;s Pomodoro focus engine pairs scientifically calibrated work cadences with ambient acoustic masking to help you enter and sustain deep flow on command.
           </p>
 
           {/* Interactive Live Pomodoro Simulator Widget */}
@@ -233,15 +199,15 @@ export default function PomodoroTimerPage() {
           {/* Acoustic Masking Section */}
           <div className="content-card reveal">
             <h2 className="content-card-h2">
-              Acoustic Soundscapes: Block Library &amp; Hostel Chatter with 432Hz Audio
+              Acoustic Soundscapes: Block Library &amp; Hostel Chatter with Ambient Audio
             </h2>
             <p className="content-card-p">
               Auditory neurobiology demonstrates that unpredictable human speech breaks focus faster than any continuous sound. When studying in crowded libraries, coaching centers, or shared hostel rooms, ambient soundscapes create an acoustic shield that insulates your working memory.
             </p>
             <ul className="content-card-list">
-              <li>✓ <strong>Binaural 432Hz &amp; Alpha Waves:</strong> Promotes relaxed alertness and reduces cognitive strain during heavy problem-solving blocks.</li>
-              <li>✓ <strong>Gentle Rainfall &amp; Nature Sounds:</strong> Provides broad-spectrum pink noise that masks sudden door slams, conversations, and ambient city noise.</li>
-              <li>✓ <strong>Ambient Library &amp; Café Audio:</strong> Leverages the &apos;Hawthorne focus effect&apos; to simulate the focused energy of a world-class academic hall.</li>
+              <li>✓ <strong>Alpha Wave &amp; Focus Tones:</strong> Promotes relaxed alertness and masks background conversational noise during problem-solving blocks.</li>
+              <li>✓ <strong>Gentle Rainfall &amp; Brown Noise:</strong> Provides broad-spectrum background sound that masks sudden door slams, conversations, and ambient city noise.</li>
+              <li>✓ <strong>Ambient Library &amp; Study Hall Audio:</strong> Leverages ambient acoustic masking to simulate the steady background hum of a university library.</li>
               <li>✓ <strong>Zero Commercial Interruptions:</strong> Unlike YouTube streams or free audio platforms, your focus sessions never encounter sudden video ads or sponsor breaks.</li>
             </ul>
           </div>
@@ -270,8 +236,8 @@ export default function PomodoroTimerPage() {
                     <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>Requires Premium</td>
                   </tr>
                   <tr style={{ borderBottom: '1px solid var(--border-subtle)' }}>
-                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Binaural 432Hz &amp; Rain Presets</td>
-                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Zero Ads</td>
+                    <td style={{ padding: '10px 12px', fontWeight: 600 }}>Alpha &amp; Rain Audio Presets</td>
+                    <td style={{ padding: '10px 12px', color: 'var(--emerald)', fontWeight: 700 }}>✓ Distraction-Free</td>
                     <td style={{ padding: '10px 12px', color: 'var(--text-3)' }}>✕ None</td>
                     <td style={{ padding: '10px 12px', color: 'var(--rose)' }}>Video Ads Interrupt</td>
                   </tr>
@@ -362,25 +328,28 @@ export default function PomodoroTimerPage() {
           </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div className="subpage-bottom-cta-card">
             <a 
               href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro on Play Store - Android Study App"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={18} />
               <span>Get LifeTrack Pro on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Reclaimed Focus Hours</span>
-            </Link>
-            <Link href="/features" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Back to All Features</span>
-            </Link>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/features" className="tools-cta-secondary-btn" aria-label="Back to All Features">
+                <SparklesIcon size={16} />
+                <span>Back to All Features</span>
+              </Link>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Reclaimed Focus Hours">
+                <CalculatorIcon size={16} />
+                <span>Calculate Reclaimed Focus Hours</span>
+              </Link>
+            </div>
           </div>
         </div>
       </article>

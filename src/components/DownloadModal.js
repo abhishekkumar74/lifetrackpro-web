@@ -79,7 +79,7 @@ export default function DownloadModal({ onClose }) {
         </a>
 
         <div style={{ fontSize: '11px', color: 'var(--text-3)' }}>
-          Verified on Google Play Protect · Zero Ads · Android 8.0+
+          Verified on Google Play Protect · Distraction-Free · Android 8.0+
         </div>
       </div>
     </div>

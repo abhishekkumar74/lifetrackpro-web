@@ -136,7 +136,13 @@ export function verifyAdminSession(request) {
   const sessionCookie = request.cookies?.get?.(cookieName)?.value || request.cookies?.get?.('ltp_admin_session')?.value || request.cookies?.get?.('__Host-ltp_admin_session')?.value;
   if (!sessionCookie) return null;
 
-  return verifySessionToken(sessionCookie, sessionSecret);
+  const session = verifySessionToken(sessionCookie, sessionSecret);
+  // Strict role and authorization verification on every route
+  if (!session || session.role !== 'admin' || !isAuthorizedAdminEmail(session.email)) {
+    return null;
+  }
+
+  return session;
 }
 
 /**

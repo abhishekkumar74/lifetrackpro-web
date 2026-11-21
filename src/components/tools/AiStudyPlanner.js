@@ -42,7 +42,7 @@ export default function AiStudyPlanner() {
   const [roadmap, setRoadmap] = useState(null);
   const [sessions, setSessions] = useState([]);
   const [savedTimetables, setSavedTimetables] = useState([]);
-  const [activeTimetableName, setActiveTimetableName] = useState('My AI Study Timetable');
+  const [activeTimetableName, setActiveTimetableName] = useState('My Smart Study Timetable');
   const [isExportingPdf, setIsExportingPdf] = useState(false);
   const [hasGenerated, setHasGenerated] = useState(false);
   const [dashboardViewMode, setDashboardViewMode] = useState('day');
@@ -138,7 +138,7 @@ export default function AiStudyPlanner() {
     });
     setRoadmap(nextRoadmap);
     setHasGenerated(true);
-    showToast('⚡ AI Academic Master Roadmap & Desk Calendar Generated!');
+    showToast('⚡ Academic Master Roadmap & Desk Calendar Generated!');
   };
 
   const handleToggleDayComplete = (dayId) => {
@@ -551,7 +551,7 @@ export default function AiStudyPlanner() {
                 Build Your Academic Master Roadmap &amp; Desk Calendar
               </h2>
               <p style={{ fontSize: '13.5px', color: '#64748B', maxWidth: '520px', lineHeight: 1.6, margin: '0 0 32px' }}>
-                Select your target exam (JEE, NEET, UPSC, etc.), set your exam date and daily study hours on the left, then click <strong>⚡ Generate AI-Optimized Timetable</strong> to build your date-by-date syllabus plan.
+                Select your target exam (JEE, NEET, UPSC, etc.), set your exam date and daily study hours on the left, then click <strong>⚡ Generate Smart Timetable</strong> to build your date-by-date syllabus plan.
               </p>
 
               {/* 3 Key Capabilities Badges */}
@@ -604,7 +604,7 @@ export default function AiStudyPlanner() {
                 onMouseEnter={(e) => { e.currentTarget.style.background = '#4338CA'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = '#4F46E5'; }}
               >
-                <span>⚡ Generate AI-Optimized Timetable Now</span>
+                <span>⚡ Generate Smart Timetable Now</span>
               </button>
 
               {savedTimetables.length > 0 && (

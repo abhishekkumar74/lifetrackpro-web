@@ -481,13 +481,14 @@ export function generateRecommendations(calcResult) {
 
   // 4. Efficiency Recommendation
   if (efficiency.percent < 70) {
+    const halfCutHours = Number(((calcResult.loss.dailyMinutes * 0.5 * calcResult.planned.monthlyStudyDays) / 60).toFixed(1));
     recs.push({
       id: 'efficiency_recovery',
       icon: '📈',
       title: 'Target 80%+ Study Efficiency',
       tag: 'Strategic Goal',
-      description: `Your current study efficiency is ~${efficiency.percent}%. By reducing avoidable distractions by just 50%, you could unlock approximately ${calcResult.recoverable.monthlyHours} hours of deep study time this month.`,
-      action: 'Recover ~50% avoidable distractions this week',
+      description: `Your current study efficiency is ~${efficiency.percent}%. By reducing avoidable distractions by 50%, you could unlock approximately ${halfCutHours} hours of deep study time this month (or ~${calcResult.recoverable.monthlyHours} hours at your target ${inputs.avoidablePercent}% reduction).`,
+      action: `Recover ~${halfCutHours}h/mo with a 50% distraction cut`,
     });
   } else {
     recs.push({

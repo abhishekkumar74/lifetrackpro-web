@@ -134,7 +134,7 @@ export default function InteractiveJeePlanner() {
                 <div style={{ fontSize: '13px', fontWeight: 650, color: 'var(--text-1)' }}>
                   {chap.name}
                 </div>
-                <div style={{ fontSize: '10.5px', color: 'var(--text-3)' }}>
+                <div style={{ fontSize: '10.5px', color: chap.reviewed ? 'var(--text-2)' : 'var(--text-3)' }}>
                   {chap.formulaCount} SM-2 Formula Cards
                 </div>
               </div>
@@ -150,7 +150,9 @@ export default function InteractiveJeePlanner() {
       </div>
 
       <div style={{ marginTop: '16px', background: 'var(--bg-warm)', borderRadius: 'var(--radius-xs)', padding: '12px 14px', border: '1px solid var(--border-subtle)', fontSize: '11px', color: 'var(--text-2)', lineHeight: '1.5' }}>
-        <strong>Biological Clock Calibration:</strong> Top rankers schedule two strict 3-hour Pomodoro simulation blocks at 9:00 AM - 12:00 PM and 2:30 PM - 5:30 PM to align neural alertness with official NTA exam shifts.
+        {/* TODO: Verify exact JEE Main shift timings with latest NTA information bulletin */}
+        {/* TODO-verify: Confirm exact JEE Advanced shift schedule with organizing IIT brochure */}
+        <strong>Circadian Clock Alignment:</strong> Top rankers schedule 3-hour Pomodoro blocks at 9:00 AM – 12:00 PM and 3:00 PM – 6:00 PM to align neural alertness with official JEE Main (NTA) shifts. For JEE Advanced, calibrate Paper 1 and Paper 2 simulation blocks as per organizing IIT brochure.
       </div>
     </div>
   );

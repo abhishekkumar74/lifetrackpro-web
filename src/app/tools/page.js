@@ -2,7 +2,6 @@ import Link from 'next/link';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { 
   TimerIcon, 
   CardsIcon, 
@@ -25,24 +24,15 @@ const TOOLS_FAQS = [
   },
   {
     question: "How does LifeTrack Pro help beyond web tools?",
-    answer: "The free LifeTrack Pro Android mobile app provides an offline-first execution environment: 50/10 Pomodoro timers with 432Hz soundscapes, SM-2 spaced repetition flashcards, habit streak freeze shields, and 24/7 virtual study rooms."
+    answer: "The free LifeTrack Pro Android mobile app provides an offline-first execution environment: 50/10 Pomodoro timers with ambient soundscapes, SM-2 spaced repetition flashcards, habit streak freeze shields, and 24/7 virtual study rooms."
   }
 ];
 
 export const metadata = {
-  title: 'Free Online Study Tools & Planners',
-  description: 'Free online study tools for students. Study timetable generator, daily routine maker, study hours calculator, deep focus time planner & weekly schedule maker.',
-  keywords: [
-    'free study tools',
-    'study timetable generator',
-    'daily routine generator for students',
-    'study hours calculator',
-    'focus time calculator',
-    'weekly study planner online',
-    'student schedule maker',
-    'exam revision tools free',
-    'lifetrack pro tools'
-  ],
+  title: {
+    absolute: 'Free Study Tools Online & Planners | LifeTrack Pro',
+  },
+  description: 'Access free study tools online: timetable generator, daily routine maker, study hours calculator, focus timer & 7-day planner. No sign-up needed. Plan now.',
   alternates: {
     canonical: 'https://lifetrackpro.in/tools',
   },
@@ -58,26 +48,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Free Online Study Tools & Planners | LifeTrack Pro',
-    description: 'Free online study tools for students: timetable generator, daily routine planner, study hours calculator, focus time meter & weekly schedule builder.',
+    title: 'Free Study Tools Online & Planners | LifeTrack Pro',
+    description: 'Access free study tools online: timetable generator, daily routine maker, study hours calculator, focus timer & 7-day planner. No sign-up needed. Plan now.',
     url: 'https://lifetrackpro.in/tools',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
     type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
+        url: 'https://lifetrackpro.in/og/og-tools.png',
+        width: 1200,
+        height: 630,
         alt: 'LifeTrack Pro Free Online Study Tools Suite',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Free Online Study Tools & Planners | LifeTrack Pro',
-    description: 'Plan your studies with free online timetable generators, study hours calculators, and deep focus time estimators.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Free Study Tools Online & Planners | LifeTrack Pro',
+    description: 'Access free study tools online: timetable generator, daily routine maker, study hours calculator, focus timer & 7-day planner. No sign-up needed. Plan now.',
+    images: ['https://lifetrackpro.in/og/og-tools.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -87,22 +77,17 @@ export default function ToolsHubPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
-        "name": "LifeTrack Pro",
-        "operatingSystem": "Android",
+        "@type": "WebApplication",
+        "@id": "https://lifetrackpro.in/tools#webapp",
+        "name": "LifeTrack Pro Free Study Tools Suite",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
         "applicationCategory": "EducationalApplication",
         "url": "https://lifetrackpro.in/tools",
-        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
@@ -121,7 +106,7 @@ export default function ToolsHubPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://lifetrackpro.in/tools" }
         ]
       },
@@ -203,28 +188,31 @@ export default function ToolsHubPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <article className="container subpage-container">
+      <article className="container" style={{ padding: '40px 20px' }}>
         <div>
           {/* Breadcrumbs */}
-          <nav aria-label="Breadcrumbs" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', color: 'var(--text-3)', marginBottom: '14px', flexWrap: 'wrap' }}>
+          <nav aria-label="Breadcrumbs" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '11.5px', color: 'var(--text-3)', marginBottom: '16px', flexWrap: 'wrap' }}>
             <Link href="/" style={{ color: 'var(--text-3)', textDecoration: 'none' }}>Home</Link>
             <span>/</span>
             <span style={{ color: 'var(--primary)', fontWeight: 600 }}>Tools</span>
           </nav>
 
-          <div className="section-eyebrow">Academic Productivity Suite</div>
-          <h1 className="subpage-h1">Free Online Study Tools &amp; Productivity Planners</h1>
-          
-          <p className="subpage-lead">
-            Eliminate exam anxiety with scientific study planning. Use our free interactive timetable generators, daily routine makers, and focus calculators to build a bulletproof study schedule.
-          </p>
+          <div className="reveal" style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 36px' }}>
+            <div className="section-eyebrow">Academic Productivity Suite</div>
+            <h1 className="section-h2" style={{ marginBottom: '14px' }}>
+              Free Study Tools Online &amp; Academic Planners
+            </h1>
+            <p className="section-desc" style={{ margin: '0 auto' }}>
+              Access free study tools online to eliminate exam anxiety with scientific study planning. Use our free interactive timetable generators, daily routine makers, and focus calculators to build a bulletproof study schedule.
+            </p>
+          </div>
 
           {/* Tools Grid */}
-          <div className="features-grid" style={{ marginTop: '24px' }}>
+          <div className="features-grid" style={{ marginTop: '0' }}>
             {toolsList.map((tool) => (
               <Card
                 key={tool.slug}
-                className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0"
+                className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0 h-full"
               >
                 <CardHeader style={{ padding: '20px 20px 10px' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
@@ -233,8 +221,8 @@ export default function ToolsHubPage() {
                       {tool.badge}
                     </Badge>
                   </div>
-                  <CardTitle style={{ fontSize: '16px', margin: '0 0 6px' }}>{tool.title}</CardTitle>
-                  <CardDescription style={{ fontSize: '12px', color: 'var(--text-2)', lineHeight: 1.55 }}>
+                  <CardTitle as="h2" style={{ fontSize: '16px', margin: '0 0 6px' }}>{tool.title}</CardTitle>
+                  <CardDescription style={{ fontSize: '12.5px', color: 'var(--text-2)', lineHeight: 1.55 }}>
                     {tool.desc}
                   </CardDescription>
                 </CardHeader>
@@ -251,17 +239,17 @@ export default function ToolsHubPage() {
           </div>
 
           {/* Why Scientific Study Planning Works */}
-          <div className="content-card reveal" style={{ marginTop: '32px' }}>
-            <h2 className="content-card-h2">
+          <div className="content-card reveal" style={{ marginTop: '40px', padding: '26px 28px', borderRadius: 'var(--radius-lg, 16px)', border: '1.5px solid var(--border-subtle)' }}>
+            <h2 className="content-card-h2" style={{ fontSize: '17px', marginBottom: '12px' }}>
               Why Scientific Study Planning Beats Chaotic Cramming
             </h2>
-            <p className="content-card-p">
+            <p className="content-card-p" style={{ fontSize: '13px', lineHeight: 1.6, marginBottom: '14px' }}>
               Most students fail to stick to their study schedules not because of weak willpower, but because they design unrealistic timetables. Traditional schedules pack 12 hours of uninterrupted reading without accounting for cognitive fatigue, circadian energy drops, or memory decay.
             </p>
-            <p className="content-card-p">
+            <p className="content-card-p" style={{ fontSize: '13px', lineHeight: 1.6, marginBottom: '14px' }}>
               LifeTrack Pro study tools are engineered around three cognitive principles:
             </p>
-            <ul className="content-card-list">
+            <ul className="content-card-list" style={{ fontSize: '13px', gap: '10px' }}>
               <li>✓ <strong>Ultradian Focus Rhythm:</strong> Concentrating in 50-minute or 90-minute sprints matches natural human neural stamina, followed by short 10-minute active recovery breaks.</li>
               <li>✓ <strong>SM-2 Active Recall Scheduling:</strong> Reviewing difficult formulas and concepts right before the forgetting curve sets in converts short-term cramming into permanent memory.</li>
               <li>✓ <strong>Habit Streak Protection:</strong> Structuring non-negotiable daily habits with streak freeze shields ensures that one bad day doesn&apos;t destroy weeks of study momentum.</li>
@@ -269,42 +257,42 @@ export default function ToolsHubPage() {
           </div>
 
           {/* Dedicated Exam Preparation Frameworks */}
-          <div className="content-card reveal reveal-delay-1">
-            <h2 className="content-card-h2">
+          <div className="content-card reveal reveal-delay-1" style={{ marginTop: '24px', padding: '26px 28px', borderRadius: 'var(--radius-lg, 16px)', border: '1.5px solid var(--border-subtle)' }}>
+            <h2 className="content-card-h2" style={{ fontSize: '17px', marginBottom: '8px' }}>
               Tailored Frameworks for Major Competitive Exams
             </h2>
-            <p className="content-card-p">
+            <p className="content-card-p" style={{ fontSize: '13px', lineHeight: 1.6, marginBottom: '16px' }}>
               Preparing for a specific national competitive examination? Explore our dedicated exam blueprints:
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mt-3.5">
               <Link href="/exams/jee" style={{ textDecoration: 'none' }}>
-                <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
+                <div style={{ background: 'var(--bg-cream)', padding: '16px 18px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', height: '100%' }}>
+                  <div style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '13.5px', marginBottom: '6px' }}>
                     IIT JEE Main &amp; Advanced
                   </div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                  <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.5 }}>
                     90-minute problem solving simulation blocks, Physics formula decks, and mock error tracking.
                   </p>
                 </div>
               </Link>
 
               <Link href="/exams/neet" style={{ textDecoration: 'none' }}>
-                <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ color: 'var(--emerald)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
+                <div style={{ background: 'var(--bg-cream)', padding: '16px 18px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', height: '100%' }}>
+                  <div style={{ color: 'var(--emerald)', fontWeight: 700, fontSize: '13.5px', marginBottom: '6px' }}>
                     NEET Medical (UG &amp; PG)
                   </div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                  <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.5 }}>
                     NCERT Biology line-by-line active recall flashcards and 50-minute Physics problem sprints.
                   </p>
                 </div>
               </Link>
 
               <Link href="/exams/upsc" style={{ textDecoration: 'none' }}>
-                <div style={{ background: 'var(--bg-cream)', padding: '12px 14px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
-                  <div style={{ color: 'var(--amber)', fontWeight: 700, fontSize: '13px', marginBottom: '4px' }}>
+                <div style={{ background: 'var(--bg-cream)', padding: '16px 18px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)', height: '100%' }}>
+                  <div style={{ color: 'var(--amber)', fontWeight: 700, fontSize: '13.5px', marginBottom: '6px' }}>
                     UPSC Civil Services (CSE)
                   </div>
-                  <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.45 }}>
+                  <p style={{ fontSize: '12px', color: 'var(--text-2)', margin: 0, lineHeight: 1.5 }}>
                     Strict 7-min (10-marker) &amp; 11-min (15-marker) Mains answer writing stopwatches and Polity recall.
                   </p>
                 </div>
@@ -313,7 +301,7 @@ export default function ToolsHubPage() {
           </div>
 
           {/* Frequently Asked Questions */}
-          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions">
+          <section className="reveal reveal-delay-1" aria-label="Frequently Asked Questions" style={{ marginTop: '36px' }}>
             <FaqAccordion
               title="Frequently Asked Questions About Online Study Tools"
               items={TOOLS_FAQS}
@@ -321,30 +309,28 @@ export default function ToolsHubPage() {
           </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '28px' }}>
-            <Button asChild className="ui-button-brand min-h-[44px] px-5 rounded-xl shadow-sm">
-              <a 
-                href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}
-              >
-                <PlayStoreIcon size={16} />
-                <span>Get LifeTrack Pro Free on Play Store</span>
-              </a>
-            </Button>
-            <Button asChild variant="outline" className="ui-button-outline min-h-[44px] px-5 rounded-xl">
-              <Link href="/features" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+          <div className="tools-bottom-cta-card">
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro Free on Play Store - Android Study App"
+            >
+              <PlayStoreIcon size={18} />
+              <span>Get LifeTrack Pro Free on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
+            </a>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/features" className="tools-cta-secondary-btn" aria-label="Explore All Features">
                 <SparklesIcon size={16} />
                 <span>Explore All Features</span>
               </Link>
-            </Button>
-            <Button asChild variant="secondary" className="ui-button-secondary min-h-[44px] px-5 rounded-xl">
-              <Link href="/calculator" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Reclaimed Focus Hours">
                 <CalculatorIcon size={16} />
                 <span>Calculate Reclaimed Focus Hours</span>
               </Link>
-            </Button>
+            </div>
           </div>
         </div>
       </article>

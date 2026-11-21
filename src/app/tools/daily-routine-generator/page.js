@@ -39,20 +39,10 @@ const DAILY_ROUTINE_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Free Daily Routine Generator for Students | 24-Hour Lifestyle & Schedule Planner',
-  description: 'Free daily routine generator for students. Build a healthy 24-hour lifestyle schedule with wake-up times, school commitments, meal buffers, generic study windows, and restorative sleep.',
-  keywords: [
-    'daily routine generator for students',
-    'daily routine for students',
-    '24 hour daily routine',
-    'daily schedule maker',
-    'morning routine for students',
-    'healthy daily routine for students',
-    'daily routine planner',
-    'student daily schedule maker',
-    '24 hour timetable for students',
-    'lifetrack pro daily routine'
-  ],
+  title: {
+    absolute: 'Daily Routine Generator for Students | LifeTrack Pro',
+  },
+  description: 'Create a 24-hour schedule with our daily routine generator for students. Balance wake-up times, classes, deep study sprints & sleep. Build your routine now.',
   alternates: {
     canonical: 'https://lifetrackpro.in/tools/daily-routine-generator',
   },
@@ -68,26 +58,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Daily Routine Generator for Students | 24-Hour Study Schedule Planner',
-    description: 'Free smart daily routine generator for students. Build a balanced 24-hour study schedule aligned with your biological focus peaks, classes, and sleep goals.',
+    title: 'Daily Routine Generator for Students | LifeTrack Pro',
+    description: 'Create a 24-hour schedule with our daily routine generator for students. Balance wake-up times, classes, deep study sprints & sleep. Build your routine now.',
     url: 'https://lifetrackpro.in/tools/daily-routine-generator',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
-        alt: 'LifeTrack Pro Smart Daily Routine Generator for Students',
+        url: 'https://lifetrackpro.in/og/og-tools.png',
+        width: 1200,
+        height: 630,
+        alt: 'LifeTrack Pro Daily Routine Generator for Students',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Daily Routine Generator for Students | LifeTrack Pro',
-    description: 'Build a customized 24-hour study routine matching your circadian rhythm, classes, and target exam.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    description: 'Create a 24-hour schedule with our daily routine generator for students. Balance wake-up times, classes, deep study sprints & sleep. Build your routine now.',
+    images: ['https://lifetrackpro.in/og/og-tools.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -97,22 +87,17 @@ export default function DailyRoutineGeneratorPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
-        "name": "LifeTrack Pro",
-        "operatingSystem": "Android & Web",
+        "@type": "WebApplication",
+        "@id": "https://lifetrackpro.in/tools/daily-routine-generator#webapp",
+        "name": "LifeTrack Pro Daily Routine Generator",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
         "applicationCategory": "EducationalApplication",
         "url": "https://lifetrackpro.in/tools/daily-routine-generator",
-        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
@@ -131,7 +116,7 @@ export default function DailyRoutineGeneratorPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://lifetrackpro.in/tools" },
           { "@type": "ListItem", "position": 3, "name": "Daily Routine Generator", "item": "https://lifetrackpro.in/tools/daily-routine-generator" }
         ]
@@ -170,11 +155,11 @@ export default function DailyRoutineGeneratorPage() {
 
           <div className="section-eyebrow" style={{ display: 'inline-block', marginBottom: '8px' }}>Free Online Lifestyle &amp; Schedule Tool</div>
           <h1 className="subpage-h1" style={{ fontSize: 'clamp(20px, 3.2vw, 32px)', fontWeight: 800, color: '#172033', letterSpacing: '-0.5px', marginBottom: '12px', lineHeight: 1.25, wordBreak: 'break-word' }}>
-            Free Daily Routine Generator for Students
+            Daily Routine Generator for Students
           </h1>
           
           <p className="subpage-lead" style={{ fontSize: '14px', color: 'var(--text-2)', lineHeight: 1.6, maxWidth: '880px', marginBottom: '24px' }}>
-            Build a balanced, realistic 24-hour daily routine tailored to your student lifestyle, sleep schedule, classes, and personal commitments. Organizes healthy morning and night routines, meal buffers, and available study windows so you stay consistent without burnout.
+            Our free daily routine generator for students helps you build a balanced, realistic 24-hour daily schedule tailored to your wake-up time, sleep hours, classes, and personal commitments. Organizes healthy morning and night routines, meal buffers, and available study windows so you stay consistent without burnout.
           </p>
         </div>
 
@@ -229,10 +214,11 @@ export default function DailyRoutineGeneratorPage() {
 
               <div style={{ background: 'var(--bg-cream)', padding: '16px', borderRadius: 'var(--radius-sm)', border: '1px solid var(--border-subtle)' }}>
                 <strong style={{ fontSize: '13px', color: '#059669', display: 'block', marginBottom: '6px' }}>
-                  Phase 2: Afternoon Timed MCQ Drills (2:30 PM – 5:30 PM)
+                  Phase 2: Afternoon Timed MCQ Drills (3:00 PM – 6:00 PM)
                 </strong>
                 <p style={{ fontSize: '11.5px', color: 'var(--text-2)', margin: 0, lineHeight: 1.5 }}>
-                  Timed 45-to-60 question past year question (PYQ) sprints matching official exam shift timings (2:00 PM – 5:00 PM). Trains your circadian rhythm to remain razor sharp during the afternoon post-lunch dip.
+                  {/* TODO: Verify exact JEE Main shift timings with latest NTA information bulletin */}
+                  Timed 45-to-60 question past year question (PYQ) sprints matching official JEE Main (NTA) afternoon shift timings (3:00 PM – 6:00 PM). Trains your circadian rhythm to remain razor sharp during the afternoon post-lunch dip.
                 </p>
               </div>
 
@@ -269,7 +255,7 @@ export default function DailyRoutineGeneratorPage() {
                 • <strong>Dedicated Evening Project Block (6:30 PM – 8:30 PM):</strong> Reserve late afternoon and early evening for semester coursework, core engineering subjects (OS, DBMS, Computer Networks), and active team project contributions.
               </li>
               <li>
-                • <strong>Screen-Free Wind-Down:</strong> End your day by 11:30 PM to ensure at least 7 hours of sleep. Blue light from computer monitors suppressed melatonin production, impairing problem-solving creativity for the next morning.
+                • <strong>Screen-Free Wind-Down:</strong> End your day by 11:30 PM to ensure at least 7 hours of sleep. Blue light from computer monitors suppresses melatonin production, impairing problem-solving creativity for the next morning.
               </li>
             </ul>
           </section>
@@ -380,7 +366,7 @@ export default function DailyRoutineGeneratorPage() {
                   <div style={{ fontSize: '20px', marginBottom: '8px' }}>🗓️</div>
                   <CardTitle style={{ fontSize: '13.5px', color: 'var(--primary)', margin: 0 }}>Study Timetable Generator</CardTitle>
                   <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
-                    AI-powered hour-by-hour scheduled revision timetables.
+                    Smart hour-by-hour scheduled revision timetables.
                   </CardDescription>
                 </CardHeader>
                 <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
@@ -409,7 +395,7 @@ export default function DailyRoutineGeneratorPage() {
 
               <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
                 <CardHeader style={{ padding: '16px 18px 10px' }}>
-                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>🧠</div>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }} aria-hidden="true">🧠</div>
                   <CardTitle style={{ fontSize: '13.5px', color: 'var(--rose)', margin: 0 }}>Focus Time Calculator</CardTitle>
                   <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
                     Measure true deep work focus hours vs attention residue.
@@ -450,25 +436,28 @@ export default function DailyRoutineGeneratorPage() {
           </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div className="subpage-bottom-cta-card">
             <a 
               href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro Free on Play Store - Android Study App"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={18} />
               <span>Get LifeTrack Pro Free on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <Link href="/tools" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Explore All Tools</span>
-            </Link>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Reclaimed Focus Hours</span>
-            </Link>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/tools" className="tools-cta-secondary-btn" aria-label="Explore All Tools">
+                <SparklesIcon size={16} />
+                <span>Explore All Tools</span>
+              </Link>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Reclaimed Focus Hours">
+                <CalculatorIcon size={16} />
+                <span>Calculate Reclaimed Focus Hours</span>
+              </Link>
+            </div>
           </div>
       </article>
     </>

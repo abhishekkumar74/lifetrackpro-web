@@ -4,7 +4,7 @@ import { CloseIcon, TimerIcon } from '@/components/Icons';
 
 const FOCUS_SOUNDS = [
   { id: 'rain', name: 'Gentle Rainfall', note: 'White noise acoustic mask' },
-  { id: 'binaural', name: '432Hz Alpha Waves', note: 'Prefrontal flow state' },
+  { id: 'binaural', name: 'Alpha Focus Tones', note: 'Calm study soundscape' },
   { id: 'cafe', name: 'Library Ambience', note: 'Mild focused presence' },
   { id: 'silent', name: 'Pure Silence', note: 'Zero auditory stimulation' },
 ];

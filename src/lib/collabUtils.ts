@@ -44,7 +44,7 @@ export function buildCollabShareUrl(
 
 /**
  * Builds the secure, read-only partner live stats URL.
- * e.g. https://lifetrackpro.in/partner/starex?token=f028b49dd989c3bb21e70c37
+ * e.g. https://lifetrackpro.in/partner/starex?token=<PARTNER_TOKEN>
  */
 export function buildPartnerStatsUrl(
   slug: string,

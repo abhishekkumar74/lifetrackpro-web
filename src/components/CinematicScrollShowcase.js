@@ -409,7 +409,7 @@ export default function CinematicScrollShowcase() {
                 </button>
               </div>
 
-              {/* 5 Dot Indicators */}
+              {/* 5 Dot Indicators with Accessible 44px Tap Targets */}
               <div className="fixed-mob-dots" role="tablist" aria-label="System Indicators">
                 {CHAPTERS.map((c, i) => (
                   <button
@@ -418,13 +418,32 @@ export default function CinematicScrollShowcase() {
                     role="tab"
                     aria-selected={i === activeChapter}
                     onClick={() => setActiveChapter(i)}
-                    className={`fixed-mob-dot ${i === activeChapter ? 'is-active' : ''}`}
-                    style={{
-                      background: i === activeChapter ? c.accent : 'rgba(255, 255, 255, 0.22)',
-                      width: i === activeChapter ? '22px' : '7px',
-                    }}
+                    className="fixed-mob-dot-hitbox"
                     aria-label={`Jump to ${c.pillText}`}
-                  />
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      minHeight: '44px',
+                      minWidth: '28px',
+                      padding: '0 4px',
+                      background: 'transparent',
+                      border: 'none',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <span
+                      className={`fixed-mob-dot ${i === activeChapter ? 'is-active' : ''}`}
+                      style={{
+                        background: i === activeChapter ? c.accent : 'rgba(255, 255, 255, 0.22)',
+                        width: i === activeChapter ? '22px' : '7px',
+                        height: '6px',
+                        borderRadius: '100px',
+                        display: 'block',
+                        transition: 'all 0.25s ease',
+                      }}
+                    />
+                  </button>
                 ))}
               </div>
             </div>

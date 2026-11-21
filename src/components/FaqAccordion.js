@@ -61,6 +61,7 @@ export default function FaqAccordion({ title, subtitle, items, defaultValue = 'i
 
   return (
     <div>
+      <h2 className="sr-only">Knowledge Base Questions and Answers</h2>
       {/* Search & Filter Bar */}
       <div style={{ marginBottom: '22px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <input

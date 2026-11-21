@@ -35,20 +35,10 @@ const STUDY_HOURS_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Study Hours Calculator – Calculate Hours to Finish Syllabus',
-  description: 'Calculate daily study hours needed to complete your syllabus before exams. Estimate revision time, total workload and preparation feasibility.',
-  keywords: [
-    'study hours calculator',
-    'how many hours should i study',
-    'syllabus completion calculator',
-    'daily study hours calculator',
-    'exam preparation time calculator',
-    'study time calculator for students',
-    'jee study hours calculator',
-    'neet revision hours calculator',
-    'upsc syllabus completion time',
-    'lifetrack pro hours calculator'
-  ],
+  title: {
+    absolute: 'Study Hours Calculator for Exams | LifeTrack Pro',
+  },
+  description: 'Find daily study hours required to finish your syllabus before exam day with our free study hours calculator. Plan revision cycles. Calculate your hours now.',
   alternates: {
     canonical: 'https://lifetrackpro.in/tools/study-hours-calculator',
   },
@@ -64,26 +54,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Study Hours Calculator – Calculate Hours to Finish Syllabus | LifeTrack Pro',
-    description: 'Calculate daily study hours needed to complete your syllabus before exams. Estimate revision time, total workload and preparation feasibility.',
+    title: 'Study Hours Calculator for Exams | LifeTrack Pro',
+    description: 'Find daily study hours required to finish your syllabus before exam day with our free study hours calculator. Plan revision cycles. Calculate your hours now.',
     url: 'https://lifetrackpro.in/tools/study-hours-calculator',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
+        url: 'https://lifetrackpro.in/og/og-tools.png',
+        width: 1200,
+        height: 630,
         alt: 'LifeTrack Pro Academic Workload & Study Hours Calculator',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Study Hours Calculator – Calculate Hours to Finish Syllabus',
-    description: 'Calculate daily study hours needed to complete your syllabus before exams. Estimate revision time, total workload and preparation feasibility.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Study Hours Calculator for Exams | LifeTrack Pro',
+    description: 'Find daily study hours required to finish your syllabus before exam day with our free study hours calculator. Plan revision cycles. Calculate your hours now.',
+    images: ['https://lifetrackpro.in/og/og-tools.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -93,22 +83,17 @@ export default function StudyHoursCalculatorPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
-        "name": "LifeTrack Pro",
-        "operatingSystem": "Android",
+        "@type": "WebApplication",
+        "@id": "https://lifetrackpro.in/tools/study-hours-calculator#webapp",
+        "name": "LifeTrack Pro Study Hours Calculator",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
         "applicationCategory": "EducationalApplication",
         "url": "https://lifetrackpro.in/tools/study-hours-calculator",
-        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
@@ -127,7 +112,7 @@ export default function StudyHoursCalculatorPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://lifetrackpro.in/tools" },
           { "@type": "ListItem", "position": 3, "name": "Study Hours Calculator", "item": "https://lifetrackpro.in/tools/study-hours-calculator" }
         ]
@@ -164,18 +149,18 @@ export default function StudyHoursCalculatorPage() {
         </nav>
 
         {/* Hero Section */}
-        <header className="study-hours-hero">
+        <header className="study-hours-hero" style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 32px' }}>
           <div className="study-hours-eyebrow">
             <IconActivity size={13} color="#5B5CF0" />
             <span>ACADEMIC WORKLOAD &amp; FEASIBILITY OS</span>
           </div>
 
           <h1 className="study-hours-hero-title">
-            Study Hours Calculator
+            Study Hours Calculator for Syllabus Completion
           </h1>
 
-          <p className="study-hours-hero-desc">
-            Calculate how many hours you need to complete your syllabus, revise effectively and prepare before your exam.
+          <p className="study-hours-hero-desc" style={{ margin: '0 auto' }}>
+            Use our free study hours calculator to determine daily study hours needed to complete your syllabus, revise thoroughly, and gauge exam preparation feasibility.
           </p>
         </header>
 
@@ -355,7 +340,7 @@ export default function StudyHoursCalculatorPage() {
         >
           <div style={{ maxWidth: '680px' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 750, color: '#5B5CF0', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '4px' }}>
-              <span>🚀</span>
+              <span aria-hidden="true">🚀</span>
               <span>LIFETRACK PRO MOBILE COMPANION</span>
             </div>
             <h2 style={{ fontSize: '20px', fontWeight: 850, color: '#0F172A', margin: '0 0 6px', letterSpacing: '-0.3px' }}>
@@ -432,7 +417,7 @@ export default function StudyHoursCalculatorPage() {
 
             <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
               <CardHeader style={{ padding: '16px 18px 10px' }}>
-                <div style={{ fontSize: '20px', marginBottom: '8px' }}>🧠</div>
+                <div style={{ fontSize: '20px', marginBottom: '8px' }} aria-hidden="true">🧠</div>
                 <CardTitle style={{ fontSize: '13.5px', color: '#E11D48', margin: 0 }}>Focus Time Calculator</CardTitle>
                 <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '4px 0 0', lineHeight: 1.45 }}>
                   Measures true deep work capacity versus distraction residue, task-switching friction, and study fatigue.

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { calculateWhatIfScenarios, generateRecommendations } from '@/lib/focusRoiEngine';
 
 export default function FocusRoiPrintDocument({
@@ -8,14 +8,20 @@ export default function FocusRoiPrintDocument({
   examName = '',
   isExportingPdf = false,
 }) {
-  if (!calcData) return null;
+  const [dateStr, setDateStr] = useState('');
 
-  const dateStr = new Date().toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  useEffect(() => {
+    setDateStr(
+      new Date().toLocaleDateString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+    );
+  }, []);
+
+  if (!calcData) return null;
 
   const scenarios = calculateWhatIfScenarios(calcData);
   const recommendations = generateRecommendations(calcData);

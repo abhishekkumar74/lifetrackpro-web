@@ -519,7 +519,7 @@ export default function StudentProfileModal({ studentId, onClose, onUserUpdated 
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
                         <span style={{ fontSize: '18px' }}>✨</span>
-                        <strong style={{ fontSize: '13px', color: '#3730A3' }}>AI Learning Insight</strong>
+                        <strong style={{ fontSize: '13px', color: '#3730A3' }}>Smart Learning Insight</strong>
                         {student.aiInsightUpdatedAt && (
                           <span style={{ fontSize: '11px', color: '#6366F1' }}>
                             (Updated {new Date(student.aiInsightUpdatedAt).toLocaleDateString()})

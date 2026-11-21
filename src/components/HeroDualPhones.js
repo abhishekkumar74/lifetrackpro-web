@@ -92,7 +92,6 @@ export default function HeroDualPhones() {
             alt="LifeTrack Pro Focus Timer & Deep Work Session Screen"
             width={600}
             height={1300}
-            priority
             draggable={false}
             sizes="(max-width: 640px) 190px, 250px"
             style={{

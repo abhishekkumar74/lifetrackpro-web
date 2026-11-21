@@ -5,7 +5,7 @@ import PlayStoreIcon from '@/components/PlayStoreIcon';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import { Card, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { SparklesIcon, HelpCircleIcon } from '@/components/Icons';
 
 const CALCULATOR_FAQS = [
   {
@@ -31,20 +31,10 @@ const CALCULATOR_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Study Efficiency & Focus Time ROI Calculator – LifeTrack Pro',
-  description: 'Calculate study time lost to distractions, notification pings, and cognitive focus recovery lag. Discover how much productive study time you can recover before exams.',
-  keywords: [
-    'study efficiency calculator',
-    'focus time calculator',
-    'study time lost to distractions',
-    'attention residue calculator',
-    'pomodoro study roi',
-    'interruption recovery time',
-    'daily study efficiency',
-    'reclaim focus hours',
-    'exam focus roi',
-    'lifetrack pro calculator'
-  ],
+  title: {
+    absolute: 'Study Distraction & Focus ROI Calculator | LifeTrack Pro',
+  },
+  description: 'Use our free study distraction calculator to measure focus lost to phone interruptions & attention residue. Discover recoverable study hours before exams.',
   alternates: {
     canonical: 'https://lifetrackpro.in/calculator',
   },
@@ -60,26 +50,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Study Efficiency & Focus Time ROI Calculator | LifeTrack Pro',
-    description: 'Calculate study time lost to distractions, notification pings, and cognitive focus recovery lag. Discover how much productive study time you can recover before exams.',
+    title: 'Study Distraction & Focus ROI Calculator | LifeTrack Pro',
+    description: 'Use our free study distraction calculator to measure focus lost to phone interruptions & attention residue. Discover recoverable study hours before exams.',
     url: 'https://lifetrackpro.in/calculator',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
-        alt: 'LifeTrack Pro Study Efficiency and Focus Time ROI Calculator',
+        url: 'https://lifetrackpro.in/og/og-tools.png',
+        width: 1200,
+        height: 630,
+        alt: 'LifeTrack Pro Study Distraction and Focus Time ROI Calculator',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Study Efficiency & Focus Time ROI Calculator | LifeTrack Pro',
-    description: 'Calculate study time lost to distractions, notification pings, and cognitive focus recovery lag. Discover how much productive study time you can recover before exams.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Study Distraction & Focus ROI Calculator | LifeTrack Pro',
+    description: 'Use our free study distraction calculator to measure focus lost to phone interruptions & attention residue. Discover recoverable study hours before exams.',
+    images: ['https://lifetrackpro.in/og/og-tools.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -89,29 +79,24 @@ export default function CalculatorPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
-        "name": "LifeTrack Pro",
-        "operatingSystem": "Android",
+        "@type": "WebApplication",
+        "@id": "https://lifetrackpro.in/calculator#webapp",
+        "name": "LifeTrack Pro Study Distraction & Focus ROI Calculator",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
         "applicationCategory": "EducationalApplication",
         "url": "https://lifetrackpro.in/calculator",
-        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
         "@type": "WebPage",
         "@id": "https://lifetrackpro.in/calculator#webpage",
         "url": "https://lifetrackpro.in/calculator",
-        "name": "Study Efficiency & Focus Time ROI Calculator | LifeTrack Pro",
+        "name": "Study Distraction & Focus ROI Calculator | LifeTrack Pro",
         "description": "Calculate study time lost to distractions, notification pings, and cognitive focus recovery lag. Discover how much productive study time you can recover before exams.",
         "isPartOf": {
           "@type": "WebSite",
@@ -123,9 +108,9 @@ export default function CalculatorPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://lifetrackpro.in/tools" },
-          { "@type": "ListItem", "position": 3, "name": "Study Efficiency Calculator", "item": "https://lifetrackpro.in/calculator" }
+          { "@type": "ListItem", "position": 3, "name": "Study Distraction Calculator", "item": "https://lifetrackpro.in/calculator" }
         ]
       },
       {
@@ -156,22 +141,22 @@ export default function CalculatorPage() {
           <span>/</span>
           <Link href="/tools" style={{ color: '#64748B', textDecoration: 'none' }}>Tools</Link>
           <span>/</span>
-          <span style={{ color: '#5B5CF0', fontWeight: 650 }}>Study Efficiency Calculator</span>
+          <span style={{ color: '#5B5CF0', fontWeight: 650 }}>Study Distraction Calculator</span>
         </nav>
 
         {/* Hero Section */}
-        <header className="focus-roi-hero">
+        <header className="focus-roi-hero" style={{ textAlign: 'center', maxWidth: '680px', margin: '0 auto 32px' }}>
           <div className="focus-roi-eyebrow">
-            <span>⏱️</span>
+            <span aria-hidden="true">⏱️</span>
             <span>ATTENTION AUDIT &amp; FOCUS TIME ROI</span>
           </div>
 
           <h1 className="focus-roi-hero-title">
-            Study Efficiency &amp; Focus Time ROI Calculator
+            Study Distraction &amp; Focus Recovery Calculator
           </h1>
 
-          <p className="focus-roi-hero-desc">
-            Calculate how much study time you potentially lose through distractions, phone alerts, and focus recovery lag. Discover how much productive deep work you can recover before your exam.
+          <p className="focus-roi-hero-desc" style={{ margin: '0 auto' }}>
+            Use our free study distraction calculator to measure study hours lost to phone interruptions, notification pings, and cognitive refocus lag. Discover how much productive deep work you can recover before exam day.
           </p>
         </header>
 
@@ -191,7 +176,7 @@ export default function CalculatorPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-3.5">
               <div style={{ padding: '16px', background: '#FFFBEB', borderRadius: '10px', border: '1px solid #FDE68A' }}>
-                <div style={{ fontSize: '11px', fontWeight: 750, color: '#D97706', textTransform: 'uppercase' }}>Stage 1: Direct Distraction</div>
+                <div style={{ fontSize: '11px', fontWeight: 750, color: '#92400E', textTransform: 'uppercase' }}>Stage 1: Direct Distraction</div>
                 <div style={{ fontSize: '16px', fontWeight: 800, color: '#0F172A', margin: '4px 0 2px' }}>The Off-Task Event</div>
                 <div style={{ fontSize: '12px', color: '#92400E', lineHeight: 1.5 }}>
                   The 2 to 5 minutes spent answering a message, scrolling an Instagram reel, or checking a sports score. While visible, this is only the tip of the cognitive iceberg.
@@ -199,7 +184,7 @@ export default function CalculatorPage() {
               </div>
 
               <div style={{ padding: '16px', background: '#FEF2F2', borderRadius: '10px', border: '1px solid #FECACA' }}>
-                <div style={{ fontSize: '11px', fontWeight: 750, color: '#DC2626', textTransform: 'uppercase' }}>Stage 2: Focus Recovery Lag</div>
+                <div style={{ fontSize: '11px', fontWeight: 750, color: '#B91C1C', textTransform: 'uppercase' }}>Stage 2: Focus Recovery Lag</div>
                 <div style={{ fontSize: '16px', fontWeight: 800, color: '#0F172A', margin: '4px 0 2px' }}>Attention Residue (3–10 mins)</div>
                 <div style={{ fontSize: '12px', color: '#991B1B', lineHeight: 1.5 }}>
                   Coined by Dr. Sophie Leroy and validated by UC Irvine research, attention residue describes the mental lag required for your brain to reconstruct its prior analytical context and re-enter flow.
@@ -223,21 +208,21 @@ export default function CalculatorPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-                <strong style={{ fontSize: '13px', color: '#5B5CF0', display: 'block', marginBottom: '4px' }}>1. Physical Distance Shield</strong>
+                <strong style={{ fontSize: '13px', color: '#4338CA', display: 'block', marginBottom: '4px' }}>1. Physical Distance Shield</strong>
                 <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.5 }}>
                   Simply turning your smartphone face down still demands cognitive inhibition. Placing the device in an adjacent room eliminates visual temptation and reduces subconscious checking urge by 70%.
                 </p>
               </div>
 
               <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-                <strong style={{ fontSize: '13px', color: '#10B981', display: 'block', marginBottom: '4px' }}>2. 50/10 Ultradian Sprints</strong>
+                <strong style={{ fontSize: '13px', color: '#047857', display: 'block', marginBottom: '4px' }}>2. 50/10 Ultradian Sprints</strong>
                 <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.5 }}>
                   Continuous work degrades analytical retention after 50 minutes. Use 50-minute deep blocks paired with 10-minute active recovery breaks (water, stretching, natural light) to reset neuro-fatigue.
                 </p>
               </div>
 
               <div style={{ padding: '14px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid #E2E8F0' }}>
-                <strong style={{ fontSize: '13px', color: '#9333EA', display: 'block', marginBottom: '4px' }}>3. Unified Study Environment</strong>
+                <strong style={{ fontSize: '13px', color: '#7E22CE', display: 'block', marginBottom: '4px' }}>3. Unified Study Environment</strong>
                 <p style={{ fontSize: '11.5px', color: '#64748B', margin: 0, lineHeight: 1.5 }}>
                   Switching between disparate timer apps, note apps, and flashcard tools creates task fragmentation. LifeTrack Pro consolidates your timer, active recall, and daily streaks in a single distraction-free ecosystem.
                 </p>
@@ -247,16 +232,16 @@ export default function CalculatorPage() {
         </section>
 
         {/* ── STRATEGIC COMPACT APP PROMOTION BANNER ── */}
-        <Card className="rounded-2xl border-indigo-100 bg-gradient-to-br from-indigo-50/60 via-white to-slate-50/80 p-6 sm:p-8 shadow-xs my-8" aria-label="LifeTrack Pro Focus Companion">
+        <Card className="features-roi-banner" aria-label="LifeTrack Pro Focus Companion">
           <div className="cta-banner-content">
             <div style={{ maxWidth: '640px', minWidth: 0 }}>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
-                <span style={{ fontSize: '12px' }}>🚀</span>
+                <span style={{ fontSize: '12px' }} aria-hidden="true">🚀</span>
                 <Badge variant="secondary" style={{ backgroundColor: 'rgba(238, 242, 255, 0.9)', color: '#4338CA', borderColor: '#E0E7FF', fontSize: '10.5px' }}>
                   LIFETRACK PRO FOCUS OS
                 </Badge>
               </div>
-              <h2 style={{ fontSize: '20px', fontWeight: 850, color: '#0F172A', margin: '0 0 6px', letterSpacing: '-0.3px' }}>
+              <h2 style={{ fontSize: '20px', fontWeight: 850, color: '#0F172A', margin: '0 0 6px', letterSpacing: '-0.3px', lineHeight: 1.3 }}>
                 Eliminate App Distractions &amp; Recover Your Deep Study Time
               </h2>
               <p style={{ fontSize: '13.5px', color: '#475569', margin: 0, lineHeight: 1.55 }}>
@@ -264,18 +249,37 @@ export default function CalculatorPage() {
               </p>
             </div>
 
-            <div className="cta-banner-action" style={{ flexShrink: 0 }}>
-              <Button asChild className="ui-button-brand min-h-[44px] px-6 rounded-xl shadow-sm">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', color: '#FFFFFF', textDecoration: 'none' }}
+            <div className="features-cta-button-group">
+              <a
+                href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="features-cta-btn-primary"
+                aria-label="Explore LifeTrack Pro on Play Store - Android Study App"
+              >
+                <PlayStoreIcon size={16} />
+                <span>Explore LifeTrack Pro on Play Store</span>
+                <span className="cta-arrow" aria-hidden="true">→</span>
+              </a>
+
+              <div className="features-cta-subgroup">
+                <Link 
+                  href="/features" 
+                  className="features-cta-btn-secondary"
+                  aria-label="Explore All Features"
                 >
-                  <PlayStoreIcon size={16} />
-                  <span>Explore LifeTrack Pro on Play Store →</span>
-                </a>
-              </Button>
+                  <SparklesIcon size={15} />
+                  <span>Explore Features</span>
+                </Link>
+                <Link 
+                  href="/faq" 
+                  className="features-cta-btn-secondary"
+                  aria-label="Explore FAQs - Frequently Asked Questions"
+                >
+                  <HelpCircleIcon size={15} />
+                  <span>Explore FAQs</span>
+                </Link>
+              </div>
             </div>
           </div>
         </Card>
@@ -302,7 +306,7 @@ export default function CalculatorPage() {
             <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
               <CardHeader style={{ padding: '16px 18px 10px' }}>
                 <div style={{ fontSize: '20px', marginBottom: '8px' }}>⏰</div>
-                <CardTitle style={{ fontSize: '14px', color: '#0D9488', margin: 0 }}>
+                <CardTitle as="h3" style={{ fontSize: '14px', color: '#0F766E', margin: 0 }}>
                   Daily Routine Generator
                 </CardTitle>
                 <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>
@@ -310,7 +314,7 @@ export default function CalculatorPage() {
                 </CardDescription>
               </CardHeader>
               <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
-                <Link href="/tools/daily-routine-generator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#0D9488', textDecoration: 'none' }}>
+                <Link href="/tools/daily-routine-generator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#0F766E', textDecoration: 'none' }}>
                   Open Generator →
                 </Link>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>Circadian</Badge>
@@ -320,7 +324,7 @@ export default function CalculatorPage() {
             <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
               <CardHeader style={{ padding: '16px 18px 10px' }}>
                 <div style={{ fontSize: '20px', marginBottom: '8px' }}>🗓️</div>
-                <CardTitle style={{ fontSize: '14px', color: '#5B5CF0', margin: 0 }}>
+                <CardTitle as="h3" style={{ fontSize: '14px', color: '#4338CA', margin: 0 }}>
                   Study Timetable Generator
                 </CardTitle>
                 <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>
@@ -328,7 +332,7 @@ export default function CalculatorPage() {
                 </CardDescription>
               </CardHeader>
               <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
-                <Link href="/tools/study-timetable-generator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#5B5CF0', textDecoration: 'none' }}>
+                <Link href="/tools/study-timetable-generator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#4338CA', textDecoration: 'none' }}>
                   Open Generator →
                 </Link>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>Timetable</Badge>
@@ -338,7 +342,7 @@ export default function CalculatorPage() {
             <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
               <CardHeader style={{ padding: '16px 18px 10px' }}>
                 <div style={{ fontSize: '20px', marginBottom: '8px' }}>📊</div>
-                <CardTitle style={{ fontSize: '14px', color: '#D97706', margin: 0 }}>
+                <CardTitle as="h3" style={{ fontSize: '14px', color: '#92400E', margin: 0 }}>
                   Study Hours Calculator
                 </CardTitle>
                 <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>
@@ -346,7 +350,7 @@ export default function CalculatorPage() {
                 </CardDescription>
               </CardHeader>
               <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
-                <Link href="/tools/study-hours-calculator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#D97706', textDecoration: 'none' }}>
+                <Link href="/tools/study-hours-calculator" style={{ fontSize: '11.5px', fontWeight: 700, color: '#92400E', textDecoration: 'none' }}>
                   Open Calculator →
                 </Link>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>Syllabus</Badge>
@@ -356,7 +360,7 @@ export default function CalculatorPage() {
             <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md min-w-0">
               <CardHeader style={{ padding: '16px 18px 10px' }}>
                 <div style={{ fontSize: '20px', marginBottom: '8px' }}>📋</div>
-                <CardTitle style={{ fontSize: '14px', color: '#6366F1', margin: 0 }}>
+                <CardTitle as="h3" style={{ fontSize: '14px', color: '#4338CA', margin: 0 }}>
                   Weekly Study Planner
                 </CardTitle>
                 <CardDescription style={{ fontSize: '11.5px', color: '#64748B', margin: '6px 0 0', lineHeight: 1.5 }}>
@@ -364,7 +368,7 @@ export default function CalculatorPage() {
                 </CardDescription>
               </CardHeader>
               <CardFooter className="mt-auto pt-3 flex items-center justify-between border-t border-slate-100" style={{ padding: '10px 18px 14px' }}>
-                <Link href="/tools/weekly-study-planner" style={{ fontSize: '11.5px', fontWeight: 700, color: '#6366F1', textDecoration: 'none' }}>
+                <Link href="/tools/weekly-study-planner" style={{ fontSize: '11.5px', fontWeight: 700, color: '#4338CA', textDecoration: 'none' }}>
                   Open Planner →
                 </Link>
                 <Badge variant="secondary" style={{ fontSize: '10px' }}>7-Day Matrix</Badge>

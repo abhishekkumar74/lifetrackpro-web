@@ -705,7 +705,7 @@ export function generateICalContent(sessions, examName = 'Exam Prep') {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//LifeTrack Pro//AI Study Planner//EN',
+    'PRODID:-//LifeTrack Pro//Smart Study Planner//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     `X-WR-CALNAME:LifeTrack Pro - ${examName} Schedule`,

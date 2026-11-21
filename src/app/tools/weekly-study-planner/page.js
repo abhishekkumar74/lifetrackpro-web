@@ -29,19 +29,10 @@ const WEEKLY_PLANNER_FAQS = [
 ];
 
 export const metadata = {
-  title: 'Weekly Study Planner & 7-Day Schedule',
-  description: 'Free weekly study planner for students. Distribute study hours across 7 days, balance multiple subjects & schedule Sunday mock test error analysis. Free.',
-  keywords: [
-    'weekly study planner online',
-    '7 day study schedule maker',
-    'weekly revision planner free',
-    'student weekly timetable planner',
-    'jee weekly study plan',
-    'neet weekly revision timetable',
-    'upsc weekly schedule maker',
-    'weekly study goals template',
-    'lifetrack pro weekly planner'
-  ],
+  title: {
+    absolute: 'Weekly Study Planner and 7-Day Schedule | LifeTrack Pro',
+  },
+  description: 'Plan your 7-day revision with our free weekly study planner. Distribute study shifts, schedule mock exams and track weekly targets for exams. Plan your week.',
   alternates: {
     canonical: 'https://lifetrackpro.in/tools/weekly-study-planner',
   },
@@ -57,26 +48,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'Weekly Study Planner & 7-Day Schedule | LifeTrack Pro',
-    description: 'Free online weekly study planner. Balance multiple subjects across a structured 7-day schedule with dedicated mock test and error analysis slots.',
+    title: 'Weekly Study Planner and 7-Day Schedule | LifeTrack Pro',
+    description: 'Plan your 7-day revision with our free weekly study planner. Distribute study shifts, schedule mock exams and track weekly targets for exams. Plan your week.',
     url: 'https://lifetrackpro.in/tools/weekly-study-planner',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
+        url: 'https://lifetrackpro.in/og/og-tools.png',
+        width: 1200,
+        height: 630,
         alt: 'LifeTrack Pro Free Weekly Study Planner',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Weekly Study Planner & 7-Day Schedule | LifeTrack Pro',
-    description: 'Plan and balance your 7-day study week across multiple subjects with automated daily quotas.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'Weekly Study Planner and 7-Day Schedule | LifeTrack Pro',
+    description: 'Plan your 7-day revision with our free weekly study planner. Distribute study shifts, schedule mock exams and track weekly targets for exams. Plan your week.',
+    images: ['https://lifetrackpro.in/og/og-tools.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -86,22 +77,17 @@ export default function WeeklyStudyPlannerPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
-        "name": "LifeTrack Pro",
-        "operatingSystem": "Android",
+        "@type": "WebApplication",
+        "@id": "https://lifetrackpro.in/tools/weekly-study-planner#webapp",
+        "name": "LifeTrack Pro Weekly Study Planner",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
         "applicationCategory": "EducationalApplication",
         "url": "https://lifetrackpro.in/tools/weekly-study-planner",
-        "installUrl": "https://play.google.com/store/apps/details?id=com.lifetrackpro.app",
         "offers": {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
@@ -120,7 +106,7 @@ export default function WeeklyStudyPlannerPage() {
       {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
           { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://lifetrackpro.in/tools" },
           { "@type": "ListItem", "position": 3, "name": "Weekly Study Planner", "item": "https://lifetrackpro.in/tools/weekly-study-planner" }
         ]
@@ -158,10 +144,10 @@ export default function WeeklyStudyPlannerPage() {
           </nav>
 
           <div className="section-eyebrow">Free Online Study Tool</div>
-          <h1 className="subpage-h1">Weekly Study Planner: Free 7-Day Schedule &amp; Revision Maker</h1>
+          <h1 className="subpage-h1">Weekly Study Planner for Students</h1>
           
           <p className="subpage-lead">
-            Distribute your weekly study hours evenly across 7 days. Balance multiple subjects, prevent single-subject fatigue, and incorporate dedicated Sunday mock tests and backlog clearance windows.
+            Use our free weekly study planner to distribute study hours evenly across 7 days. Balance multiple subjects, prevent single-subject fatigue, and incorporate dedicated Sunday mock tests and backlog clearance windows.
           </p>
 
           {/* Interactive Weekly Planner Widget */}
@@ -251,7 +237,7 @@ export default function WeeklyStudyPlannerPage() {
 
               <Card className="flex flex-col justify-between rounded-2xl border-slate-200/80 bg-white shadow-xs transition-all hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-md">
                 <CardHeader style={{ padding: '16px 18px 10px' }}>
-                  <div style={{ fontSize: '20px', marginBottom: '8px' }}>🧠</div>
+                  <div style={{ fontSize: '20px', marginBottom: '8px' }} aria-hidden="true">🧠</div>
                   <CardTitle style={{ fontSize: '13.5px', color: 'var(--rose)', margin: 0 }}>Focus Time Calculator</CardTitle>
                   <CardDescription style={{ fontSize: '11px', color: 'var(--text-2)', margin: '4px 0 0', lineHeight: 1.45 }}>
                     Measure true deep work hours vs distraction residue.
@@ -276,25 +262,28 @@ export default function WeeklyStudyPlannerPage() {
           </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div className="subpage-bottom-cta-card">
             <a 
               href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro Free on Play Store - Android Study App"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={18} />
               <span>Get LifeTrack Pro Free on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <Link href="/tools" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Explore All Tools</span>
-            </Link>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Reclaimed Focus Hours</span>
-            </Link>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/tools" className="tools-cta-secondary-btn" aria-label="Explore All Tools">
+                <SparklesIcon size={16} />
+                <span>Explore All Tools</span>
+              </Link>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Reclaimed Focus Hours">
+                <CalculatorIcon size={16} />
+                <span>Calculate Reclaimed Focus Hours</span>
+              </Link>
+            </div>
           </div>
         </div>
       </article>

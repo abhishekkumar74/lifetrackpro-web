@@ -62,11 +62,18 @@ async function capturePostHogServerEvent(
   }
 }
 
+function makeRedirect(url: string, status = 302) {
+  const response = NextResponse.redirect(url, status);
+  response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+  response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  return response;
+}
+
 export async function GET(request: NextRequest, context: RouteContext) {
   const { slug: rawSlug } = await context.params;
 
   if (!rawSlug) {
-    return NextResponse.redirect(DEFAULT_PLAY_STORE_URL, 302);
+    return makeRedirect(DEFAULT_PLAY_STORE_URL, 302);
   }
 
   const slug = rawSlug.trim().toLowerCase();
@@ -92,7 +99,7 @@ export async function GET(request: NextRequest, context: RouteContext) {
       // If link not found or inactive, purge old cached entry (if any) and redirect to default Play Store
       if (error || !data || !data.is_active) {
         if (cached) linkCache.delete(slug);
-        return NextResponse.redirect(DEFAULT_PLAY_STORE_URL, 302);
+        return makeRedirect(DEFAULT_PLAY_STORE_URL, 302);
       }
 
       link = data as CollabLinkCacheRecord;
@@ -148,12 +155,10 @@ export async function GET(request: NextRequest, context: RouteContext) {
       ]);
     });
 
-    // 7. Instant 302 redirect with no-cache headers
-    const response = NextResponse.redirect(destinationUrl, 302);
-    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-    return response;
+    // 7. Instant 302 redirect with no-cache and noindex headers
+    return makeRedirect(destinationUrl, 302);
   } catch (err) {
     console.error('[Collab Edge Redirect Error]:', err);
-    return NextResponse.redirect(DEFAULT_PLAY_STORE_URL, 302);
+    return makeRedirect(DEFAULT_PLAY_STORE_URL, 302);
   }
 }

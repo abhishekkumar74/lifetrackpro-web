@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { TimerIcon, HabitFlameIcon, TargetIcon, ChartIcon } from '@/components/Icons';
+import { TimerIcon, HabitFlameIcon, CardsIcon, HeadphonesIcon } from '@/components/Icons';
 import { buildPlayStoreUrl, trackAppConversionEvent } from '@/lib/conversionTracking';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -65,17 +65,17 @@ export default function RelatedAppFeatures({
     {
       id: 'focus-timer',
       name: 'Focus Timer',
-      color: '#5B5CF0',
+      color: '#4338CA',
       icon: <TimerIcon size={16} />,
       badge: '50/10 Pomodoro',
-      description: 'Execute planned study blocks with binaural soundscapes, strict timer intervals, and screen lock focus mode.',
+      description: 'Execute planned study blocks with ambient soundscapes, strict timer intervals, and screen lock focus mode.',
       href: '/features/pomodoro-timer',
       actionText: 'Explore Focus Timer →',
     },
     {
       id: 'habit-tracker',
       name: 'Habit Tracker',
-      color: 'var(--amber)',
+      color: '#92400E',
       icon: <HabitFlameIcon size={16} />,
       badge: 'Streak Shields',
       description: 'Build daily study consistency with streak freeze shields on mock exam days and visual discipline heatmaps.',
@@ -83,24 +83,24 @@ export default function RelatedAppFeatures({
       actionText: 'Explore Habit Tracker →',
     },
     {
-      id: 'goal-tracking',
-      name: 'Goal Tracking',
-      color: 'var(--emerald)',
-      icon: <TargetIcon size={16} />,
-      badge: 'Syllabus Quotas',
-      description: 'Break high-stakes exam ranks into weekly chapter milestones, daily numerical quotas, and revision queues.',
-      href: '/features',
-      actionText: 'Explore Goal Tracking →',
+      id: 'spaced-repetition',
+      name: 'SM-2 Flashcards',
+      color: '#047857',
+      icon: <CardsIcon size={16} />,
+      badge: 'Active Recall',
+      description: 'Master high-yield formulas, reaction mechanisms, and NCERT biology definitions with expanding review intervals.',
+      href: '/features/spaced-repetition',
+      actionText: 'Explore Flashcards →',
     },
     {
-      id: 'daily-analytics',
-      name: 'Daily Progress Analytics',
-      color: 'var(--sky)',
-      icon: <ChartIcon size={16} />,
-      badge: 'Circadian Trends',
-      description: 'Monitor true deep work vs recovery hours, track subject balance distributions, and eliminate cognitive burnout.',
-      href: '/calculator',
-      actionText: 'Explore Analytics →',
+      id: 'study-rooms',
+      name: 'Virtual Study Rooms',
+      color: '#BE123C',
+      icon: <HeadphonesIcon size={16} />,
+      badge: 'Silent Focus',
+      description: 'Join camera-free 24/7 focus rooms. Practice body doubling alongside focused peers with zero video distractions.',
+      href: '/features/study-rooms',
+      actionText: 'Explore Study Rooms →',
     },
   ];
 

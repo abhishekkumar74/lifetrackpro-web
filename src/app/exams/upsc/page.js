@@ -8,7 +8,11 @@ import {
   TargetIcon 
 } from '@/components/Icons';
 import PlayStoreIcon from '@/components/PlayStoreIcon';
-import InteractiveUpscTimer from '@/components/InteractiveUpscTimer';
+import dynamic from 'next/dynamic';
+
+const InteractiveUpscTimer = dynamic(() => import('@/components/InteractiveUpscTimer'), {
+  loading: () => <div style={{ minHeight: '360px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#64748B', fontSize: '13px' }}>Loading UPSC Answer Writing Simulator...</div>,
+});
 
 const UPSC_FAQS = [
   {
@@ -30,19 +34,10 @@ const UPSC_FAQS = [
 ];
 
 export const metadata = {
-  title: 'UPSC Study Planner & Mains Timer',
-  description: 'Optimize your UPSC CSE prep with LifeTrack Pro: 7 & 11-min Mains answer stopwatches, SM-2 flashcards for Polity, and focus habit tracking. Free.',
-  keywords: [
-    'UPSC study planner app',
-    'UPSC daily answer writing timer',
-    'UPSC mains stopwatch',
-    'UPSC prelims revision tracker',
-    'civil services study tracker',
-    'IAS exam time management',
-    'spaced repetition for upsc',
-    'upsc study habits app',
-    'lifetrack pro upsc'
-  ],
+  title: {
+    absolute: 'UPSC Answer Writing Timer & Study App | LifeTrack Pro',
+  },
+  description: 'Master GS Mains speed with a UPSC answer writing timer for 7 and 11-minute answers. Track syllabus coverage and review Polity flashcards. Try it free now.',
   alternates: {
     canonical: 'https://lifetrackpro.in/exams/upsc',
   },
@@ -58,26 +53,26 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: 'UPSC Study Planner & Mains Timer | LifeTrack Pro',
-    description: 'Engineered for Civil Services aspirants: 7-min & 11-min Mains answer stopwatches, Constitutional Articles SM-2 flashcards, and focus habit tracking.',
+    title: 'UPSC Answer Writing Timer & Study App | LifeTrack Pro',
+    description: 'Master GS Mains speed with a UPSC answer writing timer for 7 and 11-minute answers. Track syllabus coverage and review Polity flashcards. Try it free now.',
     url: 'https://lifetrackpro.in/exams/upsc',
     siteName: 'LifeTrack Pro',
     locale: 'en_IN',
-    type: 'article',
+    type: 'website',
     images: [
       {
-        url: 'https://lifetrackpro.in/play_store_feature_graphic.png',
-        width: 1024,
-        height: 500,
+        url: 'https://lifetrackpro.in/og/og-exams.png',
+        width: 1200,
+        height: 630,
         alt: 'LifeTrack Pro UPSC CSE Study Planner and Mains Answer Writing Timer',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'UPSC Study Planner & Mains Timer | LifeTrack Pro',
-    description: 'Strict 7-min & 11-min Mains answer stopwatches, SM-2 flashcards, and deep work focus timers for UPSC CSE aspirants.',
-    images: ['https://lifetrackpro.in/play_store_feature_graphic.png'],
+    title: 'UPSC Answer Writing Timer & Study App | LifeTrack Pro',
+    description: 'Master GS Mains speed with a UPSC answer writing timer for 7 and 11-minute answers. Track syllabus coverage and review Polity flashcards. Try it free now.',
+    images: ['https://lifetrackpro.in/og/og-exams.png'],
     creator: '@LifeTrackPro',
   },
 };
@@ -87,8 +82,8 @@ export default function UpscExamPage() {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "SoftwareApplication",
-        "@id": "https://lifetrackpro.in/#softwareapplication",
+        "@type": "MobileApplication",
+        "@id": "https://lifetrackpro.in/#app",
         "name": "LifeTrack Pro",
         "operatingSystem": "Android",
         "applicationCategory": "EducationalApplication",
@@ -98,11 +93,6 @@ export default function UpscExamPage() {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "INR"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.9",
-          "ratingCount": "120"
         }
       },
       {
@@ -114,7 +104,7 @@ export default function UpscExamPage() {
         "isPartOf": {
           "@type": "WebSite",
           "@id": "https://lifetrackpro.in/#website",
-          "url": "https://lifetrackpro.in/",
+          "url": "https://lifetrackpro.in",
           "name": "LifeTrack Pro"
         }
       },
@@ -122,36 +112,9 @@ export default function UpscExamPage() {
         "@type": "BreadcrumbList",
         "@id": "https://lifetrackpro.in/exams/upsc#breadcrumbs",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in/" },
-          { "@type": "ListItem", "position": 2, "name": "Features Hub", "item": "https://lifetrackpro.in/features" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lifetrackpro.in" },
+          { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://lifetrackpro.in/features" },
           { "@type": "ListItem", "position": 3, "name": "UPSC CSE Prep", "item": "https://lifetrackpro.in/exams/upsc" }
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "How to Practice Daily UPSC Mains Answer Writing Within Strict Time Limits",
-        "description": "A structured method to build speed, clarity, and multidimensional structure for UPSC General Studies papers.",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "name": "Select Your Question Format",
-            "text": "Choose between a 10-marker (7-minute limit, ~150 words) or a 15-marker (11-minute limit, ~250 words) prompt."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Spend the First Minute Deconstructing Directives",
-            "text": "Identify core keywords, context, and directives (Critically Analyze, Discuss, Evaluate) before writing."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Incorporate Multidimensional Dimensions",
-            "text": "Structure the body with clear headings across economic, constitutional, environmental, and international angles."
-          },
-          {
-            "@type": "HowToStep",
-            "name": "Conclude with a Forward-Looking Vision",
-            "text": "Reference constitutional ideals, NITI Aayog policy papers, or SDG targets in your closing paragraph."
-          }
         ]
       },
       {
@@ -187,10 +150,10 @@ export default function UpscExamPage() {
           </nav>
 
           <div className="section-eyebrow">Civil Services Examination OS</div>
-          <h1 className="subpage-h1">UPSC CSE Study Planner &amp; Daily Mains Answer Writing Timer</h1>
+          <h1 className="subpage-h1">UPSC Answer Writing Timer &amp; Mains Prep System</h1>
           
           <p className="subpage-lead">
-            The UPSC Civil Services Examination demands deep synthesis, wide syllabus coverage, and rigorous time discipline. LifeTrack Pro provides the specialized productivity tools needed to practice daily answer writing, retain constitutional articles, and sustain long study hours.
+            A strict upsc answer writing timer is essential to master the GS Mains 180-minute writing challenge. LifeTrack Pro provides the specialized productivity tools needed to practice 7 and 11-minute daily answer writing, retain constitutional articles, and sustain long study hours.
           </p>
 
           {/* Interactive UPSC Answer Writing Stopwatch */}
@@ -349,25 +312,28 @@ export default function UpscExamPage() {
           </section>
 
           {/* Bottom CTAs */}
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginTop: '24px' }}>
+          <div className="subpage-bottom-cta-card">
             <a 
               href="https://play.google.com/store/apps/details?id=com.lifetrackpro.app" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="btn-main" 
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+              className="tools-cta-primary-btn"
+              aria-label="Get LifeTrack Pro on Play Store - Android Study App"
             >
-              <PlayStoreIcon size={16} />
+              <PlayStoreIcon size={18} />
               <span>Get LifeTrack Pro on Play Store</span>
+              <span className="tools-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <Link href="/calculator" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <CalculatorIcon size={16} />
-              <span>Calculate Focus Hours</span>
-            </Link>
-            <Link href="/features" className="btn-glass" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-              <SparklesIcon size={16} />
-              <span>Explore All Features</span>
-            </Link>
+            <div className="tools-cta-secondary-grid">
+              <Link href="/features" className="tools-cta-secondary-btn" aria-label="Explore All Features">
+                <SparklesIcon size={16} />
+                <span>Explore All Features</span>
+              </Link>
+              <Link href="/calculator" className="tools-cta-secondary-btn" aria-label="Calculate Focus Hours">
+                <CalculatorIcon size={16} />
+                <span>Calculate Focus Hours</span>
+              </Link>
+            </div>
           </div>
         </div>
       </article>
